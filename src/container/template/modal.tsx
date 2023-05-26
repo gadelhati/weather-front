@@ -9,6 +9,7 @@ const animatetop = keyframes({
 });
 
 export const Modal = styled('div', {
+    color: 'gray',
     display: 'none',
     position: 'fixed',
     zIndex: '1',
@@ -21,7 +22,7 @@ export const Modal = styled('div', {
     'article': {
         maxHeight: '85vh',
         minWidth: '50vw',
-        backgroundColor: '$three1',
+        backgroundColor: '#dedede',
         margin: 'auto',
         border: '1px solid #888',
         maxWidth: '80%',
@@ -42,11 +43,15 @@ export const Modal = styled('div', {
         },
     },
     'header': {
+        color: 'LightGray',
         padding: '2px 16px',
         margin: '0 auto',
-        backgroundColor: '$one1',
-        color: 'white',
+        backgroundColor: '$two1',
+        // color: 'white',
         borderRadius: '.5rem .5rem 0 0',
+        'h2': {
+            color: 'LightGray'
+        },
     },
     'footer': {
         // padding: '2px 16px',

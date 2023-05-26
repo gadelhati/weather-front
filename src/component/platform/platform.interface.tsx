@@ -1,3 +1,6 @@
+import { Country } from "../country/country.interface";
+import { PlatformCategory } from "../platform.category/platformCategory.interface";
+
 export interface Platform {
     id: string,
     visualCallsign: string,
@@ -5,6 +8,6 @@ export interface Platform {
     internationalCallsign: string,
     name: string,
     internationalName: string,
-    // Country country;
-    // PlatformCategory platformCategory;
+    country?: Country,
+    platformCategory?: PlatformCategory,
 }

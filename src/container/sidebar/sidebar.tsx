@@ -6,7 +6,28 @@ import { Tooltip } from '../tooltip/tooltip'
 export const SideContainer = () => {
   const [show, setShow] = useState(true)
   const changeShow = () => { setShow( !show ) }
-  const vector: string[][] = [["tooltip user", "people-circle", "user"], ["tooltip role", "calendar3", "role"],["tooltip food", "toggles2", "food"], ["tooltip food category", "chat-quote-fill", "food_category"], ["tooltip profile", "people-circle", "profile"]/*, ["tooltip preparation", "table", "preparation"], ["tooltip a", "chat-quote-fill", "item a"], ["tooltip b", "people-circle", "item b"], ["tooltip c", "table", "item c"],["tooltip a", "chat-quote-fill", "item a"], ["tooltip b", "people-circle", "item b"], ["tooltip c", "table", "item c"],["tooltip a", "chat-quote-fill", "item a"], ["tooltip b", "people-circle", "item b"], ["tooltip c", "table", "item c"],["tooltip a", "chat-quote-fill", "item a"], ["tooltip b", "people-circle", "item b"], ["tooltip c", "table", "item c"]*/]
+  const vector: string[][] = [
+    ["t weather", "chm", "weather"],
+    ["t weatherHistoric", "bootstrap", "weatherHistoric"],
+    ["t weatherHistoricOffShore", "home", "weatherHistoricOffShore"],
+    ["t weatherHistoricOnShore", "speedometer2", "weatherHistoricOnShore"],
+    // ["commission", "collection", "commission"],
+    ["country", "table", "country"],
+    ["equipment", "people-circle", "equipment"],
+    ["harbor", "grid", "harbor"],
+    // ["institution", "collection", "institution"],
+    // ["manufacturer", "collection", "manufacturer"],
+    ["observer", "collection", "observer"],
+    // ["om", "collection", "om"],
+    ["platform", "calendar3", "platform"],
+    ["platform_category", "chat-quote-fill", "platform_category"],
+    // ["researcher", "collection", "researcher"],
+    ["station", "cpu-fill", "station"],
+    ["station_category", "gear-fill", "station_category"],
+    ["station_off_shore", "speedometer", "station_off_shore"],
+    ["station_on_shore", "toggles2", "station_on_shore"],
+    // ["surveying", "collection", "surveying"],
+    ["tooltip user", "tools-circle", "user"], ["tooltip role", "chevron-right", "role"], ["tooltip profile", "geo-fill", "profile"]]
 
   return (
       <Sidebar sidehide={show}>

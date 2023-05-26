@@ -1,10 +1,10 @@
 import { StationOnShore } from "./station.onshore.interface";
-import { initialPlatform } from "../../platform/platform.initial";
-import { initialEquipment } from "../../equipment/equipment.initial";
-import { initialInstitution } from "../../institution/institution.initial";
-import { initialCountry } from "../../country/country.initial";
-import { initialStationCategory } from "../../stationCategory/station.category.initial";
-import { initialSurveying } from "../../surveying/surveying.initial";
+// import { initialPlatform } from "../../platform/platform.initial";
+// import { initialEquipment } from "../../equipment/equipment.initial";
+// import { initialInstitution } from "../../institution/institution.initial";
+// import { initialCountry } from "../../country/country.initial";
+// import { initialStationCategory } from "../../stationCategory/station.category.initial";
+// import { initialSurveying } from "../../surveying/surveying.initial";
 
 export const initialStationOnShore: StationOnShore = {
     id: '',

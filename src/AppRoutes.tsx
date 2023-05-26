@@ -14,6 +14,21 @@ import { NotAllowed } from "./container/not.allowed";
 import { AuthProvider } from "./component/auth/auth.provider";
 import { initialFoodCategory } from "./component/food.category/food.category.initial";
 import { initialPreparation } from "./component/preparation/preparation.initial";
+import { initialCountry } from "./component/country/country.initial";
+import { initialCommission } from "./component/commission/commission.initial";
+import { initialEquipment } from "./component/equipment/equipment.initial";
+import { initialHarbor } from "./component/harbor/harbor.initial";
+import { initialInstitution } from "./component/institution/institution.initial";
+import { initialManufacturer } from "./component/manufacturer/manufacturer.initial";
+import { initialObserver } from "./component/observer/observer.initial";
+import { initialOM } from "./component/om/om.initial";
+import { initialPlatform } from "./component/platform/platform.initial";
+import { initialPlatformCategory } from "./component/platform.category/platformCategory.initial";
+import { initialResearcher } from "./component/researcher/researcher.initial";
+import { initialStation } from "./component/station/station.initial";
+import { initialStationCategory } from "./component/station.category/station.category.initial";
+import { initialStationOffShore } from "./component/station.off.shore/station.offshore.initial";
+import { initialStationOnShore } from "./component/station.on.shore/station.onshore.initial";
 
 const ROLES = {
     'USER': "ROLE_USER",
@@ -38,10 +53,32 @@ export default function AppRoutes() {
                                 <Route path="/role" element={<GenericForm key='role' object={initialRole} url={'role'} />}></Route>
                             </Route>
                             <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN, ROLES.MODERATOR]} />}>
-                                <Route path="/food" element={<GenericForm key='food' object={initialFood} url={'food'} />}></Route>
-                                <Route path="/preparation" element={<GenericForm key='preparation' object={initialPreparation} url={'preparation'} />}></Route>
-                                <Route path="/food_category" element={<GenericForm key='food_category' object={initialFoodCategory} url={'food_category'} />}></Route>
+                                <Route path="/food" element={<GenericForm key='food' object={initialFood} />}></Route>
+                                <Route path="/preparation" element={<GenericForm key='preparation' object={initialPreparation} />}></Route>
+                                <Route path="/food_category" element={<GenericForm key='food_category' object={initialFoodCategory} />}></Route>
                             </Route>
+                            <Route path="/weather" element={<GenericForm key='weather' object={initialCountry} url={'weather'} />}></Route>
+                            
+                            <Route path="/weatherHistoric" element={<GenericForm key='weatherHistoric' object={initialCountry} url={'weather/historic'} />}></Route>
+                            <Route path="/weatherHistoricOffShore" element={<GenericForm key='weatherHistoricOffShore' object={initialCountry} url={'weather/historicOffShore'} />}></Route>
+                            <Route path="/weatherHistoricOnShore" element={<GenericForm key='weatherHistoricOnShore' object={initialCountry} url={'weather/historicOnShore'} />}></Route>
+
+                            <Route path="/commission" element={<GenericForm key='commission' object={initialCommission} url={'commission'} />}></Route>
+                            <Route path="/country" element={<GenericForm key='country' object={initialCountry} url={'country'} />}></Route>
+                            <Route path="/equipment" element={<GenericForm key='equipment' object={initialEquipment} url={'equipment'} />}></Route>
+                            <Route path="/harbor" element={<GenericForm key='harbor' object={initialHarbor} url={'harbor'} />}></Route>
+                            <Route path="/institution" element={<GenericForm key='institution' object={initialInstitution} url={'institution'} />}></Route>
+                            <Route path="/manufacturer" element={<GenericForm key='manufacturer' object={initialManufacturer} url={'manufacturer'} />}></Route>
+                            <Route path="/observer" element={<GenericForm key='observer' object={initialObserver} url={'observer'} />}></Route>
+                            <Route path="/om" element={<GenericForm key='om' object={initialOM} url={'om'} />}></Route>
+                            <Route path="/platform" element={<GenericForm key='platform' object={initialPlatform} url={'platform'} />}></Route>
+                            <Route path="/platform_category" element={<GenericForm key='platform_category' object={initialPlatformCategory} url={'platformCategory'} />}></Route>
+                            <Route path="/researcher" element={<GenericForm key='researcher' object={initialResearcher} url={'researcher'} />}></Route>
+                            <Route path="/station" element={<GenericForm key='station' object={initialStation} url={'station'} />}></Route>
+                            <Route path="/station_category" element={<GenericForm key='station_category' object={initialStationCategory} url={'stationCategory'} />}></Route>
+                            <Route path="/station_off_shore" element={<GenericForm key='station_off_shore' object={initialStationOffShore} url={'stationOffShore'} />}></Route>
+                            <Route path="/station_on_shore" element={<GenericForm key='station_on_shore' object={initialStationOnShore} url={'stationOnShore'} />}></Route>
+                            <Route path="/surveying" element={<GenericForm key='surveying' object={initialCountry} url={'surveying'} />}></Route>
                         </Routes>
                     </FlexCointainer>
                 </FlexCointainer>

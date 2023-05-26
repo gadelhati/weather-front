@@ -1,3 +1,5 @@
+import { initialCountry } from "../country/country.initial";
+import { initialPlatformCategory } from "../platform.category/platformCategory.initial";
 import { Platform } from "./platform.interface";
 
 export const initialPlatform : Platform = {
@@ -7,6 +9,6 @@ export const initialPlatform : Platform = {
     internationalCallsign: '',
     name: '',
     internationalName: '',
-    // Country country;
-    // PlatformCategory platformCategory;
+    country: initialCountry,
+    platformCategory: initialPlatformCategory,
 }

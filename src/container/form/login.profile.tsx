@@ -39,7 +39,7 @@ export const LoginProfile = () => {
         setError([{ field: 'DTO', message: 'Network Error' }])
     }
     const loginUser = async () => {
-        await login('auth', state).then((data) => {
+        await login('auth/login', state).then((data) => {
             validItem(data)
         }).catch((error) => { networkError() })
     }

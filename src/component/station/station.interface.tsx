@@ -18,6 +18,6 @@ export interface Station {
     stationCategory?: StationCategory,
     equipment?: Equipment,
     surveying?: Surveying,
-    responsible?: Institution,
+    institution?: Institution,
     country?: Country,
 }

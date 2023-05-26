@@ -7,7 +7,7 @@ import { StationOffShore } from "./station.offshore.interface";
 // import { initialSurveying } from "../../surveying/surveying.initial";
 
 export const initialStationOffShore: StationOffShore = {
-    // id: '',
+    id: '',
     localDepth: 0,
     activation: new Date(),
     latitude: 0,

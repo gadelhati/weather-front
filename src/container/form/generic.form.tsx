@@ -19,7 +19,7 @@ import { createToast, toastDetails } from '../toast/toast.message'
 export const GenericForm = <T extends { id: string, name: string }>(object: any, url: string) => {
     const [state, setState] = useState<T>(object.object)
     const [states, setStates] = useState<T[]>([object.object])
-    const [subStates, setSubStates] = useState<{}[]>([{}])
+    const [subStates, setSubStates] = useState<{}[][]>([])
     const [error, setError] = useState<ErrorMessage[]>([initialErrorMessage])
     const [atribute, setAtribute] = useState<Atribute[]>(AtributeSet(object.object))
     const [page, setPage] = useState<number>(0)
@@ -27,6 +27,8 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const [pageable, setPageable] = useState<Pageable>(initialPageable)
     const [ispending, startTransition] = useTransition()
     const [modal, setModal] = useState<boolean>(false)
+
+    const [states1, setStates1] = useState<{}[]>([object.object])
 
     useEffect(() => {
         retrieveItem()
@@ -53,28 +55,41 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
         setError([{ field: 'DTO', message: 'Network Error' }])
     }
     const createItem = async () => {
-        await create(object.url.toLowerCase(), state).then((data) => {
+        await create(object.url, state).then((data) => {
             validItem(data)
         }).catch((error) => { networkError() })
     }
     const retrieveItem = async () => {
-        await retrieve(object.url.toLowerCase(), page, size, "name").then((data) => {
+        await retrieve(object.url, page, size, "name".toLowerCase()).then((data) => {
             startTransition(() => setPageable(data))
             startTransition(() => setStates(data.content))
         }).catch((error) => { networkError() })
     }
-    const retrieveSubItem = async (search: string) => {
-        await retrieve(search.toLowerCase(), page, size, "name").then((data) => {
-            startTransition(() => setSubStates(data.content))
-        }).catch((error) => { networkError() })
+    const retrieveSubItem = async (search: string, index: number) => {
+        let newArray = subStates
+        subStates.map((index: any) =>{
+            console.log(index)
+            newArray.push([index])
+        })
+
+        
+        // await retrieve(search, page, size, "name".toLowerCase()).then((data) => {
+        //     newArray[index] = data.content
+        //     startTransition(() => setSubStates(
+        //         // data.content
+        //         current => [...current, data.content]
+        //         // [newArray]
+        //         // [index]: data.content
+        //     ))
+        // }).catch((error) => { networkError() })
     }
     const updateItem = async () => {
-        await update(object.url.toLowerCase(), state).then((data) => {
+        await update(object.url, state).then((data) => {
             validItem(data)
         }).catch((error) => { networkError() })
     }
     const deleteItem = async () => {
-        await remove(object.url.toLowerCase(), state.id).then((data) => {
+        await remove(object.url, state.id).then((data) => {
             validItem(data)
         }).catch((error) => { networkError() })
     }
@@ -112,6 +127,24 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
         setModal(!modal)
         resetItem()
     }
+    const subStatesON = () => {
+        Object.keys(state).map((key) =>
+            // console.log(key)
+            // setStates1(current => [...current, value] )
+            subStates.push([key])
+        )
+    }
+    const subStatesOFF = () => {
+        // console.log(atribute)
+        // let newArray = subStates
+        subStates.map((index: any) =>{
+            // newArray.push([index])
+            console.log('s', index)
+        })
+        console.log("f")
+        console.log("s", subStates)
+        // console.log(newArray)
+    }
     const showObject = (values: any): any => {
         return (
             Object.entries(values).map(([key, value], index) => {
@@ -126,16 +159,15 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                         <>{value}</>
                                 )
                             })}
-                        </>
-                        :
-                        typeof value === 'boolean' ?
+                        </>:
+                        // typeof value === 'boolean' ?
                             <>{JSON.stringify(value)}</>
-                            :
-                            key === 'password' ?
-                                <>*</>
-                                :
-                                <>{value}</>
-                    }
+                            // :
+                            // key === 'password' ?
+                            //     <>*</>
+                            //     :
+                            //     <>{value}</>
+                        }
                 </td>)
             }))
     }
@@ -153,25 +185,31 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                         {Object.entries(state).map(([key, value], index) => {
                                             return (
                                                 <div>
-                                                    {Array.isArray(atribute[index].worth) ?
+                                                    {typeof value === 'object' ?
                                                         <Tooltip data-tip={validation(key)} hidden={validation(key).length === 0} >
                                                             <ContainerInput>
-                                                                {typeof value === 'object' ?
-                                                                    <select name={key} onChange={handleInputChangeSubSelect} onClick={() => retrieveSubItem(key)}>
-                                                                        {subStates.map((result: any, index: any) => <option placeholder={key} value={result.id} >{result.id}</option>)}
-                                                                    </select>
-                                                                    :
+                                                                {Array.isArray(atribute[index]?.worth) ?
                                                                     <select name={key} onChange={handleInputChangeSelect} >
                                                                         {atribute[index].worth.map((result: any) => <option placeholder={key} data-value={result} >{result}</option>)}
                                                                     </select>
+                                                                    :
+                                                                    atribute[index]?.type === 'text' ?
+                                                                        <select name={key} onChange={handleInputChangeSubSelect} onClick={() => retrieveSubItem(key, index)}>
+                                                                            {subStates.map((result: any, index: any) => <option placeholder={key} value={result.id} >{result.id}</option>)}
+                                                                        </select>
+                                                                        :
+                                                                        <ContainerInput>
+                                                                            <input type={atribute[index]?.type} required name={key} value={value} onChange={handleInputChange} autoComplete='off' />
+                                                                            <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
+                                                                        </ContainerInput>
                                                                 }
                                                             </ContainerInput>
                                                         </Tooltip>
                                                         :
                                                         <Tooltip data-tip={validation(key)} hidden={validation(key).length === 0} >
                                                             <ContainerInput>
-                                                                <input type={atribute[index].type} required name={key} value={value} onChange={handleInputChange} autoComplete='off' />
-                                                                <label htmlFor={key} hidden={atribute[index].type === 'hidden' ? true : false}>{key}</label>
+                                                                <input type={atribute[index]?.type} required name={key} value={value} onChange={handleInputChange} autoComplete='off' />
+                                                                <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
                                                             </ContainerInput>
                                                         </Tooltip>
                                                     }
@@ -180,12 +218,14 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                         })}
                                         <div>{validationDTO()}</div>
                                     </Container>
-                                    <Container block={true} >
+                                    <Container block={false} >
                                         <Button onClick={resetItem}>Reset</Button>
                                         <Button onClick={createItem} hidden={state.id === "" ? false : true}>Create</Button>
                                         <Button onClick={updateItem} hidden={state.id === "" ? true : false}>Update</Button>
                                         <Button onClick={deleteItem} hidden={state.id === "" ? true : false}>Delete</Button>
                                         <Button onClick={handleModal}>Close</Button>
+                                        <Button onClick={subStatesON}>subStatesON</Button>
+                                        <Button onClick={subStatesOFF}>subStatesOFF</Button>
                                     </Container>
                                 </>
                             }
@@ -220,7 +260,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                         </ErrorBoundary>
                         <tfoot>
                             <tr>
-                                <td> 
+                                <td colSpan={100}> 
                                     <GroupButton>
                                         <ButtonPage onClick={() => handlePage(0)}>{'<<'}</ButtonPage>
                                         <ButtonPage onClick={() => handlePage(page - 1)} disabled={page <= 0 ? true : false}>{'<'}</ButtonPage>

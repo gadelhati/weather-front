@@ -14,7 +14,7 @@ export interface Commission {
     longitudeMostLeft: number,
     origin?: Harbor,
     destination?: Harbor,
-    responsible?: Institution,
+    institution?: Institution,
     coordinator?: Institution,
     surveying?: Surveying;
     platform?: Platform,
