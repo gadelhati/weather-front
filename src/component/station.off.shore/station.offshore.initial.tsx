@@ -20,7 +20,7 @@ export const initialStationOffShore: StationOffShore = {
     // stationCategory: initialStationCategory,
     // equipment: initialEquipment,
     // surveying: initialSurveying,
-    // responsible: initialInstitution,
+    // institution: initialInstitution,
     // country: initialCountry,
 
     telegraphicCallsign: '',

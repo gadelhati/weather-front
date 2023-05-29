@@ -21,7 +21,7 @@ export interface StationOnShore extends Station {
     // stationCategory?: StationCategory,
     // equipment?: Equipment,
     // surveying?: Surveying,
-    // responsible?: Institution,
+    // institution?: Institution,
     // country?: Country,
 
     number: number,

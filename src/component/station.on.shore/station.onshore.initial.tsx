@@ -20,7 +20,7 @@ export const initialStationOnShore: StationOnShore = {
     // stationCategory: initialStationCategory,
     // equipment: initialEquipment,
     // surveying: initialSurveying,
-    // responsible: initialInstitution,
+    // institution: initialInstitution,
     // country: initialCountry,
 
     number: 0,
