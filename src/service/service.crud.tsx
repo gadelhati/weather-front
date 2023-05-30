@@ -40,7 +40,12 @@ export const create = async<T,>(url: string, object: T) => {
 
 export const retrieve = async<T,>(url: string, page: number, size: number, sort: string) => {
     return await api.get(`/${url}`, { params: { page: page, size: size } } )
-    // return await api.get(`/${url}`, { params: { page: page, size: size, sort: sort } } )
+        .then(response => { return response.data })
+        .catch(error => { return addError(error) })
+}
+
+export const retrieveFilter = async<T,>(url: string, page: number, size: number, filter: string) => {
+    return await api.get(`/${url}?filter=${filter}`, { params: { page: page, size: size, sort: 'id' } } )
         .then(response => { return response.data })
         .catch(error => { return addError(error) })
 }
