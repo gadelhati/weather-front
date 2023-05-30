@@ -1,11 +1,11 @@
-import { Route, HashRouter, Routes, Navigate } from "react-router-dom";
+import { Route, HashRouter, Routes } from "react-router-dom";
 
 import { RequireAuth } from "./RequireAuth";
 import { isValidToken } from "./service/service.token"
 
 import { LoginProfile } from "./container/form/login.profile";
 import { SideContainer } from "./container/sidebar/sidebar";
-import { FlexCointainer, SideItem } from "./container/template/flex";
+import { FlexCointainer } from "./container/template/flex";
 import { initialFood } from "./component/food/food.initial";
 import { GenericForm } from "./container/form/generic.form";
 import { initialUser } from "./component/user/user.initial";
@@ -25,10 +25,11 @@ import { initialOM } from "./component/om/om.initial";
 import { initialPlatform } from "./component/platform/platform.initial";
 import { initialPlatformCategory } from "./component/platform.category/platformCategory.initial";
 import { initialResearcher } from "./component/researcher/researcher.initial";
-import { initialStation } from "./component/station/station.initial";
+// import { initialStation } from "./component/station/station.initial";
 import { initialStationCategory } from "./component/station.category/station.category.initial";
 import { initialStationOffShore } from "./component/station.off.shore/station.offshore.initial";
 import { initialStationOnShore } from "./component/station.on.shore/station.onshore.initial";
+import { initialStationHistoric } from "./component/station.historic/station.historic.initial";
 
 const ROLES = {
     'USER': "ROLE_USER",
@@ -74,8 +75,9 @@ export default function AppRoutes() {
                             <Route path="/platform" element={<GenericForm key='platform' object={initialPlatform} url={'platform'} />}></Route>
                             <Route path="/platform_category" element={<GenericForm key='platform_category' object={initialPlatformCategory} url={'platformCategory'} />}></Route>
                             <Route path="/researcher" element={<GenericForm key='researcher' object={initialResearcher} url={'researcher'} />}></Route>
-                            <Route path="/station" element={<GenericForm key='station' object={initialStation} url={'station'} />}></Route>
+                            {/* <Route path="/station" element={<GenericForm key='station' object={initialStation} url={'station'} />}></Route> */}
                             <Route path="/station_category" element={<GenericForm key='station_category' object={initialStationCategory} url={'stationCategory'} />}></Route>
+                            <Route path="/station_historic" element={<GenericForm key='station_historic' object={initialStationHistoric} url={'station/historic'} />}></Route>
                             <Route path="/station_off_shore" element={<GenericForm key='station_off_shore' object={initialStationOffShore} url={'stationOffShore'} />}></Route>
                             <Route path="/station_on_shore" element={<GenericForm key='station_on_shore' object={initialStationOnShore} url={'stationOnShore'} />}></Route>
                             <Route path="/surveying" element={<GenericForm key='surveying' object={initialCountry} url={'surveying'} />}></Route>
