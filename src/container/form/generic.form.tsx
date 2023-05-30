@@ -1,8 +1,8 @@
-import { useState, ChangeEvent, useEffect, useTransition, useLayoutEffect } from 'react'
+import { useState, ChangeEvent, useEffect, useTransition } from 'react'
 import { isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
-import { create, retrieve, update, remove, removeAll } from '../../service/service.crud'
+import { create, retrieve, update, remove, retrieveFilter } from '../../service/service.crud'
 import { Container, ContainerInput } from './generic.field'
 import { AtributeSet } from './generic.atribute'
 import { Atribute } from '../../component/atribute/atribute.interface'
@@ -29,9 +29,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const [ispending, startTransition] = useTransition()
     const [modal, setModal] = useState<boolean>(false)
 
-    // useLayoutEffect(() => {
-    //     subStates.map((index: any) => { console.log(index) })
-    // }, [subStates])
     useEffect(() => {
         retrieveItem()
     }, [page, size])
@@ -41,6 +38,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     }
     const selectItem = async (data: any) => {
         setState(data)
+        loadSubStates()
         handleModal()
     }
     const validItem = (data: any) => {
@@ -61,9 +59,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
             validItem(data)
         }).catch((error) => { networkError() })
     }
-    // const retrieve1 = async (url: string) => {
-    //     await retrieve(url, page, size, "id").then((data) => {startTransition(() => return data.content)})
-    // }
     const retrieveItem = async () => {
         await retrieve(object.url, page, size, "name".toLowerCase()).then((data) => {
             startTransition(() => setPageable(data))
@@ -78,27 +73,36 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
             })
         }).catch((error) => { networkError() })
     }
-    // const subStatesON = () => {
-    //     Object.keys(atribute).map((key) =>
-    //         setSubStates(current => [...current, [key]] )
-    //     )
-    // }
-    const subStatesOFF = () => {
-        atribute.map((index: any) => {
-            console.log('add', index)
-        })
-        console.log("show", atribute)
+    const loadSubStates = async () => {
+        // {
+            Object.entries(state).map(([key, value], index) => {
+                return (
+                    !Array.isArray(atribute[index]?.worth) &&
+                    !(value === null && atribute[index].worth === '' || value !== null && typeof value !== 'object') &&
+                        retrieve(key, page, size, "name".toLowerCase()).then((data) => {
+                            startTransition(() => {
+                                subStates[index] = data.content
+                                setSubStates(subStates)
+                            })
+                        }).catch((error) => { networkError() })
+                )
+            })
     }
-    const subIndex = () => {
-        // console.log(atribute[3])
-        let array: Object[] = new Array(Object.keys(state).length)
-        Object.keys(state).map((key, index) => {
-            console.log(key)
-            array[index] = key
-        })
-        console.log(array)
-    }
+    const loadSubState = (index: number):string => {
+        let name:string = ''
+        // subStates[index].filter((result) => {
+        //     result?.id = state.id ? name = result
+        // })
 
+// subStates[index].map(((result: any) =>
+
+                        // retrieveFilter(key, page, size, value?.id).then((data) => {
+                        //     setState({ ...state, [key]: data.content[index] })
+                        // }).catch((error) => { networkError() })
+
+                        // setState({ ...state, [key]: data.content[index] })
+        return name
+    }
     const updateItem = async () => {
         await update(object.url, state).then((data) => {
             validItem(data)
@@ -126,10 +130,10 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const handleInputChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
         setState({ ...state, [event.target.name]: event.target.value })
     }
-    const handleInputChangeSubSelect = (event: ChangeEvent<HTMLSelectElement>) => {
-        console.log(JSON.stringify(event.target.value))
-        // setState({ ...state, [event.target.name]: [subStates.find((item: any) => item.id === event.target.value )] })
-        setState({ ...state, [event.target.name]: event.target.value })
+    const handleInputChangeSubSelect = async (event: ChangeEvent<HTMLSelectElement>) => {
+        await retrieveFilter(event.target.name, page, size, event.target.value).then((data) => {
+            setState({ ...state, [event.target.name]: data.content[0] })
+        }).catch((error) => { networkError() })
     }
     const handlePage = (page: number) => {
         setPage(page)
@@ -147,7 +151,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     }
     const showObject = (values: any): any => {
         return (
-            Object.entries(values).map(([key, value], index) => {
+            Object.entries(values).map(([key, value]) => {
                 return (<td>
                     {Array.isArray(value) ?
                         <>
@@ -161,7 +165,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                             })}
                         </> :
                         // typeof value === 'boolean' ?
-                        <>{JSON.stringify(value)}</>
+                        <>{value == null ? '' : JSON.stringify(value)}</>
                         // :
                         // key === 'password' ?
                         //     <>*</>
@@ -178,48 +182,33 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                 <>
                     <Modal show={modal}>
                         <article>
-                            <header><span onClick={handleModal}>&times;</span><h2>Modal Header</h2></header>
+                            <header><span onClick={handleModal}>&times;</span><h2>{object.url.charAt(0).toUpperCase() + object.url.slice(1)}</h2></header>
                             {atribute &&
                                 <>
                                     <Container>
                                         {Object.entries(state).map(([key, value], index) => {
                                             return (
                                                 <div>
-                                                    {typeof value === 'object' ?
-                                                        <Tooltip data-tip={validation(key)} hidden={validation(key).length === 0} >
-                                                            <ContainerInput>
-                                                                {Array.isArray(atribute[index]?.worth) ?
-                                                                    <select name={key} onChange={handleInputChangeSelect} >
-                                                                        {atribute[index].worth.map((result: any) => <option placeholder={key} data-value={result} >{result}</option>)}
-                                                                    </select>
+                                                    <Tooltip data-tip={validation(key)} hidden={validation(key).length === 0} >
+                                                        <ContainerInput>
+                                                            {Array.isArray(atribute[index]?.worth) ?
+                                                                <select name={key} onChange={handleInputChangeSelect} >
+                                                                    {atribute[index].worth.map((result: any) => <option placeholder={key} data-value={result} >{result}</option>)}
+                                                                </select>
+                                                                :
+                                                                value === null && atribute[index].worth === '' || value !== null && typeof value !== 'object'?
+                                                                    <>
+                                                                        <input type={atribute[index]?.type} required name={key} value={value} onChange={handleInputChange} autoComplete='off' />
+                                                                        <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
+                                                                    </>
                                                                     :
-                                                                    atribute[index]?.type === 'text' ?
-                                                                        <>
-                                                                            <select name={key} onChange={handleInputChangeSubSelect} onClick={() => retrieveSubItem(key, index)}>
-                                                                                {subStates[index].map(((result: any) => <option placeholder={key} value={result.id}>{result.id}</option>))}
-                                                                                {/* <option>{JSON.stringify(subStates[index])}</option> */}
-                                                                                {/* <option>{subStates[index].map((result: any)=> JSON.stringify(result))}</option> */}
-                                                                                {/* {subStates.map((result: any, index: any) => <option placeholder={key} value={result.id} >{result.id}</option>)} */}
-                                                                                {/* {subStates[index].map((result: any, index: any) => <option placeholder={key} value={result.id} >{result.id}</option>)} */}
-                                                                            </select>
-                                                                            <label>{key}{JSON.stringify(state)}</label>
-                                                                        </>
-                                                                        :
-                                                                        <ContainerInput>
-                                                                            <input type={atribute[index]?.type} required name={key} value={value} onChange={handleInputChange} autoComplete='off' />
-                                                                            <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
-                                                                        </ContainerInput>
-                                                                }
-                                                            </ContainerInput>
-                                                        </Tooltip>
-                                                        :
-                                                        <Tooltip data-tip={validation(key)} hidden={validation(key).length === 0} >
-                                                            <ContainerInput>
-                                                                <input type={atribute[index]?.type} required name={key} value={value} onChange={handleInputChange} autoComplete='off' />
-                                                                <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
-                                                            </ContainerInput>
-                                                        </Tooltip>
-                                                    }
+                                                                    <select name={key} onChange={handleInputChangeSubSelect} onClick={() => retrieveSubItem(key, index)}>
+                                                                        {/* <option value={loadSubState(index)} selected></option> */}
+                                                                        {subStates[index].map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
+                                                                    </select>
+                                                            }
+                                                        </ContainerInput>
+                                                    </Tooltip>
                                                 </div>
                                             )
                                         })}
@@ -231,9 +220,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                         <Button onClick={updateItem} hidden={state.id === "" ? true : false}>Update</Button>
                                         <Button onClick={deleteItem} hidden={state.id === "" ? true : false}>Delete</Button>
                                         <Button onClick={handleModal}>Close</Button>
-                                        {/* <Button onClick={subStatesON}>subStatesON</Button> */}
-                                        <Button onClick={subStatesOFF}>subStatesOFF</Button>
-                                        <Button onClick={subIndex}>subIndex</Button>
                                     </Container>
                                 </>
                             }
@@ -251,7 +237,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                     <Table>
                         <thead>
                             <tr>
-                                {Object.entries(state).map(([key, value], index) => {
+                                {Object.keys(state).map((key) => {
                                     return (<th>{key}</th>)
                                 })}
                             </tr>
