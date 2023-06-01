@@ -38,6 +38,12 @@ export const create = async<T,>(url: string, object: T) => {
         .catch(error => { return addError(error) })
 }
 
+export const createAll = async<T,>(url: string, object: T[]) => {
+    return await api.post(`/${url}/createAll`, object)
+        .then(response => { return response.data })
+        .catch(error => { return addError(error) })
+}
+
 export const retrieve = async<T,>(url: string, page: number, size: number, sort: string) => {
     return await api.get(`/${url}`, { params: { page: page, size: size } } )
         .then(response => { return response.data })
@@ -45,7 +51,13 @@ export const retrieve = async<T,>(url: string, page: number, size: number, sort:
 }
 
 export const retrieveFilter = async<T,>(url: string, page: number, size: number, filter: string) => {
-    return await api.get(`/${url}?filter=${filter}`, { params: { page: page, size: size, sort: 'id' } } )
+    return await api.get(`/${url}?filter=${filter}`, { params: { page: page, size: size } } )
+        .then(response => { return response.data })
+        .catch(error => { return addError(error) })
+}
+
+export const retrieveAll = async<T,>(url: string) => {
+    return await api.get(`/${url}`, { params: { size: 1000000000 } } )
         .then(response => { return response.data })
         .catch(error => { return addError(error) })
 }

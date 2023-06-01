@@ -2,8 +2,8 @@ import { useState, ChangeEvent, useEffect, useTransition } from 'react'
 import { isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
-import { create, retrieve, update, remove, retrieveFilter } from '../../service/service.crud'
-import { Container, ContainerInput } from './generic.field'
+import { create, retrieve, update, remove, retrieveFilter, retrieveAll } from '../../service/service.crud'
+import { Container, ContainerInput, ContainerInput2 } from './generic.field'
 import { AtributeSet } from './generic.atribute'
 import { Atribute } from '../../component/atribute/atribute.interface'
 import { Tooltip } from '../tooltip/tooltip'
@@ -16,6 +16,7 @@ import { Modal } from '../template/modal'
 import { Toast } from '../toast/toast'
 import { createToast, toastDetails } from '../toast/toast.message'
 import { SubAtributeSet } from '../../component/atribute/subAtribute'
+import { WeatherUpload } from './weather.upload'
 
 export const GenericForm = <T extends { id: string, name: string }>(object: any, url: string) => {
     const [state, setState] = useState<T>(object.object)
@@ -74,34 +75,18 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
         }).catch((error) => { networkError() })
     }
     const loadSubStates = async () => {
-        // {
-            Object.entries(state).map(([key, value], index) => {
-                return (
-                    !Array.isArray(atribute[index]?.worth) &&
-                    !(value === null && atribute[index].worth === '' || value !== null && typeof value !== 'object') &&
-                        retrieve(key, page, size, "name".toLowerCase()).then((data) => {
-                            startTransition(() => {
-                                subStates[index] = data.content
-                                setSubStates(subStates)
-                            })
-                        }).catch((error) => { networkError() })
-                )
-            })
-    }
-    const loadSubState = (index: number):string => {
-        let name:string = ''
-        // subStates[index].filter((result) => {
-        //     result?.id = state.id ? name = result
-        // })
-
-// subStates[index].map(((result: any) =>
-
-                        // retrieveFilter(key, page, size, value?.id).then((data) => {
-                        //     setState({ ...state, [key]: data.content[index] })
-                        // }).catch((error) => { networkError() })
-
-                        // setState({ ...state, [key]: data.content[index] })
-        return name
+        Object.entries(state).map(([key, value], index) => {
+            return (
+                !Array.isArray(atribute[index]?.worth) &&
+                !(atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index].worth === 0 || value === null && atribute[index].worth === '' || value !== null && typeof value !== 'object') &&
+                retrieveAll(key).then((data) => {
+                    startTransition(() => {
+                        subStates[index] = data.content
+                        setSubStates(subStates)
+                    })
+                }).catch((error) => { networkError() })
+            )
+        })
     }
     const updateItem = async () => {
         await update(object.url, state).then((data) => {
@@ -149,30 +134,33 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
         setModal(!modal)
         resetItem()
     }
+    const removeTimeFromDate = (date: any) => {
+        let aux = new Date(date)
+        return new Date(aux.getFullYear(), aux.getMonth()+1, aux.getDate()).toLocaleDateString('fr-CA');
+    }
     const showObject = (values: any): any => {
         return (
-            Object.entries(values).map(([key, value]) => {
-                return (<td>
-                    {Array.isArray(value) ?
-                        <>
-                            {value.map((key) => {
-                                return (
-                                    typeof value === 'object' ?
-                                        <>{showObject(key)}</>
-                                        :
-                                        <>{value}</>
-                                )
-                            })}
-                        </> :
-                        // typeof value === 'boolean' ?
-                        <>{value == null ? '' : JSON.stringify(value)}</>
-                        // :
-                        // key === 'password' ?
-                        //     <>*</>
-                        //     :
-                        //     <>{value}</>
-                    }
-                </td>)
+            Object.entries(values).map(([key, value], index) => {
+                if (key !== 'id' && index < 6) {
+                    return (<td>
+                        {Array.isArray(value) ?
+                            <>
+                                {value.map((key) => {
+                                    return (
+                                        typeof value === 'object' ?
+                                            <>{showObject(key)}</>
+                                            :
+                                            <>{value}</>
+                                    )
+                                })}
+                            </> :
+                            typeof value === 'object' ?
+                            <>{value == null ? '' : value?.name ? value.name : value.id}</>
+                            :
+                            <>{value}</>
+                        }
+                    </td>)
+                }
             }))
     }
     return (
@@ -182,13 +170,13 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                 <>
                     <Modal show={modal}>
                         <article>
-                            <header><span onClick={handleModal}>&times;</span><h2>{object.url.charAt(0).toUpperCase() + object.url.slice(1)}</h2></header>
+                            <header><span onClick={handleModal}>&times;</span><h2>{object.url.charAt(0).toUpperCase() + object.url.slice(1).replace('/', ' ').replace('_', ' ')}</h2></header>
                             {atribute &&
                                 <>
                                     <Container>
                                         {Object.entries(state).map(([key, value], index) => {
                                             return (
-                                                <div>
+                                                <div style={atribute[index]?.type === 'hidden' ? {display: 'none'} : {display: 'flex'} }>
                                                     <Tooltip data-tip={validation(key)} hidden={validation(key).length === 0} >
                                                         <ContainerInput>
                                                             {Array.isArray(atribute[index]?.worth) ?
@@ -196,17 +184,22 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                     {atribute[index].worth.map((result: any) => <option placeholder={key} data-value={result} >{result}</option>)}
                                                                 </select>
                                                                 :
-                                                                value === null && atribute[index].worth === '' || value !== null && typeof value !== 'object'?
+                                                                atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' ?
                                                                     <>
-                                                                        <input type={atribute[index]?.type} required name={key} value={value} onChange={handleInputChange} autoComplete='off' />
-                                                                        <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
+                                                                        <input type={atribute[index]?.type} required name={key} value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' />
+                                                                        <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
+                                                                        <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p>
                                                                     </>
                                                                     :
-                                                                    <select name={key} onChange={handleInputChangeSubSelect} onClick={() => retrieveSubItem(key, index)}>
-                                                                        {/* <option value={loadSubState(index)} selected></option> */}
-                                                                        {subStates[index].map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
+                                                                    <>
+                                                                    <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</p>
+                                                                    <select name={key} onChange={handleInputChangeSubSelect} /*onClick={() => retrieveSubItem(key, index)}*/>
+                                                                        <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
+                                                                        {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                                                     </select>
+                                                                    </>
                                                             }
+                                                            
                                                         </ContainerInput>
                                                     </Tooltip>
                                                 </div>
@@ -214,18 +207,22 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                         })}
                                         <div>{validationDTO()}</div>
                                     </Container>
-                                    <Container block={false} >
-                                        <Button onClick={resetItem}>Reset</Button>
-                                        <Button onClick={createItem} hidden={state.id === "" ? false : true}>Create</Button>
-                                        <Button onClick={updateItem} hidden={state.id === "" ? true : false}>Update</Button>
-                                        <Button onClick={deleteItem} hidden={state.id === "" ? true : false}>Delete</Button>
-                                        <Button onClick={handleModal}>Close</Button>
+                                    <Container align={'line'} >
+                                        <Button category={'secondary'} onClick={resetItem}>Reset</Button>
+                                        <Button category={'success'} onClick={createItem} hidden={state.id === "" ? false : true}>Create</Button>
+                                        <Button category={'warning'} onClick={updateItem} hidden={state.id === "" ? true : false}>Update</Button>
+                                        <Button category={'danger'} onClick={deleteItem} hidden={state.id === "" ? true : false}>Delete</Button>
+                                        <Button category={'secondary'} onClick={handleModal}>Close</Button>
                                     </Container>
                                 </>
                             }
                         </article>
                     </Modal>
-                    <Container block={false} >
+                    <Container align={'line'} >
+                    {/* <ContainerInput2 className="form__group field">
+                        <input type="input" className="form__field" placeholder="Name" name="name" id='name' required />
+                        <label htmlFor="name" className="form__label">Name</label>
+                    </ContainerInput2> */}
                         <Button onClick={newItem}>New</Button>
                         Items per page
                         <select onChange={handleSize} >
@@ -233,12 +230,16 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                             <option value={10}>10</option>
                             <option value={15}>15</option>
                         </select>
+                        {/* {object.url} */}
+                        <WeatherUpload/>
                     </Container>
                     <Table>
                         <thead>
                             <tr>
-                                {Object.keys(state).map((key) => {
-                                    return (<th>{key}</th>)
+                                {Object.keys(state).map((key, index) => {
+                                    if (key !== 'id' && index < 6) {
+                                        return (<th>{key}</th>)
+                                    }
                                 })}
                             </tr>
                         </thead>

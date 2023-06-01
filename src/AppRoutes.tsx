@@ -27,9 +27,13 @@ import { initialPlatformCategory } from "./component/platform.category/platformC
 import { initialResearcher } from "./component/researcher/researcher.initial";
 // import { initialStation } from "./component/station/station.initial";
 import { initialStationCategory } from "./component/station.category/station.category.initial";
-import { initialStationOffShore } from "./component/station.off.shore/station.offshore.initial";
-import { initialStationOnShore } from "./component/station.on.shore/station.onshore.initial";
+import { initialStationOffShore } from "./component/station.off.shore/station.off.shore.initial";
+import { initialStationOnShore } from "./component/station.on.shore/station.on.shore.initial";
 import { initialStationHistoric } from "./component/station.historic/station.historic.initial";
+import { initialWeather } from "./component/weather/weather.initial";
+import { initialWeatherHistoric } from "./component/weather.historic/weather.historic.initial";
+import { initialWeatherOffShore } from "./component/weather.off.shore/weather.off.shore.initial";
+import { initialWeatherOnShore } from "./component/weather.on.shore/weather.on.shore.initial";
 
 const ROLES = {
     'USER': "ROLE_USER",
@@ -46,7 +50,7 @@ export default function AppRoutes() {
                     {isValidToken() && <SideContainer />}
                     <FlexCointainer element='main'>
                         <Routes>
-                            <Route path="*" element={<LoginProfile />}></Route>
+                            {/* <Route path="*" element={<LoginProfile />}></Route> */}
                             <Route path="/" element={<LoginProfile />}></Route>
                             <Route path="/notAllowed" element={<NotAllowed />}></Route>
                             <Route element={<RequireAuth allowedRoles={[ROLES.ADMIN]} />}>
@@ -58,11 +62,11 @@ export default function AppRoutes() {
                                 <Route path="/preparation" element={<GenericForm key='preparation' object={initialPreparation} />}></Route>
                                 <Route path="/food_category" element={<GenericForm key='food_category' object={initialFoodCategory} />}></Route>
                             </Route>
-                            <Route path="/weather" element={<GenericForm key='weather' object={initialCountry} url={'weather'} />}></Route>
+                            <Route path="/weather" element={<GenericForm key='weather' object={initialWeather} url={'weather'} />}></Route>
                             
-                            <Route path="/weatherHistoric" element={<GenericForm key='weatherHistoric' object={initialCountry} url={'weather/historic'} />}></Route>
-                            <Route path="/weatherHistoricOffShore" element={<GenericForm key='weatherHistoricOffShore' object={initialCountry} url={'weather/historicOffShore'} />}></Route>
-                            <Route path="/weatherHistoricOnShore" element={<GenericForm key='weatherHistoricOnShore' object={initialCountry} url={'weather/historicOnShore'} />}></Route>
+                            <Route path="/weatherHistoric" element={<GenericForm key='weatherHistoric' object={initialWeatherHistoric} url={'weather/historic'} />}></Route>
+                            <Route path="/weatherHistoricOffShore" element={<GenericForm key='weatherHistoricOffShore' object={initialWeatherOffShore} url={'weather/historicOffShore'} />}></Route>
+                            <Route path="/weatherHistoricOnShore" element={<GenericForm key='weatherHistoricOnShore' object={initialWeatherOnShore} url={'weather/historicOnShore'} />}></Route>
 
                             <Route path="/commission" element={<GenericForm key='commission' object={initialCommission} url={'commission'} />}></Route>
                             <Route path="/country" element={<GenericForm key='country' object={initialCountry} url={'country'} />}></Route>

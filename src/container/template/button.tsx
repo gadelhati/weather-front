@@ -32,19 +32,20 @@ export const Button = styled('button', {
     variants: {
         category: {
             primary: {
-                backgroundImage: '$one',
+                backgroundImage: 'linear-gradient($tprimary, $primary)',
             },
             secondary: {
-                backgroundImage: 'linear-gradient($three, $one)',
+                backgroundImage: 'linear-gradient($secondary, $secondary)',
             },
             success: {
-                backgroundImage: '$three',
+                backgroundImage: 'linear-gradient($tsuccess, $success)',
             },
             danger: {
-                backgroundImage: '$four',
+                backgroundImage: 'linear-gradient($tdanger, $danger)',
             },
             warning: {
-                backgroundImage: '$five',
+                color: '$one1',
+                backgroundImage: 'linear-gradient($twarning, $warning)',
             },
             info: {
                 backgroundImage: '$six',

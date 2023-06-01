@@ -1,12 +1,10 @@
-import { Commission } from "../commission/commission.interface";
 import { Country } from "../country/country.interface";
 import { Equipment } from "../equipment/equipment.interface";
 import { Institution } from "../institution/institution.interface";
-import { PlatformCategory } from "../platform.category/platformCategory.interface";
 import { StationCategory } from "../station.category/station.category.interface";
 import { Surveying } from "../surveying/surveying.interface";
 
-export interface StationHistoric {
+export interface StationOnShore {
     id: string,
     localDepth: number,
     activation: Date,
@@ -16,15 +14,16 @@ export interface StationHistoric {
     marsdenSubSquare_1: number,
     wmoSquare: number,
     marsdenSubSquare_5: number,
-    platformCode: string,
-    collectionDepth: string,
-    commissionCode: string,
 
     stationCategory?: StationCategory,
     equipment?: Equipment,
     surveying?: Surveying,
     institution?: Institution,
     country?: Country,
-    commission?: Commission,
-    platformCategory?: PlatformCategory,
+
+    number: number,
+    name: string,
+    altitude: number,
+    status: boolean,
+    deactivation: Date,
 }

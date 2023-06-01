@@ -10,11 +10,22 @@ export const stitches = createStitches({
     theme: {
         colors: {
             tdark: '#34495E',
-            tlight: '#ffffff',
-            tsuccess: '#0ABF30',
-            terror: '#E24D4C',
-            twarning: '#E9BD0C',
+            tlight: '#FFFFFF',
+            tprimary: '#3A587B',
+            tsecondary: '#36304A',
+            tsuccess: '#124010',
             tinfo: '#3498DB',
+            twarning: '#E9BD0C',
+            tdanger: '#E24D4C',
+
+            dark: '#444444',
+            light: '#CBD4E0',
+            primary: '#57A0E5',
+            secondary: '#6C757D',
+            success: '#06532F',
+            info: '#4C85C6',
+            warning: '#CEBA33',
+            danger: '#B63E3E',
             
             letterColor: '#A1E0B0',
             letterBackgroudColor: '#06532F',
@@ -26,15 +37,6 @@ export const stitches = createStitches({
             subLetterBackgroudColorHover: '#CBE8CC',
             squareTop: '#084735',
             squareBottom: '#1F4439',
-
-            primary: '#57A0E5',
-            secondary: '#9C9C9C',
-            success: '#46A749',
-            info: '#4C85C6',
-            warning: '#CEBA33',
-            danger: '#B63E3E',
-            light: '#CBD4E0',
-            dark: '#444444',
 
             one: '#73E86D',
             two: '#000000',

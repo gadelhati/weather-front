@@ -22,12 +22,13 @@ export const SideContainer = () => {
     ["platform", "calendar3", "platform"],
     ["platform_category", "chat-quote-fill", "platform_category"],
     // ["researcher", "collection", "researcher"],
-    ["station", "cpu-fill", "station"],
+    // ["station", "cpu-fill", "station"],
     ["station_category", "gear-fill", "station_category"],
+    ["station_historic", "cpu-fill", "station_historic"],
     ["station_off_shore", "speedometer", "station_off_shore"],
     ["station_on_shore", "toggles2", "station_on_shore"],
     // ["surveying", "collection", "surveying"],
-    ["tooltip user", "tools-circle", "user"], ["tooltip role", "chevron-right", "role"], ["tooltip profile", "geo-fill", "profile"]]
+    ["tooltip user", "tools-circle", "user_entity"], ["tooltip role", "chevron-right", "role"], ["tooltip profile", "geo-fill", "profile"]]
 
   return (
       <Sidebar sidehide={show}>

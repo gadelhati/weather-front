@@ -2,12 +2,11 @@ import { initialCommission } from "../commission/commission.initial";
 import { initialCountry } from "../country/country.initial";
 import { initialEquipment } from "../equipment/equipment.initial";
 import { initialInstitution } from "../institution/institution.initial";
-import { initialPlatformCategory } from "../platform.category/platformCategory.initial";
 import { initialStationCategory } from "../station.category/station.category.initial";
 import { initialSurveying } from "../surveying/surveying.initial";
-import { StationHistoric } from "./station.historic.interface";
+import { StationOffShore } from "./station.off.shore.interface";
 
-export const initialStationHistoric: StationHistoric = {
+export const initialStationOffShore: StationOffShore = {
     id: '',
     localDepth: 0,
     activation: new Date(),
@@ -17,15 +16,13 @@ export const initialStationHistoric: StationHistoric = {
     marsdenSubSquare_1: 0,
     wmoSquare: 0,
     marsdenSubSquare_5: 0,
-    platformCode: '',
-    collectionDepth: '',
-    commissionCode: '',
     
     stationCategory: initialStationCategory,
     equipment: initialEquipment,
     surveying: initialSurveying,
     institution: initialInstitution,
     country: initialCountry,
+
+    telegraphicCallsign: '',
     commission: initialCommission,
-    platformCategory: initialPlatformCategory,
 }

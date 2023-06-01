@@ -41,10 +41,10 @@ export const Toast = styled('ul', {
         border: 'red solid 0.1rem',
         borderLeft: 'red solid 1rem',
         '::before': {
-            background: '$terror',
+            background: '$tdanger',
         },
         '.column i': {
-            color: '$terror',
+            color: '$tdanger',
         }
     },
     '.warning': {
