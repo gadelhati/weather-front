@@ -85,6 +85,7 @@ export const SideItem = styled('a',{
 })
 
 export const Sidebar = styled('aside',{
+    fontFamily: 'Arial, Helvetica, sans-serif',
     width: '256px',
     display: 'flex',
     justifyContent: 'space-between',
