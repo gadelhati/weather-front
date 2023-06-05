@@ -327,6 +327,10 @@ export const ContainerInput7 = styled('div', {
         display: 'inline-block',
         margin: '0em 1em 0em 1em',
         marginBottom: 'min(1em)',
+        minHeight: '1.5em',
+    },
+    'select': {
+        minHeight: '1.8em',
     },
     'input, select': {
         display: 'inline-block',
