@@ -1,4 +1,3 @@
-import { keyframes } from "@stitches/react"
 import { stitches } from "../global.styles"
 
 const { styled } = stitches
@@ -9,6 +8,7 @@ export const Container = styled('div', {
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
+    paddingTop: '$lg',
     variants: {
         align: {
             column: {
@@ -16,6 +16,9 @@ export const Container = styled('div', {
             },
             line: {
                 height: '5em',
+            },
+            buttons: {
+                height: '10em',
             },
         },
     },
@@ -317,25 +320,18 @@ export const ContainerInput6 = styled('div', {
     // },
 })
 
-export const scaleUp = keyframes({
-    // '0%': { transform: 'scale(1)' },
-    // '100%': { transform: 'scale(1.5)' },
-    '100%': { transform: 'traslateY(-40px)' },
-});
-  
-
 export const ContainerInput7 = styled('div', {
     'span': {
-        width: '215px',
+        fontFamily: 'Arial, Helvetica, sans-serif',
         position: 'relative',
         display: 'inline-block',
-        margin: '30px 10px',
+        margin: '0em 1em 0em 1em',
+        marginBottom: 'min(1em)',
     },
-    'input': {
+    'input, select': {
         display: 'inline-block',
-        width: '215px',
-        padding: '10px 0 10px 15px',
-        fontFamily: '"Open Sans", sans',
+        width: '26em',
+        padding: '10px 0 10px 35px',
         fontWeight: '400',
         color: '#377D6A',
         background: '#efefef',
@@ -344,8 +340,10 @@ export const ContainerInput7 = styled('div', {
         outline: '0',
         textIndent: '60px',
         transition: 'all .3s ease-in-out',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis ellipsis',
         '+ label': {
-            width: '7em',
+            width: '10em',
             overflow: 'hidden',
             textOverflow: 'ellipsis ellipsis',
             display: 'inline-block',
@@ -377,7 +375,7 @@ export const ContainerInput7 = styled('div', {
             },
         },
     },
-    'input:focus, input:active': {
+    'input:focus, input:active, select:focus, select:active': {
         color: '#377D6A',
         textIndent: '0',
         background: '#FFF',
@@ -387,8 +385,7 @@ export const ContainerInput7 = styled('div', {
             color: '#FFF',
             textShadow: '0 1px o rgba(19, 74, 70, .4)',
             background: 'rgba(122, 184, 147, 1)',
-            transform: 'translateY(-40px)',
-            // animation: `${scaleUp}`,
+            transform: 'translateY(-30px)',
         },
     },
 })

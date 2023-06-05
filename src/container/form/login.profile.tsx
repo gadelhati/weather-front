@@ -13,6 +13,7 @@ import { existsToken, getPayload, getRoles, isValidToken } from '../../service/s
 import logo from '../../assets/image/marinha.png'
 import { Rotate } from '../template/rotate'
 import { Toast } from '../toast/toast'
+import { Load } from '../template/load'
 
 export const LoginProfile = () => {
     const [state, setState] = useState<User>(initialUser)
@@ -40,7 +41,7 @@ export const LoginProfile = () => {
     }
     const loginUser = async () => {
         await login('auth/login', state).then((data) => {
-            validItem(data)
+            startTransition(() => validItem(data))
         }).catch((error) => { networkError() })
     }
     const logoutUser = async () => {
@@ -89,6 +90,8 @@ export const LoginProfile = () => {
                         {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
                         <Button onClick={resetItem}>Reset{existsToken()}</Button>
                     </CenterItem>
+                    <p>© Marinha do Brasil 1822 - 2022</p>
+                    {ispending && <Load></Load>}
                     {/* {loading && <>Loading...</>}
                 {error != null && JSON.stringify(error)} */}
                     <div>{validationConnection()}</div>

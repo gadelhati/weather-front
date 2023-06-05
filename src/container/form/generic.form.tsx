@@ -193,11 +193,12 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                     </>
                                                                     :
                                                                     <>
-                                                                    <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
+                                                                    
                                                                     <select name={key} onChange={handleInputChangeSubSelect} /*onClick={() => retrieveSubItem(key, index)}*/>
                                                                         <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
                                                                         {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                                                     </select>
+                                                                    <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
                                                                     </>
                                                             }
                                                             </span>
@@ -208,7 +209,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                         })}
                                         <div>{validationDTO()}</div>
                                     </Container>
-                                    <Container align={'line'} >
+                                    <Container align={'buttons'} >
                                         <Button category={'secondary'} onClick={resetItem}>Reset</Button>
                                         <Button category={'success'} onClick={createItem} hidden={state.id === "" ? false : true}>Create</Button>
                                         <Button category={'warning'} onClick={updateItem} hidden={state.id === "" ? true : false}>Update</Button>
