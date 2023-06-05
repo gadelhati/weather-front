@@ -14,7 +14,7 @@
 |   name            |file name version			|link for download
 |:-----------------:|--------------------------:|:-----------------
 |`typescript`       |                           |https://www.typescriptlang.org/
-|`node`			    |node-v18.8.0-x64			|https://nodejs.org/en/
+|`node`			    |node-v20.2.0-x64			|https://nodejs.org/dist/v20.2.0/node-v20.2.0-x64.msi
 |`visual studio`	|VSCodeUserSetup-x64-1.70.2	|https://code.visualstudio.com/docs/?dv=win64user
 <!-- |`intellij`         |idealC-2022.2.1            |https://download-cdn.jetbrains.com/idea/ideaIC-2022.2.1.exe -->
 <!-- |`java`             |jdk-18_windows-x64_bin     |https://download.oracle.com/java/18/latest/jdk-18_windows-x64_bin.exe -->
