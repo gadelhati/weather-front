@@ -325,8 +325,8 @@ export const ContainerInput7 = styled('div', {
         fontFamily: 'Arial, Helvetica, sans-serif',
         position: 'relative',
         display: 'inline-block',
-        margin: '0em 1em 0em 1em',
-        marginBottom: 'min(1em)',
+        margin: '0em .5em 0em .5em',
+        marginBottom: 'min(.5em)',
         minHeight: '1.5em',
     },
     'select': {
