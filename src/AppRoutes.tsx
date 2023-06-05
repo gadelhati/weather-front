@@ -50,7 +50,7 @@ export default function AppRoutes() {
                     {isValidToken() && <SideContainer />}
                     <FlexCointainer element='main'>
                         <Routes>
-                            {/* <Route path="*" element={<LoginProfile />}></Route> */}
+                            <Route path="*" element={<LoginProfile />}></Route>
                             <Route path="/" element={<LoginProfile />}></Route>
                             <Route path="/notAllowed" element={<NotAllowed />}></Route>
                             <Route element={<RequireAuth allowedRoles={[ROLES.ADMIN]} />}>

@@ -3,7 +3,7 @@ import { isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
 import { create, retrieve, update, remove, retrieveFilter, retrieveAll } from '../../service/service.crud'
-import { Container, ContainerInput, ContainerInput2 } from './generic.field'
+import { Container, ContainerInput, ContainerInput2, ContainerInput3, ContainerInput4, ContainerInput5, ContainerInput6, ContainerInput7 } from './generic.field'
 import { AtributeSet } from './generic.atribute'
 import { Atribute } from '../../component/atribute/atribute.interface'
 import { Tooltip } from '../tooltip/tooltip'
@@ -178,7 +178,8 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                             return (
                                                 <div style={atribute[index]?.type === 'hidden' ? {display: 'none'} : {display: 'flex'} }>
                                                     <Tooltip data-tip={validation(key)} hidden={validation(key).length === 0} >
-                                                        <ContainerInput>
+                                                        <ContainerInput7>
+                                                        <span>
                                                             {Array.isArray(atribute[index]?.worth) ?
                                                                 <select name={key} onChange={handleInputChangeSelect} >
                                                                     {atribute[index].worth.map((result: any) => <option placeholder={key} data-value={result} >{result}</option>)}
@@ -186,21 +187,21 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                 :
                                                                 atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' ?
                                                                     <>
-                                                                        <input type={atribute[index]?.type} required name={key} value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' />
+                                                                        <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' />
                                                                         <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
-                                                                        <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p>
+                                                                        {/* <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p> */}
                                                                     </>
                                                                     :
                                                                     <>
-                                                                    <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</p>
+                                                                    <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
                                                                     <select name={key} onChange={handleInputChangeSubSelect} /*onClick={() => retrieveSubItem(key, index)}*/>
                                                                         <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
                                                                         {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                                                     </select>
                                                                     </>
                                                             }
-                                                            
-                                                        </ContainerInput>
+                                                            </span>
+                                                        </ContainerInput7>
                                                     </Tooltip>
                                                 </div>
                                             )
@@ -218,6 +219,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                             }
                         </article>
                     </Modal>
+                
                     <Container align={'line'} >
                     {/* <ContainerInput2 className="form__group field">
                         <input type="input" className="form__field" placeholder="Name" name="name" id='name' required />
@@ -232,6 +234,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                         </select>
                         {/* {object.url} */}
                         <WeatherUpload/>
+                        
                     </Container>
                     <Table>
                         <thead>
