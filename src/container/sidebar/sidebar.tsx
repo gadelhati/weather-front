@@ -12,15 +12,15 @@ export const SideContainer = () => {
     ["t weatherHistoricOffShore", "home", "weatherHistoricOffShore"],
     ["t weatherHistoricOnShore", "speedometer2", "weatherHistoricOnShore"],
     // ["commission", "collection", "commission"],
-    ["country", "table", "country"],
-    ["equipment", "people-circle", "equipment"],
-    ["harbor", "grid", "harbor"],
+    // ["country", "table", "country"],
+    // ["equipment", "people-circle", "equipment"],
+    // ["harbor", "grid", "harbor"],
     // ["institution", "collection", "institution"],
     // ["manufacturer", "collection", "manufacturer"],
     ["observer", "collection", "observer"],
     // ["om", "collection", "om"],
     ["platform", "calendar3", "platform"],
-    ["platform_category", "chat-quote-fill", "platform_category"],
+    // ["platform_category", "chat-quote-fill", "platform_category"],
     // ["researcher", "collection", "researcher"],
     // ["station", "cpu-fill", "station"],
     ["station_category", "gear-fill", "station_category"],
@@ -28,7 +28,9 @@ export const SideContainer = () => {
     ["station_off_shore", "speedometer", "station_off_shore"],
     ["station_on_shore", "toggles2", "station_on_shore"],
     // ["surveying", "collection", "surveying"],
-    ["tooltip user", "tools-circle", "user_entity"], ["tooltip role", "chevron-right", "role"], ["tooltip profile", "geo-fill", "profile"]]
+    ["tooltip user", "tools-circle", "user_entity"],
+    // ["tooltip role", "chevron-right", "role"],
+    ["tooltip profile", "geo-fill", "profile"]]
 
   return (
       <Sidebar sidehide={show}>
