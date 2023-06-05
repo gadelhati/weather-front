@@ -53,11 +53,11 @@ export const WeatherUpload = () => {
         setState(weathers)
     }
     return (
-        <div>
+        <>
             <FindFile type="file" onChange={handleInputFile} ></FindFile>
-            <Button disabled={ispending ? true : false} color="success" onClick={createAllItems} >Criar todos</Button>
+            <Button disabled={ispending ? true : false} color="success" onClick={createAllItems} >Upload</Button>
             <Button disabled={true} hidden={ispending ? false : true}>Carregando</Button>
             <Button disabled={true} hidden={executed()? false : true}>Executado</Button>
-        </div>
+        </>
     );
 }

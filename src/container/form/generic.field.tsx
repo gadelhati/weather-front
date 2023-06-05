@@ -15,7 +15,7 @@ export const Container = styled('div', {
                 display: 'inline-block',
             },
             line: {
-                height: '5em',
+                height: '8em',
             },
             buttons: {
                 height: '10em',
