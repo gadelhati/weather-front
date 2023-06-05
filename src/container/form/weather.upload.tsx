@@ -36,7 +36,7 @@ export const WeatherUpload = () => {
         return executed
     }
     const handleInputFile = (event: ChangeEvent<HTMLInputElement>) => {
-        const observations : Weather[] = []
+        const weathers : Weather[] = []
         const fileReader = new FileReader()
         fileReader.readAsText(event.target.files?.[0] as File)
         fileReader.onload = (event) => {
@@ -44,13 +44,13 @@ export const WeatherUpload = () => {
             if (typeof fileAsText === 'string') {
                 let itens: Weather[] = JSON.parse(fileAsText.toString());
                 itens.forEach((item, index) => {
-                    observations[index] = item
+                    weathers[index] = item
                 })
             } else {
                 console.log("This file cannot be used!")
             }
         };
-        setState(observations)
+        setState(weathers)
     }
     return (
         <div>
