@@ -77,6 +77,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const loadSubStates = async () => {
         Object.entries(state).map(([key, value], index) => {
             return (
+                // !key.includes('istoric')) &&
                 !Array.isArray(atribute[index]?.worth) &&
                 !(atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index].worth === 0 || value === null && atribute[index].worth === '' || value !== null && typeof value !== 'object') &&
                 retrieveAll(key).then((data) => {

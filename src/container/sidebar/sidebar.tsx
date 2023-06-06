@@ -8,9 +8,11 @@ export const SideContainer = () => {
   const changeShow = () => { setShow( !show ) }
   const vector: string[][] = [
     ["t weather", "chm", "weather"],
+    // ["t weatherOffShore", "home", "weatherOffShore"],
+    // ["t weatherOnShore", "speedometer2", "weatherOnShore"],
     ["t weatherHistoric", "bootstrap", "weatherHistoric"],
-    ["t weatherHistoricOffShore", "home", "weatherHistoricOffShore"],
-    ["t weatherHistoricOnShore", "speedometer2", "weatherHistoricOnShore"],
+    ["t weatherHistoricOffShore", "table", "weatherHistoricOffShore"],
+    ["t weatherHistoricOnShore", "geo-fill", "weatherHistoricOnShore"],
     // ["commission", "collection", "commission"],
     // ["country", "table", "country"],
     // ["equipment", "people-circle", "equipment"],
@@ -30,7 +32,7 @@ export const SideContainer = () => {
     // ["surveying", "collection", "surveying"],
     ["tooltip user", "tools-circle", "user_entity"],
     // ["tooltip role", "chevron-right", "role"],
-    ["tooltip profile", "geo-fill", "profile"]]
+    ["tooltip profile", "people-circle", "profile"]]
 
   return (
       <Sidebar sidehide={show}>
