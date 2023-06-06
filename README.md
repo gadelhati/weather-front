@@ -1,13 +1,9 @@
 # _Nutrition_
 
-<!-- ![gitlab](https://img.shields.io/gitlab/stars/Instituto-Hidrografico/aliado?style=social "Gitlab") -->
 ![github](https://img.shields.io/github/stars/gadelhati/nutrition-front?style=social "Github")
 ![typescript](https://img.shields.io/badge/typescript-4.7-0076c6 "Typescript")
 ![node](https://img.shields.io/badge/node-18.8.0-75AC64 "Node")
 ![vscode](https://img.shields.io/badge/vscode-1.70.2-1E97E8 "Visual Studio Code")
-<!-- ![java](https://img.shields.io/badge/java-18.0.2.1-0270B0 "Java JDK") -->
-<!-- ![python](https://img.shields.io/badge/python-3.10.6-FFDC51 "Python") -->
-<!-- ![intellij](https://img.shields.io/badge/intellij-2022.2.1-000000 "Visual Studio Code") -->
 
 # Necessary Tech stack:
 
@@ -15,10 +11,7 @@
 |:-----------------:|--------------------------:|:-----------------
 |`typescript`       |                           |https://www.typescriptlang.org/
 |`node`			    |node-v20.2.0-x64			|https://nodejs.org/dist/v20.2.0/node-v20.2.0-x64.msi
-|`visual studio`	|VSCodeUserSetup-x64-1.70.2	|https://code.visualstudio.com/docs/?dv=win64user
-<!-- |`intellij`         |idealC-2022.2.1            |https://download-cdn.jetbrains.com/idea/ideaIC-2022.2.1.exe -->
-<!-- |`java`             |jdk-18_windows-x64_bin     |https://download.oracle.com/java/18/latest/jdk-18_windows-x64_bin.exe -->
-<!-- |`python`           |python-3.10.6-amd64        |https://www.python.org/ftp/python/3.10.6/python-3.10.6-amd64.exe -->
+|`visual studio`	|VSCodeUserSetup-x64-1.78.2	|https://code.visualstudio.com/docs/?dv=win64user
 
 # Description
 It is called nutritional information, also known as nutritional labeling, the table of information regarding the amounts of vitamins, mineral salts, fats, proteins, fibers, among others, per portion, contained in most product packaging.
