@@ -17,6 +17,7 @@ import { Toast } from '../toast/toast'
 import { createToast, toastDetails } from '../toast/toast.message'
 import { SubAtributeSet } from '../../component/atribute/subAtribute'
 import { WeatherUpload } from './weather.upload'
+import { Title } from '../template/title'
 
 export const GenericForm = <T extends { id: string, name: string }>(object: any, url: string) => {
     const [state, setState] = useState<T>(object.object)
@@ -221,22 +222,23 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                         </article>
                     </Modal>
                 
-                    <Container align={'line'} >
-                    {/* <ContainerInput2 className="form__group field">
-                        <input type="input" className="form__field" placeholder="Name" name="name" id='name' required />
-                        <label htmlFor="name" className="form__label">Name</label>
-                    </ContainerInput2> */}
-                        <Button onClick={newItem}>New</Button>
-                        Items per page
-                        <select onChange={handleSize} >
-                            <option value={5}>5</option>
-                            <option value={10}>10</option>
-                            <option value={15}>15</option>
-                        </select>
-                        {/* {object.url} */}
-                        <WeatherUpload/>
-                        
-                    </Container>
+                    <Title><h1>{object.url.charAt(0).toUpperCase() + object.url.slice(1).replace('/', ' ').replace('_', ' ')}</h1>
+                        <Container align={'line'} >
+                        {/* <ContainerInput2 className="form__group field">
+                            <input type="input" className="form__field" placeholder="Name" name="name" id='name' required />
+                            <label htmlFor="name" className="form__label">Name</label>
+                        </ContainerInput2> */}
+                            <Button onClick={newItem}>New</Button>
+                            Items per page
+                            <select onChange={handleSize} >
+                                <option value={5}>5</option>
+                                <option value={10}>10</option>
+                                <option value={15}>15</option>
+                            </select>
+                            {/* {object.url} */}
+                            <WeatherUpload/>
+                        </Container>
+                    </Title>
                     <Table>
                         <thead>
                             <tr>
