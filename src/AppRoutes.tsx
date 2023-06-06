@@ -70,6 +70,7 @@ export default function AppRoutes() {
                             <Route path="/weatherHistoricOffShore" element={<GenericForm key='weatherHistoricOffShore' object={initialWeatherOffShore} url={'weather/historicOffShore'} />}></Route>
                             <Route path="/weatherHistoricOnShore" element={<GenericForm key='weatherHistoricOnShore' object={initialWeatherOnShore} url={'weather/historicOnShore'} />}></Route>
 
+
                             <Route path="/commission" element={<GenericForm key='commission' object={initialCommission} url={'commission'} />}></Route>
                             <Route path="/country" element={<GenericForm key='country' object={initialCountry} url={'country'} />}></Route>
                             <Route path="/equipment" element={<GenericForm key='equipment' object={initialEquipment} url={'equipment'} />}></Route>
