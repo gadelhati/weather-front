@@ -34,6 +34,8 @@ import { initialWeather } from "./component/weather/weather.initial";
 import { initialWeatherHistoric } from "./component/weather.historic/weather.historic.initial";
 import { initialWeatherOffShore } from "./component/weather.off.shore/weather.off.shore.initial";
 import { initialWeatherOnShore } from "./component/weather.on.shore/weather.on.shore.initial";
+import { initialStationHistoricOffShore } from "./component/station.historic.off.shore/station.historic.off.shore.initial";
+import { initialStationHistoricOnShore } from "./component/station.historic.on.shore/station.historic.on.shore.initial";
 
 const ROLES = {
     'USER': "ROLE_USER",
@@ -82,6 +84,8 @@ export default function AppRoutes() {
                             {/* <Route path="/station" element={<GenericForm key='station' object={initialStation} url={'station'} />}></Route> */}
                             <Route path="/station_category" element={<GenericForm key='station_category' object={initialStationCategory} url={'stationCategory'} />}></Route>
                             <Route path="/station_historic" element={<GenericForm key='station_historic' object={initialStationHistoric} url={'station/historic'} />}></Route>
+                            <Route path="/station_historic_off_shore" element={<GenericForm key='station_historic_off_shore' object={initialStationHistoricOffShore} url={'stationOffShore/historic'} />}></Route>
+                            <Route path="/station_historic_on_shore" element={<GenericForm key='station_historic_on_shore' object={initialStationHistoricOnShore} url={'stationOnShore/historic'} />}></Route>
                             <Route path="/station_off_shore" element={<GenericForm key='station_off_shore' object={initialStationOffShore} url={'stationOffShore'} />}></Route>
                             <Route path="/station_on_shore" element={<GenericForm key='station_on_shore' object={initialStationOnShore} url={'stationOnShore'} />}></Route>
                             <Route path="/surveying" element={<GenericForm key='surveying' object={initialCountry} url={'surveying'} />}></Route>
