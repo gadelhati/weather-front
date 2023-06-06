@@ -141,7 +141,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const showObject = (values: any): any => {
         return (
             Object.entries(values).map(([key, value], index) => {
-                if (key !== 'id' && index < 6) {
+                if (key !== 'id' && key !== 'password' && index < 6 && key !== 'role') {
                     return (<td>
                         {Array.isArray(value) ?
                             <>
@@ -241,7 +241,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                         <thead>
                             <tr>
                                 {Object.keys(state).map((key, index) => {
-                                    if (key !== 'id' && index < 6) {
+                                    if (key !== 'id' && index < 6 && key !== 'password' && key !== 'role') {
                                         return (<th>{key}</th>)
                                     }
                                 })}
