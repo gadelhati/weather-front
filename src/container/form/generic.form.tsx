@@ -77,7 +77,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const loadSubStates = async () => {
         Object.entries(state).map(([key, value], index) => {
             return (
-                // !key.includes('istoric')) &&
                 !Array.isArray(atribute[index]?.worth) &&
                 !(atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index].worth === 0 || value === null && atribute[index].worth === '' || value !== null && typeof value !== 'object') &&
                 retrieveAll(key).then((data) => {
@@ -188,7 +187,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                 :
                                                                 atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' ?
                                                                     <>
-                                                                        <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' />
+                                                                        <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false } />
                                                                         <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
                                                                         {/* <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p> */}
                                                                     </>
@@ -210,11 +209,11 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                         })}
                                         <div>{validationDTO()}</div>
                                     </Container>
-                                    <Container align={'buttons'} >
+                                    <Container align={'buttons'} hidden={object.url.includes('istoric') ? true : false } >
                                         <Button category={'secondary'} onClick={resetItem}>Reset</Button>
-                                        <Button category={'success'} onClick={createItem} hidden={state.id === "" ? false : true}>Create</Button>
-                                        <Button category={'warning'} onClick={updateItem} hidden={state.id === "" ? true : false}>Update</Button>
-                                        <Button category={'danger'} onClick={deleteItem} hidden={state.id === "" ? true : false}>Delete</Button>
+                                        <Button category={'success'} onClick={createItem} hidden={state.id !== "" && !object.url.includes('istoric') || object.url.includes('istoric') ? true : false}>Create</Button>
+                                        <Button category={'warning'} onClick={updateItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Update</Button>
+                                        <Button category={'danger'} onClick={deleteItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Delete</Button>
                                         <Button category={'secondary'} onClick={handleModal}>Close</Button>
                                     </Container>
                                 </>
