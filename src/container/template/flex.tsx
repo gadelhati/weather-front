@@ -61,58 +61,40 @@ export const SidebarContainerHeader = styled('div',{
     color: '$ninth',
 })
 
-export const SidebarContainerColapsable = styled('div',{
-    'input': {
-        display: 'none',
+export const SidebarContainerCollapsible = styled('div',{
+    fontFamily: 'Montserrat, sans-serif',
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    borderRadius: '5px',
+    'a': {
+        backgroundColor: '$fourth',
     },
-    '.wrap-collabsible': {
-        margin: '1.2rem 0',
-    },
-    'label': {
-        display: 'block',
-        fontWeight: 'bold',
-        fontFamily: 'monospace',
-        fontSize: '1.2rem',
-        textTransform: 'uppercase',
-        textAlign: 'center',
-        padding: '1rem',
-        color: '#DDD',
-        background: '#0069ff',
-        cursor: 'pointer',
-        borderRadius: '7px',
-        transition: 'all 0.25s ease-out',
-    },
-    'label:hover': {
-        color: '#FFF',
-    },
-    'label::before': {
-        // content: ' '',
-        display: 'inline-block',
-        borderTop: '5px solid transparent',
-        borderBottom: '5px solid transparent',
-        borderLeft: '5px solid currentColor',
-        verticalAlign: 'middle',
-        marginRight: '.7rem',
-        transform: 'translateY(-2px)',
-        transition: 'transform .2s ease-out',
-    },
-    'input:checked+label::before': {
-        transform: 'rotate(90deg) translateX(-3px)',
-    },
-    'div': {
-        maxHeight: '0px',
-        overflow: 'hidden',
-        transition: 'max-height .25s ease-in-out',
-    },
-    'input:checked + label + div': {
-        maxHeight: '350px',
-    },
-    'input:checked+label': {
-        borderBottomRightRadius: '0',
-        borderBottomLeftRadius: '0',
-    },
-    'div p': {
-        marginBottom: '0',
+    variants: {
+        collapsible: {
+            true: {
+                backgroundColor: '$ninth',
+                'a:first-child': {
+                    color: '$second',
+                    backgroundColor: '$ninth',
+                    display: 'block',
+                },
+                'a': {
+                    color: '$second',
+                    backgroundColor: '$sixth',
+                },
+            },
+            false: {
+                backgroundColor: '$sixth',
+                'a:first-child': {
+                    display: 'block',
+                    // backgroundColor: 'none',
+                },
+                'a': {
+                    display: 'none',
+                },
+            },
+        },
     },
 })
 
