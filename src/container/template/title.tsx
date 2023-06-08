@@ -18,6 +18,6 @@ export const Title = styled('div', {
     borderRadius: '10px',
     // display: 'block',
     borderCollapse: 'collapse',
-    border: 'solid $two1 1px',
+    border: 'solid $third 1px',
     boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
 })

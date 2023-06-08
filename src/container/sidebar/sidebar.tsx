@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { SideTitle, SideItem, Sidebar, SidebarHeader } from '../template/flex'
+import { SideContainerTitle, SideContainerItem, SidebarContainer, SidebarContainerHeader, SidebarContainerColapsable } from '../template/flex'
 import { Icon } from '../../assets/svg.access' 
 import { Tooltip } from '../tooltip/tooltip'
 
@@ -35,15 +35,21 @@ export const SideContainer = () => {
     ["tooltip profile", "people-circle", "profile"]]
 
   return (
-      <Sidebar sidehide={show}>
-        <SidebarHeader>
-        <SideTitle key={0} href={`#/`} ><Icon name="speedometer" /><p>Title</p></SideTitle>
+    <SidebarContainer sidehide={show}>
+      <SidebarContainerHeader>
+        <SideContainerTitle key={0} href={`#/`} ><Icon name="speedometer" /><p>Title</p></SideContainerTitle>
         {vector.map((element) => {
-          return <SideItem key={element[1]} href={`#/${element[2]}`} ><Tooltip data-tip={element[0]}><Icon name={element[1]} /></Tooltip><p>{element[2]}</p></SideItem>
+          return <SideContainerItem key={element[1]} href={`#/${element[2]}`} ><Tooltip data-tip={element[0]}><Icon name={element[1]} /></Tooltip><p>{element[2]}</p></SideContainerItem>
         })}
         {/* <SideItem ><Tooltip data-tip="collapsible"><Icon name="speedometer" /></Tooltip><p>Collapsible</p></SideItem> */}
-        </SidebarHeader>
-        <SideItem element={'final'} onClick={changeShow}><Tooltip data-tip="hide items"><Icon name="grid" /></Tooltip><p>hide</p></SideItem>
-      </Sidebar>
+      </SidebarContainerHeader>
+      <SidebarContainerColapsable className="wrap-collabsible">
+        <input id="collapsible" type="checkbox"></input>
+        <label htmlFor="collapsible" >More Info</label>
+        <div>
+          <SideContainerItem element={'final'} onClick={changeShow}><Tooltip data-tip="hide items"><Icon name="grid" /></Tooltip><p>hide</p></SideContainerItem>
+        </div>
+      </SidebarContainerColapsable>
+    </SidebarContainer>
   )
 }

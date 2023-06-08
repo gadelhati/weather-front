@@ -2,75 +2,157 @@ import { stitches } from "../global.styles"
 
 const { styled } = stitches
 
-export const FlexCointainer = styled('div',{
-    height: '100vh',
-    width: '100%',
+export const CenteredContainer = styled('div',{
+    color: '$ninth',
+    backgroundColor: '$third',
+    backgroundImage: 'linear-gradient(to bottom, $third, $fourth)',
+    minHeight: '100vh',
     display: 'flex',
-    justifyContent: 'start',
-    // alignItems: 'center',
-    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+})
+
+export const CenteredContainerItem = styled('div', {
+    borderRadius: '5px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: '$xl',
+    padding: '$rg',
     variants: {
-        element:{
-            all: {
-                alignItems: 'stretch',
-                backgroundColor: '$back',
-            },
-            main: {
-                flexBasis: '0',
-                flexGrow: '1.5',
-                flexDirection: "column",
-                color: '$four1',
-                backgroundColor: '$three1'
-            },
-            content: {
-                height: '94vh',
-                flexDirection: "row",
-                
-                color: '$three1',
-                backgroundColor: '$four1'
-            },
-            nav: {
-                height: '6vh',
-                backgroundPosition: '50%',
-                padding: '.5rem',
-                flexDirection: "row",
-                justifyContent: 'space-between',
-                
-                color: '$two1',
-                backgroundColor: '$five1'
+        direction: {
+            row: {
+                padding: '0',
+                flexDirection: 'row',
             },
         },
     },
 })
-export const SideTitle = styled('a',{
+
+export const SidebarContainer = styled('aside',{
+    fontFamily: 'Montserrat, sans-serif',
+    width: '256px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    padding: '$xxs',
+    margin: '$xxs',
+    borderRadius: '5px',
+    backgroundColor: '$third',
+    backgroundImage: 'linear-gradient(to bottom, $fourth, $third)',
+    // scrollBehavior: 'smooth',
+    // overflowY: 'auto',
+    // overflowX: 'hidden',
+    variants: {
+        sidehide: {
+            false: {
+                width: '2.7rem',
+                'p': {
+                    display: 'none',
+                },
+            },
+        },
+    },
+})
+
+export const SidebarContainerHeader = styled('div',{
+    display: 'flex',
+    flexDirection: 'column',
+    color: '$ninth',
+})
+
+export const SidebarContainerColapsable = styled('div',{
+    'input': {
+        display: 'none',
+    },
+    '.wrap-collabsible': {
+        margin: '1.2rem 0',
+    },
+    'label': {
+        display: 'block',
+        fontWeight: 'bold',
+        fontFamily: 'monospace',
+        fontSize: '1.2rem',
+        textTransform: 'uppercase',
+        textAlign: 'center',
+        padding: '1rem',
+        color: '#DDD',
+        background: '#0069ff',
+        cursor: 'pointer',
+        borderRadius: '7px',
+        transition: 'all 0.25s ease-out',
+    },
+    'label:hover': {
+        color: '#FFF',
+    },
+    'label::before': {
+        // content: ' '',
+        display: 'inline-block',
+        borderTop: '5px solid transparent',
+        borderBottom: '5px solid transparent',
+        borderLeft: '5px solid currentColor',
+        verticalAlign: 'middle',
+        marginRight: '.7rem',
+        transform: 'translateY(-2px)',
+        transition: 'transform .2s ease-out',
+    },
+    'input:checked+label::before': {
+        transform: 'rotate(90deg) translateX(-3px)',
+    },
+    'div': {
+        maxHeight: '0px',
+        overflow: 'hidden',
+        transition: 'max-height .25s ease-in-out',
+    },
+    'input:checked + label + div': {
+        maxHeight: '350px',
+    },
+    'input:checked+label': {
+        borderBottomRightRadius: '0',
+        borderBottomLeftRadius: '0',
+    },
+    'div p': {
+        marginBottom: '0',
+    },
+})
+
+export const SideContainerTitle = styled('a',{
     textDecoration: 'none',
-    color: '$three1',
-    backgroundColor: '$five1',
+    color: '$third',
+    backgroundColor: '$tenth',
     height: '$md',
     width: '$xss',
     userSelect: 'none',
     borderRadius: '5px',
-    padding: '.5em',
+    padding: '$xs',
+    margin: '$xxxs',
     textTransform: 'capitalize',
     transition: '.5s',
     p : {
         display: 'inline',
     },
 })
-export const SideItem = styled('a',{
+
+export const SideContainerItem = styled('a',{
     textDecoration: 'none',
-    color: '$five1',
+    color: '$ninth',
     height: '$xss',
     width: '$xss',
     userSelect: 'none',
     borderRadius: '5px',
-    padding: '.5em',
+    padding: '$xs',
+    margin: '$xxxs',
     textTransform: 'capitalize',
-    transition: '.5s',
+    transition: '.3s',
     '&:hover': {
-        color: '$five1',
-        backgroundColor: '$three1',
-        boxShadow: '0 0 0.2em #000, 0 0 0.2em #999, 0 0 0.2em #888',
+        color: '$second',
+        backgroundColor: '$ninth',
+        boxShadow: '0 0 0.2em #FFF, 0 0 0.2em #222, 0 0 0.2em #333',
+    },
+    '&:focus': {
+        color: '$first',
+        backgroundColor: '$tenth',
+        boxShadow: '0 0 0.2em #FFF, 0 0 0.2em #222, 0 0 0.2em #333',
     },
     p : {
         display: 'inline',
@@ -84,76 +166,40 @@ export const SideItem = styled('a',{
     },
 })
 
-export const Sidebar = styled('aside',{
-    fontFamily: 'Arial, Helvetica, sans-serif',
-    width: '256px',
+export const FlexCointainer = styled('div',{
+    height: '100vh',
+    width: '100%',
     display: 'flex',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-    padding: '$xxs',
-    // paddingLeft: '$xxs',
-    margin: '$xxs',
-    borderRadius: '.3rem',
-    color: '$five1',
-    backgroundColor: '$one1',
-    backgroundImage: 'linear-gradient(to bottom, $one1, $three1)',
-    // scrollBehavior: 'smooth',
-    // overflowY: 'auto',
-    // overflowX: 'hidden',
-    '&:hover' : {
-        // textShadow: '0 0 0.2em #000, 0 0 0.2em #000, 0 0 0.2em #000',
-    },
+    justifyContent: 'start',
+    overflow: 'hidden',
     variants: {
-        sidehide: {
-            true: {
-                // '@bp4': {
-                //     display: 'none',
-                // },
+        element:{
+            all: {
+                alignItems: 'stretch',
+                backgroundColor: '$ninth',
             },
-            false: {
-                width: '2.9rem',
-                'p': {
-                    display: 'none',
-                },
-                // '@bp4': {
-                //     display: 'none',
-                // },
+            main: {
+                flexBasis: '0',
+                flexGrow: '1.5',
+                flexDirection: "column",
+                color: '$fifth',
+                backgroundColor: '$fourth'
             },
-        },
-    },
-})
-export const SidebarHeader = styled('div',{
-    display: 'flex',
-    flexDirection: 'column',
-    borderRadius: '.3rem',
-    color: '$five1',
-})
-export const CenterContainer = styled('div',{
-    backgroundColor: '$secondary',
-    backgroundImage: 'linear-gradient(to bottom, $line, $button)',
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-})
-export const CenterItem = styled('div', {
-    backgroundColor: '$tlight',
-    borderRadius: '10px',
-    minWidth: '25vw',
-    minHeight: '60vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    paddingTop: '$xxl',
-    variants: {
-        direction: {
-            column: {
-                flexDirection: 'column',
+            content: {
+                height: '94vh',
+                flexDirection: "row",
+                
+                color: '$fourth',
+                backgroundColor: '$fifth'
             },
-            row: {
-                minHeight: '0',
-                flexDirection: 'row',
-                justifyContent: 'center',
+            nav: {
+                height: '6vh',
+                backgroundPosition: '50%',
+                padding: '.5rem',
+                flexDirection: "row",
+                justifyContent: 'space-between',
+                color: '$third',
+                backgroundColor: '$ninth'
             },
         },
     },
