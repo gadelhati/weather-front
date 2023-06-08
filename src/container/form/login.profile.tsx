@@ -5,15 +5,14 @@ import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
 import { login } from '../../service/service.crud'
 import { Tooltip } from '../tooltip/tooltip'
-import { ContainerInput } from './generic.field'
-import { CenterContainer, CenterItem } from '../template/flex'
+import { FloatLabel } from './generic.field'
+import { CenteredContainer, CenteredContainerItem } from '../template/flex'
 import { Button } from '../template/button';
 import { logout } from '../../service/service.auth'
 import { existsToken, getPayload, getRoles, isValidToken } from '../../service/service.token'
 import logo from '../../assets/image/marinha.png'
 import { Rotate } from '../template/rotate'
 import { Toast } from '../toast/toast'
-import { Load } from '../template/load'
 
 export const LoginProfile = () => {
     const [state, setState] = useState<User>(initialUser)
@@ -62,42 +61,39 @@ export const LoginProfile = () => {
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setState({ ...state, [event.target.name]: value })
     }
-
     return (
-        <CenterContainer>
+        <CenteredContainer>
             {isValidToken() ?
                 <>
                     {getPayload().sub}{getRoles()}
                     {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
                 </>
                 :
-                <CenterItem>
+                <CenteredContainerItem>
                     <Rotate src={logo} alt="" width="120" height="128"></Rotate>
                     <Tooltip data-tip={validation('username')} hidden={validation('username').length === 0} >
-                        <ContainerInput>
+                        <FloatLabel>
                             <input type={'text'} required name={'username'} value={state.username} onChange={handleInputChange} autoComplete='off' />
                             <label htmlFor="name">Name</label>
-                        </ContainerInput>
+                        </FloatLabel>
                     </Tooltip>
                     <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
-                        <ContainerInput>
+                        <FloatLabel>
                             <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
                             <label htmlFor="password">Password</label>
-                        </ContainerInput>
+                        </FloatLabel>
                     </Tooltip>
-                    <CenterItem direction={'row'}>
+                    <CenteredContainerItem direction={'row'}>
                         {!isValidToken() && <Button onClick={loginUser}>Login</Button>}
                         {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
                         <Button onClick={resetItem}>Reset{existsToken()}</Button>
-                    </CenterItem>
-                    <p>© Marinha do Brasil 1822 - 2022</p>
-                    {ispending && <Load></Load>}
-                    {/* {loading && <>Loading...</>}
-                {error != null && JSON.stringify(error)} */}
-                    <div>{validationConnection()}</div>
-                </CenterItem>
+                    </CenteredContainerItem>
+                    <CenteredContainerItem direction={'row'}>
+                        {error[0].message !== 'Network Error' ? <>© Marinha do Brasil</> : <>{validationConnection()}</> }
+                    </CenteredContainerItem>
+                </CenteredContainerItem>
             }
             <Toast className="notifications"></Toast>
-        </CenterContainer>
+        </CenteredContainer>
     );
 }

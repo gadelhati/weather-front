@@ -3,19 +3,19 @@ import { stitches } from "../global.styles"
 const { styled } = stitches
 
 export const Button = styled('button', {
-    width: '6em',
+    width: '5.5rem',
     maxHeight: '4em',
-    backgroundImage: 'linear-gradient($three1, $one1)',
+    backgroundImage: 'linear-gradient($third, $fourth)',
     border: '0',
-    borderRadius: '4px',
+    borderRadius: '5px',
     boxShadow: 'rgba(0, 0, 0, .3) 0 5px 15px',
     boxSizing: 'border-box',
-    color: '#fff',
+    color: '$ninth',
     cursor: 'pointer',
-    fontFamily: 'Montserrat,sans-serif',
-    fontSize: '.9em',
-    margin: '5px',
-    padding: '10px 15px',
+    fontSize: '$rg',
+    fontFamily: 'Montserrat, sans-serif',
+    margin: '$xxs',
+    padding: '$xs $xxs',
     textAlign: 'center',
     userSelect: 'none',
     touchAction: 'manipulation',
@@ -23,7 +23,7 @@ export const Button = styled('button', {
         boxShadow: '0 0 1em hsla(0, 0%, 0.0%, 0.75000)',
     },
     '&:focus': {
-        outline: '3px solid $six',
+        outline: '3px solid $ninth',
     },
     '&:active': {
         boxShadow: 'lightGray 0 3px 7px inset',

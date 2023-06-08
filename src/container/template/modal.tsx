@@ -46,7 +46,7 @@ export const Modal = styled('div', {
         color: 'LightGray',
         padding: '2px 16px',
         margin: '0 auto',
-        backgroundColor: '$two1',
+        backgroundColor: '$third',
         // color: 'white',
         borderRadius: '.5rem .5rem 0 0',
         'h2': {

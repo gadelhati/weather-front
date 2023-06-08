@@ -3,7 +3,7 @@ import { isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
 import { create, retrieve, update, remove, retrieveFilter, retrieveAll } from '../../service/service.crud'
-import { Container, ContainerInput, ContainerInput2, ContainerInput3, ContainerInput4, ContainerInput5, ContainerInput6, ContainerInput7 } from './generic.field'
+import { Container, ContainerInput } from './generic.field'
 import { AtributeSet } from './generic.atribute'
 import { Atribute } from '../../component/atribute/atribute.interface'
 import { Tooltip } from '../tooltip/tooltip'
@@ -18,6 +18,7 @@ import { createToast, toastDetails } from '../toast/toast.message'
 import { SubAtributeSet } from '../../component/atribute/subAtribute'
 import { WeatherUpload } from './weather.upload'
 import { Title } from '../template/title'
+import { Load } from '../template/load'
 
 export const GenericForm = <T extends { id: string, name: string }>(object: any, url: string) => {
     const [state, setState] = useState<T>(object.object)
@@ -179,7 +180,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                             return (
                                                 <div style={atribute[index]?.type === 'hidden' ? {display: 'none'} : {display: 'flex'} }>
                                                     <Tooltip data-tip={validation(key)} hidden={validation(key).length === 0} >
-                                                        <ContainerInput7>
+                                                        <ContainerInput>
                                                         <span>
                                                             {Array.isArray(atribute[index]?.worth) ?
                                                                 <select name={key} onChange={handleInputChangeSelect} >
@@ -203,7 +204,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                     </>
                                                             }
                                                             </span>
-                                                        </ContainerInput7>
+                                                        </ContainerInput>
                                                     </Tooltip>
                                                 </div>
                                             )
@@ -221,7 +222,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                             }
                         </article>
                     </Modal>
-                
                     <Title><h1>{object.url.charAt(0).toUpperCase() + object.url.slice(1).replace('/', ' ').replace('_', ' ')}</h1>
                         <Container align={'line'} >
                         {/* <ContainerInput2 className="form__group field">
@@ -239,6 +239,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                             <WeatherUpload/>
                         </Container>
                     </Title>
+                    {ispending && <Load></Load>}
                     <Table>
                         <thead>
                             <tr>
