@@ -16,7 +16,7 @@ export interface StationHistoricOffShore {
     wmoSquare: number,
     marsdenSubSquare_5: number,
 
-    stationCategory?: StationCategory,
+    station_category?: StationCategory,
     equipment?: Equipment,
     surveying?: Surveying,
     institution?: Institution,

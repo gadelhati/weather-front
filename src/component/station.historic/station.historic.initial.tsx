@@ -21,11 +21,11 @@ export const initialStationHistoric: StationHistoric = {
     collectionDepth: '',
     commissionCode: '',
     
-    stationCategory: initialStationCategory,
+    station_category: initialStationCategory,
     equipment: initialEquipment,
     surveying: initialSurveying,
     institution: initialInstitution,
     country: initialCountry,
     commission: initialCommission,
-    platformCategory: initialPlatformCategory,
+    platform_category: initialPlatformCategory,
 }
