@@ -17,7 +17,7 @@ import { Toast } from '../toast/toast'
 import { createToast, toastDetails } from '../toast/toast.message'
 import { SubAtributeSet } from '../../component/atribute/subAtribute'
 import { WeatherUpload } from './weather.upload'
-import { Title } from '../template/title'
+import { Header, TitleHeader } from '../template/header'
 import { Load } from '../template/load'
 
 export const GenericForm = <T extends { id: string, name: string }>(object: any, url: string) => {
@@ -138,7 +138,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     }
     const removeTimeFromDate = (date: any) => {
         let aux = new Date(date)
-        return new Date(aux.getFullYear(), aux.getMonth()+1, aux.getDate()).toLocaleDateString('fr-CA');
+        return new Date(aux.getFullYear(), aux.getMonth() + 1, aux.getDate()).toLocaleDateString('fr-CA');
     }
     const showObject = (values: any): any => {
         return (
@@ -157,9 +157,9 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                 })}
                             </> :
                             typeof value === 'object' ?
-                            <>{value == null ? '' : value?.name ? value.name : value.id}</>
-                            :
-                            <>{value}</>
+                                <>{value == null ? '' : value?.name ? value.name : value.id}</>
+                                :
+                                <>{value}</>
                         }
                     </td>)
                 }
@@ -178,31 +178,31 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                     <Container>
                                         {Object.entries(state).map(([key, value], index) => {
                                             return (
-                                                <div style={atribute[index]?.type === 'hidden' ? {display: 'none'} : {display: 'flex'} }>
+                                                <div style={atribute[index]?.type === 'hidden' ? { display: 'none' } : { display: 'flex' }}>
                                                     <Tooltip data-tip={validation(key)} hidden={validation(key).length === 0} >
                                                         <ContainerInput>
-                                                        <span>
-                                                            {Array.isArray(atribute[index]?.worth) ?
-                                                                <select name={key} onChange={handleInputChangeSelect} >
-                                                                    {atribute[index].worth.map((result: any) => <option placeholder={key} data-value={result} >{result}</option>)}
-                                                                </select>
-                                                                :
-                                                                atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' ?
-                                                                    <>
-                                                                        <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false } />
-                                                                        <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
-                                                                        {/* <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p> */}
-                                                                    </>
-                                                                    :
-                                                                    <>
-                                                                    
-                                                                    <select name={key} onChange={handleInputChangeSubSelect} /*onClick={() => retrieveSubItem(key, index)}*/>
-                                                                        <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
-                                                                        {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
+                                                            <span>
+                                                                {Array.isArray(atribute[index]?.worth) ?
+                                                                    <select name={key} onChange={handleInputChangeSelect} >
+                                                                        {atribute[index].worth.map((result: any) => <option placeholder={key} data-value={result} >{result}</option>)}
                                                                     </select>
-                                                                    <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
-                                                                    </>
-                                                            }
+                                                                    :
+                                                                    atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' ?
+                                                                        <>
+                                                                            <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false} />
+                                                                            <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
+                                                                            {/* <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p> */}
+                                                                        </>
+                                                                        :
+                                                                        <>
+
+                                                                            <select name={key} onChange={handleInputChangeSubSelect} /*onClick={() => retrieveSubItem(key, index)}*/>
+                                                                                <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
+                                                                                {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
+                                                                            </select>
+                                                                            <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
+                                                                        </>
+                                                                }
                                                             </span>
                                                         </ContainerInput>
                                                     </Tooltip>
@@ -211,7 +211,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                         })}
                                         <div>{validationDTO()}</div>
                                     </Container>
-                                    <Container align={'buttons'} hidden={object.url.includes('istoric') ? true : false } >
+                                    <Container align={'buttons'} hidden={object.url.includes('istoric') ? true : false} >
                                         <Button category={'secondary'} onClick={resetItem}>Reset</Button>
                                         <Button category={'success'} onClick={createItem} hidden={state.id !== "" && !object.url.includes('istoric') || object.url.includes('istoric') ? true : false}>Create</Button>
                                         <Button category={'warning'} onClick={updateItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Update</Button>
@@ -222,23 +222,21 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                             }
                         </article>
                     </Modal>
-                    <Title><h1>{object.url.charAt(0).toUpperCase() + object.url.slice(1).replace('/', ' ').replace('_', ' ')}</h1>
-                        <Container align={'line'} >
-                        {/* <ContainerInput2 className="form__group field">
-                            <input type="input" className="form__field" placeholder="Name" name="name" id='name' required />
-                            <label htmlFor="name" className="form__label">Name</label>
-                        </ContainerInput2> */}
-                            <Button onClick={newItem}>New</Button>
-                            Items per page
-                            <select onChange={handleSize} >
-                                <option value={5}>5</option>
-                                <option value={10}>10</option>
-                                <option value={15}>15</option>
-                            </select>
-                            {/* {object.url} */}
-                            <WeatherUpload/>
-                        </Container>
-                    </Title>
+                    <Header>
+                        <TitleHeader>
+                            <h1>{object.url.charAt(0).toUpperCase() + object.url.slice(1).replace('/', ' ').replace('_', ' ')}</h1>
+                                <label>Items per page   </label>
+                                <select onChange={handleSize} >
+                                    <option value={5}>5</option>
+                                    <option value={10}>10</option>
+                                    {/* <option value={15}>15</option> */}
+                                </select>
+                        </TitleHeader>
+                        {object.url.includes('weather') &&
+                            <WeatherUpload />
+                        }
+                        <Button onClick={newItem}>New</Button>
+                    </Header>
                     {ispending && <Load></Load>}
                     <Table>
                         <thead>
