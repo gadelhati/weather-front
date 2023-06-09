@@ -1,9 +1,9 @@
-import { useState, ChangeEvent, useTransition } from 'react'
+import { useState, ChangeEvent, useTransition, useEffect } from 'react'
 import { User } from "../../component/user/user.interface"
 import { initialUser } from '../../component/user/user.initial'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
-import { login } from '../../service/service.crud'
+import { changePassword, login, retrieve, retrieveFilter } from '../../service/service.crud'
 import { Tooltip } from '../tooltip/tooltip'
 import { FloatLabel } from './generic.field'
 import { CenteredContainer, CenteredContainerItem } from '../template/flex'
@@ -20,6 +20,14 @@ export const LoginProfile = () => {
     const [error, setError] = useState<ErrorMessage[]>([initialErrorMessage])
     const [ispending, startTransition] = useTransition()
 
+    useEffect(() => {
+        retrieveItem()
+    },[])
+    const retrieveItem = async () => {
+        await retrieveFilter('user_entity', 0, 1, "id".toLowerCase()).then((data) => {
+            startTransition(() => setState(data.content))
+        }).catch((error) => { networkError() })
+    }
     const refresh = () => {
         window.location.reload()
     }
@@ -62,12 +70,25 @@ export const LoginProfile = () => {
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setState({ ...state, [event.target.name]: value })
     }
+    const changePasswordItem = async () => {
+        await changePassword(state).then((data) => {
+            startTransition(() => validItem(data))
+        }).catch((error) => { networkError() })
+    }
     return (
         <>
             {isValidToken() ?
                 < Header>
                     <h1>{getPayload().sub}</h1><p>{getRoles()}</p>
                     {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
+                    {JSON.stringify(state)}
+                    <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
+                        <FloatLabel>
+                            <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
+                            <label htmlFor="password">Change Password</label>
+                        </FloatLabel>
+                    </Tooltip>
+                    <Button onClick={changePasswordItem}>Submit</Button>
                 </Header >
                 :
                 <CenteredContainer>
