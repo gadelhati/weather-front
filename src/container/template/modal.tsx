@@ -25,7 +25,7 @@ export const Modal = styled('div', {
         backgroundColor: '#dedede',
         margin: 'auto',
         border: '1px solid #888',
-        maxWidth: '80%',
+        maxWidth: '90%',
         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)',
         animationName: `${animatetop}`,
         animationDuration: '0.4s',

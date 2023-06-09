@@ -32,9 +32,10 @@ export const SideContainer = () => {
     ["station_off_shore", "speedometer", "station_off_shore"],
     ["station_on_shore", "toggles2", "station_on_shore"],
     // ["surveying", "collection", "surveying"],
-    ["tooltip user", "tools-circle", "user_entity"],
+    ["tooltip user", "grid", "user"],
     // ["tooltip role", "chevron-right", "role"],
-    ["tooltip profile", "people-circle", "profile"]]
+    // ["tooltip profile", "people-circle", "profile"]
+  ]
 
   const collapse: string[][] = [
     ["weather_historic", "bootstrap", "weather_historic"],
@@ -44,18 +45,18 @@ export const SideContainer = () => {
   return (
     <SidebarContainer sidehide={side}>
       <SidebarContainerHeader>
-        <SideContainerTitle key={0} href={`#/`} ><Icon name="speedometer" /><p>Title</p></SideContainerTitle>
+        <SideContainerTitle key={0} href={`#/`} onClick={showSideBar} ><Icon name="speedometer" /><p>CHM</p></SideContainerTitle>
         {vector.map((element) => {
-          return <SideContainerItem key={element[1]} href={`#/${element[2]}`} ><Tooltip data-tip={element[0].replaceAll('_', ' ')}><Icon name={element[1]} /></Tooltip><p>{element[0].replaceAll('_', ' ')}</p></SideContainerItem>
+          return <SideContainerItem key={element[1]} href={`#/${element[2]}`} ><Tooltip data-tip={element[0].replaceAll('_', ' ')}><Icon name={element[1]} /></Tooltip><p>{element[2].replaceAll('_', ' ')}</p></SideContainerItem>
         })}
         <SidebarContainerCollapsible collapsible={collapsible}>
           <SideContainerItem key={0} onClick={showCollapsible}><Tooltip data-tip={'historic'}><Icon name="speedometer" /></Tooltip><p>historic</p></SideContainerItem>
           {collapse.map((element) => {
-            return <SideContainerItem key={element[1]} href={`#/${element[2]}`} ><Tooltip data-tip={element[0].replaceAll('_', ' ')}><Icon name={element[1]} /></Tooltip><p>{element[0].replaceAll('_', ' ')}</p></SideContainerItem>
+            return <SideContainerItem key={element[1]} href={`#/${element[2]}`} ><Tooltip data-tip={element[0].replaceAll('_', ' ')}><Icon name={element[1]} /></Tooltip><p>{element[2].replaceAll('_', ' ')}</p></SideContainerItem>
           })}
         </SidebarContainerCollapsible>
       </SidebarContainerHeader>
-      <SideContainerItem element={'final'} onClick={showSideBar}><Tooltip data-tip="hide items"><Icon name="grid" /></Tooltip><p>hide</p></SideContainerItem>
+      <SideContainerItem element={'final'}  href={`#/${'profile'}`} ><Tooltip data-tip="tooltip profile"><Icon name="people-circle" /></Tooltip><p>profile</p></SideContainerItem>
     </SidebarContainer>
   )
 }

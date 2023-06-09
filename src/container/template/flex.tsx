@@ -168,9 +168,7 @@ export const FlexCointainer = styled('div',{
                 backgroundColor: '$fourth'
             },
             content: {
-                height: '94vh',
                 flexDirection: "row",
-                
                 color: '$fourth',
                 backgroundColor: '$fifth'
             },

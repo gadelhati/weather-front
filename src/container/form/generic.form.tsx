@@ -172,7 +172,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                 <>
                     <Modal show={modal}>
                         <article>
-                            <header><span onClick={handleModal}>&times;</span><h2>{object.url.charAt(0).toUpperCase() + object.url.slice(1).replace('/', ' ').replace('_', ' ')}</h2></header>
+                            <header><span onClick={handleModal}>&times;</span><h2>{object.url.charAt(0).toUpperCase() + object.url.slice(1).replaceAll('/', ' ').replaceAll('_', ' ')}</h2></header>
                             {atribute &&
                                 <>
                                     <Container>
@@ -224,7 +224,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                     </Modal>
                     <Header>
                         <TitleHeader>
-                            <h1>{object.url.charAt(0).toUpperCase() + object.url.slice(1).replace('/', ' ').replace('_', ' ')}</h1>
+                            <h1>{object.url.charAt(0).toUpperCase() + object.url.slice(1).replaceAll('/', ' ').replaceAll('_', ' ')}</h1>
                                 <label>Items per page   </label>
                                 <select onChange={handleSize} >
                                     <option value={5}>5</option>
@@ -232,7 +232,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                     {/* <option value={15}>15</option> */}
                                 </select>
                         </TitleHeader>
-                        {object.url.includes('weather') &&
+                        {object.url.includes('weather') && !object.url.includes('istoric') &&
                             <WeatherUpload />
                         }
                         <Button onClick={newItem}>New</Button>

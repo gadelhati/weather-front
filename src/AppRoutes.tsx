@@ -56,7 +56,7 @@ export default function AppRoutes() {
                             <Route path="/" element={<LoginProfile />}></Route>
                             <Route path="/notAllowed" element={<NotAllowed />}></Route>
                             <Route element={<RequireAuth allowedRoles={[ROLES.ADMIN]} />}>
-                                <Route path="/user_entity" element={<GenericForm key='user_entity' object={initialUser} url={'user_entity'} />}></Route>
+                                <Route path="/user" element={<GenericForm key='user_entity' object={initialUser} url={'user_entity'} />}></Route>
                                 <Route path="/role" element={<GenericForm key='role' object={initialRole} url={'role'} />}></Route>
                             </Route>
                             <Route element={<RequireAuth allowedRoles={[ROLES.USER, ROLES.ADMIN, ROLES.MODERATOR]} />}>
@@ -67,8 +67,8 @@ export default function AppRoutes() {
                             <Route path="/weather" element={<GenericForm key='weather' object={initialWeather} url={'weather'} />}></Route>
                             
                             <Route path="/weather_historic" element={<GenericForm key='weatherHistoric' object={initialWeatherHistoric} url={'weather/historic'} />}></Route>
-                            <Route path="/weather_historic_off_shore" element={<GenericForm key='weatherHistoricOffShore' object={initialWeatherOffShore} url={'weather/historicOffShore'} />}></Route>
-                            <Route path="/weather_historic_on_shore" element={<GenericForm key='weatherHistoricOnShore' object={initialWeatherOnShore} url={'weather/historicOnShore'} />}></Route>
+                            <Route path="/weather_historic_off_shore" element={<GenericForm key='weatherHistoricOffShore' object={initialWeatherOffShore} url={'weather/historic_off_shore'} />}></Route>
+                            <Route path="/weather_historic_on_shore" element={<GenericForm key='weatherHistoricOnShore' object={initialWeatherOnShore} url={'weather/historic_on_shore'} />}></Route>
 
 
                             <Route path="/commission" element={<GenericForm key='commission' object={initialCommission} url={'commission'} />}></Route>
@@ -80,15 +80,15 @@ export default function AppRoutes() {
                             <Route path="/observer" element={<GenericForm key='observer' object={initialObserver} url={'observer'} />}></Route>
                             <Route path="/om" element={<GenericForm key='om' object={initialOM} url={'om'} />}></Route>
                             <Route path="/platform" element={<GenericForm key='platform' object={initialPlatform} url={'platform'} />}></Route>
-                            <Route path="/platform_category" element={<GenericForm key='platform_category' object={initialPlatformCategory} url={'platformCategory'} />}></Route>
+                            <Route path="/platform_category" element={<GenericForm key='platform_category' object={initialPlatformCategory} url={'platform_category'} />}></Route>
                             <Route path="/researcher" element={<GenericForm key='researcher' object={initialResearcher} url={'researcher'} />}></Route>
                             {/* <Route path="/station" element={<GenericForm key='station' object={initialStation} url={'station'} />}></Route> */}
-                            <Route path="/station_category" element={<GenericForm key='station_category' object={initialStationCategory} url={'stationCategory'} />}></Route>
+                            <Route path="/station_category" element={<GenericForm key='station_category' object={initialStationCategory} url={'station_category'} />}></Route>
                             <Route path="/station_historic" element={<GenericForm key='station_historic' object={initialStationHistoric} url={'station/historic'} />}></Route>
-                            <Route path="/station_historic_off_shore" element={<GenericForm key='station_historic_off_shore' object={initialStationHistoricOffShore} url={'stationOffShore/historic'} />}></Route>
-                            <Route path="/station_historic_on_shore" element={<GenericForm key='station_historic_on_shore' object={initialStationHistoricOnShore} url={'stationOnShore/historic'} />}></Route>
-                            <Route path="/station_off_shore" element={<GenericForm key='station_off_shore' object={initialStationOffShore} url={'stationOffShore'} />}></Route>
-                            <Route path="/station_on_shore" element={<GenericForm key='station_on_shore' object={initialStationOnShore} url={'stationOnShore'} />}></Route>
+                            <Route path="/station_historic_off_shore" element={<GenericForm key='station_historic_off_shore' object={initialStationHistoricOffShore} url={'station_off_shore/historic'} />}></Route>
+                            <Route path="/station_historic_on_shore" element={<GenericForm key='station_historic_on_shore' object={initialStationHistoricOnShore} url={'station_on_shore/historic'} />}></Route>
+                            <Route path="/station_off_shore" element={<GenericForm key='station_off_shore' object={initialStationOffShore} url={'station_off_shore'} />}></Route>
+                            <Route path="/station_on_shore" element={<GenericForm key='station_on_shore' object={initialStationOnShore} url={'station_on_shore'} />}></Route>
                             <Route path="/surveying" element={<GenericForm key='surveying' object={initialCountry} url={'surveying'} />}></Route>
                         </Routes>
                     </FlexCointainer>
