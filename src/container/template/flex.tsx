@@ -80,12 +80,12 @@ export const SidebarContainerCollapsible = styled('div',{
                     display: 'block',
                 },
                 'a': {
-                    color: '$second',
-                    backgroundColor: '$sixth',
+                    color: '$ninth',
+                    backgroundColor: '$fourth',
                 },
             },
             false: {
-                backgroundColor: '$sixth',
+                backgroundColor: '$ninth',
                 'a:first-child': {
                     display: 'block',
                     // backgroundColor: 'none',
