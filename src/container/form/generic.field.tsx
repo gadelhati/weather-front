@@ -44,7 +44,7 @@ export const FloatLabel = styled('div', {
     },
     ':is(input:focus, input:valid)': {
         transition: 'all 0.3s ease',
-        borderBottom: '2px solid $one1',
+        borderBottom: '2px solid $second',
     },
 })
 

@@ -92,7 +92,7 @@ export const Toast = styled('ul', {
         borderRadius: '4px',
         padding: '16px 17px',
         marginBottom: '10px',
-        background: `$tlight`,
+        background: `$tenth`,
         justifyContent: 'space-between',
         animation: `${show_toast} 0.3s ease forwards`,
         '::before': {

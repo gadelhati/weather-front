@@ -10,7 +10,7 @@ const spin = keyframes({
 
 export const Load = styled('div', {
     border: '6px dotted $ninth',
-    borderTop: '6px dotted $three1',
+    borderTop: '6px dotted $fourth',
     borderRadius: '50%',
     width: '50px',
     height: '50px',

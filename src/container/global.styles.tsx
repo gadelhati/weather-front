@@ -27,10 +27,6 @@ export const stitches = createStitches({
             sixteenth: '#363636',
             seventeenth: '#0E0C0C',
             
-            
-            tlight: '#FFFFFF',
-            
-            tsecondary: '#36304A',
             tsuccess: '#124010',
             tinfo: '#3498DB',
             twarning: '#E9BD0C',
@@ -39,38 +35,12 @@ export const stitches = createStitches({
             dark: '#444444',
             light: '#CBD4E0',
             primary: '#57A0E5',
-            // secondary: '#6C757D',
+            secondary: '#6C757D',
             success: '#06532F',
             info: '#4C85C6',
             warning: '#CEBA33',
             danger: '#B63E3E',
-            
-            letterColor: '#A1E0B0',
-            letterBackgroudColor: '#06532F',
-            letterColorHover: 'forestGreen',
-            letterBackgroudColorHover: '#559741',
-            subLetterColor: '#3A587B',
-            subLetterBackgroudColor: '#ACC8E5',
-            subLetterColorHover: '#124010',
-            subLetterBackgroudColorHover: '#CBE8CC',
-            squareTop: '#084735',
-            squareBottom: '#1F4439',
-
-            one: '#73E86D',
-            two: '#000000',
-            three: '#A8C3E7',
             four: '#E5E052',
-            five: '#C12525',
-            six: '#FFFFFF',
-
-            one1: '#2F3E46',
-            two1: '#354F52',
-            three1: '#52796F',
-            four1: '#84A98C',
-            five1: '#CAD2C5',
-            six1: '#FFFFFF',
-
-            back: 'LightGray',
 
             head: '#E2E3E5',
             title: '#36304A',

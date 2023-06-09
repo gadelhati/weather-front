@@ -44,11 +44,11 @@ export const Button = styled('button', {
                 backgroundImage: 'linear-gradient($tdanger, $danger)',
             },
             warning: {
-                color: '$one1',
+                color: '$second',
                 backgroundImage: 'linear-gradient($twarning, $warning)',
             },
             info: {
-                backgroundImage: '$six',
+                backgroundImage: '$tenth',
             },
             light: {
                 backgroundImage: '$selected',
@@ -73,7 +73,7 @@ export const GroupButton = styled('div', {
 })
 
 export const ButtonPage = styled('button', {
-    backgroundColor: '$six1',
+    backgroundColor: '$tenth',
     fontFamily: 'Montserrat,sans-serif',
     height: '2.5em',
     width: '2.5em',

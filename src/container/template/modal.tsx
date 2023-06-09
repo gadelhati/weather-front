@@ -60,7 +60,7 @@ export const Modal = styled('div', {
         justifyContent: 'center',
         alignItems: 'center',
         flexWrap: 'wrap',
-        backgroundColor: '$one1',
+        backgroundColor: '$second',
         color: 'white',
         borderRadius: '0 0 .5rem .5rem',
     },

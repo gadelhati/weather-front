@@ -36,5 +36,5 @@ export const TitleHeader = styled('div',{
     padding: '$sm',
     paddingLeft: '$md',
     flexDirection: 'row',
-    color: '$sixth',
+    color: '$tenthth',
 })
