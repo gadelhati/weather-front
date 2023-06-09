@@ -78,6 +78,7 @@ export const SidebarContainerCollapsible = styled('div',{
                     color: '$second',
                     backgroundColor: '$ninth',
                     display: 'block',
+                    boxShadow: 'none',
                 },
                 'a': {
                     color: '$ninth',
@@ -88,7 +89,6 @@ export const SidebarContainerCollapsible = styled('div',{
                 backgroundColor: '$ninth',
                 'a:first-child': {
                     display: 'block',
-                    // backgroundColor: 'none',
                 },
                 'a': {
                     display: 'none',
