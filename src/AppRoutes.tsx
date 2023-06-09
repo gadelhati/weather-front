@@ -66,9 +66,9 @@ export default function AppRoutes() {
                             </Route>
                             <Route path="/weather" element={<GenericForm key='weather' object={initialWeather} url={'weather'} />}></Route>
                             
-                            <Route path="/weatherHistoric" element={<GenericForm key='weatherHistoric' object={initialWeatherHistoric} url={'weather/historic'} />}></Route>
-                            <Route path="/weatherHistoricOffShore" element={<GenericForm key='weatherHistoricOffShore' object={initialWeatherOffShore} url={'weather/historicOffShore'} />}></Route>
-                            <Route path="/weatherHistoricOnShore" element={<GenericForm key='weatherHistoricOnShore' object={initialWeatherOnShore} url={'weather/historicOnShore'} />}></Route>
+                            <Route path="/weather_historic" element={<GenericForm key='weatherHistoric' object={initialWeatherHistoric} url={'weather/historic'} />}></Route>
+                            <Route path="/weather_historic_off_shore" element={<GenericForm key='weatherHistoricOffShore' object={initialWeatherOffShore} url={'weather/historicOffShore'} />}></Route>
+                            <Route path="/weather_historic_on_shore" element={<GenericForm key='weatherHistoricOnShore' object={initialWeatherOnShore} url={'weather/historicOnShore'} />}></Route>
 
 
                             <Route path="/commission" element={<GenericForm key='commission' object={initialCommission} url={'commission'} />}></Route>
