@@ -7,7 +7,8 @@ export const Header = styled('div', {
     height: '5rem',
     fontFamily: 'Montserrat, sans-serif',
     margin: '$xxs',
-    paddingRight: '$sm',
+    padding: '0 $sm 0 $sm',
+    color: '$third',
     backgroundColor: '$tenth',
     borderRadius: '7px',
     borderCollapse: 'collapse',
@@ -16,19 +17,6 @@ export const Header = styled('div', {
     justifyContent: 'space-between',
     alignItems: 'center',
     flexWrap: 'wrap',
-    variants: {
-        align: {
-            column: {
-                display: 'inline-block',
-            },
-            line: {
-                height: '.5em',
-            },
-            buttons: {
-                height: '10em',
-            },
-        },
-    },
 })
 
 export const TitleHeader = styled('div',{

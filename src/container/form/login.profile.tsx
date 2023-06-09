@@ -13,6 +13,7 @@ import { existsToken, getPayload, getRoles, isValidToken } from '../../service/s
 import logo from '../../assets/image/marinha.png'
 import { Rotate } from '../template/rotate'
 import { Toast } from '../toast/toast'
+import { Header } from '../template/header'
 
 export const LoginProfile = () => {
     const [state, setState] = useState<User>(initialUser)
@@ -62,38 +63,40 @@ export const LoginProfile = () => {
         setState({ ...state, [event.target.name]: value })
     }
     return (
-        <CenteredContainer>
+        <>
             {isValidToken() ?
-                <>
-                    {getPayload().sub}{getRoles()}
+                < Header>
+                    <h1>{getPayload().sub}</h1><p>{getRoles()}</p>
                     {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
-                </>
+                </Header >
                 :
-                <CenteredContainerItem>
-                    <Rotate src={logo} alt="" width="120" height="128"></Rotate>
-                    <Tooltip data-tip={validation('username')} hidden={validation('username').length === 0} >
-                        <FloatLabel>
-                            <input type={'text'} required name={'username'} value={state.username} onChange={handleInputChange} autoComplete='off' />
-                            <label htmlFor="name">Name</label>
-                        </FloatLabel>
-                    </Tooltip>
-                    <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
-                        <FloatLabel>
-                            <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
-                            <label htmlFor="password">Password</label>
-                        </FloatLabel>
-                    </Tooltip>
-                    <CenteredContainerItem direction={'row'}>
-                        {!isValidToken() && <Button onClick={loginUser}>Login</Button>}
-                        {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
-                        <Button onClick={resetItem}>Reset{existsToken()}</Button>
+                <CenteredContainer>
+                    <CenteredContainerItem>
+                        <Rotate src={logo} alt="" width="120" height="128"></Rotate>
+                        <Tooltip data-tip={validation('username')} hidden={validation('username').length === 0} >
+                            <FloatLabel>
+                                <input type={'text'} required name={'username'} value={state.username} onChange={handleInputChange} autoComplete='off' />
+                                <label htmlFor="name">Name</label>
+                            </FloatLabel>
+                        </Tooltip>
+                        <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
+                            <FloatLabel>
+                                <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
+                                <label htmlFor="password">Password</label>
+                            </FloatLabel>
+                        </Tooltip>
+                        <CenteredContainerItem direction={'row'}>
+                            {!isValidToken() && <Button onClick={loginUser}>Login</Button>}
+                            {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
+                            <Button onClick={resetItem}>Reset{existsToken()}</Button>
+                        </CenteredContainerItem>
+                        <CenteredContainerItem direction={'row'}>
+                            {error[0].message !== 'Network Error' ? <>© Marinha do Brasil</> : <>{validationConnection()}</>}
+                        </CenteredContainerItem>
                     </CenteredContainerItem>
-                    <CenteredContainerItem direction={'row'}>
-                        {error[0].message !== 'Network Error' ? <>© Marinha do Brasil</> : <>{validationConnection()}</> }
-                    </CenteredContainerItem>
-                </CenteredContainerItem>
-            }
-            <Toast className="notifications"></Toast>
-        </CenteredContainer>
+                    <Toast className="notifications"></Toast>
+                </CenteredContainer>
+            }  
+        </>
     );
 }
