@@ -5,7 +5,7 @@ import { Tooltip } from '../tooltip/tooltip'
 
 export const SideContainer = () => {
   const [side, setSide] = useState(true)
-  const [collapsible, setCollapsible] = useState(true)
+  const [collapsible, setCollapsible] = useState(false)
   const showSideBar = () => { setSide( !side ) }
   const showCollapsible = () => { setCollapsible( !collapsible ) }
   const vector: string[][] = [
