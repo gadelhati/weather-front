@@ -14,7 +14,7 @@
 |`visual studio`	|VSCodeUserSetup-x64-1.78.2	|https://code.visualstudio.com/docs/?dv=win64user
 
 # Description
-It is called nutritional information, also known as nutritional labeling, the table of information regarding the amounts of vitamins, mineral salts, fats, proteins, fibers, among others, per portion, contained in most product packaging.
+The codes FM 12 - XI SYNOP and FM 13 - XI SHIP are preset number sequences that encode observations made at a Surface Meteorological Station (SYNOP) or from Stations on board ships (SHIP). A inciativa de criar um The initiative to create a program in which the code is typed instead of being filled out on paper. Automating the exchange and its consequent inclusion in historical database.
 
 ## Roadmap
 ### in development
@@ -24,7 +24,6 @@ It is called nutritional information, also known as nutritional labeling, the ta
 - [ ] load privileges on role's form
 - [ ] set combobox, turn with switch
 - [ ] counter only increases by 1
-- [ ] collapsible
 - [ ] refactoring on global css
 
 ### in concept
@@ -70,15 +69,15 @@ npm run build
 
 > [SVG Icons](https://www.svgrepo.com/)
 
-<!-- # Reference API download link -->
+# Reference API download link
 
-<!-- > [https://github.com/Instituto-Hidrografico/aliado-back](https://github.com/Instituto-Hidrografico/aliado-back) -->
+> [https://github.com/gadelhati/weather-back](https://github.com/gadelhati/weather-back)
 
-<!-- # Reference API, running locally -->
+# Reference API, running locally
 
-<!-- > [http://localhost:8080/aliado-back](http://localhost:8080/aliado-back) -->
+> [http://localhost:3120/weather-back](http://localhost:3120/weather-back)
+
 # Git
-
 ```
 //ADD PROXY
 git config --global http.proxy http://username:password@proxy-armacao.mb:6060
@@ -105,6 +104,7 @@ git tag 1.1.0 <insert-commitID-here>
 git push -u origin master
 git diff
 ```
+
 # Deploy
 ## Deploy in nginx
 ```
@@ -134,15 +134,6 @@ location /<folder> {
 ```
 surge
  >project: <path to /dist directory>
-```
-### Edit /etc/nginx/conf.d/default.conf
-
-Add the new code
-```
-location /<folder> {
-    root    /usr/share/nginx/html;
-    index   index.html  index.htm;
-}
 ```
 # Developers
 
