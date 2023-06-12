@@ -19,6 +19,7 @@ import { SubAtributeSet } from '../../component/atribute/subAtribute'
 import { WeatherUpload } from './weather.upload'
 import { Header, TitleHeader } from '../template/header'
 import { Load } from '../template/load'
+import { UriScreenFormat } from '../../service/uri.format'
 
 export const GenericForm = <T extends { id: string, name: string }>(object: any, url: string) => {
     const [state, setState] = useState<T>(object.object)
@@ -172,7 +173,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                 <>
                     <Modal show={modal}>
                         <article>
-                            <header><span onClick={handleModal}>&times;</span><h2>{object.url.charAt(0).toUpperCase() + object.url.slice(1).replaceAll('/', ' ').replaceAll('_', ' ')}</h2></header>
+                            <header><span onClick={handleModal}>&times;</span><h2>{UriScreenFormat(object.url)}</h2></header>
                             {atribute &&
                                 <>
                                     <Container>
@@ -197,7 +198,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                         <>
 
                                                                             <select name={key} onChange={handleInputChangeSubSelect} /*onClick={() => retrieveSubItem(key, index)}*/>
-                                                                                <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
+                                                                                <option defaultValue={value} value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
                                                                                 {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                                                             </select>
                                                                             <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
@@ -224,7 +225,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                     </Modal>
                     <Header>
                         <TitleHeader>
-                            <h1>{object.url.charAt(0).toUpperCase() + object.url.slice(1).replaceAll('/', ' ').replaceAll('_', ' ')}</h1>
+                            <h1>{UriScreenFormat(object.url)}</h1>
                                 <label>Items per page   </label>
                                 <select onChange={handleSize} >
                                     <option value={5}>5</option>

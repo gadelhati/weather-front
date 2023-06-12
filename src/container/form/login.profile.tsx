@@ -24,7 +24,8 @@ export const LoginProfile = () => {
         retrieveItem()
     },[])
     const retrieveItem = async () => {
-        await retrieveFilter('user_entity', 0, 1, "id".toLowerCase()).then((data) => {
+        await retrieveFilter('user_entity', 0, 2, "id".toLowerCase()).then((data) => {
+            console.log(data.content)
             startTransition(() => setState(data.content))
         }).catch((error) => { networkError() })
     }
@@ -82,12 +83,12 @@ export const LoginProfile = () => {
                     <h1>{getPayload().sub}</h1><p>{getRoles()}</p>
                     {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
                     {JSON.stringify(state)}
-                    <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
+                    {/* <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
                         <FloatLabel>
                             <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
                             <label htmlFor="password">Change Password</label>
                         </FloatLabel>
-                    </Tooltip>
+                    </Tooltip> */}
                     <Button onClick={changePasswordItem}>Submit</Button>
                 </Header >
                 :
