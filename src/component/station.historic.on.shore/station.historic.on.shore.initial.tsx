@@ -16,7 +16,7 @@ export const initialStationHistoricOnShore: StationHistoricOnShore = {
     wmoSquare: 0,
     marsdenSubSquare_5: 0,
     
-    station_category: initialStationCategory,
+    stationCategory: initialStationCategory,
     equipment: initialEquipment,
     surveying: initialSurveying,
     institution: initialInstitution,

@@ -9,5 +9,5 @@ export interface Platform {
     name: string,
     internationalName: string,
     country?: Country,
-    platform_category?: PlatformCategory,
+    platformCategory?: PlatformCategory,
 }

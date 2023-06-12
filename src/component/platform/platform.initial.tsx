@@ -10,5 +10,5 @@ export const initialPlatform : Platform = {
     name: '',
     internationalName: '',
     country: initialCountry,
-    platform_category: initialPlatformCategory,
+    platformCategory: initialPlatformCategory,
 }

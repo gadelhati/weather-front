@@ -20,11 +20,11 @@ export interface StationHistoric {
     collectionDepth: string,
     commissionCode: string,
 
-    station_category?: StationCategory,
+    stationCategory?: StationCategory,
     equipment?: Equipment,
     surveying?: Surveying,
     institution?: Institution,
     country?: Country,
     commission?: Commission,
-    platform_category?: PlatformCategory,
+    platformCategory?: PlatformCategory,
 }
