@@ -31,17 +31,12 @@ export const stitches = createStitches({
             tinfo: '#3498DB',
             twarning: '#E9BD0C',
             tdanger: '#E24D4C',
-
-            dark: '#444444',
-            light: '#CBD4E0',
             primary: '#57A0E5',
             secondary: '#6C757D',
             success: '#06532F',
-            info: '#4C85C6',
             warning: '#CEBA33',
             danger: '#B63E3E',
-            four: '#E5E052',
-
+            
             head: '#E2E3E5',
             title: '#36304A',
             odd: '#F2F2F2',
@@ -128,14 +123,14 @@ injectGlobalStyles()
 
 export const darkTheme = stitches.createTheme({
     // colors: {
-    //     bg: "$darkJungleGreen",
-    //     fg: "$fluorescentBlue",
+    //     bg: "$thirteenth",
+    //     fg: "$fourteenth",
     // }
 });
 
 export const funkyTheme = stitches.createTheme({
     colors: {
-        // bg: "$darkKhaki",
-        // fg: "$darkSlateBlue",
+        // bg: "$first",
+        // fg: "$seventh",
     }
 });
