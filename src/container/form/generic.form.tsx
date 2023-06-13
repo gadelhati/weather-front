@@ -32,6 +32,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const [pageable, setPageable] = useState<Pageable>(initialPageable)
     const [ispending, startTransition] = useTransition()
     const [modal, setModal] = useState<boolean>(false)
+    const [large, setLarge] = useState<boolean>(false)
 
     useEffect(() => {
         retrieveItem()
@@ -137,6 +138,9 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
         setModal(!modal)
         resetItem()
     }
+    const setLargeItem = () => {
+        setLarge(!large)
+    }
     const removeTimeFromDate = (date: any) => {
         let aux = new Date(date)
         return new Date(aux.getFullYear(), aux.getMonth() + 1, aux.getDate()).toLocaleDateString('fr-CA');
@@ -181,7 +185,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                             return (
                                                 <div style={atribute[index]?.type === 'hidden' ? { display: 'none' } : { display: 'flex' }}>
                                                     <Tooltip data-tip={validation(key)} hidden={validation(key).length === 0} >
-                                                        <ContainerInput>
+                                                        <ContainerInput historic={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
                                                             <span>
                                                                 {Array.isArray(atribute[index]?.worth) ?
                                                                     <select name={key} onChange={handleInputChangeSelect} >

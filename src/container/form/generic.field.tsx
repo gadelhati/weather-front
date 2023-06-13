@@ -50,7 +50,7 @@ export const FloatLabel = styled('div', {
 
 export const Container = styled('div', {
     display: 'flex',
-    height: '20em',
+    minHeight: '15em',
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
@@ -64,7 +64,9 @@ export const Container = styled('div', {
                 height: '.5em',
             },
             buttons: {
-                height: '10em',
+                // paddingTop: '-10em',
+                color: 'red',
+                height: '1em',
             },
         },
     },
@@ -140,6 +142,18 @@ export const ContainerInput = styled('div', {
             textShadow: '0 1px o rgba(19, 74, 70, .4)',
             background: 'rgba(122, 184, 147, 1)',
             transform: 'translateY(-30px)',
+        },
+    },
+    variants: {
+        historic: {
+            true: {
+                'input, select': {
+                    width: '10em',
+                    '+ label': {
+                        width: '6em',
+                    },
+                },
+            },
         },
     },
 })
