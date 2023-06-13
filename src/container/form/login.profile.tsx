@@ -82,14 +82,14 @@ export const LoginProfile = () => {
                 < Header>
                     <h1>{getPayload().sub}</h1><p>{getRoles()}</p>
                     {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
-                    {JSON.stringify(state)}
                     {/* <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
                         <FloatLabel>
                             <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
                             <label htmlFor="password">Change Password</label>
                         </FloatLabel>
                     </Tooltip> */}
-                    <Button onClick={changePasswordItem}>Submit</Button>
+                    {/* {JSON.stringify(state)} */}
+                    {/* <Button onClick={changePasswordItem}>Submit</Button> */}
                 </Header >
                 :
                 <CenteredContainer>
