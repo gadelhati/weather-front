@@ -10,6 +10,7 @@ const animatetop = keyframes({
 
 export const Modal = styled('div', {
     color: 'gray',
+    fontFamily: 'Montserrat, sans-serif',
     display: 'none',
     position: 'fixed',
     zIndex: '1',
