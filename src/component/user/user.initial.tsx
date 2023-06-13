@@ -7,6 +7,5 @@ export const initialUser : User = {
 	email: '',
 	password: '',
 	active: true,
-	role: initialRole
-	// roles: ['ROLE_USER', 'ROLE_MODERATOR']
+	role: [initialRole]
 }

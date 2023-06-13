@@ -80,7 +80,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const loadSubStates = async () => {
         Object.entries(state).map(([key, value], index) => {
             return (
-                !Array.isArray(atribute[index]?.worth) &&
                 !(atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index].worth === 0 || value === null && atribute[index].worth === '' || value !== null && typeof value !== 'object') &&
                 retrieveAll(key).then((data) => {
                     startTransition(() => {
@@ -121,6 +120,11 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const handleInputChangeSubSelect = async (event: ChangeEvent<HTMLSelectElement>) => {
         await retrieveFilter(event.target.name, page, size, event.target.value).then((data) => {
             setState({ ...state, [event.target.name]: data.content[0] })
+        }).catch((error) => { networkError() })
+    }
+    const handleInputChangeSubSelectArray = async (event: ChangeEvent<HTMLSelectElement>) => {
+        await retrieveFilter(event.target.name, page, size, event.target.value).then((data) => {
+            setState({ ...state, [event.target.name]: [data.content[0]] })
         }).catch((error) => { networkError() })
     }
     const handlePage = (page: number) => {
@@ -184,9 +188,20 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                         <ContainerInput historic={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
                                                             <span>
                                                                 {Array.isArray(atribute[index]?.worth) ?
-                                                                    <select name={key} onChange={handleInputChangeSelect} >
-                                                                        {atribute[index].worth.map((result: any) => <option placeholder={key} data-value={result} >{result}</option>)}
-                                                                    </select>
+                                                                    atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' ?
+                                                                        <>
+                                                                            <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false} />
+                                                                            <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
+                                                                            {/* <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p> */}
+                                                                        </>
+                                                                        :
+                                                                        <>
+                                                                            <select name={key} onChange={handleInputChangeSubSelectArray} /*onClick={() => retrieveSubItem(key, index)}*/>
+                                                                                <option defaultValue={[value]} value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
+                                                                                {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
+                                                                            </select>
+                                                                            <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
+                                                                        </>
                                                                     :
                                                                     atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' ?
                                                                         <>

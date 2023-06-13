@@ -7,6 +7,5 @@ export interface User {
 	email: string,
     password: string,
 	active: boolean,
-	role: Role
-	// roles: string[]
+	role: Role[]
 }
