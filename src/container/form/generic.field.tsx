@@ -64,9 +64,7 @@ export const Container = styled('div', {
                 height: '.5em',
             },
             buttons: {
-                // paddingTop: '-10em',
-                color: 'red',
-                height: '1em',
+                minHeight: '6em',
             },
         },
     },
