@@ -3,6 +3,7 @@ import { SideContainerTitle, SideContainerItem, SidebarContainer, SidebarContain
 import { Icon } from '../../assets/svg.access'
 import { Tooltip } from '../tooltip/tooltip'
 import { UriScreenFormat } from '../../service/uri.format'
+import { getPayload } from '../../service/service.token'
 
 export const SideContainer = () => {
   const [side, setSide] = useState(true)
@@ -58,7 +59,7 @@ export const SideContainer = () => {
           })}
         </SidebarContainerCollapsible>
       </SidebarContainerHeader>
-      <SideContainerItem element={'final'}  href={`#/${'profile'}`} ><Tooltip data-tip="tooltip profile"><Icon name="people-circle" /></Tooltip><p>profile</p></SideContainerItem>
+      <SideContainerItem element={'final'}  href={`#/${'profile'}`} ><Tooltip data-tip="tooltip profile"><Icon name="people-circle" /></Tooltip><p>{getPayload().sub}</p></SideContainerItem>
     </SidebarContainer>
   )
 }
