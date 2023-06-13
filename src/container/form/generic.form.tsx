@@ -32,7 +32,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const [pageable, setPageable] = useState<Pageable>(initialPageable)
     const [ispending, startTransition] = useTransition()
     const [modal, setModal] = useState<boolean>(false)
-    const [large, setLarge] = useState<boolean>(false)
 
     useEffect(() => {
         retrieveItem()
@@ -137,9 +136,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const newItem = () => {
         setModal(!modal)
         resetItem()
-    }
-    const setLargeItem = () => {
-        setLarge(!large)
     }
     const removeTimeFromDate = (date: any) => {
         let aux = new Date(date)
