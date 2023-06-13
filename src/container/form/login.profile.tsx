@@ -24,7 +24,7 @@ export const LoginProfile = () => {
         retrieveItem()
     },[])
     const retrieveItem = async () => {
-        await retrieveFilter('user_entity', 0, 2, "id".toLowerCase()).then((data) => {
+        await retrieveFilter('userEntity', 0, 2, "id".toLowerCase()).then((data) => {
             console.log(data.content)
             startTransition(() => setState(data.content))
         }).catch((error) => { networkError() })
