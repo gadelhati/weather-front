@@ -175,7 +175,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
             {/* https://cdpn.io/agrimsrud/fullpage/RwKbwXN?anon=true&view= */}
             {isValidToken() &&
                 <>
-                    <Modal show={modal}>
+                    <Modal show={modal} large={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
                         <article>
                             <header><span onClick={handleModal}>&times;</span><h2>{UriScreenFormat(object.url)}</h2></header>
                             {atribute &&

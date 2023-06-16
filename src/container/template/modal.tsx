@@ -74,5 +74,13 @@ export const Modal = styled('div', {
                 display: 'flex',
             },
         },
+        large: {
+            true: {
+                'article': {
+                    maxWidth: '100%',
+                },
+            },
+            false: {},
+        },
     },
 })
