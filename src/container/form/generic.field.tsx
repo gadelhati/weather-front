@@ -71,7 +71,7 @@ export const Container = styled('div', {
 })
 
 export const ContainerInput = styled('div', {
-    overflowX: 'hidden',
+    overflowX: 'clip',
     'span': {
         fontFamily: 'Arial, Helvetica, sans-serif',
         position: 'relative',
