@@ -5,7 +5,7 @@ import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
 import { changePassword, login, retrieve } from '../../service/service.crud'
 import { Tooltip } from '../tooltip/tooltip'
-import { FloatLabel } from './generic.field'
+import { ContainerInput, FloatLabel } from './generic.field'
 import { CenteredContainer, CenteredContainerItem } from '../template/flex'
 import { Button } from '../template/button';
 import { logout } from '../../service/service.auth'
@@ -24,7 +24,7 @@ export const LoginProfile = () => {
         retrieveItem()
     },[])
     const retrieveItem = async () => {
-        await retrieve('userEntity', 0, 20, "username", getPayload().sub).then((data) => {
+        await retrieve('userEntity', 0, 20, 'username', getPayload().sub).then((data) => {
             startTransition(() => setState(data.content[0]))
         }).catch((error) => { networkError() })
     }
@@ -82,25 +82,16 @@ export const LoginProfile = () => {
                     < Header>
                         <h1>{getPayload().sub}</h1><p>{getRoles()}</p>
                         {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
-                        {/* <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
-                            <FloatLabel>
-                                <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
-                                <label htmlFor="password">Change Password</label>
-                            </FloatLabel>
-                        </Tooltip> */}
-                        {/* {JSON.stringify(state)} */}
-                        {/* <Button onClick={changePasswordItem}>Submit</Button> */}
                     </Header >
                     < Header>
                         <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
-                            <FloatLabel>
+                            <ContainerInput>
                                 <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
-                                <label htmlFor="password">Password</label>
-                            </FloatLabel>
+                                <label htmlFor="password">New Password</label>
+                            </ContainerInput>
                         </Tooltip>
-                        {isValidToken() && <Button onClick={changePasswordItem}>changePassword</Button>}
+                        {isValidToken() && <Button onClick={changePasswordItem}>Change</Button>}
                     </Header >
-                    {JSON.stringify(state.username)}
                 </>
                 :
                 <CenteredContainer>
