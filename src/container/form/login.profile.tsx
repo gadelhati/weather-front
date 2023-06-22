@@ -3,7 +3,7 @@ import { User } from "../../component/user/user.interface"
 import { initialUser } from '../../component/user/user.initial'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
-import { changePassword, login, retrieve, retrieveFilter } from '../../service/service.crud'
+import { changePassword, login, retrieve } from '../../service/service.crud'
 import { Tooltip } from '../tooltip/tooltip'
 import { FloatLabel } from './generic.field'
 import { CenteredContainer, CenteredContainerItem } from '../template/flex'
@@ -24,9 +24,8 @@ export const LoginProfile = () => {
         retrieveItem()
     },[])
     const retrieveItem = async () => {
-        await retrieveFilter('userEntity', 0, 2, "id".toLowerCase()).then((data) => {
-            console.log(data.content)
-            startTransition(() => setState(data.content))
+        await retrieve('userEntity', 0, 20, "username", getPayload().sub).then((data) => {
+            startTransition(() => setState(data.content[0]))
         }).catch((error) => { networkError() })
     }
     const refresh = () => {
@@ -79,18 +78,30 @@ export const LoginProfile = () => {
     return (
         <>
             {isValidToken() ?
-                < Header>
-                    <h1>{getPayload().sub}</h1><p>{getRoles()}</p>
-                    {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
-                    {/* <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
-                        <FloatLabel>
-                            <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
-                            <label htmlFor="password">Change Password</label>
-                        </FloatLabel>
-                    </Tooltip> */}
-                    {/* {JSON.stringify(state)} */}
-                    {/* <Button onClick={changePasswordItem}>Submit</Button> */}
-                </Header >
+                <>
+                    < Header>
+                        <h1>{getPayload().sub}</h1><p>{getRoles()}</p>
+                        {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
+                        {/* <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
+                            <FloatLabel>
+                                <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
+                                <label htmlFor="password">Change Password</label>
+                            </FloatLabel>
+                        </Tooltip> */}
+                        {/* {JSON.stringify(state)} */}
+                        {/* <Button onClick={changePasswordItem}>Submit</Button> */}
+                    </Header >
+                    < Header>
+                        <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
+                            <FloatLabel>
+                                <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
+                                <label htmlFor="password">Password</label>
+                            </FloatLabel>
+                        </Tooltip>
+                        {isValidToken() && <Button onClick={changePasswordItem}>changePassword</Button>}
+                    </Header >
+                    {JSON.stringify(state.username)}
+                </>
                 :
                 <CenteredContainer>
                     <CenteredContainerItem>

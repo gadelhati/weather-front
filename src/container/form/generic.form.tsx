@@ -2,7 +2,7 @@ import { useState, ChangeEvent, useEffect, useTransition } from 'react'
 import { isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
-import { create, retrieve, update, remove, retrieveFilter, retrieveAll } from '../../service/service.crud'
+import { create, update, remove, retrieve } from '../../service/service.crud'
 import { Container, ContainerInput } from './generic.field'
 import { AtributeSet } from './generic.atribute'
 import { Atribute } from '../../component/atribute/atribute.interface'
@@ -64,24 +64,16 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
         }).catch((error) => { networkError() })
     }
     const retrieveItem = async () => {
-        await retrieve(object.url, page, size, "name".toLowerCase()).then((data) => {
+        await retrieve(object.url, page, size, '', '').then((data) => {
             startTransition(() => setPageable(data))
             startTransition(() => setStates(data.content))
-        }).catch((error) => { networkError() })
-    }
-    const retrieveSubItem = async (search: string, index: number) => {
-        await retrieve(search, page, size, "name".toLowerCase()).then((data) => {
-            startTransition(() => {
-                subStates[index] = data.content
-                setSubStates(subStates)
-            })
         }).catch((error) => { networkError() })
     }
     const loadSubStates = async () => {
         Object.entries(state).map(([key, value], index) => {
             return (
                 !(atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index].worth === 0 || value === null && atribute[index].worth === '' || value !== null && typeof value !== 'object') &&
-                retrieveAll(key).then((data) => {
+                retrieve(key, 0, 1000, '', '').then((data) => {
                     startTransition(() => {
                         subStates[index] = data.content
                         setSubStates(subStates)
@@ -118,12 +110,12 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
         setState({ ...state, [event.target.name]: event.target.value })
     }
     const handleInputChangeSubSelect = async (event: ChangeEvent<HTMLSelectElement>) => {
-        await retrieveFilter(event.target.name, page, size, event.target.value).then((data) => {
+        await retrieve(event.target.name, page, size, event.target.name, event.target.value).then((data) => {
             setState({ ...state, [event.target.name]: data.content[0] })
         }).catch((error) => { networkError() })
     }
     const handleInputChangeSubSelectArray = async (event: ChangeEvent<HTMLSelectElement>) => {
-        await retrieveFilter(event.target.name, page, size, event.target.value).then((data) => {
+        await retrieve(event.target.name, page, size, event.target.name, event.target.value).then((data) => {
             setState({ ...state, [event.target.name]: [data.content[0]] })
         }).catch((error) => { networkError() })
     }

@@ -5,7 +5,7 @@ import { WeatherOnShore } from "./weather.on.shore.interface";
 export const initialWeatherOnShore: WeatherOnShore = {
     //SECTION 0
     aabbxx: '',
-    mimi: '',
+    mimi: ['AA', 'BB'],
     mjmj: 'XX',
     estacao: '',
     ddddddd: '',

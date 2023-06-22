@@ -4,7 +4,7 @@ import { Observer } from "../observer/observer.interface";
 export interface WeatherOnShore {
     //SECTION 0
     aabbxx?: string,
-    mimi?: string,
+    mimi: string[],
     mjmj?: string,
     estacao?: string,
     ddddddd: string,
