@@ -38,7 +38,9 @@ export const changePassword = async (data: User) => {
         .then(response => {
             return response.data
         })
-        .catch(error => { return addError(error) })
+        .catch(error => { 
+            console.log(error)
+            return addError(error) })
 }
 
 export const create = async<T,>(url: string, object: T) => {
