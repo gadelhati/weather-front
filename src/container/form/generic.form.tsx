@@ -6,7 +6,6 @@ import { create, update, remove, retrieve } from '../../service/service.crud'
 import { Container, ContainerInput } from './generic.field'
 import { AtributeSet } from './generic.atribute'
 import { Atribute } from '../../component/atribute/atribute.interface'
-import { Tooltip } from '../tooltip/tooltip'
 import { Table } from '../template/table'
 import { Button, ButtonPage, GroupButton } from '../template/button'
 import { Pageable } from '../../component/pageable/pageable.interface'
@@ -94,12 +93,12 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     }
     const validation = (name: string): string[] => {
         let vector: string[] = []
-        error?.map((element: any) => { if (name == element.field) return vector.push(element?.message) })
+        error?.map((element: any) => { if (name == element.field) return vector.push(element?.message+'. ') })
         return vector
     }
     const validationDTO = (): string[] => {
         let vector: string[] = []
-        error?.map((element: any) => { if (element.field?.startsWith("DTO")) return vector.push(element?.message) })
+        error?.map((element: any) => { if (element.field?.startsWith("DTO")) return vector.push(element?.message+'. ') })
         return vector
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -176,8 +175,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                         {Object.entries(state).map(([key, value], index) => {
                                             return (
                                                 <div style={atribute[index]?.type === 'hidden' ? { display: 'none' } : { display: 'flex' }}>
-                                                    <Tooltip data-tip={validation(key)} hidden={validation(key).length === 0} >
-                                                        <ContainerInput historic={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
+                                                        <ContainerInput error={validation(key).length !== 0 ? true : false} historic={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
                                                             <span>
                                                                 {Array.isArray(atribute[index]?.worth) ?
                                                                     atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' ?
@@ -199,6 +197,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                         <>
                                                                             <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false} />
                                                                             <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
+                                                                            <p>{validation(key)}</p>
                                                                             {/* <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p> */}
                                                                         </>
                                                                         :
@@ -212,10 +211,11 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                 }
                                                             </span>
                                                         </ContainerInput>
-                                                    </Tooltip>
                                                 </div>
                                             )
                                         })}
+                                    </Container>
+                                    <Container align={'response'}>
                                         <div>{validationDTO()}</div>
                                     </Container>
                                     <Container align={'buttons'} hidden={object.url.includes('istoric') ? true : false} >
