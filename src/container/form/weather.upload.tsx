@@ -3,7 +3,7 @@ import { styled } from '@stitches/react';
 import { Button } from '../template/button';
 import { Weather } from '../../component/weather/weather.interface';
 import { initialWeather } from '../../component/weather/weather.initial';
-import { createAll } from '../../service/service.crud';
+import { createAll, retrieve } from '../../service/service.crud';
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial';
 import { ErrorMessage } from '../../assets/error/errorMessage';
 
@@ -23,6 +23,16 @@ export const WeatherUpload = () => {
 
     const createAllItems = () => {
         createAll<Weather>('weather', state)
+        retrieveItem()
+        refresh()
+    }
+    const retrieveItem = async () => {
+        await retrieve("weather", 0, 20, '', '').then((data) => {
+            startTransition(() => setState(data.content))
+        })
+    }
+    const refresh = () => {
+        window.location.reload()
     }
     const executed = (): boolean => {
         let executed: boolean = false
