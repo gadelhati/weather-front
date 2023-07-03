@@ -105,11 +105,11 @@ export const ContainerInput = styled('div', {
             textTransform: 'uppercase',
             display: 'inline-block',
         },
-        '+ label + p': {
+        '+ label + label': {
             opacity: '0',
             transition: 'opacity 2s',
         },
-        '+ label, + label + p': {
+        '+ label, + label + label': {
             minHeight: '1.5em',
             width: '10em',
             overflow: 'hidden',
@@ -153,7 +153,7 @@ export const ContainerInput = styled('div', {
             background: 'rgba(122, 184, 147, 1)',
             transform: 'translateY(-1.9rem)',
         },
-        '+ label + p': {
+        '+ label + label': {
             height: '100%',
             opacity: '1',
             display: 'block',
@@ -162,7 +162,7 @@ export const ContainerInput = styled('div', {
             color: '#FFF',
             textShadow: '0 1px o rgba(19, 74, 70, .4)',
             background: '$danger',
-            transform: 'translateY(+1.2rem)',
+            transform: 'translateY(+1.9rem)',
         },
     },
     variants: {
@@ -183,16 +183,17 @@ export const ContainerInput = styled('div', {
                     background: '$danger',
                 },
                 'input:focus, input:active, select:focus, select:active': {
-                    '+ label + p': {
+                    '+ label + label': {
                         height: '4rem',
                         background: '$danger',
                         display: 'inline-block',
+                        zIndex: '1',
                     },
                 },
             },
             false: {
                 'input:focus, input:active, select:focus, select:active': {
-                    '+ label + p': {
+                    '+ label + label': {
                         display: 'none',
                     },
                 },
