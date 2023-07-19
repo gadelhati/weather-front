@@ -5,18 +5,17 @@ const { styled } = stitches
 export const Header = styled('div', {
     display: 'flex',
     height: '5rem',
-    fontFamily: 'Montserrat, sans-serif',
     margin: '$xxs',
     padding: '0 $sm 0 $sm',
     color: '$third',
     backgroundColor: '$tenth',
-    borderRadius: '7px',
-    borderCollapse: 'collapse',
-    border: 'solid $third 1px',
-    boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+    borderRadius: '.3rem',
+    // borderCollapse: 'collapse',
+    // border: 'solid $third 1px',
+    boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 5px',
     justifyContent: 'space-between',
     alignItems: 'center',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
 })
 
 export const TitleHeader = styled('div',{

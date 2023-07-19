@@ -13,7 +13,7 @@ export const CenteredContainer = styled('div',{
 })
 
 export const CenteredContainerItem = styled('div', {
-    borderRadius: '5px',
+    borderRadius: '.3rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -30,14 +30,13 @@ export const CenteredContainerItem = styled('div', {
 })
 
 export const SidebarContainer = styled('aside',{
-    fontFamily: 'Montserrat, sans-serif',
     width: '256px',
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'column',
     padding: '$xxs',
     margin: '$xxs',
-    borderRadius: '5px',
+    borderRadius: '.3rem',
     backgroundColor: '$third',
     backgroundImage: 'linear-gradient(to bottom, $fourth, $third)',
     // scrollBehavior: 'smooth',
@@ -62,11 +61,10 @@ export const SidebarContainerHeader = styled('div',{
 })
 
 export const SidebarContainerCollapsible = styled('div',{
-    fontFamily: 'Montserrat, sans-serif',
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'column',
-    borderRadius: '5px',
+    borderRadius: '.3rem',
     'a': {
         backgroundColor: '$fourth',
     },
@@ -105,7 +103,7 @@ export const SideContainerTitle = styled('a',{
     height: '$md',
     width: '$xss',
     userSelect: 'none',
-    borderRadius: '5px',
+    borderRadius: '.3rem',
     padding: '$xs',
     margin: '$xxxs',
     textTransform: 'capitalize',
@@ -121,7 +119,7 @@ export const SideContainerItem = styled('a',{
     height: '$xss',
     width: '$xss',
     userSelect: 'none',
-    borderRadius: '5px',
+    borderRadius: '.3rem',
     padding: '$xs',
     margin: '$xxxs',
     textTransform: 'capitalize',
@@ -165,7 +163,7 @@ export const FlexCointainer = styled('div',{
                 flexGrow: '1.5',
                 flexDirection: "column",
                 color: '$fifth',
-                backgroundColor: '$fourth'
+                backgroundColor: '$ninth'
             },
             content: {
                 flexDirection: "row",

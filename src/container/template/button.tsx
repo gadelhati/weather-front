@@ -7,13 +7,12 @@ export const Button = styled('button', {
     maxHeight: '4em',
     backgroundImage: 'linear-gradient($third, $fourth)',
     border: '0',
-    borderRadius: '5px',
+    borderRadius: '.3rem',
     boxShadow: 'rgba(0, 0, 0, .3) 0 5px 15px',
     boxSizing: 'border-box',
     color: '$ninth',
     cursor: 'pointer',
     fontSize: '$rg',
-    fontFamily: 'Montserrat, sans-serif',
     margin: '$xxs',
     padding: '$xs $xxs',
     textAlign: 'center',
@@ -65,16 +64,15 @@ export const Button = styled('button', {
 
 export const GroupButton = styled('div', {
     'button:first-child': {
-        borderRadius: '5px 0px 0px 5px',
+        borderRadius: '.3rem 0 0 .3rem',
     },
     'button:last-child': {
-        borderRadius: '0px 5px 5px 0px',
+        borderRadius: '0 .3rem .3rem 0',
     },
 })
 
 export const ButtonPage = styled('button', {
     backgroundColor: '$tenth',
-    fontFamily: 'Montserrat,sans-serif',
     height: '2.5em',
     width: '2.5em',
     border: 'solid $line 1px',

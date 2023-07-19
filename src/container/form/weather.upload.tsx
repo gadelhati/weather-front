@@ -9,7 +9,7 @@ import { ErrorMessage } from '../../assets/error/errorMessage';
 
 export const FindFile = styled('input', {
     padding: '.45rem',
-    borderRadius: '5px',
+    borderRadius: '.3rem',
     color: '#fff',
     backgroundColor: '#6c757d',
     cursor: 'pointer',
@@ -24,7 +24,7 @@ export const WeatherUpload = () => {
     const createAllItems = () => {
         createAll<Weather>('weather', state)
         retrieveItem()
-        refresh()
+        // refresh()
     }
     const retrieveItem = async () => {
         await retrieve("weather", 0, 20, '', '').then((data) => {

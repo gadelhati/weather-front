@@ -3,18 +3,17 @@ import { stitches } from "../global.styles"
 const { styled } = stitches
 
 export const Table = styled('table', {
-    fontFamily: 'Montserrat, sans-serif',
-    fontSize: '0.9em',
+    fontSize: '$rg',
     color: '$seventeenth',
     padding: '$sm',
     margin: '$xxs',
     boxSizing: 'border-box',
     borderSpacing: '0',
     backgroundColor: '$tenth',
-    borderRadius: '8px',
+    borderRadius: '.3rem',
     display: 'block',
     borderCollapse: 'collapse',
-    border: 'solid $third 1px',
+    // border: 'solid $third 1px',
     boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
     'thead > tr:first-child': {
         fontWeight: 'bold',

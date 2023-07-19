@@ -71,10 +71,10 @@ export const Toast = styled('ul', {
         animation: `${hide_toast} 0.3s ease forwards`,
     },
     '.column i': {
-        fontSize: '1.75rem',
+        fontSize: '$lg',
     },
     '.column span': {
-        fontSize: '1.07rem',
+        fontSize: '$rg',
         marginLeft: '12px',
     },
     'i:last-child': {
@@ -89,7 +89,7 @@ export const Toast = styled('ul', {
         position: 'relative',
         overflow: 'hidden',
         listStyle: 'none',
-        borderRadius: '4px',
+        borderRadius: '.3rem',
         padding: '16px 17px',
         marginBottom: '10px',
         background: `$tenth`,
