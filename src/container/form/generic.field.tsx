@@ -83,7 +83,6 @@ export const ContainerInput = styled('div', {
         position: 'relative',
         display: 'inline-block',
         margin: 'min(.2em) min(.2em) 0em 0em',
-
     },
     'select': {
         minHeight: '1.8em',
@@ -93,8 +92,8 @@ export const ContainerInput = styled('div', {
         width: '26em',
         padding: '10px 0 10px 35px',
         fontWeight: 'normal',
-        color: '#377D6A',
-        background: '#efefef',
+        color: '$fourth',
+        background: '$tenth',
         border: '0',
         borderRadius: '.25rem',
         outline: '0',
@@ -125,7 +124,9 @@ export const ContainerInput = styled('div', {
             textShadow: '0 1px 0 rgba(19,74,70,0)',
             transition: 'all .3s ease-in-out',
             borderRadius: '.25rem',
-            background: 'rgba(122,184,147,0)',
+            background: '$fourth',
+            // height: '100%',
+            padding: '0 auto',
             '&:after': {
                 position: 'absolute',
                 content: '""',
