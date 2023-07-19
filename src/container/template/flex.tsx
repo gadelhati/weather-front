@@ -127,12 +127,12 @@ export const SideContainerItem = styled('a',{
     '&:hover': {
         color: '$second',
         backgroundColor: '$ninth',
-        boxShadow: '0 0 0.2em #FFF, 0 0 0.2em #222, 0 0 0.2em #333',
+        boxShadow: '0 0 0.2em $tenth, 0 0 0.2em #222, 0 0 0.2em #333',
     },
     '&:focus': {
         color: '$first',
         backgroundColor: '$tenth',
-        boxShadow: '0 0 0.2em #FFF, 0 0 0.2em #222, 0 0 0.2em #333',
+        boxShadow: '0 0 0.2em $tenth, 0 0 0.2em #222, 0 0 0.2em #333',
     },
     p : {
         display: 'inline',

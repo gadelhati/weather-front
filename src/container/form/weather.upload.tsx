@@ -10,7 +10,7 @@ import { ErrorMessage } from '../../assets/error/errorMessage';
 export const FindFile = styled('input', {
     padding: '.45rem',
     borderRadius: '.3rem',
-    color: '#fff',
+    color: '$tenth',
     backgroundColor: '#6c757d',
     cursor: 'pointer',
     userSelect: 'none',

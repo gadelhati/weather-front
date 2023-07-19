@@ -147,11 +147,11 @@ export const ContainerInput = styled('div', {
     'input:focus, input:active, select:focus, select:active': {
         color: '$fourth',
         textIndent: '0',
-        background: '#FFF',
+        background: '$tenth',
         '+ label': {
             width: '100%',
             overflow: 'visible',
-            color: '#FFF',
+            color: '$tenth',
             textShadow: '0 1px o rgba(19, 74, 70, .4)',
             background: 'rgba(122, 184, 147, 1)',
             transform: 'translateY(-1.9rem)',
@@ -163,7 +163,7 @@ export const ContainerInput = styled('div', {
             display: 'block',
             width: '100%',
             overflow: 'visible',
-            color: '#FFF',
+            color: '$tenth',
             textShadow: '0 1px o rgba(19, 74, 70, .4)',
             background: '$danger',
             transform: 'translateY(+1.9rem)',
