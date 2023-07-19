@@ -67,7 +67,6 @@ export const Container = styled('div', {
             },
             response: {
                 minHeight: '1rem',
-                // display: 'inline-block',
             },
         },
     },
@@ -84,8 +83,7 @@ export const ContainerInput = styled('div', {
         position: 'relative',
         display: 'inline-block',
         margin: 'min(.2em) min(.2em) 0em 0em',
-        // minHeight: '2rem',
-        // heigth: '22em',
+
     },
     'select': {
         minHeight: '1.8em',
@@ -109,17 +107,16 @@ export const ContainerInput = styled('div', {
             display: 'inline-block',
         },
         '+ label + label': {
+            display: 'none',
             opacity: '0',
             transition: 'opacity 2s',
         },
         '+ label, + label + label': {
-            // width: '10em',
             overflow: 'hidden',
             textOverflow: 'ellipsis ellipsis',
             position: 'absolute',
             top: '.9rem',
             left: '0',
-            // bottom: '.75rem',
             bottom: '.7rem',
             padding: '.1em 1.5em',
             color: '#032429',
@@ -160,7 +157,7 @@ export const ContainerInput = styled('div', {
             marginTop: '.3rem',
             padding: '.5rem',
             opacity: '1',
-            display: 'block',
+            display: 'none',
             width: '100%',
             overflow: 'visible',
             color: '$tenth',
@@ -192,13 +189,6 @@ export const ContainerInput = styled('div', {
                         background: '$danger',
                         display: 'inline-block',
                         zIndex: '1',
-                    },
-                },
-            },
-            false: {
-                'input:focus, input:active, select:focus, select:active': {
-                    '+ label + label': {
-                        display: 'none',
                     },
                 },
             },
