@@ -124,9 +124,7 @@ export const ContainerInput = styled('div', {
             textShadow: '0 1px 0 rgba(19,74,70,0)',
             transition: 'all .3s ease-in-out',
             borderRadius: '.25rem',
-            background: '$fourth',
-            // height: '100%',
-            padding: '0 auto',
+            background: 'rgba(122,184,147,0)',
             '&:after': {
                 position: 'absolute',
                 content: '""',
