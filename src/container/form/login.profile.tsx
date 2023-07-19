@@ -13,7 +13,7 @@ import { existsToken, getPayload, getRoles, isValidToken } from '../../service/s
 import logo from '../../assets/image/marinha.png'
 import { Rotate } from '../template/rotate'
 import { Toast } from '../toast/toast'
-import { Header } from '../template/header'
+import { Header, TitleHeader } from '../template/header'
 
 export const LoginProfile = () => {
     const [state, setState] = useState<User>(initialUser)
@@ -80,7 +80,8 @@ export const LoginProfile = () => {
             {isValidToken() ?
                 <>
                     < Header>
-                        <h1>{getPayload().sub}</h1><p>{getRoles()}</p>
+                        <TitleHeader><h1>{getPayload().sub}</h1></TitleHeader>
+                        <p>{getRoles()}</p>
                         {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
                     </Header >
                     < Header>

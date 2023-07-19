@@ -183,6 +183,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                         <>
                                                                             <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false} />
                                                                             <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
+                                                                            <label htmlFor={key}>{validation(key)}</label>
                                                                             {/* <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p> */}
                                                                         </>
                                                                         :
@@ -198,7 +199,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                         <>
                                                                             <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false} />
                                                                             <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
-                                                                            <label>{validation(key)}</label>
+                                                                            <label htmlFor={key}>{validation(key)}</label>
                                                                             {/* <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p> */}
                                                                         </>
                                                                         :
@@ -208,7 +209,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                                 {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                                                             </select>
                                                                             <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
-                                                                            <label>{validation(key)}</label>
+                                                                            <label htmlFor={key}>{validation(key)}</label>
                                                                         </>
                                                                 }
                                                             </span>

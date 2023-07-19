@@ -4,7 +4,6 @@ const { styled } = stitches
 
 export const FloatLabel = styled('div', {
     fontSize: '$rg',
-    fontFamily: 'Montserrat, sans-serif',
     margin: '$rg 0 0 0',
     padding: '$xs',
     'select': {
@@ -76,13 +75,17 @@ export const Container = styled('div', {
 
 export const ContainerInput = styled('div', {
     overflowX: 'clip',
+    'input[type=checkbox]': {
+        '+ label, + label + label': {
+            height: '1.4em',
+        },
+    },
     'span': {
-        fontFamily: 'Arial, Helvetica, sans-serif',
         position: 'relative',
         display: 'inline-block',
         margin: 'min(.2em) min(.2em) 0em 0em',
-        minHeight: '2rem',
-        heigth: '22em',
+        // minHeight: '2rem',
+        // heigth: '22em',
     },
     'select': {
         minHeight: '1.8em',
@@ -91,11 +94,11 @@ export const ContainerInput = styled('div', {
         display: 'inline-block',
         width: '26em',
         padding: '10px 0 10px 35px',
-        fontWeight: '400',
+        fontWeight: 'normal',
         color: '#377D6A',
         background: '#efefef',
         border: '0',
-        borderRadius: '3px',
+        borderRadius: '.25rem',
         outline: '0',
         textIndent: '60px',
         transition: 'all .3s ease-in-out',
@@ -110,21 +113,21 @@ export const ContainerInput = styled('div', {
             transition: 'opacity 2s',
         },
         '+ label, + label + label': {
-            minHeight: '1.5em',
-            width: '10em',
+            // width: '10em',
             overflow: 'hidden',
             textOverflow: 'ellipsis ellipsis',
             position: 'absolute',
-            top: '8px',
+            top: '.9rem',
             left: '0',
-            bottom: '8px',
-            padding: '5px 15px',
+            // bottom: '.75rem',
+            bottom: '.7rem',
+            padding: '.1em 1.5em',
             color: '#032429',
-            fontSize: '11px',
-            fontWeight: '700',
+            fontSize: '$xs',
+            fontWeight: 'bold',
             textShadow: '0 1px 0 rgba(19,74,70,0)',
             transition: 'all .3s ease-in-out',
-            borderRadius: '3px',
+            borderRadius: '.25rem',
             background: 'rgba(122,184,147,0)',
             '&:after': {
                 position: 'absolute',
@@ -142,7 +145,7 @@ export const ContainerInput = styled('div', {
         },
     },
     'input:focus, input:active, select:focus, select:active': {
-        color: '#377D6A',
+        color: '$fourth',
         textIndent: '0',
         background: '#FFF',
         '+ label': {
@@ -154,7 +157,8 @@ export const ContainerInput = styled('div', {
             transform: 'translateY(-1.9rem)',
         },
         '+ label + label': {
-            height: '100%',
+            marginTop: '.3rem',
+            padding: '.5rem',
             opacity: '1',
             display: 'block',
             width: '100%',
