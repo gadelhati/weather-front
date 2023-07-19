@@ -49,7 +49,7 @@ export const FloatLabel = styled('div', {
 
 export const Container = styled('div', {
     display: 'flex',
-    minHeight: '15em',
+    minHeight: '6rem',
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
@@ -58,15 +58,6 @@ export const Container = styled('div', {
         align: {
             column: {
                 display: 'inline-block',
-            },
-            line: {
-                height: '.5em',
-            },
-            buttons: {
-                minHeight: '6em',
-            },
-            response: {
-                minHeight: '1rem',
             },
         },
     },
