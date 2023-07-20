@@ -166,6 +166,13 @@ export const ContainerInput = styled('div', {
                     },
                 },
             },
+            false: {
+                'input, select': {
+                    '+ label': {
+                        width: '7rem',
+                    },
+                },
+            },
         },
         error: {
             true: {

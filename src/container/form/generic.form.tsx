@@ -218,10 +218,10 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                             )
                                         })}
                                     </Container>
-                                    <Container align={'response'}>
+                                    <Container>
                                         <div>{validationDTO()}</div>
                                     </Container>
-                                    <Container align={'buttons'} hidden={object.url.includes('istoric') ? true : false} >
+                                    <Container hidden={object.url.includes('istoric') ? true : false} >
                                         <Button category={'secondary'} onClick={resetItem}>Reset</Button>
                                         <Button category={'success'} onClick={createItem} hidden={state.id !== "" && !object.url.includes('istoric') || object.url.includes('istoric') ? true : false}>Create</Button>
                                         <Button category={'warning'} onClick={updateItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Update</Button>
