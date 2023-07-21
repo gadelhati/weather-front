@@ -8,6 +8,7 @@ import { initialErrorMessage } from '../../assets/error/errorMessage.initial';
 import { ErrorMessage } from '../../assets/error/errorMessage';
 
 export const FindFile = styled('input', {
+    width: '30rem',
     padding: '.45rem',
     borderRadius: '.3rem',
     color: '$tenth',
