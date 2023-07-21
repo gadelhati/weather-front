@@ -18,13 +18,10 @@ The codes FM 12 - XI SYNOP and FM 13 - XI SHIP are preset number sequences that 
 
 ## Roadmap
 ### in development
-- [x] user: change password on profile
 - [x] user: improve visual of add multiple roles
-- [ ] keep the buttons inside the modal
 - [ ] load privileges on role's form
 - [ ] set combobox, turn with switch
 - [ ] counter only increases by 1
-- [ ] refactoring on global css
 
 ### in concept
 - [ ] consume service that provide sidebar access
