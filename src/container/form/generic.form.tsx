@@ -94,12 +94,14 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     }
     const validation = (name: string): string[] => {
         let vector: string[] = []
-        error?.map((element: any) => { if (name == element.field) return vector.push(element?.message+'. ') })
+        // console.log(error)
+        // error?.map((element: any) => { if (name == element.field) return vector.push(element?.message+'. ') })
         return vector
     }
     const validationDTO = (): string[] => {
         let vector: string[] = []
-        error?.map((element: any) => { if (element.field?.startsWith("DTO")) return vector.push(element?.message+'. ') })
+        console.log(error)
+        // error?.map((element: any) => { if (element.field?.startsWith("DTO")) return vector.push(element?.message+'. ') })
         return vector
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -141,7 +143,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const showObject = (values: any): any => {
         return (
             Object.entries(values).map(([key, value], index) => {
-                if (key !== 'id' && key !== 'password' && index <= 5 && key !== 'role') {
+                if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
                     return (<td>
                         {Array.isArray(value) ?
                             <>
@@ -251,7 +253,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                         <thead>
                             <tr>
                                 {Object.keys(state).map((key, index) => {
-                                    if (key !== 'id' && index < 5 && key !== 'password' && key !== 'role') {
+                                    if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
                                         return (<th>{key}</th>)
                                     }
                                 })}
