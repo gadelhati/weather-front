@@ -72,7 +72,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const loadSubStates = async () => {
         Object.entries(state).map(([key, value], index) => {
             return (
-                !(atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index].worth === 0 || value === null && atribute[index].worth === '' || value !== null && typeof value !== 'object') &&
+                !(atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index].worth === 0 || value === null && atribute[index].worth === '' || atribute[index]?.type !== 'undefined' && !Array.isArray(atribute[index]?.worth)) &&
                 retrieve(key, 0, 1000, '', '').then((data) => {
                     startTransition(() => {
                         subStates[index] = data.content
@@ -185,7 +185,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                             <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false} />
                                                                             <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
                                                                             <label htmlFor={key}>{validation(key)}</label>
-                                                                            {/* <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p> */}
                                                                         </>
                                                                         :
                                                                         <>
@@ -196,17 +195,16 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                             <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
                                                                         </>
                                                                     :
-                                                                    atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' || value === undefined ?
+                                                                    atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || atribute[index]?.type !== 'undefined' ?
                                                                         <>
                                                                             <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false} />
                                                                             <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
                                                                             <label htmlFor={key}>{validation(key)}</label>
-                                                                            {/* <p className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type !== 'checkbox' ? true : false}>{key}</p> */}
                                                                         </>
                                                                         :
                                                                         <>
                                                                             <select name={key} onChange={handleInputChangeSubSelect} /*onClick={() => retrieveSubItem(key, index)}*/>
-                                                                                <option defaultValue={value} value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
+                                                                                <option defaultValue={value} value={value} selected>{value === null || value === undefined ? '' : value?.name ? value.name : value.id}</option>
                                                                                 {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                                                             </select>
                                                                             <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
