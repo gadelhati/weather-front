@@ -36,12 +36,13 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
         retrieveItem()
     }, [page, size])
     const resetItem = () => {
+        loadSubStates()
         setState(object.object)
         setError([initialErrorMessage])
     }
     const selectItem = async (data: any) => {
-        setState(data)
         loadSubStates()
+        setState(data)
         handleModal()
     }
     const validItem = (data: any) => {
@@ -195,7 +196,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                                                                             <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
                                                                         </>
                                                                     :
-                                                                    atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' ?
+                                                                    atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' || value === undefined ?
                                                                         <>
                                                                             <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false} />
                                                                             <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>

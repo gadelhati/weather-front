@@ -1,9 +1,3 @@
-import { initialCommission } from "../commission/commission.initial";
-import { initialCountry } from "../country/country.initial";
-import { initialEquipment } from "../equipment/equipment.initial";
-import { initialInstitution } from "../institution/institution.initial";
-import { initialStationCategory } from "../station.category/station.category.initial";
-import { initialSurveying } from "../surveying/surveying.initial";
 import { StationOffShore } from "./station.off.shore.interface";
 
 export const initialStationOffShore: StationOffShore = {
@@ -17,12 +11,12 @@ export const initialStationOffShore: StationOffShore = {
     wmoSquare: 0,
     marsdenSubSquare_5: 0,
     
-    stationCategory: initialStationCategory,
-    equipment: initialEquipment,
-    surveying: initialSurveying,
-    institution: initialInstitution,
-    country: initialCountry,
+    stationCategory: undefined,
+    equipment: undefined,
+    surveying: undefined,
+    institution: undefined,
+    country: undefined,
 
     telegraphicCallsign: '',
-    commission: initialCommission,
+    commission: undefined,
 }

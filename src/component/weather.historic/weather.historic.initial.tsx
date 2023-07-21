@@ -1,5 +1,3 @@
-import { initialObserver } from "../observer/observer.initial";
-import { initialStation } from "../station/station.initial";
 import { WeatherHistoric } from "./weather.historic.interface";
 
 export const initialWeatherHistoric: WeatherHistoric = {
@@ -100,6 +98,6 @@ export const initialWeatherHistoric: WeatherHistoric = {
     observador: '',
     observerName: '',
 
-    station: initialStation,
-    observer: initialObserver,
+    station: undefined,
+    observer: undefined,
 }

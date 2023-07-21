@@ -1,7 +1,5 @@
-import { initialHarbor } from "../harbor/harbor.initial";
-import { initialInstitution } from "../institution/institution.initial";
-import { initialPlatform } from "../platform/platform.initial";
-import { initialSurveying } from "../surveying/surveying.initial";
+// import { initialHarbor } from "../harbor/harbor.initial";
+// import { initialInstitution } from "../institution/institution.initial";
 import { Commission } from "./commission.interface";
 
 export const initialCommission : Commission = {
@@ -13,10 +11,10 @@ export const initialCommission : Commission = {
     latitudeMostTop: 0,
     longitudeMostRight: 0,
     longitudeMostLeft: 0,
-    origin: initialHarbor,
-    destination: initialHarbor,
-    institution: initialInstitution,
-    coordinator: initialInstitution,
-    surveying: initialSurveying,
-    platform: initialPlatform,
+    // origin: initialHarbor,
+    // destination: initialHarbor,
+    // institution: initialInstitution,
+    // coordinator: initialInstitution,
+    surveying: undefined,
+    platform: undefined,
 }

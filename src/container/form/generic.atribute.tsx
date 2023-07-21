@@ -15,6 +15,8 @@ export const AtributeSet = <T extends Object>(initial: T) => {
             type_name = 'checkbox'
         else if (typeof value === 'number')
             type_name = 'number'
+        else if (value === undefined)
+            type_name = 'undefined'
         else if (typeof value.getMonth === 'function')
             type_name = 'date'
         else if (Array.isArray(value))

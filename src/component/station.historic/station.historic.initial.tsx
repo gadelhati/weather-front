@@ -1,10 +1,3 @@
-import { initialCommission } from "../commission/commission.initial";
-import { initialCountry } from "../country/country.initial";
-import { initialEquipment } from "../equipment/equipment.initial";
-import { initialInstitution } from "../institution/institution.initial";
-import { initialPlatformCategory } from "../platform.category/platformCategory.initial";
-import { initialStationCategory } from "../station.category/station.category.initial";
-import { initialSurveying } from "../surveying/surveying.initial";
 import { StationHistoric } from "./station.historic.interface";
 
 export const initialStationHistoric: StationHistoric = {
@@ -21,11 +14,11 @@ export const initialStationHistoric: StationHistoric = {
     collectionDepth: '',
     commissionCode: '',
     
-    stationCategory: initialStationCategory,
-    equipment: initialEquipment,
-    surveying: initialSurveying,
-    institution: initialInstitution,
-    country: initialCountry,
-    commission: initialCommission,
-    platformCategory: initialPlatformCategory,
+    stationCategory: undefined,
+    equipment: undefined,
+    surveying: undefined,
+    institution: undefined,
+    country: undefined,
+    commission: undefined,
+    platformCategory: undefined,
 }
