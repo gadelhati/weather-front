@@ -73,6 +73,18 @@ export const remove = async<T,>(url: string, id: string) => {
         .catch(error => { return addError(error) })
 }
 
+export const removeWeather = async<T,>(url: string, dateObservation: string, ii: string, iii: string, ddddddd: string) => {
+    if(ii !== null || iii !== null){
+        return await api.delete(`/${url}/${dateObservation}/${ii}/${iii}`)
+            .then(response => { return response.data })
+            .catch(error => { return addError(error) })
+    } else {
+        return await api.delete(`/${url}/${dateObservation}/${ddddddd}`)
+            .then(response => { return response.data })
+            .catch(error => { return addError(error) })
+    }
+}
+
 export const removeAll = async<T,>(url: string) => {
     return await api.delete(`/${url}`)
         .then(response => { return response.data })

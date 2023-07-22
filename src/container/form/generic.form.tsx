@@ -2,7 +2,7 @@ import { useState, ChangeEvent, useEffect, useTransition } from 'react'
 import { isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
-import { create, update, remove, retrieve } from '../../service/service.crud'
+import { create, update, remove, retrieve, removeWeather } from '../../service/service.crud'
 import { Container, ContainerInput } from './generic.field'
 import { AtributeSet } from './generic.atribute'
 import { Atribute } from '../../component/atribute/atribute.interface'
@@ -46,7 +46,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
         handleModal()
     }
     const validItem = (data: any) => {
-        if (data?.id) {
+        if (data?.id || data?.ii && data?.iii || data?.ddddddd) {
             handleModal()
             retrieveItem()
             createToast(toastDetails[0])
@@ -88,20 +88,31 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
         }).catch((error) => { networkError() })
     }
     const deleteItem = async () => {
-        await remove(object.url, state.id).then((data) => {
-            validItem(data)
-        }).catch((error) => { networkError() })
+        if(state.id !== undefined){
+            await remove(object.url, state.id).then((data) => {
+                validItem(data)
+            }).catch((error) => { networkError() })
+        } else {
+            console.log('1')
+            await removeWeather(object.url, state?.dateObservation, state?.ii, state?.iii, state?.ddddddd).then((data) => {
+                validItem(data)
+                console.log('2')
+                console.log(data)
+            }).catch((error) => { networkError() })
+        }
     }
     const validation = (name: string): string[] => {
         let vector: string[] = []
-        // console.log(error)
-        // error?.map((element: any) => { if (name == element.field) return vector.push(element?.message+'. ') })
+        if(Array.isArray(error)){
+            error?.map((element: any) => { if (name == element.field) return vector.push(element?.message+'. ') })
+        }
         return vector
     }
     const validationDTO = (): string[] => {
         let vector: string[] = []
-        console.log(error)
-        // error?.map((element: any) => { if (element.field?.startsWith("DTO")) return vector.push(element?.message+'. ') })
+        if(Array.isArray(error)){
+            error?.map((element: any) => { if (element.field?.startsWith("DTO")) return vector.push(element?.message+'. ') })
+        }
         return vector
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
