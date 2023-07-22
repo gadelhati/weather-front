@@ -23,9 +23,10 @@ export const WeatherUpload = () => {
     const [ispending, startTransition] = useTransition()
 
     const createAllItems = () => {
-        createAll<Weather>('weather', state)
-        retrieveItem()
-        // refresh()
+        createAll<Weather>('weather', state).then((data) => {
+            retrieveItem()
+            refresh()
+        })
     }
     const retrieveItem = async () => {
         await retrieve("weather", 0, 20, '', '').then((data) => {
