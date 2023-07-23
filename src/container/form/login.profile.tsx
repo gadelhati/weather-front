@@ -79,19 +79,22 @@ export const LoginProfile = () => {
         <>
             {isValidToken() ?
                 <>
-                    < Header>
+                    <Header>
                         <TitleHeader><h1>{getPayload().sub}</h1></TitleHeader>
                         <p>{getRoles()}</p>
-                        {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
-                    </Header >
-                    < Header>
-                        <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
-                            <ContainerInput>
-                                <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
-                                <label htmlFor="password">New Password</label>
+                        <Button onClick={logoutUser}>Logout</Button>
+                    </Header>
+                    <Header>
+                        <div style={{ display: 'flex' }}>
+                            <ContainerInput error={validation("password").length !== 0 ? true : false} >
+                                <span>
+                                    <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
+                                    <label htmlFor={"password"}>New Password</label>
+                                    <label htmlFor={"password"}>{validation("password")}</label>
+                                </span>
                             </ContainerInput>
-                        </Tooltip>
-                        {isValidToken() && <Button onClick={changePasswordItem}>Change</Button>}
+                        </div>
+                        <Button onClick={changePasswordItem}>Change</Button>
                     </Header >
                 </>
                 :
