@@ -162,7 +162,7 @@ export const ContainerInput = styled('div', {
                 'input, select': {
                     width: '10em',
                     '+ label': {
-                        width: '6em',
+                        width: '8em',
                     },
                 },
             },
