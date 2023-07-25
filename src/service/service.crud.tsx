@@ -50,43 +50,43 @@ export const create = async<T,>(url: string, object: T) => {
 }
 
 export const createAll = async<T,>(url: string, object: T[]) => {
-    return await api.post(`/${url}/createAll`, object)
+    return await api.post<T>(`/${url}/createAll`, object)
         .then(response => { return response.data })
         .catch(error => { return addError(error) })
 }
 
 export const retrieve = async<T,>(url: string, page: number, size: number, key: string, value: string) => {
-    return await api.get(`/${url}?key=${key}&value=${value}`, { params: { page: page, size: size } } )
+    return await api.get<T>(`/${url}?key=${key}&value=${value}`, { params: { page: page, size: size } } )
         .then(response => { return response.data })
         .catch(error => { return addError(error) })
 }
 
 export const update = async<T,>(url: string, object: T) => {
-    return await api.put(`/${url}`, object)
+    return await api.put<T>(`/${url}`, object)
         .then(response => { return response.data })
         .catch(error => { return addError(error) })
 }
 
 export const remove = async<T,>(url: string, id: string) => {
-    return await api.delete(`/${url}/${id}`)
+    return await api.delete<T>(`/${url}/${id}`)
         .then(response => { return response.data })
         .catch(error => { return addError(error) })
 }
 
 export const removeWeather = async<T,>(url: string, dateObservation: string, ii: string, iii: string, ddddddd: string) => {
     if(ii !== null || iii !== null){
-        return await api.delete(`/${url}/${dateObservation}/${ii}/${iii}`)
+        return await api.delete<T>(`/${url}/${dateObservation}/${ii}/${iii}`)
             .then(response => { return response.data })
             .catch(error => { return addError(error) })
     } else {
-        return await api.delete(`/${url}/${dateObservation}/${ddddddd}`)
+        return await api.delete<T>(`/${url}/${dateObservation}/${ddddddd}`)
             .then(response => { return response.data })
             .catch(error => { return addError(error) })
     }
 }
 
 export const removeAll = async<T,>(url: string) => {
-    return await api.delete(`/${url}`)
+    return await api.delete<T>(`/${url}`)
         .then(response => { return response.data })
         .catch(error => { return addError(error) });
 }

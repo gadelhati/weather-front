@@ -1,4 +1,4 @@
-import { Privilege } from '../privilege/privilege.interface';
+// import { Privilege } from '../privilege/privilege.interface';
 import { Role } from '../role/role.interface';
 
 export interface User {

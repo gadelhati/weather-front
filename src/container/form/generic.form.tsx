@@ -20,8 +20,8 @@ import { Header, TitleHeader } from '../template/header'
 import { Load } from '../template/load'
 import { UriScreenFormat } from '../../service/uri.format'
 
-export const GenericForm = <T extends { id: string, name: string }>(object: any, url: string) => {
-    const [state, setState] = useState<T>(object.object)
+export const GenericForm = <T extends { id: string, name: string }>(object: any) => {
+    const [state, setState] = useState<any>(object.object)
     const [states, setStates] = useState<T[]>([object.object])
     const [subStates, setSubStates] = useState<Object[][]>(SubAtributeSet(state))
     const [error, setError] = useState<ErrorMessage[]>([initialErrorMessage])
@@ -33,6 +33,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const [modal, setModal] = useState<boolean>(false)
 
     useEffect(() => {
+        setAtribute(AtributeSet(object.object))
         retrieveItem()
     }, [page, size])
     const resetItem = () => {
@@ -61,44 +62,44 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     const createItem = async () => {
         await create(object.url, state).then((data) => {
             validItem(data)
-        }).catch((error) => { networkError() })
+        }).catch(() => { networkError() })
     }
     const retrieveItem = async () => {
-        await retrieve(object.url, page, size, '', '').then((data) => {
+        await retrieve(object.url, page, size, '', '').then((data: any) => {
             startTransition(() => setPageable(data))
             startTransition(() => setStates(data.content))
-        }).catch((error) => { networkError() })
+        }).catch(() => { networkError() })
     }
     const loadSubStates = async () => {
         Object.entries(state).map(([key, value], index) => {
             return (
                 !(atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index].worth === 0 || value === null && atribute[index].worth === '' || atribute[index]?.type !== 'undefined' && !Array.isArray(atribute[index]?.worth)) &&
-                retrieve(key, 0, 1000, '', '').then((data) => {
+                retrieve(key, 0, 1000, '', '').then((data: any) => {
                     startTransition(() => {
                         subStates[index] = data.content
                         setSubStates(subStates)
                     })
-                }).catch((error) => { networkError() })
+                }).catch(() => { networkError() })
             )
         })
     }
     const updateItem = async () => {
         await update(object.url, state).then((data) => {
             validItem(data)
-        }).catch((error) => { networkError() })
+        }).catch(() => { networkError() })
     }
     const deleteItem = async () => {
         if(state.id !== undefined){
             await remove(object.url, state.id).then((data) => {
                 validItem(data)
-            }).catch((error) => { networkError() })
+            }).catch(() => { networkError() })
         } else {
             console.log('1')
             await removeWeather(object.url, state?.dateObservation, state?.ii, state?.iii, state?.ddddddd).then((data) => {
                 validItem(data)
                 console.log('2')
                 console.log(data)
-            }).catch((error) => { networkError() })
+            }).catch(() => { networkError() })
         }
     }
     const validation = (name: string): string[] => {
@@ -119,18 +120,15 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value
         setState({ ...state, [event.target.name]: value })
     }
-    const handleInputChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
-        setState({ ...state, [event.target.name]: event.target.value })
-    }
     const handleInputChangeSubSelect = async (event: ChangeEvent<HTMLSelectElement>) => {
-        await retrieve(event.target.name, page, size, event.target.name, event.target.value).then((data) => {
-            setState({ ...state, [event.target.name]: data.content[0] })
-        }).catch((error) => { networkError() })
+        await retrieve(event.target.name, page, size, event.target.name, event.target.value).then((data: any) => {
+            setState({ ...state, [event.target.name]: data?.content[0] })
+        }).catch(() => { networkError() })
     }
     const handleInputChangeSubSelectArray = async (event: ChangeEvent<HTMLSelectElement>) => {
-        await retrieve(event.target.name, page, size, event.target.name, event.target.value).then((data) => {
-            setState({ ...state, [event.target.name]: [data.content[0]] })
-        }).catch((error) => { networkError() })
+        await retrieve(event.target.name, page, size, event.target.name, event.target.value).then((data: any) => {
+            setState({ ...state, [event.target.name]: [data?.content[0]] })
+        }).catch(() => { networkError() })
     }
     const handlePage = (page: number) => {
         setPage(page)
@@ -153,7 +151,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
     }
     const showObject = (values: any): any => {
         return (
-            Object.entries(values).map(([key, value], index) => {
+            Object.entries(values).map(([key, value]: any, index) => {
                 if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
                     return (<td>
                         {Array.isArray(value) ?
@@ -187,7 +185,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any,
                             {atribute &&
                                 <>
                                     <Container>
-                                        {Object.entries(state).map(([key, value], index) => {
+                                        {Object.entries(state).map(([key, value]: any, index) => {
                                             return (
                                                 <div style={atribute[index]?.type === 'hidden' ? { display: 'none' } : { display: 'flex' }}>
                                                         <ContainerInput error={validation(key).length !== 0 ? true : false} historic={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>

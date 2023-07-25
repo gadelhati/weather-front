@@ -1,7 +1,7 @@
 import axios from "axios"
 import { getAccessToken } from "../../service/service.token"
 
-const token = getAccessToken();
+// const token = getAccessToken();
 
 export const api = axios.create({
   baseURL: "http://localhost:3120/weather-back",

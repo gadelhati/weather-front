@@ -1,5 +1,5 @@
 // import not_allowed from "../assets/image/not_allowed.jpg"
-import not_allowed from "../assets/image/not-allowed.png"
+// import not_allowed from "../assets/image/not-allowed.png"
 
 export const NotAllowed = () => {
     return (

@@ -21,12 +21,13 @@ export const LoginProfile = () => {
     const [ispending, startTransition] = useTransition()
 
     useEffect(() => {
+        {ispending}
         retrieveItem()
     },[])
     const retrieveItem = async () => {
-        await retrieve('userEntity', 0, 20, 'username', getPayload().sub).then((data) => {
-            startTransition(() => setState(data.content[0]))
-        }).catch((error) => { networkError() })
+        await retrieve('userEntity', 0, 20, 'username', getPayload().sub).then((data: any) => {
+            startTransition(() => setState(data?.content[0]))
+        }).catch(() => { networkError() })
     }
     const refresh = () => {
         window.location.reload()
@@ -50,7 +51,7 @@ export const LoginProfile = () => {
     const loginUser = async () => {
         await login('auth/login', state).then((data) => {
             startTransition(() => validItem(data))
-        }).catch((error) => { networkError() })
+        }).catch(() => { networkError() })
     }
     const logoutUser = async () => {
         logout()
@@ -73,7 +74,7 @@ export const LoginProfile = () => {
     const changePasswordItem = async () => {
         await changePassword(state).then((data) => {
             startTransition(() => validItem(data))
-        }).catch((error) => { networkError() })
+        }).catch(() => { networkError() })
     }
     return (
         <>
