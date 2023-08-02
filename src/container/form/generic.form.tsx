@@ -95,11 +95,8 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                 validItem(data)
             }).catch(() => { networkError() })
         } else {
-            console.log('1')
             await removeWeather(object.url, state?.dateObservation, state?.ii, state?.iii, state?.ddddddd).then((data) => {
                 validItem(data)
-                console.log('2')
-                console.log(data)
             }).catch(() => { networkError() })
         }
     }
@@ -204,7 +201,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                                                             <label htmlFor={key}>{validation(key)}</label>
                                                                         </>
                                                                         :
-                                                                        <>2
+                                                                        <>
                                                                             <select name={key} onChange={handleInputChangeSubSelectArray} defaultValue={value}>
                                                                                 {/* <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option> */}
                                                                                 {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
@@ -219,7 +216,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                                                             <label htmlFor={key}>{validation(key)}</label>
                                                                         </>
                                                                         :
-                                                                        <>3
+                                                                        <>
                                                                             <select name={key} onChange={handleInputChangeSubSelect} defaultValue={value}>
                                                                                 {/* <option value={value} selected>{value === null || value === undefined ? '' : value?.name ? value.name : value.id}</option> */}
                                                                                 {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
@@ -235,7 +232,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                         })}
                                     </Container>
                                     <Container>
-                                        {JSON.stringify(state)}
                                         <div>{validationDTO()}</div>
                                     </Container>
                                     <Container hidden={object.url.includes('istoric') ? true : false} >
