@@ -204,12 +204,12 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                                                             <label htmlFor={key}>{validation(key)}</label>
                                                                         </>
                                                                         :
-                                                                        <>
+                                                                        <>2
                                                                             <select name={key} onChange={handleInputChangeSubSelectArray} defaultValue={value}>
-                                                                                <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
+                                                                                {/* <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option> */}
                                                                                 {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                                                             </select>
-                                                                            <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
+                                                                            <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>2{key}</label>
                                                                         </>
                                                                     :
                                                                     atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || atribute[index]?.type !== 'undefined' ?
@@ -219,9 +219,9 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                                                             <label htmlFor={key}>{validation(key)}</label>
                                                                         </>
                                                                         :
-                                                                        <>
+                                                                        <>3
                                                                             <select name={key} onChange={handleInputChangeSubSelect} defaultValue={value}>
-                                                                                <option value={value} selected>{value === null || value === undefined ? '' : value?.name ? value.name : value.id}</option>
+                                                                                {/* <option value={value} selected>{value === null || value === undefined ? '' : value?.name ? value.name : value.id}</option> */}
                                                                                 {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                                                             </select>
                                                                             <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
@@ -235,11 +235,11 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                         })}
                                     </Container>
                                     <Container>
-                                    {JSON.stringify(state)}
+                                        {JSON.stringify(state)}
                                         <div>{validationDTO()}</div>
                                     </Container>
                                     <Container hidden={object.url.includes('istoric') ? true : false} >
-                                        <Button category={'secondary'} onClick={resetItem}>Reset</Button>
+                                        <Button type='reset' category={'secondary'} onClick={resetItem}>Reset</Button>
                                         <Button category={'success'} onClick={createItem} hidden={state.id !== "" && !object.url.includes('istoric') || object.url.includes('istoric') ? true : false}>Create</Button>
                                         <Button category={'warning'} onClick={updateItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Update</Button>
                                         <Button category={'danger'} onClick={deleteItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Delete</Button>
@@ -268,9 +268,11 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                     <Table>
                         <thead>
                             <tr>
-                                {Object.keys(state).map((key, index) => {
+                                {Object.entries(state).map(([key, value]: any, index) => {
                                     if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
-                                        return (<th>{key}</th>)
+                                        if(!object.url.includes('weather') || index < 6) {
+                                            return (<th>{key}</th>)
+                                        }
                                     }
                                 })}
                             </tr>
