@@ -19,6 +19,7 @@ import { WeatherUpload } from './weather.upload'
 import { Header, TitleHeader } from '../template/header'
 import { Load } from '../template/load'
 import { UriScreenFormat } from '../../service/uri.format'
+import { ShineButton } from './shine.button'
 
 export const GenericForm = <T extends { id: string, name: string }>(object: any) => {
     const [state, setState] = useState<any>(object.object)
@@ -174,9 +175,18 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                 }
             }))
     }
+    const shine = () => {
+        const button = document.querySelector(".shiny");
+        // const readout = document.querySelector("p");
+        button?.addEventListener("mousemove", (e) => {
+            const { x, y } = button.getBoundingClientRect();
+            button?.style.setProperty("--x", e?.clientX - x);
+            button?.style.setProperty("--y", e?.clientY - y);
+        });
+    }
     return (
         <>
-            {/* https://cdpn.io/agrimsrud/fullpage/RwKbwXN?anon=true&view= */}
+            <ShineButton>Shine Button</ShineButton>
             {isValidToken() &&
                 <>
                     <Modal show={modal} large={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
