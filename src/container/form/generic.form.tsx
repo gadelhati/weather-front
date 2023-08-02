@@ -203,7 +203,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                                                         :
                                                                         <>
                                                                             <select name={key} onChange={handleInputChangeSubSelectArray} defaultValue={value}>
-                                                                                {/* <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option> */}
+                                                                                <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
                                                                                 {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                                                             </select>
                                                                             <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>2{key}</label>
@@ -218,7 +218,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                                                         :
                                                                         <>
                                                                             <select name={key} onChange={handleInputChangeSubSelect} defaultValue={value}>
-                                                                                {/* <option value={value} selected>{value === null || value === undefined ? '' : value?.name ? value.name : value.id}</option> */}
+                                                                                <option value={value} selected>{value === null || value === undefined ? '' : value?.name ? value.name : value.id}</option>
                                                                                 {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                                                             </select>
                                                                             <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
