@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect, useTransition } from 'react'
+import { useState, ChangeEvent, useEffect, useTransition, MouseEventHandler } from 'react'
 import { isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
@@ -175,9 +175,9 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                 }
             }))
     }
-    const shine = () => {
+    const shine = (event: React.MouseEvent<HTMLButtonElement>):void => {
         const button = document.querySelector(".shiny");
-        // const readout = document.querySelector("p");
+        const readout = document.querySelector("p");
         button?.addEventListener("mousemove", (e) => {
             const { x, y } = button.getBoundingClientRect();
             button?.style.setProperty("--x", e?.clientX - x);
@@ -186,7 +186,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     }
     return (
         <>
-            <ShineButton>Shine Button</ShineButton>
+            {/* <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton> */}
             {isValidToken() &&
                 <>
                     <Modal show={modal} large={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
