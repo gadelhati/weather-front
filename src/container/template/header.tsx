@@ -12,7 +12,7 @@ export const Header = styled('div', {
     borderRadius: '.3rem',
     // borderCollapse: 'collapse',
     // border: 'solid $third 1px',
-    boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 5px',
+    boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23), 0 0 5px #aaa inset',
     justifyContent: 'space-between',
     alignItems: 'center',
     // flexWrap: 'wrap',
