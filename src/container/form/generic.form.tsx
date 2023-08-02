@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect, useTransition } from 'react'
+import { useState, ChangeEvent, useEffect, useTransition, MouseEventHandler } from 'react'
 import { isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
@@ -95,11 +95,8 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                 validItem(data)
             }).catch(() => { networkError() })
         } else {
-            console.log('1')
             await removeWeather(object.url, state?.dateObservation, state?.ii, state?.iii, state?.ddddddd).then((data) => {
                 validItem(data)
-                console.log('2')
-                console.log(data)
             }).catch(() => { networkError() })
         }
     }
@@ -175,18 +172,14 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                 }
             }))
     }
-    const shine = () => {
+    const shine = (event: React.MouseEvent<HTMLButtonElement>):void => {
         const button = document.querySelector(".shiny");
-        // const readout = document.querySelector("p");
-        button?.addEventListener("mousemove", (e) => {
-            const { x, y } = button.getBoundingClientRect();
-            button?.style.setProperty("--x", e?.clientX - x);
-            button?.style.setProperty("--y", e?.clientY - y);
-        });
+        button?.style.setProperty("--x", event.clientX - button?.getBoundingClientRect().x);
+        button?.style.setProperty("--y", event.clientY - button?.getBoundingClientRect().y);
     }
     return (
         <>
-            <ShineButton>Shine Button</ShineButton>
+            {/* <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton> */}
             {isValidToken() &&
                 <>
                     <Modal show={modal} large={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
@@ -213,7 +206,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                                                                 <option value={value} selected>{value === null ? '' : value?.name ? value.name : value.id}</option>
                                                                                 {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                                                             </select>
-                                                                            <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
+                                                                            <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>2{key}</label>
                                                                         </>
                                                                     :
                                                                     atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || atribute[index]?.type !== 'undefined' ?
@@ -242,7 +235,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                         <div>{validationDTO()}</div>
                                     </Container>
                                     <Container hidden={object.url.includes('istoric') ? true : false} >
-                                        <Button category={'secondary'} onClick={resetItem}>Reset</Button>
+                                        <Button type='reset' category={'secondary'} onClick={resetItem}>Reset</Button>
                                         <Button category={'success'} onClick={createItem} hidden={state.id !== "" && !object.url.includes('istoric') || object.url.includes('istoric') ? true : false}>Create</Button>
                                         <Button category={'warning'} onClick={updateItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Update</Button>
                                         <Button category={'danger'} onClick={deleteItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Delete</Button>
@@ -271,9 +264,11 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                     <Table>
                         <thead>
                             <tr>
-                                {Object.keys(state).map((key, index) => {
+                                {Object.entries(state).map(([key, value]: any, index) => {
                                     if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
-                                        return (<th>{key}</th>)
+                                        if(!object.url.includes('weather') || index < 6) {
+                                            return (<th>{key}</th>)
+                                        }
                                     }
                                 })}
                             </tr>

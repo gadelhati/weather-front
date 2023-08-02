@@ -39,6 +39,7 @@ export const SidebarContainer = styled('aside',{
     borderRadius: '.3rem',
     backgroundColor: '$third',
     backgroundImage: 'linear-gradient(to bottom, $fourth, $third)',
+    boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .1rem #AAA inset',
     // scrollBehavior: 'smooth',
     // overflowY: 'auto',
     // overflowX: 'hidden',
@@ -68,6 +69,7 @@ export const SidebarContainerCollapsible = styled('div',{
     'a': {
         backgroundColor: '$fourth',
     },
+    boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
     variants: {
         collapsible: {
             true: {
@@ -111,6 +113,7 @@ export const SideContainerTitle = styled('a',{
     p : {
         display: 'inline',
     },
+    boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
 })
 
 export const SideContainerItem = styled('a',{
@@ -127,12 +130,12 @@ export const SideContainerItem = styled('a',{
     '&:hover': {
         color: '$second',
         backgroundColor: '$ninth',
-        boxShadow: '0 0 0.2em $tenth, 0 0 0.2em #222, 0 0 0.2em #333',
+        boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
     },
     '&:focus': {
         color: '$first',
         backgroundColor: '$tenth',
-        boxShadow: '0 0 0.2em $tenth, 0 0 0.2em #222, 0 0 0.2em #333',
+        boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
     },
     p : {
         display: 'inline',

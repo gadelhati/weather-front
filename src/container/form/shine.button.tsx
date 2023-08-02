@@ -5,12 +5,15 @@ const { styled } = stitches
 // ref.: https://bholmes.dev/blog/a-shiny-on-hover-effect-that-follows-your-mouse-css/
 // ref.: https://cdpn.io/agrimsrud/fullpage/RwKbwXN?anon=true&view=
 
-export const ShineButton = styled('div',{
+export const ShineButton = styled('button',{
     // display: 'flex',
     // flexDirection: 'column',
     // justifyContent: 'center',
     // alignItems: 'center',
     // height: '100vh',
+    boxShadow: 'inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45)',
+    // boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23), 0 0 5px #aaa inset',
+
     color: 'white',
     position: 'relative',
     border: 'none',
@@ -31,7 +34,7 @@ export const ShineButton = styled('div',{
         opacity: '0',
         transition: 'opacity 0.2s',
     },
-    ':hover::after': {
+    '&:hover::after': {
         opacity: '0.4',
     },
 })
