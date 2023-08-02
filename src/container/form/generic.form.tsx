@@ -182,7 +182,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     }
     return (
         <>
-            <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton>
+            {/* <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton> */}
             {isValidToken() &&
                 <>
                     <Modal show={modal} large={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
@@ -235,6 +235,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                         })}
                                     </Container>
                                     <Container>
+                                    {JSON.stringify(state)}
                                         <div>{validationDTO()}</div>
                                     </Container>
                                     <Container hidden={object.url.includes('istoric') ? true : false} >
