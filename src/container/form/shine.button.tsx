@@ -11,6 +11,9 @@ export const ShineButton = styled('button',{
     // justifyContent: 'center',
     // alignItems: 'center',
     // height: '100vh',
+    boxShadow: 'inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45)',
+    // boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23), 0 0 5px #aaa inset',
+
     color: 'white',
     position: 'relative',
     border: 'none',

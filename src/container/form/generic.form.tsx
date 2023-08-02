@@ -177,16 +177,12 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     }
     const shine = (event: React.MouseEvent<HTMLButtonElement>):void => {
         const button = document.querySelector(".shiny");
-        const readout = document.querySelector("p");
-        button?.addEventListener("mousemove", (e) => {
-            const { x, y } = button.getBoundingClientRect();
-            button?.style.setProperty("--x", e?.clientX - x);
-            button?.style.setProperty("--y", e?.clientY - y);
-        });
+        button?.style.setProperty("--x", event.clientX - button?.getBoundingClientRect().x);
+        button?.style.setProperty("--y", event.clientY - button?.getBoundingClientRect().y);
     }
     return (
         <>
-            {/* <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton> */}
+            <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton>
             {isValidToken() &&
                 <>
                     <Modal show={modal} large={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
