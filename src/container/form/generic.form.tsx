@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect, useTransition, MouseEventHandler } from 'react'
+import { useState, ChangeEvent, useEffect, useTransition } from 'react'
 import { isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
@@ -19,7 +19,7 @@ import { WeatherUpload } from './weather.upload'
 import { Header, TitleHeader } from '../template/header'
 import { Load } from '../template/load'
 import { UriScreenFormat } from '../../service/uri.format'
-import { ShineButton } from './shine.button'
+// import { ShineButton } from './shine.button'
 
 export const GenericForm = <T extends { id: string, name: string }>(object: any) => {
     const [state, setState] = useState<any>(object.object)
@@ -172,11 +172,11 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                 }
             }))
     }
-    const shine = (event: React.MouseEvent<HTMLButtonElement>):void => {
-        const button = document.querySelector(".shiny");
-        button?.style.setProperty("--x", event.clientX - button?.getBoundingClientRect().x);
-        button?.style.setProperty("--y", event.clientY - button?.getBoundingClientRect().y);
-    }
+    // const shine = (event: React.MouseEvent<HTMLButtonElement>):void => {
+    //     const button = document.querySelector(".shiny") as HTMLInputElement | null
+    //     button?.style.setProperty("--x", event.clientX - button?.getBoundingClientRect().x)
+    //     button?.style.setProperty("--y", event.clientY - button?.getBoundingClientRect().y)
+    // }
     return (
         <>
             {/* <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton> */}
@@ -265,6 +265,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                         <thead>
                             <tr>
                                 {Object.entries(state).map(([key, value]: any, index) => {
+                                    console.log(value)
                                     if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
                                         if(!object.url.includes('weather') || index < 6) {
                                             return (<th>{key}</th>)
