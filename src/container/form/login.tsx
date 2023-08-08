@@ -3,27 +3,26 @@ import { User } from "../../component/user/user.interface"
 import { initialUser } from '../../component/user/user.initial'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
-import { changePassword, login, retrieve } from '../../service/service.crud'
+import { login, retrieve } from '../../service/service.crud'
 import { Tooltip } from '../tooltip/tooltip'
-import { ContainerInput, FloatLabel } from './generic.field'
+import { FloatLabel } from './generic.field'
 import { CenteredContainer, CenteredContainerItem } from '../template/flex'
 import { Button } from '../template/button';
 import { logout } from '../../service/service.auth'
-import { existsToken, getPayload, getRoles, isValidToken } from '../../service/service.token'
+import { existsToken, getPayload, isValidToken } from '../../service/service.token'
 import logo from '../../assets/image/marinha.png'
 import { Rotate } from '../template/rotate'
 import { Toast } from '../toast/toast'
-import { Header, TitleHeader } from '../template/header'
+import { Home } from './home'
 
-export const LoginProfile = () => {
+export const Login = () => {
     const [state, setState] = useState<User>(initialUser)
     const [error, setError] = useState<ErrorMessage[]>([initialErrorMessage])
     const [ispending, startTransition] = useTransition()
 
     useEffect(() => {
-        {ispending}
         retrieveItem()
-    },[])
+    }, [])
     const retrieveItem = async () => {
         await retrieve('userEntity', 0, 20, 'username', getPayload().sub).then((data: any) => {
             startTransition(() => setState(data?.content[0]))
@@ -71,33 +70,10 @@ export const LoginProfile = () => {
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setState({ ...state, [event.target.name]: value })
     }
-    const changePasswordItem = async () => {
-        await changePassword(state).then((data) => {
-            startTransition(() => validItem(data))
-        }).catch(() => { networkError() })
-    }
     return (
         <>
             {isValidToken() ?
-                <>
-                    <Header>
-                        <TitleHeader><h1>{getPayload().sub}</h1></TitleHeader>
-                        <p>{getRoles()}</p>
-                        <Button onClick={logoutUser}>Logout</Button>
-                    </Header>
-                    <Header>
-                        <div style={{ display: 'flex' }}>
-                            <ContainerInput error={validation("password").length !== 0 ? true : false} >
-                                <span>
-                                    <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
-                                    <label htmlFor={"password"}>New Password</label>
-                                    <label htmlFor={"password"}>{validation("password")}</label>
-                                </span>
-                            </ContainerInput>
-                        </div>
-                        <Button onClick={changePasswordItem}>Change</Button>
-                    </Header >
-                </>
+                <Home></Home>
                 :
                 <CenteredContainer>
                     <CenteredContainerItem>
@@ -125,7 +101,7 @@ export const LoginProfile = () => {
                     </CenteredContainerItem>
                     <Toast className="notifications"></Toast>
                 </CenteredContainer>
-            }  
+            }
         </>
     );
 }
