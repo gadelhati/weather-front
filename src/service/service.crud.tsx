@@ -1,6 +1,5 @@
 import { api } from "../assets/api/api"
 import { ErrorMessage } from "../assets/error/errorMessage"
-import { User } from "../component/user/user.interface"
 import { setToken } from "./service.token"
 
 // Respostas de informação (100-199),
@@ -25,7 +24,7 @@ const addError = (error: any):ErrorMessage[] => {
 }
 
 export const login = async<Auth,>(url: string, object: Auth) => {
-    return await api.post(url, object)
+    return await api.post<Auth>(url, object)
         .then(response => {
             setToken(response.data)
             return response.data
@@ -33,7 +32,7 @@ export const login = async<Auth,>(url: string, object: Auth) => {
         .catch(error => { return addError(error) })
 }
 
-export const changePassword = async (data: User) => {
+export const changePassword = async<User,>(data: User) => {
     return await api.put<User>(`/userEntity/changePassword`, data)
         .then(response => {
             return response.data
@@ -73,13 +72,13 @@ export const remove = async<T,>(url: string, id: string) => {
         .catch(error => { return addError(error) })
 }
 
-export const removeWeather = async<T,>(url: string, dateObservation: string, ii: string, iii: string, ddddddd: string) => {
-    if(ii !== null || iii !== null){
-        return await api.delete<T>(`/${url}/${dateObservation}/${ii}/${iii}`)
+export const removeComposite = async<T,>(url: string, one: string, two: string, three: string, four: string) => {
+    if(three !== null && four !== null){
+        return await api.delete<T>(`/${url}/${one}/${three}/${four}`)
             .then(response => { return response.data })
             .catch(error => { return addError(error) })
     } else {
-        return await api.delete<T>(`/${url}/${dateObservation}/${ddddddd}`)
+        return await api.delete<T>(`/${url}/${one}/${two}`)
             .then(response => { return response.data })
             .catch(error => { return addError(error) })
     }

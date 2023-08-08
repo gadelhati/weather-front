@@ -74,7 +74,7 @@ export const getRoles = () => {
   return token?.roles;
 }
 
-export const removeToken = () => {
+export const logout = () => {
   localStorage.clear()
   window.location.reload()
 }

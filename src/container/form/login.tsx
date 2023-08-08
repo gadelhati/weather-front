@@ -8,7 +8,7 @@ import { Tooltip } from '../tooltip/tooltip'
 import { FloatLabel } from './generic.field'
 import { CenteredContainer, CenteredContainerItem } from '../template/flex'
 import { Button } from '../template/button';
-import { logout } from '../../service/service.auth'
+import { logout } from '../../service/service.token'
 import { existsToken, getPayload, isValidToken } from '../../service/service.token'
 import logo from '../../assets/image/marinha.png'
 import { Rotate } from '../template/rotate'

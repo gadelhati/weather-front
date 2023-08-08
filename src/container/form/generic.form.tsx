@@ -2,7 +2,7 @@ import { useState, ChangeEvent, useEffect, useTransition } from 'react'
 import { isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
-import { create, update, remove, retrieve, removeWeather } from '../../service/service.crud'
+import { create, update, remove, retrieve, removeComposite } from '../../service/service.crud'
 import { Container, ContainerInput } from './generic.field'
 import { AtributeSet } from './generic.atribute'
 import { Atribute } from '../../component/atribute/atribute.interface'
@@ -95,7 +95,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                 validItem(data)
             }).catch(() => { networkError() })
         } else {
-            await removeWeather(object.url, state?.dateObservation, state?.ii, state?.iii, state?.ddddddd).then((data) => {
+            await removeComposite(object.url, state?.dateObservation, state?.ddddddd, state?.ii, state?.iii).then((data) => {
                 validItem(data)
             }).catch(() => { networkError() })
         }
