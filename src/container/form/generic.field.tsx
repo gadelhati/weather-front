@@ -81,7 +81,7 @@ export const ContainerInput = styled('div', {
     'input, select': {
         display: 'inline-block',
         width: '26em',
-        padding: '10px 0 10px 35px',
+        padding: '10px',
         fontWeight: 'normal',
         color: '$fourth',
         background: '$tenth',
@@ -93,6 +93,7 @@ export const ContainerInput = styled('div', {
         overflow: 'hidden',
         textOverflow: 'ellipsis ellipsis',
         '+ label': {
+            pointerEvents: 'none',
             textTransform: 'uppercase',
             display: 'inline-block',
         },
