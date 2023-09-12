@@ -33,6 +33,8 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     const [ispending, startTransition] = useTransition()
     const [modal, setModal] = useState<boolean>(false)
 
+    const width = object.width ?? 100;
+
     useEffect(() => {
         setAtribute(AtributeSet(object.object))
         retrieveItem()
@@ -177,20 +179,29 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     //     button?.style.setProperty("--x", event.clientX - button?.getBoundingClientRect().x)
     //     button?.style.setProperty("--y", event.clientY - button?.getBoundingClientRect().y)
     // }
+
+    const onClickModal = (evt: React.MouseEvent) => {
+        if ((evt.target as HTMLElement).className.includes('modal-div')) {
+            setModal(false);
+        }
+    }
+
     return (
         <>
             {/* <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton> */}
             {isValidToken() &&
                 <>
-                    <Modal show={modal} large={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
-                        <article>
+                    <Modal show={modal} large={object.url.includes('istoric') || object.url.includes('weather') ? true : false} className='modal-div' onClick={(evt) => {
+                        onClickModal(evt)
+                    }}>
+                        <article style={{ maxWidth: `${width}%`}}>
                             <header><span onClick={handleModal}>&times;</span><h2>{UriScreenFormat(object.url)}</h2></header>
                             {atribute &&
                                 <>
-                                    <Container>
+                                    <Container style={{ flex: '1', overflow: 'auto'}}>
                                         {Object.entries(state).map(([key, value]: any, index) => {
                                             return (
-                                                <div style={atribute[index]?.type === 'hidden' ? { display: 'none' } : { display: 'flex' }}>
+                                                <div style={atribute[index]?.type === 'hidden' ? { display: 'none' } : { display: 'flex'  }}>
                                                         <ContainerInput error={validation(key).length !== 0 ? true : false} historic={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
                                                             <span>
                                                                 {Array.isArray(atribute[index]?.worth) ?
@@ -231,15 +242,15 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                             )
                                         })}
                                     </Container>
-                                    <Container>
+                                    {/* <Container>
                                         <div>{validationDTO()}</div>
-                                    </Container>
+                                    </Container> */}
                                     <Container hidden={object.url.includes('istoric') ? true : false} >
-                                        <Button type='reset' category={'secondary'} onClick={resetItem}>Reset</Button>
+                                        {/* <Button type='reset' category={'secondary'} onClick={resetItem}>Reset</Button> */}
                                         <Button category={'success'} onClick={createItem} hidden={state.id !== "" && !object.url.includes('istoric') || object.url.includes('istoric') ? true : false}>Create</Button>
                                         <Button category={'warning'} onClick={updateItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Update</Button>
                                         <Button category={'danger'} onClick={deleteItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Delete</Button>
-                                        <Button category={'secondary'} onClick={handleModal}>Close</Button>
+                                        {/* <Button category={'secondary'} onClick={handleModal}>Close</Button> */}
                                     </Container>
                                 </>
                             }
@@ -266,7 +277,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                             <tr>
                                 {Object.entries(state).map(([key, value]: any, index) => {
                                     console.log(value)
-                                    if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
+                                if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
                                         if(!object.url.includes('weather') || index < 6) {
                                             return (<th>{key}</th>)
                                         }
