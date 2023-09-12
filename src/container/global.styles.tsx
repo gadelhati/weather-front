@@ -26,6 +26,9 @@ export const stitches = createStitches({
             fifteenth: '#454545',
             sixteenth: '#363636',
             seventeenth: '#0E0C0C',
+            eighteenth: '#000000',
+            nineteenth: '#66C462',
+            thirty: '#A4B5B2',
             
             tsuccess: '#124010',
             tinfo: '#3498DB',
