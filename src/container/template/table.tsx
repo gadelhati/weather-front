@@ -7,6 +7,8 @@ export const Table = styled('table', {
     color: '$seventeenth',
     padding: '$sm',
     margin: '$xxs',
+    marginLeft: '15px',
+    marginRight: '15px',
     boxSizing: 'border-box',
     borderSpacing: '0',
     backgroundColor: '$tenth',
@@ -22,7 +24,7 @@ export const Table = styled('table', {
     },
     'td, th': {
         borderBottom: '1px solid $line',
-        paddingLeft: '1em',
+        paddingLeft: '1em', 
         textAlign: 'left',
         height: '3em',
         width: '2%',
