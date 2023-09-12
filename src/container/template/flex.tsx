@@ -1,5 +1,6 @@
 import { stitches } from "../global.styles"
 
+
 const { styled } = stitches
 
 export const CenteredContainer = styled('div',{
@@ -19,6 +20,7 @@ export const CenteredContainerItem = styled('div', {
     alignItems: 'center',
     marginTop: '$xl',
     padding: '$rg',
+
     variants: {
         direction: {
             row: {
@@ -43,6 +45,7 @@ export const SidebarContainer = styled('aside',{
     // scrollBehavior: 'smooth',
     // overflowY: 'auto',
     // overflowX: 'hidden',
+    zIndex: 1,
     variants: {
         sidehide: {
             false: {
@@ -59,6 +62,8 @@ export const SidebarContainerHeader = styled('div',{
     display: 'flex',
     flexDirection: 'column',
     color: '$ninth',
+    // backgroundColor: '$fourth',
+    // borderRadius: '0.3em',
 })
 
 export const SidebarContainerCollapsible = styled('div',{
@@ -67,9 +72,9 @@ export const SidebarContainerCollapsible = styled('div',{
     flexDirection: 'column',
     borderRadius: '.3rem',
     'a': {
-        backgroundColor: '$fourth',
+        
     },
-    boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
+    // boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
     variants: {
         collapsible: {
             true: {
@@ -86,7 +91,7 @@ export const SidebarContainerCollapsible = styled('div',{
                 },
             },
             false: {
-                backgroundColor: '$ninth',
+                // backgroundColor: '$ninth',
                 'a:first-child': {
                     display: 'block',
                 },
@@ -98,10 +103,55 @@ export const SidebarContainerCollapsible = styled('div',{
     },
 })
 
+export const SidebarContainerButton = styled('div',{
+    textDecoration: 'none',
+    textAlign: 'center',
+    color: '$second',
+    // boxShadow: '5px 5px 5px',
+    height: '30px',
+    width: '30px',
+    userSelect: 'none',
+    borderRadius: '50%',
+    marginTop: '10px',
+    marginRight: '-14px',
+    transition: '.5s',
+    p : {
+        display: 'flex',
+    },
+    '&:hover': {
+        color: '$tenth',
+        // color: '#85919e',
+    },
+
+})
+
+export const SidebarContainerButtonH = styled('div', {
+    borderRadius: '.3rem',
+    display: 'flex',
+    alignContent: 'flex-start',
+    alignItems: 'center',
+    marginLeft: '0px',
+    transition: '.5s',
+    cursor: 'pointer',
+})
+
+export const SideContainerFolderIcon = styled('div',{
+    borderRadius: '.3rem',
+    display: 'flex',
+    margin: '',
+    alignItems: 'center',
+    alignContent: 'flex-start',
+    // marginTop: '-23px',
+    marginLeft: '190px',
+    transition: '.5s',
+    cursor: 'pointer',
+})
+
 export const SideContainerTitle = styled('a',{
     textDecoration: 'none',
-    color: '$third',
-    backgroundColor: '$tenth',
+    color: '$ninth',
+    // colocar talvez cor de fundo $fourth? não mesquecer.
+    // backgroundColor: '$tenth',
     height: '$md',
     width: '$xss',
     userSelect: 'none',
@@ -113,7 +163,12 @@ export const SideContainerTitle = styled('a',{
     p : {
         display: 'inline',
     },
-    boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
+    '&:hover': {
+        color: '$second',
+        backgroundColor: '$ninth',
+        boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
+    },
+    // boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
 })
 
 export const SideContainerItem = styled('a',{
