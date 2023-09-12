@@ -1,15 +1,36 @@
-import { useState } from 'react'
-import { SideContainerTitle, SideContainerItem, SidebarContainer, SidebarContainerHeader, SidebarContainerCollapsible } from '../template/flex'
-import { Icon } from '../../assets/svg.access'
-import { Tooltip } from '../tooltip/tooltip'
-import { UriScreenFormat } from '../../service/uri.format'
-import { getPayload } from '../../service/service.token'
+import { useState } from "react";
+import {
+  SideContainerTitle,
+  SideContainerItem,
+  SidebarContainer,
+  SidebarContainerHeader,
+  SidebarContainerCollapsible,
+  SidebarContainerButton,
+  SidebarContainerButtonH,
+  SideContainerFolderIcon,
+} from "../template/flex";
+import { Icon } from "../../assets/svg.access";
+import { Tooltip } from "../tooltip/tooltip";
+import { UriScreenFormat } from "../../service/uri.format";
+import { getPayload } from "../../service/service.token";
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+  IoMdArrowDropdown,
+  IoMdArrowDropup,
+} from "react-icons/io";
+import { AiFillFolder, AiFillFolderOpen } from "react-icons/ai";
+// import { Rotate } from "../template/rotate";
 
 export const SideContainer = () => {
-  const [side, setSide] = useState(true)
-  const [collapsible, setCollapsible] = useState(false)
-  const showSideBar = () => { setSide(!side) }
-  const showCollapsible = () => { setCollapsible(!collapsible) }
+  const [side, setSide] = useState(true);
+  const [collapsible, setCollapsible] = useState(false);
+  const showSideBar = () => {
+    setSide(!side);
+  };
+  const showCollapsible = () => {
+    setCollapsible(!collapsible);
+  };
   const vector: string[][] = [
     ["weather", "chm", "weather"],
     // ["t weatherOffShore", "home", "weatherOffShore"],
@@ -37,29 +58,118 @@ export const SideContainer = () => {
     ["tooltip user", "grid", "userEntity"],
     // ["tooltip role", "chevron-right", "role"],
     // ["tooltip profile", "people-circle", "profile"]
-  ]
+  ];
 
   const collapse: string[][] = [
     ["weather_historic", "bootstrap", "weather/historic"],
     ["weather_historic_off_hore", "table", "weatherOffShore/historic"],
     ["weather_historic_on_hore", "geo-fill", "weatherOnShore/historic"],
-    ["station_historic", "cpu-fill", "station/historic"]]
+    ["station_historic", "cpu-fill", "station/historic"],
+  ];
 
   return (
     <SidebarContainer sidehide={side}>
       <SidebarContainerHeader>
-        <SideContainerTitle key={0} href={`#/`} onClick={showSideBar} ><Icon name="speedometer" /><p>CHM</p></SideContainerTitle>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flex: 1,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            // border: 'solid',
+          }}
+        >
+          <SideContainerTitle
+            key={0}
+            href={`#/`}
+            style={{
+              zIndex: 1,
+              width: "99%",
+            }}
+          >
+            <Icon name="speedometer" />
+            <p>CHM</p>
+          </SideContainerTitle>
+          <SidebarContainerButton
+            key={0}
+            onClick={showSideBar}
+            style={{
+              zIndex: 2,
+              marginLeft: "-10px",
+              // padding: '5px',
+              paddingTop: "8px",
+            }}
+          >
+            {!side ? (
+              <IoIosArrowDroprightCircle size="30px" />
+            ) : (
+              <IoIosArrowDropleftCircle size="30px" />
+            )}
+          </SidebarContainerButton>
+        </div>
         {vector.map((element) => {
-          return <SideContainerItem key={element[1]} href={`#/${element[2]}`} ><Tooltip data-tip={element[0].replaceAll('_', ' ')}><Icon name={element[1]} /></Tooltip><p>{UriScreenFormat(element[2])}</p></SideContainerItem>
+          return (
+            <SideContainerItem key={element[1]} href={`#/${element[2]}`}>
+              <Tooltip data-tip={element[0].replaceAll("_", " ")}>
+                <Icon name={element[1]} />
+              </Tooltip>
+              <p>{UriScreenFormat(element[2])}</p>
+            </SideContainerItem>
+          );
         })}
         <SidebarContainerCollapsible collapsible={collapsible}>
-          <SideContainerItem key={0} onClick={showCollapsible}><Tooltip data-tip={'historic'}><Icon name="speedometer" /></Tooltip><p>historic</p></SideContainerItem>
+          <SideContainerItem key={0} onClick={showCollapsible} style={{display: 'flex', padding: '5px',}}>
+            <div style={collapse? {width: '1px', display: 'flex', alignContent: 'flex-start',}: {width: '0px'}}>
+              
+              <SideContainerFolderIcon>
+                {!collapsible ? (
+                  <AiFillFolder size="20px" style={{ marginLeft: "-30.6vh" }} />
+                ) : (
+                  <AiFillFolderOpen
+                  size="20px" style={{ marginLeft: "-30.6vh" }}
+                  /> 
+                )}
+
+                  <Tooltip data-tip={"historic"}>
+                    <p style={{margin: '1vh',}}>Historic</p>
+                  </Tooltip>
+              </SideContainerFolderIcon>
+
+              <SidebarContainerButtonH>
+                {!collapsible
+                  ? side && <IoMdArrowDropdown size="25px" />
+                  : side && <IoMdArrowDropup size="25px" />}
+              </SidebarContainerButtonH>
+
+            </div>
+            {/* <div>
+              <SidebarContainerButtonH>
+                {!collapsible
+                  ? side && <IoMdArrowDropdown size="25px" />
+                  : side && <IoMdArrowDropup size="25px" />}
+              </SidebarContainerButtonH>
+            </div> */}
+          </SideContainerItem>
+
           {collapse.map((element) => {
-            return <SideContainerItem key={element[1]} href={`#/${element[2]}`} ><Tooltip data-tip={element[0].replaceAll('_', ' ')}><Icon name={element[1]} /></Tooltip><p>{UriScreenFormat(element[2])}</p></SideContainerItem>
+            return (
+              <SideContainerItem key={element[1]} href={`#/${element[2]}`}>
+                <Tooltip data-tip={element[0].replaceAll("_", " ")}>
+                  <Icon name={element[1]} />
+                </Tooltip>
+                <p>{UriScreenFormat(element[2])}</p>
+              </SideContainerItem>
+            );
           })}
         </SidebarContainerCollapsible>
       </SidebarContainerHeader>
-      <SideContainerItem element={'final'}  href={`#/${'profile'}`} ><Tooltip data-tip="tooltip profile"><Icon name="people-circle" /></Tooltip><p>{getPayload().sub}</p></SideContainerItem>
+      <SideContainerItem element={"final"} href={`#/${"profile"}`}>
+        <Tooltip data-tip="tooltip profile">
+          <Icon name="people-circle" />
+        </Tooltip>
+        <p>{getPayload().sub}</p>
+      </SideContainerItem>
     </SidebarContainer>
-  )
-}
+  );
+};
