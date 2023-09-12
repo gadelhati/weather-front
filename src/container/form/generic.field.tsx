@@ -5,22 +5,29 @@ const { styled } = stitches
 export const FloatLabel = styled('div', {
     fontSize: '$rg',
     margin: '$rg 0 0 0',
-    padding: '$xs',
+    padding: '$xxxs',
     'select': {
         width: '100%',
         position: 'relative',
         bottom: '15px',
     },
+
     'input': {
         width: '100%',
-        color: '$tenth',
+        //color: '$seventeenth',
+        color: '$eighteenth',
+        //color: '$even',
         fontSize: '100%',
         padding: '$sm',
         outline: 'none',
         border: 'none',
-        borderBottom: '2px solid $ninth',
-        backgroundColor: 'transparent',
+        //borderBottom: '2px solid $ninth',
+        backgroundColor: '$thirty',
+        borderRadius: '.3em',
+    
     },
+
+
     'input[type="number"]': {
         appearance: 'textfield',
     },
@@ -81,7 +88,7 @@ export const ContainerInput = styled('div', {
     'input, select': {
         display: 'inline-block',
         width: '26em',
-        padding: '10px',
+        padding: '10px 0 10px 35px',
         fontWeight: 'normal',
         color: '$fourth',
         background: '$tenth',
@@ -93,7 +100,6 @@ export const ContainerInput = styled('div', {
         overflow: 'hidden',
         textOverflow: 'ellipsis ellipsis',
         '+ label': {
-            pointerEvents: 'none',
             textTransform: 'uppercase',
             display: 'inline-block',
         },
