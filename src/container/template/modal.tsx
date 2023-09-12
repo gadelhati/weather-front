@@ -8,29 +8,61 @@ const animatetop = keyframes({
     'to': { top: '0', opacity: '1' }
 });
 
-export const Modal = styled('div', {
-    color: 'gray',
-    display: 'none',
-    position: 'fixed',
-    zIndex: '1',
-    left: '0',
-    top: '0',
-    minWidth: '100vw',
-    minHeight: '100vh',
-    overflow: 'auto',
-    backgroundColor: 'rgba(0,0,0,0.4)',
-    'article': {
-        minHeight: '4vh',
-        minWidth: '50vw',
-        backgroundColor: '#dedede',
-        margin: 'auto',
-        border: '1px solid #888',
-        maxWidth: '90%',
-        boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)',
-        animationName: `${animatetop}`,
-        animationDuration: '0.4s',
-        borderRadius: '.5rem',
-    },
+
+// ARQUIVO ORIGINAL
+// export const Modal = styled('div', {
+//     color: 'gray',
+//     display: 'none',
+//     position: 'fixed',
+//     zIndex: '1',
+//     left: '0',
+//     top: '0',
+//     minWidth: '100vw',
+//     minHeight: '100vh',
+//     overflow: 'auto',
+//     backgroundColor: 'rgba(0,0,0,0.4)',
+//     'article': {
+//         minHeight: '4vh',
+//         minWidth: '50vw',
+//         backgroundColor: '#dedede',
+//         margin: 'auto',
+//         border: '1px solid #888',
+//         maxWidth: '90%',
+//         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)',
+//         animationName: `${animatetop}`,
+//         animationDuration: '0.4s',
+//         borderRadius: '.5rem',
+//     },
+
+// ARQUIVO ABAIXO FEITO PARA TESTES
+    export const Modal = styled('div', {
+        color: 'gray',
+        display: 'flex',
+        position: 'fixed',
+        zIndex: '1',
+        // marginTop: '10px',        
+        // maxWidth: '100%',
+        width: '100vw',
+        height: '100vh',
+        left: '0',
+        top: '0',
+        flexDirection: 'column',
+
+        overflow: 'hidden',
+        // backgroundColor: 'rgba(0,0,0,0.4)',
+        'article': {
+            maxHeight: '97.7vh',
+            width: '90%',
+            display: 'flex',
+            flexDirection: 'column',
+            backgroundColor: '#dedede',
+            margin: 'auto',
+            border: '1px solid #888',
+            boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)',
+            animationName: `${animatetop}`,
+            animationDuration: '0.4s',
+            borderRadius: '.5rem',
+        },
     'span': {
         color: '#aaa',
         float: 'right',
@@ -44,6 +76,7 @@ export const Modal = styled('div', {
     },
     'header': {
         color: 'LightGray',
+        width: '100%',
         padding: '2px 16px',
         margin: '0 auto',
         backgroundColor: '$third',
