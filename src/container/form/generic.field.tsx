@@ -100,6 +100,7 @@ export const ContainerInput = styled('div', {
         overflow: 'hidden',
         textOverflow: 'ellipsis ellipsis',
         '+ label': {
+            pointerEvents: 'none',
             textTransform: 'uppercase',
             display: 'inline-block',
         },
