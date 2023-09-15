@@ -17,7 +17,7 @@ import { createToast, toastDetails } from '../toast/toast.message'
 import { SubAtributeSet } from '../../component/atribute/subAtribute'
 import { WeatherUpload } from './weather.upload'
 import { Header, TitleHeader } from '../template/header'
-import { Load } from '../template/load'
+// import { Load } from '../template/load'
 import { UriScreenFormat } from '../../service/uri.format'
 // import { ShineButton } from './shine.button'
 import { PDFDownloadLink } from '@react-pdf/renderer'
@@ -34,7 +34,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     const [pageable, setPageable] = useState<Pageable>(initialPageable)
     const [ispending, startTransition] = useTransition()
     const [modal, setModal] = useState<boolean>(false)
-    const [key, setKey] = useState<string>('name')
+    const [key, setKey] = useState<string>('')
     const [search, setSearch] = useState<string>('')
 
     useEffect(() => {
@@ -283,7 +283,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                         }
                         {!object.url.includes('istoric') && <Button onClick={newItem}>New</Button>}
                     </Header>
-                    {ispending && <Load></Load>}
+                    {/* {ispending && <Load></Load>} */}
                     <Table>
                         <thead>
                             <tr>
