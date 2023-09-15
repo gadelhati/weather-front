@@ -20,6 +20,8 @@ import { Header, TitleHeader } from '../template/header'
 import { Load } from '../template/load'
 import { UriScreenFormat } from '../../service/uri.format'
 // import { ShineButton } from './shine.button'
+import { PDFDownloadLink } from '@react-pdf/renderer'
+import { PDFDocument } from '../../component/pdf/PDFDocument'
 
 export const GenericForm = <T extends { id: string, name: string }>(object: any) => {
     const [state, setState] = useState<any>(object.object)
@@ -252,6 +254,9 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                         <div>{validationDTO()}</div>
                                     </Container>
                                     <Container hidden={object.url.includes('istoric') ? true : false} >
+                                        <PDFDownloadLink document={<PDFDocument object={state} />} fileName="somename.pdf">
+                                                {({ blob, url, loading, error }) => loading ? '' : <Button category={'secondary'} >Download</Button> }
+                                        </PDFDownloadLink>
                                         <Button type='reset' category={'secondary'} onClick={resetItem}>Reset</Button>
                                         <Button category={'success'} onClick={createItem} hidden={state.id !== "" && !object.url.includes('istoric') || object.url.includes('istoric') ? true : false}>Create</Button>
                                         <Button category={'warning'} onClick={updateItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Update</Button>
