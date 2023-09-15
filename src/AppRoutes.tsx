@@ -38,6 +38,8 @@ import { initialWeatherOnShore } from "./component/weather.on.shore/weather.on.s
 import { initialStationHistoricOffShore } from "./component/station.historic.off.shore/station.historic.off.shore.initial";
 import { initialStationHistoricOnShore } from "./component/station.historic.on.shore/station.historic.on.shore.initial";
 import { Home } from "./container/form/home";
+import ReactPDF, { PDFViewer } from '@react-pdf/renderer';
+import MyDocument from "./assets/MyDocument";
 
 const ROLES = {
     'USER': "ROLE_USER",
@@ -93,6 +95,13 @@ export default function AppRoutes() {
                                 <Route path="/stationOffShore/historic" element={<GenericForm key='stationHistoricOffShore' object={initialStationHistoricOffShore} url={'stationOffShore/historic'} />}></Route>
                                 <Route path="/stationOnShore/historic" element={<GenericForm key='stationHistoricOnShore' object={initialStationHistoricOnShore} url={'stationOnShore/historic'} />}></Route>
                                 <Route path="/surveying" element={<GenericForm key='surveying' object={initialCountry} url={'surveying'} />}></Route>
+                                <Route path="/pdf" element={
+                                <PDFViewer>
+                                    <MyDocument />
+                                </PDFViewer>
+                                // ReactPDF.render(<MyDocument />, `${__dirname}/example.pdf`);
+                                // ReactPDF.renderToStream(<MyDocument />)
+                            }></Route>
                             </Route>
                         </Routes>
                     </FlexCointainer>

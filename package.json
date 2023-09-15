@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.1.12",
     "@stitches/react": "^1.2.8",
     "axios": "^1.4.0",
     "prop-types": "^15.8.1",
