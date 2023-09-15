@@ -6,6 +6,8 @@ export const Header = styled('div', {
     display: 'flex',
     height: '5rem',
     margin: '$xxs',
+    marginRight: '15px',
+    marginLeft: '15px',
     padding: '0 $sm 0 $sm',
     color: '$third',
     backgroundColor: '$tenth',
@@ -23,5 +25,5 @@ export const TitleHeader = styled('div',{
     padding: '$sm',
     paddingLeft: '$md',
     flexDirection: 'row',
-    color: '$tenthth',
+    color: '$tenthth', 
 })

@@ -13,7 +13,7 @@ import { existsToken, getPayload, isValidToken } from '../../service/service.tok
 import logo from '../../assets/image/marinha.png'
 import { Rotate } from '../template/rotate'
 import { Toast } from '../toast/toast'
-import { Home } from './home'
+import { HomepageAugusto } from './homepageAugusto'
 
 export const Login = () => {
     const [state, setState] = useState<User>(initialUser)
@@ -73,7 +73,9 @@ export const Login = () => {
     return (
         <>
             {isValidToken() ?
-                <Home></Home>
+                // <Home></Home>
+                <HomepageAugusto />
+                
                 :
                 <CenteredContainer>
                     <CenteredContainerItem>
@@ -93,7 +95,7 @@ export const Login = () => {
                         <CenteredContainerItem direction={'row'}>
                             {!isValidToken() && <Button onClick={loginUser}>Login</Button>}
                             {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
-                            <Button onClick={resetItem}>Reset{existsToken()}</Button>
+                            {/* <Button onClick={resetItem}>Reset{existsToken()}</Button> */}
                         </CenteredContainerItem>
                         <CenteredContainerItem direction={'row'}>
                             {error[0].message !== 'Network Error' ? <>© Marinha do Brasil</> : <>{validationConnection()}</>}
