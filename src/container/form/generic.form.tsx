@@ -143,7 +143,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
         }).catch(() => { networkError() })
     }
     const handleInputChangeSubSelectArray = async (event: ChangeEvent<HTMLSelectElement>) => {
-        await retrieve(event.target.name, page, size, event.target.name, event.target.value).then((data: any) => {
+        await retrieve(event.target.name, page, size, event.target.name, 'id').then((data: any) => {
             setState({ ...state, [event.target.name]: [data?.content[0]] })
         }).catch(() => { networkError() })
     }
@@ -289,7 +289,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                         <thead>
                             <tr>
                                 {Object.entries(state).map(([key, value]: any, index) => {
-                                    console.log(value)
                                     if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
                                         if(!object.url.includes('weather') || index < 6) {
                                             return (<th onClick={()=>searchKey(key)}>{key}</th>)
