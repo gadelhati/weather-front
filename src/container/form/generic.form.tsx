@@ -32,11 +32,29 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     const [pageable, setPageable] = useState<Pageable>(initialPageable)
     const [ispending, startTransition] = useTransition()
     const [modal, setModal] = useState<boolean>(false)
+    const [key, setKey] = useState<string>('')
+    const [search, setSearch] = useState<string>('')
 
     useEffect(() => {
         setAtribute(AtributeSet(object.object))
         retrieveItem()
     }, [page, size])
+    useEffect(()=>{
+        searchValue()
+    }, [key, search])
+    const searchValue = async() => {
+        await retrieve(object.url, page, size, key, search).then((data: any) => {
+            startTransition(() => setPageable(data))
+            startTransition(() => setStates(data.content))
+        }).catch(() => { networkError() })
+    }
+    const searchKey = (ikey: string) => {
+        setSearch('')
+        setKey(ikey)
+    }
+    const searchItem = async (event: ChangeEvent<HTMLInputElement>) => {
+        setSearch(event.target.value)
+    }
     const resetItem = () => {
         loadSubStates()
         setState(object.object)
@@ -255,6 +273,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                     {/* <option value={15}>15</option> */}
                                 </select>
                         </TitleHeader>
+                        <input name={search} onChange={searchItem} placeholder={`${key}`} value={search}></input>
                         {object.url.includes('weather') && !object.url.includes('istoric') &&
                             <WeatherUpload />
                         }
@@ -268,7 +287,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                     console.log(value)
                                     if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
                                         if(!object.url.includes('weather') || index < 6) {
-                                            return (<th>{key}</th>)
+                                            return (<th onClick={()=>searchKey(key)}>{key}</th>)
                                         }
                                     }
                                 })}
