@@ -38,8 +38,8 @@ import { initialWeatherOnShore } from "./component/weather.on.shore/weather.on.s
 import { initialStationHistoricOffShore } from "./component/station.historic.off.shore/station.historic.off.shore.initial";
 import { initialStationHistoricOnShore } from "./component/station.historic.on.shore/station.historic.on.shore.initial";
 import { Home } from "./container/form/home";
-import ReactPDF, { PDFViewer } from '@react-pdf/renderer';
-import MyDocument from "./assets/MyDocument";
+import ReactPDF, { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import { MyDocument } from "./component/pdf/MyDocument";
 
 const ROLES = {
     'USER': "ROLE_USER",
@@ -96,11 +96,16 @@ export default function AppRoutes() {
                                 <Route path="/stationOnShore/historic" element={<GenericForm key='stationHistoricOnShore' object={initialStationHistoricOnShore} url={'stationOnShore/historic'} />}></Route>
                                 <Route path="/surveying" element={<GenericForm key='surveying' object={initialCountry} url={'surveying'} />}></Route>
                                 <Route path="/pdf" element={
-                                <PDFViewer>
-                                    <MyDocument />
-                                </PDFViewer>
-                                // ReactPDF.render(<MyDocument />, `${__dirname}/example.pdf`);
-                                // ReactPDF.renderToStream(<MyDocument />)
+                                    // <PDFViewer>
+                                    //     <MyDocument />
+                                    // </PDFViewer>
+                                    <div>
+                                        <PDFDownloadLink document={<MyDocument />} fileName="somename.pdf">
+                                            {({ blob, url, loading, error }) =>
+                                                loading ? 'Loading document...' : 'Download now!'
+                                            }
+                                        </PDFDownloadLink>
+                                    </div>
                             }></Route>
                             </Route>
                         </Routes>

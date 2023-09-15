@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { Page, Text, View, Image, Link, Document, StyleSheet } from '@react-pdf/renderer';
 import logo from './image/marinha.png'
 
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const MyDocument = () => (
+export const MyDocument = () => (
     <Document>
         <Page size="A4" style={styles.page}>
             <View>
@@ -55,5 +54,3 @@ const MyDocument = () => (
         </Page>
     </Document>
 );
-
-export default MyDocument;
