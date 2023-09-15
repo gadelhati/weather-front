@@ -49,7 +49,6 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
         }).catch(() => { networkError() })
     }
     const searchKey = (ikey: string) => {
-        setSearch('')
         setKey(ikey)
     }
     const searchItem = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -273,7 +272,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                     {/* <option value={15}>15</option> */}
                                 </select>
                         </TitleHeader>
-                        <input name={search} onChange={searchItem} placeholder={`${key}`} value={search}></input>
+                        <><label>{key}</label><input name={search} onChange={searchItem} placeholder={`${key}`} value={search}></input></>
                         {object.url.includes('weather') && !object.url.includes('istoric') &&
                             <WeatherUpload />
                         }
