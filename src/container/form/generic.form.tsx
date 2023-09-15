@@ -32,7 +32,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     const [pageable, setPageable] = useState<Pageable>(initialPageable)
     const [ispending, startTransition] = useTransition()
     const [modal, setModal] = useState<boolean>(false)
-    const [key, setKey] = useState<string>('')
+    const [key, setKey] = useState<string>('name')
     const [search, setSearch] = useState<string>('')
 
     useEffect(() => {
