@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#E4E4E4',
         marginTop: 30,
-        fontSize: 30,
+        fontSize: 12,
         padding: 20,
     },
     section: {
@@ -46,10 +46,19 @@ export const PDFDocument = (object: any) => {
                     </View>
                 </Page>
                 <Page style={styles.page}>
-                    <Text style={styles.text}>Hello There: {JSON.stringify(object.object.id)}</Text>
-                    <View style={styles.section}>
-                        <Text>Section #2</Text>
-                    </View>
+                    <div>
+                        <Text style={styles.text}>ip: {object.object.ip}</Text>
+                        <Text style={styles.text}>hostname: {object.object.name}</Text>
+                        <Text style={styles.text}>so: {object.object.so}</Text>
+                        <Text style={styles.text}>seal: {object.object.seal}</Text>
+                        <Text style={styles.text}>memory: {object.object.memory}</Text>
+                        <Text style={styles.text}>hd: {object.object.hd}</Text>
+                        <Text style={styles.text}>processor: {object.object.processor}</Text>
+                        <Text style={styles.text}>mac: {object.object.mac}</Text>
+                        <View style={styles.section}>
+                            <Text>Section #2</Text>
+                        </View>
+                    </div>
                 </Page>
             </Document>
         </>
