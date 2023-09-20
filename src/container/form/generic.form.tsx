@@ -265,15 +265,12 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                         <div>{validationDTO()}</div>
                                     </Container> */}
                                     <Container hidden={object.url.includes('istoric') ? true : false} >
-<<<<<<< HEAD
                                         {modal &&
                                         <PDFDownloadLink document={<PDFDocument object={state} />} fileName="somename.pdf">
                                                 {({ blob, url, loading, error }) => loading ? <Button category={'warning'} >Wait</Button> : <Button category={'secondary'} >Download</Button> }
                                         </PDFDownloadLink>}
                                         <Button type='reset' category={'secondary'} onClick={resetItem}>Reset</Button>
-=======
                                         {/* <Button type='reset' category={'secondary'} onClick={resetItem}>Reset</Button> */}
->>>>>>> c71584bca12621ac0b23978bce83cac5d2e34ca0
                                         <Button category={'success'} onClick={createItem} hidden={state.id !== "" && !object.url.includes('istoric') || object.url.includes('istoric') ? true : false}>Create</Button>
                                         <Button category={'warning'} onClick={updateItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Update</Button>
                                         <Button category={'danger'} onClick={deleteItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Delete</Button>
@@ -304,17 +301,12 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                         <thead>
                             <tr>
                                 {Object.entries(state).map(([key, value]: any, index) => {
-<<<<<<< HEAD
                                     if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
-=======
-                                    console.log(value)
-                                if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
->>>>>>> c71584bca12621ac0b23978bce83cac5d2e34ca0
                                         if(!object.url.includes('weather') || index < 6) {
-                                            return (<th onClick={()=>searchKey(key)}>{key}</th>)
+                                                return (<th onClick={()=>searchKey(key)}>{key}</th>)
+                                            }
                                         }
-                                    }
-                                })}
+                                    })}
                             </tr>
                         </thead>
                         <ErrorBoundary fallback={<div> Something went wrong </div>} >
