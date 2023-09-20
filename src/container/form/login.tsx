@@ -9,7 +9,7 @@ import { FloatLabel } from './generic.field'
 import { CenteredContainer, CenteredContainerItem } from '../template/flex'
 import { Button } from '../template/button';
 import { logout } from '../../service/service.token'
-import { existsToken, getPayload, isValidToken } from '../../service/service.token'
+import { getPayload, isValidToken } from '../../service/service.token'
 import logo from '../../assets/image/marinha.png'
 import { Rotate } from '../template/rotate'
 import { Toast } from '../toast/toast'
@@ -21,6 +21,7 @@ export const Login = () => {
     const [ispending, startTransition] = useTransition()
 
     useEffect(() => {
+        JSON.stringify({ispending})
         retrieveItem()
     }, [])
     const retrieveItem = async () => {

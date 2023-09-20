@@ -38,7 +38,7 @@ import { initialWeatherOnShore } from "./component/weather.on.shore/weather.on.s
 import { initialStationHistoricOffShore } from "./component/station.historic.off.shore/station.historic.off.shore.initial";
 import { initialStationHistoricOnShore } from "./component/station.historic.on.shore/station.historic.on.shore.initial";
 import { Home } from "./container/form/home";
-import ReactPDF, { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import { PDFDocument } from "./component/pdf/PDFDocument";
 
 const ROLES = {
@@ -101,7 +101,7 @@ export default function AppRoutes() {
                                     // </PDFViewer>
                                     <div>
                                         <PDFDownloadLink document={<PDFDocument />} fileName="somename.pdf">
-                                            {({ blob, url, loading, error }) =>
+                                            {({ loading }) =>
                                                 loading ? 'Loading document...' : 'Download now!'
                                             }
                                         </PDFDownloadLink>

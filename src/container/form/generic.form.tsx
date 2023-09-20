@@ -40,6 +40,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     const width = object.width ?? 100;
 
     useEffect(() => {
+        JSON.stringify({ispending})
         setAtribute(AtributeSet(object.object))
         retrieveItem()
     }, [page, size])
@@ -261,13 +262,13 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                             )
                                         })}
                                     </Container>
-                                    {/* <Container>
+                                    <Container>
                                         <div>{validationDTO()}</div>
-                                    </Container> */}
+                                    </Container>
                                     <Container hidden={object.url.includes('istoric') ? true : false} >
                                         {modal &&
                                         <PDFDownloadLink document={<PDFDocument object={state} />} fileName="somename.pdf">
-                                                {({ blob, url, loading, error }) => loading ? <Button category={'warning'} >Wait</Button> : <Button category={'secondary'} >Download</Button> }
+                                                {({ loading }) => loading ? <Button category={'warning'} >Wait</Button> : <Button category={'secondary'} >Download</Button> }
                                         </PDFDownloadLink>}
                                         <Button type='reset' category={'secondary'} onClick={resetItem}>Reset</Button>
                                         {/* <Button type='reset' category={'secondary'} onClick={resetItem}>Reset</Button> */}
@@ -300,7 +301,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                     <Table>
                         <thead>
                             <tr>
-                                {Object.entries(state).map(([key, value]: any, index) => {
+                                {Object.entries(state).map(([key]: any, index) => {
                                     if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
                                         if(!object.url.includes('weather') || index < 6) {
                                                 return (<th onClick={()=>searchKey(key)}>{key}</th>)
