@@ -119,15 +119,15 @@ export const SideContainer = () => {
           );
         })}
         <SidebarContainerCollapsible collapsible={collapsible}>
-          <SideContainerItem key={0} onClick={showCollapsible} style={{display: 'flex', padding: '5px',}}>
+          <SideContainerItem key={0} onClick={showCollapsible} style={{display: 'flex', padding: '.4em',}}>
             <div style={collapse? {width: '1px', display: 'flex', alignContent: 'flex-start',}: {width: '0px'}}>
               
               <SideContainerFolderIcon>
                 {!collapsible ? (
-                  <AiFillFolder size="20px" style={{ marginLeft: "-30.6vh" }} />
+                  <AiFillFolder size="1.25rem" style={{ marginLeft: "-24.4vh" }} />
                 ) : (
                   <AiFillFolderOpen
-                  size="20px" style={{ marginLeft: "-30.6vh" }}
+                  size="1.25rem" style={{ marginLeft: "-24.4vh" }}
                   /> 
                 )}
 
