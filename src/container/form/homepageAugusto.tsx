@@ -2,6 +2,7 @@ import logo from '../../assets/image/marinha.png'
 import { styled } from '@stitches/react';
 
 const HomepageDiv = styled('div', {
+    paddingTop: '5rem',
     width: '100vw',
     position: 'absolute',
     left: 0
