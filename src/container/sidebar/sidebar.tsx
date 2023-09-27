@@ -33,6 +33,7 @@ export const SideContainer = () => {
   };
   const vector: string[][] = [
     ["weather", "chm", "weather"],
+    ["weather12", "home", "weather12"],
     // ["t weatherOffShore", "home", "weatherOffShore"],
     // ["t weatherOnShore", "speedometer2", "weatherOnShore"],
     // ["t weatherHistoric", "bootstrap", "weatherHistoric"],
