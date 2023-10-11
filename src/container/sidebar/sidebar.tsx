@@ -121,14 +121,14 @@ export const SideContainer = () => {
         })}
         <SidebarContainerCollapsible collapsible={collapsible}>
           <SideContainerItem key={0} onClick={showCollapsible} style={{display: 'flex', padding: '.4em',}}>
-            <div style={collapse? {width: '1px', display: 'flex', alignContent: 'flex-start',}: {width: '0px'}}>
+            <div style={collapse? {display: 'flex', alignContent: 'flex-start',}: {width: '0px'}}>
               
               <SideContainerFolderIcon>
                 {!collapsible ? (
-                  <AiFillFolder size="1.25rem" style={{ marginLeft: "-24.4vh" }} />
+                  <AiFillFolder size="1.25rem" style={{display: 'flex', marginLeft: "-30.8vh" }} />
                 ) : (
                   <AiFillFolderOpen
-                  size="1.25rem" style={{ marginLeft: "-24.4vh" }}
+                  size="1.25rem" style={{display: 'flex' ,marginLeft: "-30.8vh" }}
                   /> 
                 )}
 
