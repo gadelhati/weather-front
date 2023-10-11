@@ -13,7 +13,7 @@ import { getPayload, isValidToken } from '../../service/service.token'
 import logo from '../../assets/image/marinha.png'
 import { Rotate } from '../template/rotate'
 import { Toast } from '../toast/toast'
-import { HomepageAugusto } from './homepageAugusto'
+import { HomepageAugusto } from './homepage'
 
 export const Login = () => {
     const [state, setState] = useState<User>(initialUser)
