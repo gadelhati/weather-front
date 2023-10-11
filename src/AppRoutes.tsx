@@ -41,6 +41,7 @@ import { Home } from "./container/form/home";
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { PDFDocument } from "./component/pdf/PDFDocument";
 import { initialWeather12 } from "./component/weather12/weather12.initial";
+import { Weatherform } from "./container/form/weatherform";
 
 const ROLES = {
     'USER': "ROLE_USER",
@@ -73,7 +74,7 @@ export default function AppRoutes() {
                                 <Route path="/foodCategory" element={<GenericForm key='foodCategory' object={initialFoodCategory} />}></Route>
 
                                 <Route path="/weather12" element={<GenericForm key='weather12' object={initialWeather12} url={'weather12'} />}></Route>
-                                <Route path="/weather" element={<GenericForm key='weather' object={initialWeather} url={'weather'} />}></Route>
+                                <Route path="/weather" element={<Weatherform key='weather' weather={initialWeather} />}></Route>
                                 <Route path="/weather/historic" element={<GenericForm key='weatherHistoric' object={initialWeatherHistoric} url={'weather/historic'} />}></Route>
                                 <Route path="/weatherOffShore/historic" element={<GenericForm key='weatherOffShoreHistoric' object={initialWeatherOffShore} url={'weather/OffShore/historic'} />}></Route>
                                 <Route path="/weatherOnShore/historic" element={<GenericForm key='weatherOnShoreHistoric' object={initialWeatherOnShore} url={'weather/OnShore/historic'} />}></Route>

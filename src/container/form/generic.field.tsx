@@ -61,11 +61,23 @@ export const Container = styled('div', {
     alignItems: 'center',
     flexWrap: 'wrap',
     padding: '$lg',
+    '.tab': {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+       
+    },
     variants: {
         align: {
             column: {
                 display: 'inline-block',
             },
+            line: {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }
+            
         },
     },
 })
