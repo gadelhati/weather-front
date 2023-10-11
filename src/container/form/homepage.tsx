@@ -13,12 +13,13 @@ const HomepageImg = styled('img', {
     maxHeight: '600px',
     maxWidth: '600px',
     // marginLeft: '150px',
-    marginTop: '05px',
+    marginTop: '-72px',
     // margin: 'auto',
     // justifyContent: 'right',
     marginLeft: 'auto',
     marginRight: 'auto',
-    display: 'block',
+    display: 'flex',
+    alignContent: 'center',
 
 })
 
