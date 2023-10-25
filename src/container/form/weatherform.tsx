@@ -567,7 +567,7 @@ export const Weatherform = (weather: any) => {
                                                             <input type="text" name={"cm"} value={weather.cm} onChange={handleInputChange}/>
                                                             <label htmlFor={"cm"}>{"cm"}</label>
                                                             <label htmlFor={"cm"}>{validation("cm")}</label>
-                                                          GG  </span>
+                                                            </span>
                                                         </ContainerInput>
 
                                                         <ContainerInput historic={true}>
