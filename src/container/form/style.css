@@ -15,8 +15,12 @@ article {
 }
 
 .tabs {
-    display: flex;   
-    
+    display: flex;  
+}
+
+.tabs button {
+    text-align:justify;
+   
 }
 
 .show {
@@ -28,15 +32,14 @@ article {
     font-family: 'roboto';
     border-radius: 0px 0px 5px 0px ;
     box-sizing: border-box;
-    padding-left: 4vw;
     box-shadow: 2px 1px 1px 0px rgb(100, 100, 100);
     z-index: 1;
-
+    width: 20vh;
 }
 
 .inative {
     border: none;
-    padding-left: 4vw;
+    width: 20vh;
     fill-opacity: 50%;
     border-radius: 0px 0px 10px 0px ;
 }
