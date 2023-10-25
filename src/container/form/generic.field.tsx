@@ -98,8 +98,10 @@ export const ContainerInput = styled('div', {
         minHeight: '1.8em',
     },
 
-    'input:read-only': {
-        backgroundColor: 'gray',
+    'input:disabled': {
+        backgroundColor: '$eleventh',
+        // pointerEvents: 'none',
+        cursor: 'not-allowed',
     },
 
     'input, select': {
@@ -156,7 +158,7 @@ export const ContainerInput = styled('div', {
             },
         },
     },
-    'input:focus, input:active, select:focus, select:active': {
+    'input:not([disabled]):focus, input:not([disabled]):active, select:not([disabled]):focus, select:not([disabled]):active': {
         color: '$fourth',
         textIndent: '0',
         background: '$tenth',
