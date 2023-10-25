@@ -97,6 +97,11 @@ export const ContainerInput = styled('div', {
     'select': {
         minHeight: '1.8em',
     },
+
+    'input:read-only': {
+        backgroundColor: 'gray',
+    },
+
     'input, select': {
         display: 'inline-block',
         width: '26em',

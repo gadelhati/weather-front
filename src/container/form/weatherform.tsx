@@ -272,6 +272,22 @@ export const Weatherform = (weather: any) => {
                                                             </span>
                                                         </ContainerInput>
 
+                                                        <ContainerInput historic={true}>
+                                                            <span>
+                                                            <input readOnly={state.mimi === 'AA'? true : false}type="text" name={"ii"} value={weather.ii} onChange={handleInputChange}/>
+                                                            <label htmlFor={"ii"}>{"ii"}</label>
+                                                            <label htmlFor={"ii"}>{validation("ii")}</label>
+                                                            </span>
+                                                        </ContainerInput>
+
+                                                        <ContainerInput historic={true}>
+                                                            <span>
+                                                            <input readOnly={state.mimi === 'AA'? true : false}type="text" name={"iii"} value={weather.iii} onChange={handleInputChange}/>
+                                                            <label htmlFor={"iii"}>{"iii"}</label>
+                                                            <label htmlFor={"iii"}>{validation("iii")}</label>
+                                                            </span>
+                                                        </ContainerInput>
+
                                                         {/* <ContainerInput historic={true}>
                                                             <span>
                                                             <input type="text" name={"nbnbnb"} value={weather.nbnbnb} onChange={handleInputChange}/>
@@ -301,22 +317,6 @@ export const Weatherform = (weather: any) => {
                                                             <input type="text" name={"iw"} required value={weather.iw} onChange={handleInputChange}/>
                                                             <label htmlFor={"iw"}>{"iw"}</label>
                                                             <label htmlFor={"iw"}>{validation("iw")}</label>
-                                                            </span>
-                                                        </ContainerInput>
-
-                                                        <ContainerInput historic={true}>
-                                                            <span>
-                                                            <input readOnly={state.mimi === 'AA'? true : false}type="text" name={"ii"} value={weather.ii} onChange={handleInputChange}/>
-                                                            <label htmlFor={"ii"}>{"ii"}</label>
-                                                            <label htmlFor={"ii"}>{validation("ii")}</label>
-                                                            </span>
-                                                        </ContainerInput>
-
-                                                        <ContainerInput historic={true}>
-                                                            <span>
-                                                            <input readOnly={state.mimi === 'AA'? true : false}type="text" name={"iii"} value={weather.iii} onChange={handleInputChange}/>
-                                                            <label htmlFor={"iii"}>{"iii"}</label>
-                                                            <label htmlFor={"iii"}>{validation("iii")}</label>
                                                             </span>
                                                         </ContainerInput>
 
@@ -466,13 +466,13 @@ export const Weatherform = (weather: any) => {
                                                             </span>
                                                         </ContainerInput> */}
 
-                                                        <ContainerInput historic={true}>
+                                                        {/* <ContainerInput historic={true}>
                                                             <span>
                                                             <input readOnly={state.mimi === 'BB'? true : false}type="text" name={"hhh"} value={weather.hhh} onChange={handleInputChange}/>
                                                             <label htmlFor={"hhh"}>{"hhh"}</label>
                                                             <label htmlFor={"hhh"}>{validation("hhh")}</label>
                                                             </span>
-                                                        </ContainerInput>
+                                                        </ContainerInput> */}
 
                                                         <ContainerInput historic={true}>
                                                             <span>
@@ -567,7 +567,7 @@ export const Weatherform = (weather: any) => {
                                                             <input type="text" name={"cm"} value={weather.cm} onChange={handleInputChange}/>
                                                             <label htmlFor={"cm"}>{"cm"}</label>
                                                             <label htmlFor={"cm"}>{validation("cm")}</label>
-                                                            </span>
+                                                          GG  </span>
                                                         </ContainerInput>
 
                                                         <ContainerInput historic={true}>
@@ -578,13 +578,13 @@ export const Weatherform = (weather: any) => {
                                                             </span>
                                                         </ContainerInput>
 
-                                                        <ContainerInput historic={true}>
+                                                        {/* <ContainerInput historic={true}>
                                                             <span>
                                                             <input readOnly={state.mimi === 'BB'? true : false}type="text" name={"gggg"} value={weather.gggg} onChange={handleInputChange}/>
                                                             <label htmlFor={"gggg"}>{"gggg"}</label>
                                                             <label htmlFor={"gggg"}>{validation("gggg")}</label>
                                                             </span>
-                                                        </ContainerInput>
+                                                        </ContainerInput> */}
                                                         </div>
                                                         {/* begining of section 2 */}
                                                         <div className={tab === 2 ? 'tab' : 'hide'}>
@@ -702,30 +702,6 @@ export const Weatherform = (weather: any) => {
 
                                                         <ContainerInput historic={true}>
                                                             <span>
-                                                            <input readOnly={state.mimi === 'BB'? true : false}type="text" name={"is_ice"} value={weather.is_ice} onChange={handleInputChange}/>
-                                                            <label htmlFor={"is_ice"}>{"is_ice"}</label>
-                                                            <label htmlFor={"is_ice"}>{validation("is_ice")}</label>
-                                                            </span>
-                                                        </ContainerInput>
-
-                                                        <ContainerInput historic={true}>
-                                                            <span>
-                                                            <input type="text" name={"eses"} value={weather.eses} onChange={handleInputChange}/>
-                                                            <label htmlFor={"eses"}>{"eses"}</label>
-                                                            <label htmlFor={"eses"}>{validation("eses")}</label>
-                                                            </span>
-                                                        </ContainerInput>
-
-                                                        <ContainerInput historic={true}>
-                                                            <span>
-                                                            <input type="text" name={"rs"} value={weather.rs} onChange={handleInputChange}/>
-                                                            <label htmlFor={"rs"}>{"rs"}</label>
-                                                            <label htmlFor={"rs"}>{validation("rs")}</label>
-                                                            </span>
-                                                        </ContainerInput>
-
-                                                        <ContainerInput historic={true}>
-                                                            <span>
                                                             <input type="text" name={"hwahwahwa"} value={weather.hwahwahwa} onChange={handleInputChange}/>
                                                             <label htmlFor={"hwahwahwa"}>{"hwahwahwa"}</label>
                                                             <label htmlFor={"hwahwahwa"}>{validation("hwahwahwa")}</label>
@@ -745,6 +721,14 @@ export const Weatherform = (weather: any) => {
                                                             <input type="text" name={"tbtbtb"} value={weather.tbtbtb} onChange={handleInputChange}/>
                                                             <label htmlFor={"tbtbtb"}>{"tbtbtb"}</label>
                                                             <label htmlFor={"tbtbtb"}>{validation("tbtbtb")}</label>
+                                                            </span>
+                                                        </ContainerInput>
+
+                                                        <ContainerInput historic={true}>
+                                                            <span>
+                                                            <input readOnly={state.mimi === 'BB'? true : false}type="text" name={"is_ice"} value={weather.is_ice} onChange={handleInputChange}/>
+                                                            <label htmlFor={"is_ice"}>{"is_ice"}</label>
+                                                            <label htmlFor={"is_ice"}>{validation("is_ice")}</label>
                                                             </span>
                                                         </ContainerInput>
 
@@ -787,6 +771,22 @@ export const Weatherform = (weather: any) => {
                                                             <label htmlFor={"zi"}>{validation("zi")}</label>
                                                             </span>
                                                         </ContainerInput>
+{/* 
+                                                        <ContainerInput historic={true}>
+                                                            <span>
+                                                            <input type="text" name={"eses"} value={weather.eses} onChange={handleInputChange}/>
+                                                            <label htmlFor={"eses"}>{"eses"}</label>
+                                                            <label htmlFor={"eses"}>{validation("eses")}</label>
+                                                            </span>
+                                                        </ContainerInput> */}
+
+                                                        {/* <ContainerInput historic={true}>
+                                                            <span>
+                                                            <input type="text" name={"rs"} value={weather.rs} onChange={handleInputChange}/>
+                                                            <label htmlFor={"rs"}>{"rs"}</label>
+                                                            <label htmlFor={"rs"}>{validation("rs")}</label>
+                                                            </span>
+                                                        </ContainerInput> */}
                                                         </div>
                                                         {/*begining of section 3*/}
                                                         <div className={tab === 3 ? 'tab' : 'hide'}>
@@ -842,7 +842,7 @@ export const Weatherform = (weather: any) => {
                                                         <div className={tab === 5 ? 'tab' : 'hide'}>
                                                         <ContainerInput historic={true}>
                                                             <span>
-                                                            <input type="text" name={"ichw"} value={weather.ichw} onChange={handleInputChange}/>
+                                                            <input readOnly={state.mimi === 'BB'? true : false} type="text" name={"ichw"} value={weather.ichw} onChange={handleInputChange}/>
                                                             <label htmlFor={"ichw"}>{"ichw"}</label>
                                                             <label htmlFor={"ichw"}>{validation("ichw")}</label>
                                                             </span>
@@ -850,7 +850,7 @@ export const Weatherform = (weather: any) => {
 
                                                         <ContainerInput historic={true}>
                                                             <span>
-                                                            <input type="text" name={"icm"} value={weather.icm} onChange={handleInputChange}/>
+                                                            <input readOnly={state.mimi === 'BB'? true : false} type="text" name={"icm"} value={weather.icm} onChange={handleInputChange}/>
                                                             <label htmlFor={"icm"}>{"icm"}</label>
                                                             <label htmlFor={"icm"}>{validation("icm")}</label>
                                                             </span>
@@ -858,7 +858,7 @@ export const Weatherform = (weather: any) => {
 
                                                         <ContainerInput historic={true}>
                                                             <span>
-                                                            <input type="text" name={"cs"} value={weather.cs} onChange={handleInputChange}/>
+                                                            <input readOnly={state.mimi === 'BB'? true : false} type="text" name={"cs"} value={weather.cs} onChange={handleInputChange}/>
                                                             <label htmlFor={"cs"}>{"cs"}</label>
                                                             <label htmlFor={"cs"}>{validation("cs")}</label>
                                                             </span>
@@ -866,7 +866,7 @@ export const Weatherform = (weather: any) => {
 
                                                         <ContainerInput historic={true}>
                                                             <span>
-                                                            <input type="text" name={"icf"} value={weather.icf} onChange={handleInputChange}/>
+                                                            <input readOnly={state.mimi === 'BB'? true : false} type="text" name={"icf"} value={weather.icf} onChange={handleInputChange}/>
                                                             <label htmlFor={"icf"}>{"icf"}</label>
                                                             <label htmlFor={"icf"}>{validation("icf")}</label>
                                                             </span>
@@ -874,7 +874,7 @@ export const Weatherform = (weather: any) => {
 
                                                         <ContainerInput historic={true}>
                                                             <span>
-                                                            <input type="text" name={"icp"} value={weather.icp} onChange={handleInputChange}/>
+                                                            <input readOnly={state.mimi === 'BB'? true : false} type="text" name={"icp"} value={weather.icp} onChange={handleInputChange}/>
                                                             <label htmlFor={"icp"}>{"icp"}</label>
                                                             <label htmlFor={"icp"}>{validation("icp")}</label>
                                                             </span>
@@ -882,7 +882,7 @@ export const Weatherform = (weather: any) => {
 
                                                         <ContainerInput historic={true}>
                                                             <span>
-                                                            <input type="text" name={"icq"} value={weather.icq} onChange={handleInputChange}/>
+                                                            <input readOnly={state.mimi === 'BB'? true : false} type="text" name={"icq"} value={weather.icq} onChange={handleInputChange}/>
                                                             <label htmlFor={"icq"}>{"icq"}</label>
                                                             <label htmlFor={"icq"}>{validation("icq")}</label>
                                                             </span>
