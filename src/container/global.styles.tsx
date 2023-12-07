@@ -29,6 +29,7 @@ export const stitches = createStitches({
             eighteenth: '#000000',
             nineteenth: '#66C462',
             thirty: '#A4B5B2',
+            twentyfirst: '#95B7B7',
             
             tsuccess: '#124010',
             tinfo: '#3498DB',
