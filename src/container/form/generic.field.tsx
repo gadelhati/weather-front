@@ -224,6 +224,7 @@ export const ContainerLabel = styled('label', {
 })
 
 export const InputGroup = styled('span', {
+    padding:'.2rem',
     display: 'flex',
     alignItems: 'center',
     'input:first-child': {
@@ -236,7 +237,7 @@ export const InputGroup = styled('span', {
         borderRadius: '0 .3rem .3rem 0',
     },
     input: {
-        height: '2rem',
+        height: '2.2rem',
         width: '4rem',
         padding: '0 1rem',
         color: '#354F52',
@@ -260,5 +261,24 @@ export const InputGroup = styled('span', {
     'input:focus, input:focus-visible': {
         borderColor: '#84A98C',
         outline: 'none',
+    },
+    variants: {
+       
+        error: {
+            true: {
+                'input, select': {
+                    color: '$tenth',
+                    background: '$fifteenth',
+                },
+                'input:focus, input:active, input:hover, select:focus, select:active, select:hover': {
+                    '+ label + label': {
+                        height: '4rem',
+                        background: '$fifteenth',
+                        display: 'inline-block',
+                        zIndex: '1',
+                    },
+                },
+            },
+        },
     },
 })
