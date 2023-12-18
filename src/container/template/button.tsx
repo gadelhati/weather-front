@@ -33,7 +33,7 @@ export const Button = styled('button', {
     variants: {
         category: {
             primary: {
-                backgroundImage: 'linear-gradient($fifth, $second)',
+                backgroundImage: 'linear-gradient(#54b687, #268e84)',
             },
             secondary: {
                 backgroundImage: 'linear-gradient($twelfth, $sixteenth)',
