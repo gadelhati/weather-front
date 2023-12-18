@@ -31,6 +31,8 @@ export const stitches = createStitches({
             // #D1D100
             twentieth: '#0D6EFD',
             twentyFirst: '#3498DB',
+            twentySecond: '#268e84',
+            twentyThird: '#54b687',
 
             one: '#73E86D',
             two: '#000000',
