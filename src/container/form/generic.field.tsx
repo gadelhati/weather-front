@@ -113,7 +113,7 @@ export const ContainerInput2 = styled('span', {
         color: '$fourth',
         textIndent: '0',
         background: '$tenth',
-                '+ label': {
+        '+ label': {
             width: '90%',
             margin: '0 5%',
             overflow: 'visible',
@@ -224,17 +224,55 @@ export const ContainerLabel = styled('label', {
 })
 
 export const InputGroup = styled('span', {
-    padding:'.2rem',
+    padding: '.2rem',
     display: 'flex',
     alignItems: 'center',
-    'input:first-child': {
-        borderRadius: '.3rem 0 0 .3rem',
+    'span': {
+        position: 'relative',
+        display: 'inline-block',
+        borderBottom: '1px dotted black',
     },
-    'input:not(:last-child)': {
+    'span .tooltiptext': {
+        visibility: 'hidden',
+        width: '120px',
+        backgroundColor: 'black',
+        color: '#fff',
+        fontSize: '.75rem',
+        textAlign: 'center',
+        borderRadius: '6px',
+        padding: '5px 0',
+        position: 'absolute',
+        zIndex: '1',
+        top: '150%',
+        left: '50%',
+        marginLeft: '-60px',
+    },
+    '.tooltiptext::after': {
+        content: "",
+        position: 'absolute',
+        bottom: '100%',
+        left: '50%',
+        marginLeft: '-5px',
+        borderWidth: '5px',
+        borderStyle: 'solid',
+        borderColor: 'transparent transparent black transparent',
+    },
+    'span:hover .tooltiptext': {
+        visibility: 'visible',
+    },
+    'input:first-child': {
+        borderTopLeftRadius: '.3rem',
+        borderBottomLeftRadius: '.3rem',
+    },
+    'span > input': {
+        color: 'green',
+    },
+    'input:not(:last-of-type)': {
         borderRight: 'none',
     },
-    'input:last-child': {
-        borderRadius: '0 .3rem .3rem 0',
+    'input:last-of-type': {
+        borderTopRightRadius: '.3rem',
+        borderBottomRightRadius: '.3rem',
     },
     input: {
         height: '2.2rem',
@@ -255,15 +293,11 @@ export const InputGroup = styled('span', {
         fontSize: '15px',
         transition: 'background-color .3s ease-in-out',
     },
-    '.label:hover': {
-        backgroundColor: '#52796F',
-    },
     'input:focus, input:focus-visible': {
         borderColor: '#84A98C',
         outline: 'none',
     },
     variants: {
-       
         error: {
             true: {
                 'input, select': {
@@ -273,7 +307,7 @@ export const InputGroup = styled('span', {
                 'input:focus, input:active, input:hover, select:focus, select:active, select:hover': {
                     '+ label + label': {
                         height: '4rem',
-                        background: '$fifteenth',
+                        // background: '$fifteenth',
                         display: 'inline-block',
                         zIndex: '1',
                     },
