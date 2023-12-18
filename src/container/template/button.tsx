@@ -6,7 +6,7 @@ export const Button = styled('button', {
     justifyContent: 'center',
     width: '6em',
     maxHeight: '4em',
-    backgroundImage: 'linear-gradient($fourth, $second)',
+    backgroundImage: 'linear-gradient($twentyFifth, $twentySixth)',
     border: '0',
     borderRadius: '4px',
     boxShadow: 'rgba(0, 0, 0, .3) 0 5px 15px',
