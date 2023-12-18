@@ -374,6 +374,13 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                                 <label htmlFor={"nbNbNb"}>{validation("nbNbNb")}</label>
                                                                 </span>
                                                             </ContainerInput2> */}
+                                        <InputGroup>
+                                            <input className="child label" value="SS" type="submit" tabIndex={-1}/>
+                                            <input type="text" name={"yy"} required value={state.yy} onChange={handleInputChange} />
+                                            <input type="text" name={"gg"} required value={state.gg} onChange={handleInputChange} />
+                                            <input type="text" name={"iw"} required value={state.iw} onChange={handleInputChange} />
+                                        </InputGroup>
+                                        
                                         <ContainerInput2 error={validation('yy').length !== 0 ? true : false} historic={true}>
                                             <span>
                                                 <input type="text" name={"yy"} required value={state.yy} onChange={handleInputChange} />
