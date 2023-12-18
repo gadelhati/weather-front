@@ -7,7 +7,7 @@ import { StationCategory } from "../station.category/station.category.interface"
 import { Surveying } from "../surveying/surveying.interface";
 
 export interface StationHistoric {
-    id: string,
+    readonly id: string,
     localDepth: number,
     activation: Date,
     latitude: number,

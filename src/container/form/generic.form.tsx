@@ -1,9 +1,9 @@
 import { useState, ChangeEvent, useEffect, useTransition } from 'react'
-import { isValidToken } from '../../service/service.token'
+import { getPayload, isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
 import { create, update, remove, retrieve, removeComposite } from '../../service/service.crud'
-import { Container, ContainerInput } from './generic.field'
+import { Container, ContainerInput2 } from './generic.field'
 import { AtributeSet } from './generic.atribute'
 import { Atribute } from '../../component/atribute/atribute.interface'
 import { Table } from '../template/table'
@@ -15,39 +15,46 @@ import { Modal } from '../template/modal'
 import { Toast } from '../toast/toast'
 import { createToast, toastDetails } from '../toast/toast.message'
 import { SubAtributeSet } from '../../component/atribute/subAtribute'
-import { WeatherUpload } from './weather.upload'
+// import { WeatherUpload } from './weather.upload'
 import { Header, TitleHeader } from '../template/header'
 // import { Load } from '../template/load'
 import { UriScreenFormat } from '../../service/uri.format'
 // import { ShineButton } from './shine.button'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { PDFDocument } from '../../component/pdf/PDFDocument'
+// import { Input } from './input/Input'
+// import { InputInterface } from './input/assets/input.interface'
+import { Icon } from '../../assets/svg.access'
 
 export const GenericForm = <T extends { id: string, name: string }>(object: any) => {
     const [state, setState] = useState<any>(object.object)
+    const [composite, setComposite] = useState<any>(object.object)
     const [states, setStates] = useState<T[]>([object.object])
     const [subStates, setSubStates] = useState<Object[][]>(SubAtributeSet(state))
     const [error, setError] = useState<ErrorMessage[]>([initialErrorMessage])
     const [atribute, setAtribute] = useState<Atribute[]>(AtributeSet(object.object))
     const [page, setPage] = useState<number>(0)
-    const [size, setSize] = useState<number>(8)
+    const [size, setSize] = useState<number>(5)
     const [pageable, setPageable] = useState<Pageable>(initialPageable)
     const [ispending, startTransition] = useTransition()
     const [modal, setModal] = useState<boolean>(false)
-    const [key, setKey] = useState<string>('')
+    const [confirm, setConfirm] = useState<{message: '', show: boolean, action: string}>({message: '', show: false, action: ''})
+    const [key, setKey] = useState<string>('name')
     const [search, setSearch] = useState<string>('')
 
     const width = object.width ?? 100;
 
     useEffect(() => {
-        JSON.stringify({ispending})
+        JSON.stringify({ ispending })
         setAtribute(AtributeSet(object.object))
         retrieveItem()
+        loadSubStates()
     }, [page, size])
-    useEffect(()=>{
+    useEffect(() => {
         searchValue()
+        setPage(0)
     }, [key, search])
-    const searchValue = async() => {
+    const searchValue = async () => {
         await retrieve(object.url, page, size, key, search).then((data: any) => {
             startTransition(() => setPageable(data))
             startTransition(() => setStates(data.content))
@@ -60,21 +67,24 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
         setSearch(event.target.value)
     }
     const resetItem = () => {
+        setComposite(object.object)
         loadSubStates()
         setState(object.object)
         setError([initialErrorMessage])
     }
     const selectItem = async (data: any) => {
         loadSubStates()
+        setComposite(data)
         setState(data)
         handleModal()
     }
     const validItem = (data: any) => {
-        if (data?.id || data?.ii && data?.iii || data?.ddddddd) {
-            handleModal()
+        if (data?.hasOwnProperty('id') || data?.hasOwnProperty('ii') && data?.hasOwnProperty('iii') || data?.hasOwnProperty('ddddddd') || data?.hasOwnProperty('name') && data?.hasOwnProperty('number')) {
+            setConfirm({ ...confirm, show: !confirm.show })
             retrieveItem()
             createToast(toastDetails[0])
         } else {
+            handleConfirm('')
             startTransition(() => setError(data))
             createToast(toastDetails[1])
         }
@@ -88,7 +98,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
         }).catch(() => { networkError() })
     }
     const retrieveItem = async () => {
-        await retrieve(object.url, page, size, '', '').then((data: any) => {
+        await retrieve(object.url, page, size, key, search).then((data: any) => {
             startTransition(() => setPageable(data))
             startTransition(() => setStates(data.content))
         }).catch(() => { networkError() })
@@ -96,13 +106,14 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     const loadSubStates = async () => {
         Object.entries(state).map(([key, value], index) => {
             return (
-                !(atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index].worth === 0 || value === null && atribute[index].worth === '' || atribute[index]?.type !== 'undefined' && !Array.isArray(atribute[index]?.worth)) &&
+                !(atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index].worth === 0 || value === null && atribute[index].worth === '' || atribute[index]?.type !== 'undefined' && !Array.isArray(atribute[index]?.worth)) || atribute[index]?.type === 'object' ?
                 retrieve(key, 0, 1000, '', '').then((data: any) => {
                     startTransition(() => {
                         subStates[index] = data.content
                         setSubStates(subStates)
                     })
                 }).catch(() => { networkError() })
+                : {}
             )
         })
     }
@@ -112,42 +123,49 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
         }).catch(() => { networkError() })
     }
     const deleteItem = async () => {
-        if(state.id !== undefined){
+        if (state.id !== undefined) {
             await remove(object.url, state.id).then((data) => {
                 validItem(data)
             }).catch(() => { networkError() })
-        } else {
-            await removeComposite(object.url, state?.dateObservation, state?.ddddddd, state?.ii, state?.iii).then((data) => {
+        } else if (composite.hasOwnProperty('dateObservation') || composite.hasOwnProperty('ii') && composite.hasOwnProperty('iii')) {
+            await removeComposite(object.url, state, state?.dateObservation, state?.ddddddd, state?.ii, state?.iii).then((data) => {
+                validItem(data)
+            }).catch(() => { networkError() })
+        } else if (composite.hasOwnProperty('name') && composite.hasOwnProperty('number')) {
+            await removeComposite(object.url, state, state?.name, state?.number, '', '').then((data) => {
                 validItem(data)
             }).catch(() => { networkError() })
         }
     }
     const validation = (name: string): string[] => {
         let vector: string[] = []
-        if(Array.isArray(error)){
-            error?.map((element: any) => { if (name == element.field) return vector.push(element?.message+'. ') })
+        if (Array.isArray(error)) {
+            error?.map((element: any) => { if (name == element.field) return vector.push(element?.message + '. ') })
         }
         return vector
     }
     const validationDTO = (): string[] => {
         let vector: string[] = []
-        if(Array.isArray(error)){
-            error?.map((element: any) => { if (element.field?.startsWith("DTO")) return vector.push(element?.message+'. ') })
+        if (Array.isArray(error)) {
+            error?.map((element: any) => { if (element.field?.startsWith("DTO")) return vector.push(element?.message + '. ') })
         }
         return vector
     }
+    // const handleInputChangeFather = (object: InputInterface) => {
+    //     setState({ ...state, [object.name]: object.value })
+    // }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value
         setState({ ...state, [event.target.name]: value })
     }
     const handleInputChangeSubSelect = async (event: ChangeEvent<HTMLSelectElement>) => {
-        await retrieve(event.target.name, page, size, event.target.name, event.target.value).then((data: any) => {
+        await retrieve(event.target.name, 0, size, 'id', event.target.value).then((data: any) => {
             setState({ ...state, [event.target.name]: data?.content[0] })
         }).catch(() => { networkError() })
     }
     const handleInputChangeSubSelectArray = async (event: ChangeEvent<HTMLSelectElement>) => {
-        await retrieve(event.target.name, 0, size, event.target.name, 'id').then((data: any) => {
-            setState({ ...state, [event.target.name]: [data?.content[1]] })
+        await retrieve(event.target.name, 0, size, 'id', event.target.value).then((data: any) => {
+            setState({ ...state, [event.target.name]: [data?.content[0]] })
         }).catch(() => { networkError() })
     }
     const handlePage = (page: number) => {
@@ -159,6 +177,18 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     const handleModal = () => {
         setModal(!modal)
         setError([initialErrorMessage])
+    }
+    const handleConfirm = (action: string) => {
+        setConfirm({...confirm, show:!confirm.show, action: action})
+        handleModal()
+    }
+    const handleConfirmYes = () => {
+        switch (confirm.action) {
+            case 'create': createItem(); break
+            case 'retrieve': retrieveItem(); break
+            case 'update': updateItem(); break
+            case 'delete': deleteItem(); break
+        }
     }
     const newItem = () => {
         setModal(!modal)
@@ -173,7 +203,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
         return (
             Object.entries(values).map(([key, value]: any, index) => {
                 if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
-                    return (<td>
+                    return (<td key={Math.random()}>
                         {Array.isArray(value) ?
                             <>
                                 {value.map((key) => {
@@ -186,9 +216,9 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                 })}
                             </> :
                             typeof value === 'object' ?
-                                <>{value == null ? '' : value?.name ? value.name : value.id}</>
+                                <>{value === null ? '' : value?.name ? value.name : value.id}</>
                                 :
-                                <>{value}</>
+                                <>{typeof value === 'boolean' ? JSON.stringify(value) : value}</>
                         }
                     </td>)
                 }
@@ -199,122 +229,151 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
     //     button?.style.setProperty("--x", event.clientX - button?.getBoundingClientRect().x)
     //     button?.style.setProperty("--y", event.clientY - button?.getBoundingClientRect().y)
     // }
-
+    const compositeOrNot = (): boolean => {
+        let id: boolean = false
+        if (composite.hasOwnProperty('name') && composite?.name !== '' &&
+            composite.hasOwnProperty('number') && composite?.number !== 0) {
+            id = true
+        }
+        if (composite.hasOwnProperty('ii') && composite?.ii !== '' &&
+            composite.hasOwnProperty('iii') && composite?.iii !== '') {
+            id = true
+        }
+        if (composite.hasOwnProperty('ddddddd') && composite?.ddddddd !== '') {
+            id = true
+        }
+        if (state.hasOwnProperty('id') && state?.id !== '') {
+            id = true
+        }
+        if (object.url.includes('istoric')) {
+            id = true
+        }
+        return id
+    }
     const onClickModal = (evt: React.MouseEvent) => {
         if ((evt.target as HTMLElement).className.includes('modal-div')) {
             setModal(false);
         }
     }
-
+    const onConfirmModal = (evt: React.MouseEvent) => {
+        if ((evt.target as HTMLElement).className.includes('modal-confirm')) {
+            setConfirm({ ...confirm, show: false });
+        }
+    }
     return (
         <>
             {/* <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton> */}
             {isValidToken() &&
                 <>
-                    <Modal show={modal} large={object.url.includes('istoric') || object.url.includes('weather') ? true : false} className='modal-div' onClick={(evt) => {
+                    <Modal confirm={true} show={confirm.show} className='modal-confirm' onClick={(evt) => {
+                        onConfirmModal(evt)
+                    }}>
+                        <article>
+                            <header><span onClick={() => handleConfirm('')}>&times;</span><h2>{UriScreenFormat('Confirm')}</h2></header>
+                            <footer>
+                                <Button category={'danger'} onClick={handleConfirmYes} >{UriScreenFormat(confirm.action)}</Button>
+                                <Button category={'secondary'} onClick={() => handleConfirm('')} type='reset' >Reset</Button>
+                            </footer>
+                        </article>
+                    </Modal>
+                    <Modal show={modal} className='modal-div' onClick={(evt) => {
                         onClickModal(evt)
                     }}>
-                        <article style={{ maxWidth: `${width}%`}}>
+                        <article>
                             <header><span onClick={handleModal}>&times;</span><h2>{UriScreenFormat(object.url)}</h2></header>
                             {atribute &&
                                 <>
-                                    <Container style={{ flex: '1', overflow: 'auto'}}>
+                                <center>
+                                    <Container align={'inputs'}>
                                         {Object.entries(state).map(([key, value]: any, index) => {
                                             return (
-                                                <div style={atribute[index]?.type === 'hidden' ? { display: 'none' } : { display: 'flex'  }}>
-                                                        <ContainerInput error={validation(key).length !== 0 ? true : false} historic={object.url.includes('istoric') || object.url.includes('weather') ? true : false}>
-                                                            <span>
-                                                                {Array.isArray(atribute[index]?.worth) ?
-                                                                    atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || value !== null && typeof value !== 'object' ?
-                                                                        <>
-                                                                            <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false} />
-                                                                            <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
-                                                                            <label htmlFor={key}>{validation(key)}</label>
-                                                                        </>
-                                                                        :
-                                                                        <>
-                                                                            <select name={key} onChange={handleInputChangeSubSelectArray} defaultValue={value} value={value}>
-                                                                                <option value={value} selected>{value === null ? '' : value[0]?.name ? value[0].name : value[0].id}</option>
-                                                                                {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
-                                                                            </select>
-                                                                            <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
-                                                                        </>
-                                                                    :
-                                                                    atribute[index]?.type === 'checkbox' || atribute[index]?.type === 'date' || value === null && atribute[index]?.worth === 0 || value === null && atribute[index]?.worth === '' || atribute[index]?.type !== 'undefined' ?
-                                                                        <>
-                                                                            <input type={atribute[index]?.type} name={key} required value={atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value} onChange={handleInputChange} autoComplete='off' readOnly={object.url.includes('istoric') ? true : false} />
-                                                                            <label htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
-                                                                            <label htmlFor={key}>{validation(key)}</label>
-                                                                        </>
-                                                                        :
-                                                                        <>
-                                                                            <select name={key} onChange={handleInputChangeSubSelect} defaultValue={value}>
-                                                                                <option value={value} selected>{value === null || value === undefined ? '' : value?.name ? value.name : value.id}</option>
-                                                                                {subStates[index]?.map(((result: any) => <option placeholder={key} value={result.id}>{result?.name ? result.name : result.id}</option>))}
-                                                                            </select>
-                                                                            <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' ? true : false}>{key}</label>
-                                                                            <label htmlFor={key}>{validation(key)}</label>
-                                                                        </>
-                                                                }
-                                                            </span>
-                                                        </ContainerInput>
+                                                // <Input childToParent={handleInputChangeFather} key={Math.random()} type={atribute[index]?.type} name={key} value={value} readOnly={false} show={modal}></Input>
+                                                <div key={key} style={atribute[index]?.type === 'hidden' ? { display: 'none' } : { display: 'flex' }}>
+                                                    <ContainerInput2 key={key} error={validation(key).length !== 0 ? true : false}>
+                                                        {Array.isArray(atribute[index]?.worth) || atribute[index]?.type === 'object' || atribute[index]?.type === 'undefined' ?
+                                                            <select key={key} name={key} onChange={Array.isArray(value) ? handleInputChangeSubSelectArray : handleInputChangeSubSelect}
+                                                                // defaultValue={typeof value[0] === 'boolean' ? undefined : atribute[index]?.type === 'date' ? removeTimeFromDate(value[0]) : value[0]}
+                                                                value={Array.isArray(value) ? value[0] : value}>
+                                                                <option selected value={value === undefined || value === null || value[0] === undefined ? null : Array.isArray(value) ? value[0] : value}>{value === undefined || value === null ? null : Array.isArray(value) ? (value[0].hasOwnProperty('name') ? value[0]?.name : value[0]?.id) : value.name !== undefined ? value?.name : value?.id}</option>
+                                                                {subStates[index]?.map(((result: any) => <option key={Math.random()} value={result.id}>{result?.name ? result.name : result.id}</option>))}
+                                                            </select>
+                                                            :
+                                                            <input key={key} name={key} onChange={handleInputChange} autoComplete='off' placeholder={''} type={atribute[index]?.type}
+                                                                // defaultValue={typeof value === 'boolean' ? undefined : atribute[index]?.type === 'date' ? removeTimeFromDate(value) : value}
+                                                                defaultChecked={typeof value === 'boolean' ? value : undefined}
+                                                                value={typeof value === 'boolean' ? undefined : value === 0 ? '' : value} />
+                                                        }
+                                                        <label className='label' htmlFor={key} hidden={atribute[index]?.type === 'hidden' || atribute[index]?.type === 'checkbox' ? true : false} >{key}</label>
+                                                        <label htmlFor={key}>{validation(key)}</label>
+                                                    </ContainerInput2>
                                                 </div>
                                             )
                                         })}
                                     </Container>
-                                    <Container>
+                                    <Container align={'response'}>
                                         <div>{validationDTO()}</div>
                                     </Container>
-                                    <Container hidden={object.url.includes('istoric') ? true : false} >
-                                        {modal &&
+                                </center>
+                                <footer>
+                                    {/* {modal &&
                                         <PDFDownloadLink document={<PDFDocument object={state} />} fileName="somename.pdf">
-                                                {({ loading }) => loading ? <Button category={'warning'} >Wait</Button> : <Button category={'secondary'} >Download</Button> }
+                                            {({ loading }) => loading ? <Button disabled={true} category={'secondary'} >Wait</Button> : <Button category={'secondary'} >Download</Button>}
                                         </PDFDownloadLink>}
-                                        <Button type='reset' category={'secondary'} onClick={resetItem}>Reset</Button>
-                                        {/* <Button type='reset' category={'secondary'} onClick={resetItem}>Reset</Button> */}
-                                        <Button category={'success'} onClick={createItem} hidden={state.id !== "" && !object.url.includes('istoric') || object.url.includes('istoric') ? true : false}>Create</Button>
-                                        <Button category={'warning'} onClick={updateItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Update</Button>
-                                        <Button category={'danger'} onClick={deleteItem} hidden={state.id === "" || object.url.includes('istoric') ? true : false}>Delete</Button>
-                                        {/* <Button category={'secondary'} onClick={handleModal}>Close</Button> */}
-                                    </Container>
-                                </>
+                                    <Button category={'primary'} onClick={resetItem} type='reset' >Reset</Button> */}
+                                    <Button category={'primary'} onClick={()=>handleConfirm('create')} hidden={compositeOrNot()}>Create</Button>
+                                    <Button category={'warning'} onClick={()=>handleConfirm('update')} hidden={!compositeOrNot()}>Update</Button>
+                                    <Button category={'danger'} onClick={()=>handleConfirm('delete')} hidden={!compositeOrNot()}>Delete</Button>
+                                    <Button category={'secondary'} onClick={handleModal}>Close</Button>
+                                </footer>
+                            </>
                             }
                         </article>
                     </Modal>
                     <Header>
-                        <TitleHeader>
-                            <h1>{UriScreenFormat(object.url)}</h1>
-                                <label>Items per page   </label>
-                                <select onChange={handleSize} >
-                                    <option value={5}>5</option>
-                                    <option value={10}>10</option>
-                                    {/* <option value={15}>15</option> */}
-                                </select>
-                        </TitleHeader>
-                        <><label>{key}</label><input name={search} onChange={searchItem} placeholder={`${key}`} value={search}></input></>
-                        {object.url.includes('weather') && !object.url.includes('istoric') &&
-                            <WeatherUpload />
-                        }
-                        {!object.url.includes('istoric') && <Button onClick={newItem}>New</Button>}
+                        <span>
+                            {!object.url.includes('istoric') && <Button category={'primary'} onClick={newItem}>New</Button>}
+                            <TitleHeader>
+                                <h1>{UriScreenFormat(object.url)}</h1>
+                            </TitleHeader>
+                        </span>
+                        <a href={`#/${'profile'}`}><Button category={'secondary'}>{getPayload().sub}</Button></a>
                     </Header>
                     {/* {ispending && <Load></Load>} */}
                     <Table>
                         <thead>
                             <tr>
+                                <th colSpan={9}>
+                                    <div className='header'>
+                                        <div>
+                                            <span>show</span>
+                                            <select onChange={handleSize} >
+                                                <option value={5}>5</option>
+                                                <option value={10}>10</option>
+                                                <option value={20}>20</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <span>search {key}</span>
+                                            <input name={search} onChange={searchItem} placeholder={`${key}`} value={search}></input>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
                                 {Object.entries(state).map(([key]: any, index) => {
                                     if (key !== 'id' && key !== 'password' && index < 7 && key !== 'role') {
-                                        if(!object.url.includes('weather') || index < 6) {
-                                                return (<th onClick={()=>searchKey(key)}>{key}</th>)
-                                            }
+                                        if (!object.url.includes('weather') || index < 6) {
+                                            return (<th key={Math.random()} onClick={() => searchKey(key)}>{key}</th>)
                                         }
-                                    })}
+                                    }
+                                })}
                             </tr>
                         </thead>
                         <ErrorBoundary fallback={<div> Something went wrong </div>} >
                             <tbody>
-                                {states.map((element) => {
+                                {states && states.map((element) => {
                                     return (
-                                        <tr onClick={() => selectItem(element)}>
+                                        <tr key={Math.random()} onClick={() => selectItem(element)}>
                                             <>{showObject(element)}</>
                                         </tr>)
                                 })}
@@ -322,7 +381,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                         </ErrorBoundary>
                         <tfoot>
                             <tr>
-                                <td colSpan={100}>
+                                <th>
                                     <GroupButton>
                                         <ButtonPage onClick={() => handlePage(0)}>{'<<'}</ButtonPage>
                                         <ButtonPage onClick={() => handlePage(page - 1)} disabled={page <= 0 ? true : false}>{'<'}</ButtonPage>
@@ -331,10 +390,10 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                         <ButtonPage onClick={() => handlePage(page + 1)} hidden={page >= pageable.totalPages - 1 ? true : false}>{page + 2}</ButtonPage>
                                         <ButtonPage onClick={() => handlePage(page + 1)} disabled={page >= pageable.totalPages - 2 ? true : false}>{'>'}</ButtonPage>
                                         <ButtonPage onClick={() => handlePage(pageable.totalPages - 1)}>{'>>'}</ButtonPage>
-                                        Total amount {pageable.totalElements}
                                     </GroupButton>
-                                </td>
+                                </th>
                             </tr>
+                            <tr><th>Total amount {pageable.totalElements}</th></tr>
                         </tfoot>
                     </Table>
                     <Toast className="notifications"></Toast>

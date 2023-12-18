@@ -1,5 +1,5 @@
 export interface Observer {
-    id: string,
+    readonly id: string,
     name: string,
     nip: string,
 }

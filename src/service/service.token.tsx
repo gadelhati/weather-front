@@ -1,4 +1,4 @@
-import { Header, Payload} from "./token.interface";
+import { Header, Payload, Token } from "./token.interface";
 
 export const existsToken = (): boolean => {
   return localStorage.getItem(`token`) != null;
@@ -74,7 +74,7 @@ export const getRoles = () => {
   return token?.roles;
 }
 
-export const logout = () => {
+export const removeToken = () => {
   localStorage.clear()
   window.location.reload()
 }

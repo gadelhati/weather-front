@@ -1,4 +1,4 @@
 export interface Privilege {
-    id: string,
+    readonly id: string,
     name: string,
 }

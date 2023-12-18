@@ -1,181 +1,113 @@
 import { stitches } from "../global.styles"
-
+import logo from '../../assets/image/marinha.png'
 
 const { styled } = stitches
 
-export const CenteredContainer = styled('div',{
-    color: '$ninth',
-    backgroundColor: '$third',
-    backgroundImage: 'linear-gradient(to bottom, $third, $fourth)',
-    minHeight: '100vh',
+export const FlexCointainer = styled('div', {
+    height: '100vh',
+    width: '100%',
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-})
-
-export const CenteredContainerItem = styled('div', {
-    borderRadius: '.3rem',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginTop: '$xl',
-    padding: '$rg',
-
+    justifyContent: 'start',
+    overflow: 'hidden',
+    backgroundImage: `url("https://cdn-defesaaereanaval.nuneshost.com/wp-content/uploads/2021/05/Marinha-do-brasil-Logo.jpg")`,
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+    backgroundSize: 'cover',
+    backgroundBlendMode: 'soft-light',
     variants: {
-        direction: {
-            row: {
-                padding: '0',
-                flexDirection: 'row',
-            },
-        },
-    },
-})
-
-export const SidebarContainer = styled('aside',{
-    width: '256px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-    padding: '$xxs',
-    margin: '$xxs',
-    borderRadius: '.3rem',
-    backgroundColor: '$third',
-    backgroundImage: 'linear-gradient(to bottom, $fourth, $third)',
-    boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .1rem #AAA inset',
-    // scrollBehavior: 'smooth',
-    // overflowY: 'auto',
-    // overflowX: 'hidden',
-    zIndex: 1,
-    variants: {
-        sidehide: {
-            false: {
-                width: '2.7rem',
-                'p': {
-                    display: 'none',
-                },
-            },
-        },
-    },
-})
-
-export const SidebarContainerHeader = styled('div',{
-    display: 'flex',
-    flexDirection: 'column',
-    color: '$ninth',
-    // backgroundColor: '$fourth',
-    // borderRadius: '0.3em',
-})
-
-export const SidebarContainerCollapsible = styled('div',{
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-    borderRadius: '.3rem',
-    'a': {
-        
-    },
-    // boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
-    variants: {
-        collapsible: {
-            true: {
+        element: {
+            all: {
+                alignItems: 'stretch',
                 backgroundColor: '$ninth',
-                'a:first-child': {
-                    color: '$second',
-                    backgroundColor: '$ninth',
-                    display: 'block',
-                    boxShadow: 'none',
-                },
-                'a': {
-                    color: '$ninth',
-                    backgroundColor: '$fourth',
-                },
             },
-            false: {
-                // backgroundColor: '$ninth',
-                'a:first-child': {
-                    display: 'block',
-                },
-                'a': {
-                    display: 'none',
-                },
+            main: {
+                flexBasis: '0',
+                flexGrow: '1.5',
+                flexDirection: "column",
+                color: '$fifth',
+                backgroundColor: '$ninth'
+            },
+            content: {
+                height: '94vh',
+                flexDirection: "row",
+
+                color: '$fourth',
+                backgroundColor: '$fifth'
+            },
+            nav: {
+                height: '6vh',
+                backgroundPosition: '50%',
+                padding: '.5rem',
+                flexDirection: "row",
+                justifyContent: 'space-between',
+
+                color: '$third',
+                backgroundColor: '$ninth'
             },
         },
     },
 })
-
-export const SidebarContainerButton = styled('div',{
-    textDecoration: 'none',
-    textAlign: 'center',
-    color: '$second',
-    // boxShadow: '5px 5px 5px',
-    height: '30px',
-    width: '30px',
-    userSelect: 'none',
-    borderRadius: '50%',
-    marginTop: '10px',
-    marginRight: '-14px',
-    transition: '.5s',
-    p : {
-        display: 'flex',
-    },
-    '&:hover': {
-        color: '$tenth',
-        // color: '#85919e',
-    },
-
-})
-
-export const SidebarContainerButtonH = styled('div', {
-    borderRadius: '.3rem',
-    display: 'flex',
-    alignContent: 'flex-start',
-    alignItems: 'center',
-    marginLeft: '0px',
-    transition: '.5s',
-    cursor: 'pointer',
-})
-
-export const SideContainerFolderIcon = styled('div',{
-    borderRadius: '.3rem',
-    display: 'flex',
-    margin: '',
-    alignItems: 'center',
-    alignContent: 'flex-start',
-    // marginTop: '-23px',
-    marginLeft: '190px',
-    transition: '.5s',
-    cursor: 'pointer',
-})
-
-export const SideContainerTitle = styled('a',{
+export const SideTitle = styled('a', {
     textDecoration: 'none',
     color: '$ninth',
-    // colocar talvez cor de fundo $fourth? não mesquecer.
-    // backgroundColor: '$tenth',
-    height: '$md',
-    width: '$xss',
+    height: '2.2rem',
     userSelect: 'none',
     borderRadius: '.3rem',
     padding: '$xs',
     margin: '$xxxs',
     textTransform: 'capitalize',
     transition: '.5s',
-    p : {
+    p: {
         display: 'inline',
+    },
+    'span:first-child': {
+        display: 'none',
+    },
+    'svg': {
+        transform: 'rotate(180deg)',
+    },
+    'img': {
+        height: '1.2rem',
     },
     '&:hover': {
         color: '$second',
         backgroundColor: '$ninth',
         boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
+        'span:first-child': {
+            display: 'flex',
+        },
     },
-    // boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    variants: {
+        sidehide: {
+            false: {
+                'span:first-child': {
+                    display: 'none',
+                },
+            },
+            true: {
+                'svg': {
+                    transform: 'rotate(180deg)',
+                },
+            },
+        },
+    },
 })
-
-export const SideContainerItem = styled('a',{
+export const SideItem = styled('a', {
+    display: 'flex',
+    justifyContent: 'left',
+    alignItems: 'center',
+    'div': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
     textDecoration: 'none',
     color: '$ninth',
-    height: '$xss',
-    width: '$xss',
+    height: '2.2rem',
     userSelect: 'none',
     borderRadius: '.3rem',
     padding: '$xs',
@@ -192,11 +124,11 @@ export const SideContainerItem = styled('a',{
         backgroundColor: '$tenth',
         boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
     },
-    p : {
+    p: {
         display: 'inline',
     },
     variants: {
-        element:{
+        element: {
             final: {
                 alignSelf: 'stretch',
             },
@@ -204,38 +136,126 @@ export const SideContainerItem = styled('a',{
     },
 })
 
-export const FlexCointainer = styled('div',{
-    height: '100vh',
-    width: '100%',
+export const Sidebar = styled('aside', {
+    width: '2.9rem',
+    'a p': {
+        display: 'none',
+    },
+    'a span': {
+        display: 'none',
+    },
+    minHeight: '20rem',
     display: 'flex',
-    justifyContent: 'start',
-    overflow: 'hidden',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    padding: '$xxs',
+    margin: '$xxs',
+    borderRadius: '.3rem',
+    backgroundColor: '$third',
+    backgroundImage: 'linear-gradient(to bottom, $fourth, $third)',
+    boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .1rem #AAA inset',
+    scrollBehavior: 'smooth',
+    overflowY: 'auto',
+    overflowX: 'hidden',
+    transition: 'width .2s',
+    '&:hover': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexDirection: 'column',
+        width: '256px',
+        'a p, a span': {
+            display: 'flex',
+        },
+    },
+    '@bp1': {
+        width: '2.9rem',
+        'p': {
+            display: 'none',
+        },
+    },
+})
+export const SidebarHeader = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    color: '$ninth',
+})
+export const CenterContainer = styled('div', {
+    backgroundColor: '$second',
+    backgroundImage: 'linear-gradient(to bottom, $second, $fourth)',
+    minHeight: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+})
+export const CenterItem = styled('div', {
+    color: '$fourteenth',
+    padding: '5rem 0rem 5rem 0',
+    borderRadius: '.3rem',
+    width: '18rem',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    'img': {
+        margin: '2em',
+    },
+    'span': {
+        height: '1em',
+    },
+    'button': {
+        margin: '2em',
+    },
     variants: {
-        element:{
-            all: {
-                alignItems: 'stretch',
+        direction: {
+            column: {
+                flexDirection: 'column',
+            },
+            row: {
+                minHeight: '0',
+                flexDirection: 'row',
+                justifyContent: 'center',
+            },
+        },
+    },
+})
+
+export const SidebarCollapsible = styled('div',{
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    borderRadius: '.3rem',
+    'a:first-child': {
+        display: 'flex',
+        alignContent: 'flex-start',
+        alignItems: 'flex-start',
+    },
+    variants: {
+        collapsible: {
+            true: {
                 backgroundColor: '$ninth',
+                'a:first-child': {
+                    color: '$second',
+                    backgroundColor: '$ninth',
+                    display: 'block',
+                    boxShadow: 'none',
+                },
+                'a': {
+                    color: '$ninth',
+                    backgroundColor: '$fourth',
+                },
+                'svg:last-child': {
+                    transform: 'rotate(270deg)',
+                },
             },
-            main: {
-                flexBasis: '0',
-                flexGrow: '1.5',
-                flexDirection: "column",
-                color: '$fifth',
-                backgroundColor: '$ninth'
-            },
-            content: {
-                flexDirection: "row",
-                color: '$fourth',
-                backgroundColor: '$fifth'
-            },
-            nav: {
-                height: '6vh',
-                backgroundPosition: '50%',
-                padding: '.5rem',
-                flexDirection: "row",
-                justifyContent: 'space-between',
-                color: '$third',
-                backgroundColor: '$ninth'
+            false: {
+                'a:first-child': {
+                    display: 'block',
+                },
+                'a': {
+                    display: 'none',
+                },
+                'svg:last-child': {
+                    transform: 'rotate(90deg)',
+                },
             },
         },
     },

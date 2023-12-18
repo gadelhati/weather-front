@@ -1,3 +1,8 @@
+import { initialCountry } from "../country/country.initial";
+import { initialEquipment } from "../equipment/equipment.initial";
+import { initialInstitution } from "../institution/institution.initial";
+import { initialStationCategory } from "../station.category/station.category.initial";
+import { initialSurveying } from "../surveying/surveying.initial";
 import { StationOffShore } from "./station.off.shore.interface";
 
 export const initialStationOffShore: StationOffShore = {

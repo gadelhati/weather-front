@@ -1,5 +1,5 @@
 export interface Food {
-	id: string,
+	readonly id: string,
 	ibgeCode: string,
 	name: string,
 	preparation: number,

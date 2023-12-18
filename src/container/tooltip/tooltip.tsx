@@ -8,6 +8,7 @@ export const Tooltip = styled('div',{
     cursor: 'pointer',
     boxSizing: 'border-box',
     transition: 'all .25s ease-in-out',
+    zIndex: '1',
     '&:before': {
         content: 'attr(data-tip)',
         fontSize: '$rg',
@@ -52,8 +53,9 @@ export const Tooltip = styled('div',{
     variants: {
         hidden: {
             false: {
-                color: '$fifth',
-                border: '3px solid $danger',
+                'input': {
+                    backgroundColor: '$fifteenth',
+                },
                 borderRadius: '.25rem',
             },
             true: {

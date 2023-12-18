@@ -10,5 +10,4 @@ const spin = keyframes({
 
 export const Rotate = styled('img', {  
     animation: `${spin} 4s linear infinite`,
-    margin: '$lg',
 })

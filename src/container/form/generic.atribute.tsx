@@ -21,6 +21,8 @@ export const AtributeSet = <T extends Object>(initial: T) => {
             type_name = 'date'
         else if (Array.isArray(value))
             type_name = 'array'
+        else if (typeof value === 'object')
+            type_name = 'object'
         else
             type_name = 'text'
         atributes.push({ type: type_name, worth: value })

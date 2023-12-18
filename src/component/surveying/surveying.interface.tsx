@@ -1,4 +1,4 @@
 export interface Surveying {
-    id: string,
+    readonly id: string,
     name: string,
 }

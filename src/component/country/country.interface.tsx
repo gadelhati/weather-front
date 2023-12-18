@@ -1,4 +1,4 @@
 export interface Country {
-    id: string,
+    readonly id: string,
     name: string,
 }

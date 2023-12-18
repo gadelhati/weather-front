@@ -1,4 +1,4 @@
 export interface PlatformCategory {
-    id: string,
+    readonly id: string,
     name: string,
 }

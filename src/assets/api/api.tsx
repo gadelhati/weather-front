@@ -1,12 +1,12 @@
 import axios from "axios"
 import { getAccessToken } from "../../service/service.token"
 
-// const token = getAccessToken();
+const token = getAccessToken();
 
 export const api = axios.create({
-  baseURL: "http://localhost:3120/weather-back",
-  // baseURL: "http://localhost:8080/weather",
-  // baseURL: "https://10.5.193.20/weather",
+  // baseURL: "http://localhost:3119/shopping-back",
+  // baseURL: "http://localhost:3120/weather",
+  baseURL: "https://10.5.193.20/weather",
   // headers: { 'content-type': 'application/json' }
 });
 

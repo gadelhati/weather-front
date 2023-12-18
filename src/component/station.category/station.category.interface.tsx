@@ -1,4 +1,4 @@
 export interface StationCategory {
-    id: string,
+    readonly id: string,
     name: string,
 }

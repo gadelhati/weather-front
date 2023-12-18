@@ -1,0 +1,21 @@
+[
+	{"order": 1, "active": false, "graduate": "1SG", "nip": "00.0386.79", "name": "ANDERSON FIDELIS COUTO", "vacation": [{"name": "ferias", "begin": "2023-11-10T00:00:00.000Z", "finish": "2023-11-15T00:00:00.000Z"}]},
+	{"order": 2, "active": true, "graduate": "1SG", "nip": "00.0380.59", "name": "MARCELO RIBEIRO GADELHA", "vacation": []},
+	{"order": 3, "active": true, "graduate": "1SG", "nip": "16.1132.33", "name": "CÉSAR AUGUSTO DE ALMEIDA PEREIRA", "vacation": []},
+	{"order": 4, "active": true, "graduate": "1SG", "nip": "00.0160.98", "name": "CARLOS MILANEZ FERNANDES", "vacation": []},
+	{"order": 5, "active": false, "graduate": "1SG", "nip": "01.0100.51", "name": "ANDRÉ LUIZ MOREIRA VIEIRA", "vacation": []},
+	{"order": 6, "active": true, "graduate": "1SG", "nip": "06.7170.71", "name": "TIAGO RIOS CAVALCANTI", "vacation": []},
+	{"order": 7, "active": true, "graduate": "2SG", "nip": "09.0971.55 ", "name": "ANDREA OLIVEIRA ALCANTARA", "vacation": []},
+	{"order": 8, "active": true, "graduate": "2SG", "nip": "06.0389.48", "name": "THIAGO NEVES MAGALHÃES", "vacation": []},
+	{"order": 9, "active": true, "graduate": "2SG", "nip": "06.0390.57", "name": "RAIMUNDO RUFINO DA SILVA MENDES RAULINO", "vacation": []},
+
+	{"order": 10, "active": true, "graduate": "2SG", "nip": "07.3555.13", "name": "JEAN DA SILVA CRISOSTOMO", "vacation": []},
+	{"order": 11, "active": true, "graduate": "3SG", "nip": "86.6755.32", "name": "PRISCILA CARDOSO DOS SANTOS", "vacation": []},
+	{"order": 12, "active": true, "graduate": "3SG", "nip": "13.1294.49", "name": "JÉSSICA DA SILVA GUIMARÃES", "vacation": []},
+	{"order": 13, "active": true, "graduate": "3SG", "nip": "14.1481.02", "name": "DIEGO FERREIRA PINTO", "vacation": []},
+	{"order": 14, "active": true, "graduate": "3SG", "nip": "14.1448.24", "name": "FILIPE MARQUES VENTURA DOS SANTOS", "vacation": []},
+	{"order": 15, "active": true, "graduate": "3SG", "nip": "14.1444.68", "name": "ARIANE COELHO PINTO", "vacation": []},
+	{"order": 16, "active": true, "graduate": "3SG", "nip": "14.1472.03", "name": "MATEUS AUGUSTO COELHO QUEIROZ PINTO", "vacation": []},
+	{"order": 17, "active": true, "graduate": "3SG", "nip": "15.1984.72", "name": "RODRIGO SOUZA FLORENTINO", "vacation": []},
+	{"order": 18, "active": true, "graduate": "3SG", "nip": "13.0383.71", "name": "FELIPE CLARO DE PAULA", "vacation": []}
+]

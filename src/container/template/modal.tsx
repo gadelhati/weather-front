@@ -8,63 +8,76 @@ const animatetop = keyframes({
     'to': { top: '0', opacity: '1' }
 });
 
-
-// ARQUIVO ORIGINAL
-// export const Modal = styled('div', {
-//     color: 'gray',
-//     display: 'none',
-//     position: 'fixed',
-//     zIndex: '1',
-//     left: '0',
-//     top: '0',
-//     minWidth: '100vw',
-//     minHeight: '100vh',
-//     overflow: 'auto',
-//     backgroundColor: 'rgba(0,0,0,0.4)',
-//     'article': {
-//         minHeight: '4vh',
-//         minWidth: '50vw',
-//         backgroundColor: '#dedede',
-//         margin: 'auto',
-//         border: '1px solid #888',
-//         maxWidth: '90%',
-//         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)',
-//         animationName: `${animatetop}`,
-//         animationDuration: '0.4s',
-//         borderRadius: '.5rem',
-//     },
-
-// ARQUIVO ABAIXO FEITO PARA TESTES
-    export const Modal = styled('div', {
-        color: 'gray',
+export const Modal = styled('div', {
+    position: 'fixed',
+    zIndex: '1',
+    left: '0',
+    top: '0',
+    flexDirection: 'column',
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    'article': {
         display: 'flex',
-        position: 'fixed',
-        zIndex: '1',
-        // marginTop: '10px',        
-        // maxWidth: '100%',
-        width: '100vw',
-        height: '100vh',
-        left: '0',
-        top: '0',
         flexDirection: 'column',
-
-        overflow: 'hidden',
-        // backgroundColor: 'rgba(0,0,0,0.4)',
-        'article': {
-            maxHeight: '97.7vh',
-            width: '90%',
-            display: 'flex',
-            flexDirection: 'column',
-            backgroundColor: '#dedede',
-            margin: 'auto',
-            border: '1px solid #888',
-            boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)',
-            animationName: `${animatetop}`,
-            animationDuration: '0.4s',
-            borderRadius: '.5rem',
+        justifyContent: "space-between",
+        center: {
+            height: '22rem',
         },
+        minHeight: '28rem',
+        maxHeight: '90vh',
+        minWidth: '32rem',
+        maxWidth: '95%',
+        backgroundColor: '$ninth',
+        margin: 'auto',
+        border: '1px solid $twelfth',
+        boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)',
+        animationName: `${animatetop}`,
+        animationDuration: '0.4s',
+        borderRadius: '.5rem .5rem .3rem .3rem',
+        '.show': {
+            // backgroundColor: '#354F52',
+            backgroundColor: '$ninth',
+            border: 'none',
+            // padding: '2vh',
+            padding: '1rem',
+            margin: '0rem .5rem',
+            fontSize: '1rem',
+            // color: 'white',
+            color: '$first',
+            // fontFamily: 'roboto',
+            boxSizing: 'border-box',
+            // boxShadow: '2px 1px 1px 0px rgb(100, 100, 100)',
+            zIndex: '1',
+            width: '20vh',
+            transition: 'margin .25s ease-in-out',
+        },
+        '.inative': {
+            border: 'none',
+            margin: '0rem .1rem',
+            width: '20vh',
+            fillOpacity: '50%',
+        },
+        '.tab': {
+            display: 'flex',
+            justifyContent: 'center',
+            paddingTop: '0.1vh',
+        },
+        '.tabs': {
+            display: 'flex',
+            justifyContent: 'center',
+            backgroundColor: '$eleventh',
+            padding: '1rem 1rem 0 1rem',
+            'button': {
+                borderRadius: '1rem 1rem 0rem 0rem',
+            },
+        },
+        '.hide': {
+            display: 'none',
+        },
+    },
     'span': {
-        color: '#aaa',
+        color: '$eleventh',
         float: 'right',
         fontSize: '$lg',
         fontWeight: 'bold',
@@ -75,26 +88,19 @@ const animatetop = keyframes({
         },
     },
     'header': {
-        color: 'LightGray',
+        color: '$sixth',
         width: '100%',
         padding: '2px 16px',
         margin: '0 auto',
         backgroundColor: '$third',
-        // color: 'white',
-        borderRadius: '.5rem .5rem 0 0',
-        'h2': {
-            color: 'LightGray'
-        },
+        borderRadius: '.3rem .3rem 0 0',
     },
     'footer': {
-        // padding: '2px 16px',
         display: 'flex',
-        height: '100%',
+        height: '5rem',
         justifyContent: 'center',
         alignItems: 'center',
         flexWrap: 'wrap',
-        backgroundColor: '$second',
-        color: 'white',
         borderRadius: '0 0 .5rem .5rem',
     },
     variants: {
@@ -106,13 +112,20 @@ const animatetop = keyframes({
                 display: 'flex',
             },
         },
-        large: {
+        confirm: {
             true: {
                 'article': {
-                    maxWidth: '100%',
-                },
+                    minHeight: '10rem',
+                }
             },
-            false: {},
+        },
+        weather: {
+            true: {
+                'article': {
+                    height: '35rem',
+                    width: '100%',
+                }
+            },
         },
     },
 })

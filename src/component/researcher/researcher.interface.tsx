@@ -1,5 +1,5 @@
 export interface Researcher {
-    id: string,
+    readonly id: string,
     name: string,
     email: string,
     address?: string

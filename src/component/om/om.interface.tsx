@@ -1,4 +1,4 @@
 export interface OM {
-    id: string,
+    readonly id: string,
     name: string,
 }

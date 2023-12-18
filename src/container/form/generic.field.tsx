@@ -2,61 +2,10 @@ import { stitches } from "../global.styles"
 
 const { styled } = stitches
 
-export const FloatLabel = styled('div', {
-    fontSize: '$rg',
-    margin: '$rg 0 0 0',
-    padding: '$xxxs',
-    'select': {
-        width: '100%',
-        position: 'relative',
-        bottom: '15px',
-    },
-
-    'input': {
-        width: '100%',
-        //color: '$seventeenth',
-        color: '$eighteenth',
-        //color: '$even',
-        fontSize: '100%',
-        padding: '$sm',
-        outline: 'none',
-        border: 'none',
-        //borderBottom: '2px solid $ninth',
-        backgroundColor: '$thirty',
-        borderRadius: '.3em',
-    
-    },
-
-
-    'input[type="number"]': {
-        appearance: 'textfield',
-    },
-    'label': {
-        color: '$ninth',
-        fontSize: '100%',
-        position: 'absolute',
-        left: '0',
-        padding: '$sm',
-        marginLeft: '$xs',
-        pointerEvents: 'none',
-        transition: 'all 0.3s ease',
-    },
-    'input:focus ~ div': {
-        transform: 'scaleX(1)',
-    },
-    ':is(input:focus, input:valid, input:placeholder-shown)~label': {
-        transform: 'translateY(-50%)',
-        padding: '0.4em',
-    },
-    ':is(input:focus, input:valid)': {
-        transition: 'all 0.3s ease',
-        borderBottom: '2px solid $second',
-    },
-})
-
 export const Container = styled('div', {
+    overflow: 'auto',
     display: 'flex',
-    minHeight: '6rem',
+    minHeight: '1rem',
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
@@ -65,7 +14,6 @@ export const Container = styled('div', {
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-       
     },
     variants: {
         align: {
@@ -76,47 +24,52 @@ export const Container = styled('div', {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-            }
-            
+            },
+            inputs: {
+                height: '13.5rem',
+            },
+            response: {
+                height: '5rem',
+            },
         },
     },
 })
 
-export const ContainerInput = styled('div', {
+export const ContainerInput2 = styled('span', {
+    position: 'relative',
+    display: 'inline-block',
+    margin: 'min(.2em) min(.2em) 0em 0em',
     overflowX: 'clip',
+    ':has(label)': {
+        outline: '2px solid blue',
+    },
     'input[type=checkbox]': {
         '+ label, + label + label': {
             height: '1.4em',
         },
     },
-    'span': {
-        position: 'relative',
-        display: 'inline-block',
-        margin: 'min(.2em) min(.2em) 0em 0em',
+    'input': {
+        textIndent: '50%',
     },
     'select': {
+        textIndent: '15%',
         minHeight: '1.8em',
     },
-
     'input:disabled': {
         backgroundColor: '$eleventh',
-        // pointerEvents: 'none',
         cursor: 'not-allowed',
     },
-
     'input, select': {
         display: 'inline-block',
-        width: '26em',
+        width: '20em',
+        margin: '.25rem',
         padding: '10px 0 10px 35px',
-        fontWeight: 'normal',
         color: '$fourth',
         background: '$tenth',
         border: '0',
         borderRadius: '.25rem',
         outline: '0',
-        textIndent: '60px',
         transition: 'all .3s ease-in-out',
-        overflow: 'hidden',
         textOverflow: 'ellipsis ellipsis',
         '+ label': {
             pointerEvents: 'none',
@@ -125,8 +78,7 @@ export const ContainerInput = styled('div', {
         },
         '+ label + label': {
             display: 'none',
-            opacity: '0',
-            transition: 'opacity 2s',
+            filter: 'opacity(0)',
         },
         '+ label, + label + label': {
             overflow: 'hidden',
@@ -137,8 +89,7 @@ export const ContainerInput = styled('div', {
             bottom: '.7rem',
             padding: '.1em 1.5em',
             color: '#032429',
-            fontSize: '$xs',
-            fontWeight: 'bold',
+            fontSize: '$sm',
             textShadow: '0 1px 0 rgba(19,74,70,0)',
             transition: 'all .3s ease-in-out',
             borderRadius: '.25rem',
@@ -158,29 +109,29 @@ export const ContainerInput = styled('div', {
             },
         },
     },
-    'input:not([disabled]):focus, input:not([disabled]):active, select:not([disabled]):focus, select:not([disabled]):active': {
+    'input:not([disabled]):focus, input:not([disabled]):active, input:not([disabled]):hover, select:not([disabled]):focus, select:not([disabled]):active, select:not([disabled]):hover': {
         color: '$fourth',
         textIndent: '0',
         background: '$tenth',
-        '+ label': {
-            width: '100%',
+                '+ label': {
+            width: '90%',
+            margin: '0 5%',
             overflow: 'visible',
             color: '$tenth',
             textShadow: '0 1px o rgba(19, 74, 70, .4)',
             background: 'rgba(122, 184, 147, 1)',
-            transform: 'translateY(-1.9rem)',
+            transform: 'translateY(-1.2rem)',
         },
-        '+ label + label': {
+        '+label+label': {
+            width: '90%',
+            margin: '0 5%',
             marginTop: '.3rem',
             padding: '.5rem',
-            opacity: '1',
-            display: 'none',
-            width: '100%',
-            overflow: 'visible',
+            filter: 'opacity(1)',
             color: '$tenth',
             textShadow: '0 1px o rgba(19, 74, 70, .4)',
-            background: '$danger',
-            transform: 'translateY(+1.9rem)',
+            background: '$fifteenth',
+            transform: 'translateY(+1.1rem)',
         },
     },
     variants: {
@@ -205,17 +156,109 @@ export const ContainerInput = styled('div', {
             true: {
                 'input, select': {
                     color: '$tenth',
-                    background: '$danger',
+                    background: '$fifteenth',
                 },
-                'input:focus, input:active, select:focus, select:active': {
+                'input:focus, input:active, input:hover, select:focus, select:active, select:hover': {
                     '+ label + label': {
                         height: '4rem',
-                        background: '$danger',
+                        background: '$fifteenth',
                         display: 'inline-block',
                         zIndex: '1',
                     },
                 },
             },
         },
+    },
+})
+
+export const ContainerInput = styled('div', {
+    fontSize: '.9rem',
+    fontFamily: 'Segoe UI, sans-serif',
+    margin: '1rem 0 0 0',
+    padding: '.2rem',
+    'input': {
+        fontSize: '100%',
+        padding: '0.7rem',
+        outline: 'none',
+        border: 'none',
+        borderRadius: '.3rem',
+        backgroundColor: '$sixth',
+        width: '100%',
+    },
+    'input[type="number"]': {
+        appearance: 'textfield',
+    },
+    'label': {
+        fontSize: '100%',
+        position: 'absolute',
+        left: '0',
+        padding: '0.8em',
+        marginLeft: '0.5em',
+        pointerEvents: 'none',
+        transition: 'all 0.3s ease',
+    },
+    'input:focus ~ div': {
+        transform: 'scaleX(1)',
+    },
+    ':is(input:focus, input:valid)~label': {
+        color: '$sixth',
+        transform: 'translateY(-85%) scale(.9)',
+        margin: '0em',
+        padding: '0.4em',
+    },
+    ':is(input:focus, input:valid)': {
+        transition: 'all 0.3s ease',
+        boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+    },
+})
+
+export const ContainerLabel = styled('label', {
+    color: '#999',
+    fontSize: '18px',
+    fontWeight: 'normal',
+    position: 'relative',
+    pointerEvents: 'none',
+    left: '5px',
+    top: '10px',
+    transition: '0.2s ease all',
+})
+
+export const InputGroup = styled('span', {
+    display: 'flex',
+    alignItems: 'center',
+    'input:first-child': {
+        borderRadius: '.3rem 0 0 .3rem',
+    },
+    'input:not(:last-child)': {
+        borderRight: 'none',
+    },
+    'input:last-child': {
+        borderRadius: '0 .3rem .3rem 0',
+    },
+    input: {
+        height: '2rem',
+        width: '4rem',
+        padding: '0 1rem',
+        color: '#354F52',
+        fontSize: '15px',
+        border: '1px solid #354F52',
+        backgroundColor: '$sixth',
+    },
+    '.label': {
+        pointerEvents: 'none',
+        // cursor: 'not-allowed',
+        padding: '.5em 1em',
+        border: 'none',
+        backgroundColor: '#354F52',
+        color: '#fff',
+        fontSize: '15px',
+        transition: 'background-color .3s ease-in-out',
+    },
+    '.label:hover': {
+        backgroundColor: '#52796F',
+    },
+    'input:focus, input:focus-visible': {
+        borderColor: '#84A98C',
+        outline: 'none',
     },
 })

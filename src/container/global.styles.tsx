@@ -2,9 +2,9 @@ import { createStitches } from "@stitches/react";
 
 export const stitches = createStitches({
     media: {
-        bp1: "(min-width: 320px)",
-        bp2: "(min-width: 768px)",
-        bp3: "(min-width: 1200px)",
+        bp1: "(max-width: 320px)",
+        bp2: "(max-width: 820px)",
+        bp3: "(max-width: 1200px)",
         bp4: "(max-width: 900px)",
     },
     theme: {
@@ -14,60 +14,32 @@ export const stitches = createStitches({
             third: '#354F52',
             fourth: '#52796F',
             fifth: '#84A98C',
-            sixth: '#65B891',
-            seventh: '#93E5AB',
-            eighth: '#B5FFE1',
+            sixth: '#F2F2F2',
+            seventh: '#ECECEC',
+            eighth: '#CED4DA',
             ninth: '#CAD2C5',
             tenth: '#FFFFFF',
             eleventh: '#B6B6B6',
             twelfth: '#6C757D',
-            thirteenth: '#3A587B',
-            fourteenth: '#34495E',
-            fifteenth: '#454545',
+            thirteenth: '#06532F',
+            fourteenth: '#124010',
+            fifteenth: '#E24D4C',
             sixteenth: '#363636',
-            seventeenth: '#0E0C0C',
-            eighteenth: '#000000',
-            nineteenth: '#66C462',
-            thirty: '#A4B5B2',
-            twentyfirst: '#95B7B7',
-            
-            tsuccess: '#124010',
-            tinfo: '#3498DB',
-            twarning: '#E9BD0C',
-            tdanger: '#E24D4C',
-            primary: '#57A0E5',
-            secondary: '#6C757D',
-            success: '#06532F',
-            warning: '#CEBA33',
-            danger: '#B63E3E',
-            
-            head: '#E2E3E5',
-            title: '#36304A',
-            odd: '#F2F2F2',
-            even: '#FFFFFF',
-            selected: '#ECECEC',
-            line: '#CED4DA',
-            button: '#6C757D',
-            blueButton: '#0D6EFD',
+            seventeenth: '#A30000',
+            eighteenth: '#FFBF00',
+            nineteenth: '#DAA520',
+            // #D1D100
+            twentieth: '#0D6EFD',
+            twentyFirst: '#3498DB',
+
+            one: '#73E86D',
+            two: '#000000',
+            three: '#A8C3E7',
+            four: '#E5E052',
+            five: '#C12525',
+            six: '#FFFFFF',
         },
         space: {
-            first: '1px',
-            second: '2px',
-            third: '3px',
-            fourth: '4px',
-            fifth: '5px',
-            sixth: '6px',
-            seventh: '7px',
-            eighth: '8px',
-            ninth: '9px',
-            one2: '10px',
-            twentyFifthH: '25vh',
-            hundredthH: '100vh',
-            hundredthW: '100vw',
-
-            side: "256px",
-            radios: "5px",
-
             xxxs: "0.06rem",
             xxs: "0.222rem",
             xs: "0.563rem",
@@ -78,23 +50,11 @@ export const stitches = createStitches({
             xl: "2.369rem",
             xxl: "2.7rem",
             xxxl: "10rem",
-
-            xxs0: "0.422rem",
-            xs0: "0.563rem",
-            sm0: "0.75rem",
-            rg0: "10%",
-            md0: "1.33rem",
-            lg0: "1.77rem",
-            xl0: "2.369rem",
-
-            step: "100px",
-            cinco: "5px",
-            px0: "0px",
         },
         fonts: {},
         fontSizes: {
             xxs: "0.422rem",
-            xs: "0.700rem",
+            xs: "0.563rem",
             sm: "0.75rem",
             rg: "1rem",
             md: "1.33rem",
@@ -107,6 +67,7 @@ export const stitches = createStitches({
 })
 
 const injectGlobalStyles = stitches.globalCss({
+    // "*": { boxSizing: "border-box", fontFamily: "inherit", flexShrink: 0 },
     "*": { boxSizing: "border-box", fontFamily: "Montserrat, sans-serif", flexShrink: 0 },
     "*:after": { boxSizing: "border-box", fontFamily: "inherit" },
     "*:before": { boxSizing: "border-box", fontFamily: "inherit" },
@@ -127,14 +88,14 @@ injectGlobalStyles()
 
 export const darkTheme = stitches.createTheme({
     // colors: {
-    //     bg: "$thirteenth",
-    //     fg: "$fourteenth",
+    //     bg: "$darkJungleGreen",
+    //     fg: "$fluorescentBlue",
     // }
 });
 
 export const funkyTheme = stitches.createTheme({
     colors: {
-        // bg: "$first",
-        // fg: "$seventh",
+        // bg: "$darkKhaki",
+        // fg: "$darkSlateBlue",
     }
 });

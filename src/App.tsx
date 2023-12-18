@@ -1,4 +1,4 @@
-import AppRoutes from './AppRoutes'
+import AppRoutes from './Routes'
 
 const App = () => {
   return (

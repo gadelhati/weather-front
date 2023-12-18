@@ -6,24 +6,28 @@ export const Header = styled('div', {
     display: 'flex',
     height: '5rem',
     margin: '$xxs',
-    marginRight: '15px',
-    marginLeft: '15px',
     padding: '0 $sm 0 $sm',
-    color: '$third',
-    backgroundColor: '$tenth',
+    color: '$fourth',
     borderRadius: '.3rem',
-    // borderCollapse: 'collapse',
-    // border: 'solid $third 1px',
+    borderLeft: 'solid $fourth .5em',
     boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16), 0 .3rem .6rem rgba(0,0,0,0.23), 0 0 .25rem #AAA inset',
     justifyContent: 'space-between',
     alignItems: 'center',
-    // flexWrap: 'wrap',
+    'span': {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    '@bp1': {
+        'button': {
+            fontSize: '75%',
+        },
+    },
 })
 
-export const TitleHeader = styled('div',{
+export const TitleHeader = styled('div', {
     display: 'inline-block',
     padding: '$sm',
     paddingLeft: '$md',
     flexDirection: 'row',
-    color: '$tenthth', 
+    color: '$tenthth',
 })

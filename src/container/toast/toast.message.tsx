@@ -39,12 +39,12 @@ export const createToast = (classe: ToastDetails) => {
     toast.innerHTML = `<div class="column">
                          <i>${classe.icon}</i>                     
                          <i>${classe.title}</i>
-                         <span>${classe.text}</span>
-                      </div>
-                      <i onClick="removeToast(this.parentElement)">&#10006;</i>`;
+                         <p>${classe.text}</p>
+                      </div>`;
     notifications?.appendChild(toast);
-    setTimeout(()=> removeToast(toast), 5000)
+    setTimeout(()=> removeToast(toast), 4000)
 }
+
 const removeToast = (toast: any) => {
     toast.classList.add('hide') 
     if(toast.timeoutId) clearTimeout(toast.timeoutId)

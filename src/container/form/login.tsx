@@ -5,15 +5,15 @@ import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
 import { login, retrieve } from '../../service/service.crud'
 import { Tooltip } from '../tooltip/tooltip'
-import { FloatLabel } from './generic.field'
-import { CenteredContainer, CenteredContainerItem } from '../template/flex'
+import { ContainerInput } from './generic.field'
 import { Button } from '../template/button';
-import { logout } from '../../service/service.token'
-import { getPayload, isValidToken } from '../../service/service.token'
+import { logout } from '../../service/service.crud'
+import { existsToken, getPayload, isValidToken } from '../../service/service.token'
 import logo from '../../assets/image/marinha.png'
 import { Rotate } from '../template/rotate'
 import { Toast } from '../toast/toast'
-import { HomepageAugusto } from './homepage'
+import { Home } from '../home'
+import { CenterContainer, CenterItem } from '../template/flex'
 
 export const Login = () => {
     const [state, setState] = useState<User>(initialUser)
@@ -21,13 +21,12 @@ export const Login = () => {
     const [ispending, startTransition] = useTransition()
 
     useEffect(() => {
-        JSON.stringify({ispending})
         retrieveItem()
     }, [])
     const retrieveItem = async () => {
         await retrieve('userEntity', 0, 20, 'username', getPayload().sub).then((data: any) => {
             startTransition(() => setState(data?.content[0]))
-        }).catch(() => { networkError() })
+        }).catch((error) => { setError(error) })
     }
     const refresh = () => {
         window.location.reload()
@@ -45,13 +44,10 @@ export const Login = () => {
             startTransition(() => setError(data))
         }
     }
-    const networkError = () => {
-        setError([{ field: 'DTO', message: 'Network Error' }])
-    }
     const loginUser = async () => {
         await login('auth/login', state).then((data) => {
             startTransition(() => validItem(data))
-        }).catch(() => { networkError() })
+        }).catch((error) => { setError(error) })
     }
     const logoutUser = async () => {
         logout()
@@ -59,12 +55,13 @@ export const Login = () => {
     }
     const validation = (name: string): string[] => {
         let vector: string[] = []
-        error?.map((element: any) => { if (name == element.field) return vector.push(element?.message) })
-        return vector
-    }
-    const validationConnection = (): string[] => {
-        let vector: string[] = []
-        error?.map((element: any) => { if (element.field?.startsWith("DTO")) return vector.push(element?.message) })
+        if (Array.isArray(error)) {
+            if (name === '') {
+                error?.map((element: any) => { if (element.field?.startsWith("DTO")) return vector.push(element?.message + '. ') })
+            } else {
+                error?.map((element: any) => { if (name == element.field) return vector.push(element?.message + '. ') })
+            }
+        }
         return vector
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -74,36 +71,34 @@ export const Login = () => {
     return (
         <>
             {isValidToken() ?
-                // <Home></Home>
-                <HomepageAugusto />
-                
+                <Home></Home>
                 :
-                <CenteredContainer>
-                    <CenteredContainerItem>
+                <CenterContainer>
+                    <CenterItem>
                         <Rotate src={logo} alt="" width="120" height="128"></Rotate>
                         <Tooltip data-tip={validation('username')} hidden={validation('username').length === 0} >
-                            <FloatLabel>
-                                <input type={'text'} required name={'username'} value={state.username} onChange={handleInputChange} autoComplete='off' />
-                                <label htmlFor="name">Name</label>
-                            </FloatLabel>
+                            <ContainerInput>
+                                <input type={'text'} required autoFocus name={'username'} value={state.username} onChange={handleInputChange} autoComplete='off' />
+                                <label htmlFor="username">Username</label>
+                            </ContainerInput>
                         </Tooltip>
                         <Tooltip data-tip={validation('password')} hidden={validation('password').length === 0} >
-                            <FloatLabel>
+                            <ContainerInput>
                                 <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
                                 <label htmlFor="password">Password</label>
-                            </FloatLabel>
+                            </ContainerInput>
                         </Tooltip>
-                        <CenteredContainerItem direction={'row'}>
-                            {!isValidToken() && <Button onClick={loginUser}>Login</Button>}
-                            {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
-                            {/* <Button onClick={resetItem}>Reset{existsToken()}</Button> */}
-                        </CenteredContainerItem>
-                        <CenteredContainerItem direction={'row'}>
-                            {error[0].message !== 'Network Error' ? <>© Marinha do Brasil</> : <>{validationConnection()}</>}
-                        </CenteredContainerItem>
-                    </CenteredContainerItem>
+                        {!isValidToken() && <Button category={'primary'} onClick={loginUser}>Login</Button>}
+                        {isValidToken() && <Button onClick={logoutUser}>Logout</Button>}
+                        {ispending}
+                        <span>
+                            {Array.isArray(error) && error.map((erro: ErrorMessage, index: number) => {
+                                return <p key={Math.random()}>{erro.message === "Unauthorized" && "Não Autorizado"}</p>
+                            })}
+                        </span>
+                    </CenterItem>
                     <Toast className="notifications"></Toast>
-                </CenteredContainer>
+                </CenterContainer>
             }
         </>
     );

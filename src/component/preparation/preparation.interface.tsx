@@ -1,5 +1,5 @@
 export interface Preparation {
-    id: string,
+    readonly id: string,
     code: number,
     name: string,
 }

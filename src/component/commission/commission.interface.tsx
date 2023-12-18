@@ -4,7 +4,7 @@ import { Platform } from "../platform/platform.interface"
 import { Harbor } from "../harbor/harbor.interface";
 
 export interface Commission {
-    id: string,
+    readonly id: string,
     name: string,
     departure: Date,
     arrival: Date,

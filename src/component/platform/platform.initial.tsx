@@ -1,3 +1,5 @@
+import { initialCountry } from "../country/country.initial";
+import { initialPlatformCategory } from "../platform.category/platformCategory.initial";
 import { Platform } from "./platform.interface";
 
 export const initialPlatform : Platform = {

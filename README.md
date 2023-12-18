@@ -1,41 +1,55 @@
-# _Weather Front_
+# _Shopping_
 
-![github](https://img.shields.io/github/stars/gadelhati/nutrition-front?style=social "Github")
+![gitlab](https://img.shields.io/gitlab/stars/gadelhati/shopping-front?style=social "Gitlab")
+![github](https://img.shields.io/github/stars/gadelhati/shopping-front?style=social "Github")
 ![typescript](https://img.shields.io/badge/typescript-4.7-0076c6 "Typescript")
 ![node](https://img.shields.io/badge/node-18.8.0-75AC64 "Node")
 ![vscode](https://img.shields.io/badge/vscode-1.70.2-1E97E8 "Visual Studio Code")
+<!-- ![java](https://img.shields.io/badge/java-18.0.2.1-0270B0 "Java JDK") -->
+<!-- ![python](https://img.shields.io/badge/python-3.10.6-FFDC51 "Python") -->
+<!-- ![intellij](https://img.shields.io/badge/intellij-2022.2.1-000000 "Visual Studio Code") -->
 
 # Necessary Tech stack:
 
 |   name            |file name version			|link for download
 |:-----------------:|--------------------------:|:-----------------
 |`typescript`       |                           |https://www.typescriptlang.org/
-|`node`			    |node-v20.2.0-x64			|https://nodejs.org/dist/v20.2.0/node-v20.2.0-x64.msi
-|`visual studio`	|VSCodeUserSetup-x64-1.78.2	|https://code.visualstudio.com/docs/?dv=win64user
+|`node`			    |node-v18.8.0-x64			|https://nodejs.org/en/
+|`visual studio`	|VSCodeUserSetup-x64-1.70.2	|https://code.visualstudio.com/docs/?dv=win64user
+<!-- |`intellij`         |idealC-2022.2.1            |https://download-cdn.jetbrains.com/idea/ideaIC-2022.2.1.exe -->
+<!-- |`java`             |jdk-18_windows-x64_bin     |https://download.oracle.com/java/18/latest/jdk-18_windows-x64_bin.exe -->
+<!-- |`python`           |python-3.10.6-amd64        |https://www.python.org/ftp/python/3.10.6/python-3.10.6-amd64.exe -->
 
 # Description
-The codes FM 12 - XI SYNOP and FM 13 - XI SHIP are preset number sequences that encode observations made at a Surface Meteorological Station (SYNOP) or from Stations on board ships (SHIP). A inciativa de criar um The initiative to create a program in which the code is typed instead of being filled out on paper. Automating the exchange and its consequent inclusion in historical database.
+It is called shoppingal information, also known as shoppingal labeling, the table of information regarding the amounts of vitamins, mineral salts, fats, proteins, fibers, among others, per portion, contained in most product packaging.
 
 ## Roadmap
 ### in development
-- [x] user: improve visual of add multiple roles
+- [x] input group
+- [ ] user: improve visual of add multiple roles
+- [ ] extract all records in pdf
 - [ ] load privileges on role's form
 - [ ] set combobox, turn with switch
 - [ ] counter only increases by 1
 
 ### in concept
-- [ ] consume service that provide sidebar access
-- [ ] header: sandwich to restore body
 - [ ] sidebar: personal icons
-- [ ] implements the vanilla-extract
+- [ ] implements pure css
+- [ ] context menu
+- [ ] charts
+- [ ] schedule
+- [ ] breadcrumb
+- [ ] input mask
+- [ ] spinner with scrool to select number
+- [ ] signature with mouse
 
 ## how to create this project
 ```
-npm create vite@latest nutrition-front -- --template react-ts
+npm create vite@latest shopping-front -- --template react-ts
 ```
 ## how to install dependencies for this project
 ```
-npm install react-router-dom @stitches/react axios react-error-boundary prop-types
+npm install @types/react@latest react-router-dom @stitches/react axios react-error-boundary prop-types
 npm install surge
 ```
 ## how to run this project
@@ -68,13 +82,14 @@ npm run build
 
 # Reference API download link
 
-> [https://github.com/gadelhati/weather-back](https://github.com/gadelhati/weather-back)
+> [https://github.com/gadelhati/shopping-back](https://github.com/gadelhati/shopping-back)
 
 # Reference API, running locally
 
-> [http://localhost:3120/weather-back](http://localhost:3120/weather-back)
+> [http://localhost:8080/shopping-back](http://localhost:8080/shopping-back)
 
 # Git
+
 ```
 //ADD PROXY
 git config --global http.proxy http://username:password@proxy-armacao.mb:6060
@@ -101,7 +116,6 @@ git tag 1.1.0 <insert-commitID-here>
 git push -u origin master
 git diff
 ```
-
 # Deploy
 ## Deploy in nginx
 ```

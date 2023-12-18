@@ -1,5 +1,5 @@
 export interface Auth {
-    accessToken: string,
+    readonly accessToken: string,
 	tokenType: string,
 	username: string,
 	roles: []
