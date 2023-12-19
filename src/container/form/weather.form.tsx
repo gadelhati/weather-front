@@ -364,14 +364,14 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                                 </span>
                                                             </ContainerInput2> */}
                                         <InputGroup>
-                                            <input className="child label" value="SS" type="submit" tabIndex={-1}/>
+                                            <input className="child label" value="SS"tabIndex={-1}/>
                                             <input type="text" name={"yy"} required value={state.yy} onChange={handleInputChange} />
                                             <input type="text" name={"gg"} required value={state.gg} onChange={handleInputChange} />
                                             <input type="text" name={"iw"} required value={state.iw} onChange={handleInputChange} />
                                         </InputGroup>
 
                                         <InputGroup>
-                                            <input className="child label" value="99" type="submit" tabIndex={-1}/>
+                                            <input className="child label" value="99"tabIndex={-1}/>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"laLaLa"} value={state.laLaLa} onChange={handleInputChange} />
                                             <label htmlFor={"laLaLa"} className={'validation'}>{validation("laLaLa")}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"qc"} value={state.qc} onChange={handleInputChange} />
@@ -400,13 +400,13 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup>
-                                                <input className="child label" value="00" type="submit" tabIndex={-1}/>
+                                                <input className="child label" value="00"tabIndex={-1}/>
                                                 <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"fff"} value={state.fff} onChange={handleInputChange} />
                                                 <label htmlFor={"fff"} className={'validation'}>{validation("fff")}</label>
                                         </InputGroup>
 
                                         <InputGroup>
-                                                <input className="child label" value="1" type="submit" tabIndex={-1}/>
+                                                <input className="child label" value="1"tabIndex={-1}/>
                                                 <input type="text" name={"sn1_1"} value={state.sn1_1} onChange={handleInputChange} />
                                                 <label htmlFor={"sn1_1"} className={'validation'}>{validation("sn1_1")}</label>
                                                 <input type="text" name={"ttt"} value={state.ttt} onChange={handleInputChange} />
@@ -414,7 +414,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>                                
 
                                         <InputGroup>
-                                            <input className="child label" value="2" type="submit" tabIndex={-1}/>
+                                            <input className="child label" value="2"tabIndex={-1}/>
                                             <input type="text" name={"sn2_1"} value={state.sn2_1} onChange={handleInputChange} />
                                             <label htmlFor={"sn2_1"} className={'validation'}>{validation("sn2_1")}</label>
                                             <input type="text" name={"tdTdTd"} value={state.tdTdTd} onChange={handleInputChange} />
@@ -422,13 +422,13 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('poPoPoPo').length !== 0 ? true : false} >
-                                            <input className="child label" value="3" type="submit" tabIndex={-1}/>
+                                            <input className="child label" value="3"tabIndex={-1}/>
                                             <input type="text" name={"poPoPoPo"} value={state.poPoPoPo} onChange={handleInputChange} />
                                             <label htmlFor={"poPoPoPo"} className={'validation'}>{validation("poPoPoPo")}</label>
                                         </InputGroup>
 
                                         <InputGroup error={validation('pppp').length !== 0 ? true : false}>
-                                            <input className="child label" value="4" type="submit" tabIndex={-1}/>
+                                            <input className="child label" value="4"tabIndex={-1}/>
                                             <input type="text" name={"pppp"} value={state.pppp} onChange={handleInputChange} />
                                             <label htmlFor={"pppp"} className={'validation'}>{validation("pppp")}</label>
                                         </InputGroup>
@@ -450,7 +450,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                             </ContainerInput2> */}
 
                                         <InputGroup error={validation('a').length !== 0 ? true : false}>
-                                            <input className="child label" value="5" type="submit" tabIndex={-1}/>
+                                            <input className="child label" value="5"tabIndex={-1}/>
                                             <input type="text" name={"a"} value={state.a} onChange={handleInputChange} />
                                             <label htmlFor={"a"} className={'validation'}>{validation("a")}</label>
                                             <input type="text" name={"ppp"} value={state.ppp} onChange={handleInputChange} />
@@ -482,7 +482,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                             </ContainerInput2>
 
                                         <InputGroup error={validation('ww').length !== 0 ? true : false}>
-                                            <input className="child label" value="7" type="submit" tabIndex={-1}/>
+                                            <input className="child label" value="7"tabIndex={-1}/>
                                             <input type="text" name={"ww"} value={state.ww} onChange={handleInputChange} />
                                             <label htmlFor={"ww"} className={'validation'}>{validation("ww")}</label>
                                             <input type="text" name={"w1W2"} value={state.w1W2} onChange={handleInputChange} />
@@ -555,189 +555,95 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                     </div>
                                     {/* begining of section 2 */}
                                     <div className={tab === 2 ? 'tab' : 'hide'}>
-                                        <ContainerInput2 error={validation('ds').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ds"} value={state.ds} onChange={handleInputChange} />
-                                                <label htmlFor={"ds"}>{"ds"}</label>
-                                                <label htmlFor={"ds"}>{validation("ds")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('ds').length !== 0 ? true : false}>
+                                            <input className="child label" value="222"tabIndex={-1}/>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ds"} value={state.ds} onChange={handleInputChange} />
+                                            <label htmlFor={"ds"}>{validation("ds")}</label>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"vs"} value={state.vs} onChange={handleInputChange} />
+                                            <label htmlFor={"vs"}>{validation("vs")}</label>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('vs').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"vs"} value={state.vs} onChange={handleInputChange} />
-                                                <label htmlFor={"vs"}>{"vs"}</label>
-                                                <label htmlFor={"vs"}>{validation("vs")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('ss').length !== 0 ? true : false}>
+                                            <input className="child label" value="0" tabIndex={-1}/>
+                                            <input type="text" name={"ss"} value={state.ss} onChange={handleInputChange} />
+                                            <label htmlFor={"ss"}>{validation("ss")}</label>
+                                            <input type="text" name={"twTwTw"} value={state.twTwTw} onChange={handleInputChange} />
+                                            <label htmlFor={"twTwTw"}>{validation("twTwTw")}</label>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('ss').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"ss"} value={state.ss} onChange={handleInputChange} />
-                                                <label htmlFor={"ss"}>{"ss"}</label>
-                                                <label htmlFor={"ss"}>{validation("ss")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('pwaPwa').length !== 0 ? true : false}>
+                                            <input className="child label" value="1" tabIndex={-1}/>
+                                            <input type="text" name={"pwaPwa"} value={state.pwaPwa} onChange={handleInputChange} />
+                                            <label htmlFor={"pwaPwa"}>{validation("pwaPwa")}</label>
+                                            <input type="text" name={"hwaHwa"} value={state.hwaHwa} onChange={handleInputChange} />
+                                            <label htmlFor={"hwaHwa"}>{validation("hwaHwa")}</label>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('twTwTw').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"twTwTw"} value={state.twTwTw} onChange={handleInputChange} />
-                                                <label htmlFor={"twTwTw"}>{"twTwTw"}</label>
-                                                <label htmlFor={"twTwTw"}>{validation("twTwTw")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('pwPw').length !== 0 ? true : false}>
+                                            <input className="child label" value="2" tabIndex={-1}/>
+                                            <input type="text" name={"pwPw"} value={state.pwPw} onChange={handleInputChange} />
+                                            <label htmlFor={"pwPw"}>{validation("pwPw")}</label>
+                                            <input type="text" name={"hwHw"} value={state.hwHw} onChange={handleInputChange} />
+                                            <label htmlFor={"hwHw"}>{validation("hwHw")}</label>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('pwaPwa').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"pwaPwa"} value={state.pwaPwa} onChange={handleInputChange} />
-                                                <label htmlFor={"pwaPwa"}>{"pwaPwa"}</label>
-                                                <label htmlFor={"pwaPwa"}>{validation("pwaPwa")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('dw1Dw1').length !== 0 ? true : false}>
+                                            <input className="child label" value="3" tabIndex={-1}/>
+                                            <input type="text" name={"dw1Dw1"} value={state.dw1Dw1} onChange={handleInputChange} />
+                                            <label htmlFor={"dw1Dw1"}>{validation("dw1Dw1")}</label>
+                                            <input type="text" name={"dw2Dw2"} value={state.dw2Dw2} onChange={handleInputChange} />
+                                            <label htmlFor={"dw2Dw2"}>{validation("dw2Dw2")}</label>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('hwaHwa').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"hwaHwa"} value={state.hwaHwa} onChange={handleInputChange} />
-                                                <label htmlFor={"hwaHwa"}>{"hwaHwa"}</label>
-                                                <label htmlFor={"hwaHwa"}>{validation("hwaHwa")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('pw1Pw1').length !== 0 ? true : false}>
+                                            <input className="child label" value="4" tabIndex={-1}/>
+                                            <input type="text" name={"pw1Pw1"} value={state.pw1Pw1} onChange={handleInputChange} />
+                                            <label htmlFor={"pw1Pw1"}>{validation("pw1Pw1")}</label>
+                                            <input type="text" name={"hw1Hw1"} value={state.hw1Hw1} onChange={handleInputChange} />
+                                            <label htmlFor={"hw1Hw1"}>{validation("hw1Hw1")}</label>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('pwPw').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"pwPw"} value={state.pwPw} onChange={handleInputChange} />
-                                                <label htmlFor={"pwPw"}>{"pwPw"}</label>
-                                                <label htmlFor={"pwPw"}>{validation("pwPw")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('pw2Pw2').length !== 0 ? true : false}>
+                                            <input className="child label" value="5" tabIndex={-1}/>
+                                            <input type="text" name={"pw2Pw2"} value={state.pw2Pw2} onChange={handleInputChange} />
+                                            <label htmlFor={"pw2Pw2"}>{validation("pw2Pw2")}</label>
+                                            <input type="text" name={"hw2Hw2"} value={state.hw2Hw2} onChange={handleInputChange} />
+                                            <label htmlFor={"hw2Hw2"}>{validation("hw2Hw2")}</label>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('hwHw').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"hwHw"} value={state.hwHw} onChange={handleInputChange} />
-                                                <label htmlFor={"hwHw"}>{"hwHw"}</label>
-                                                <label htmlFor={"hwHw"}>{validation("hwHw")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('hwaHwaHwa').length !== 0 ? true : false}>
+                                            <input type="text" name={"hwaHwaHwa"} value={state.hwaHwaHwa} onChange={handleInputChange} />
+                                            <label htmlFor={"hwaHwaHwa"}>{validation("hwaHwaHwa")}</label>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('dw1Dw1').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"dw1Dw1"} value={state.dw1Dw1} onChange={handleInputChange} />
-                                                <label htmlFor={"dw1Dw1"}>{"dw1Dw1"}</label>
-                                                <label htmlFor={"dw1Dw1"}>{validation("dw1Dw1")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('sw').length !== 0 ? true : false}>
+                                            <input className="child label" value="8" tabIndex={-1}/>
+                                            <input type="text" name={"sw"} value={state.sw} onChange={handleInputChange} />
+                                            <label htmlFor={"sw"}>{validation("sw")}</label>
+                                            <input type="text" name={"tbTbTb"} value={state.tbTbTb} onChange={handleInputChange} />
+                                            <label htmlFor={"tbTbTb"}>{validation("tbTbTb")}</label>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('dw2Dw2').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"dw2Dw2"} value={state.dw2Dw2} onChange={handleInputChange} />
-                                                <label htmlFor={"dw2Dw2"}>{"dw2Dw2"}</label>
-                                                <label htmlFor={"dw2Dw2"}>{validation("dw2Dw2")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('is_ice').length !== 0 ? true : false}>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"is_ice"} value={state.is_ice} onChange={handleInputChange} />
+                                            <label htmlFor={"is_ice"}>{validation("is_ice")}</label>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('pw1Pw1').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"pw1Pw1"} value={state.pw1Pw1} onChange={handleInputChange} />
-                                                <label htmlFor={"pw1Pw1"}>{"pw1Pw1"}</label>
-                                                <label htmlFor={"pw1Pw1"}>{validation("pw1Pw1")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('hw1Hw1').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"hw1Hw1"} value={state.hw1Hw1} onChange={handleInputChange} />
-                                                <label htmlFor={"hw1Hw1"}>{"hw1Hw1"}</label>
-                                                <label htmlFor={"hw1Hw1"}>{validation("hw1Hw1")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('pw2Pw2').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"pw2Pw2"} value={state.pw2Pw2} onChange={handleInputChange} />
-                                                <label htmlFor={"pw2Pw2"}>{"pw2Pw2"}</label>
-                                                <label htmlFor={"pw2Pw2"}>{validation("pw2Pw2")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('hw2Hw2').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"hw2Hw2"} value={state.hw2Hw2} onChange={handleInputChange} />
-                                                <label htmlFor={"hw2Hw2"}>{"hw2Hw2"}</label>
-                                                <label htmlFor={"hw2Hw2"}>{validation("hw2Hw2")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('hwaHwaHwa').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"hwaHwaHwa"} value={state.hwaHwaHwa} onChange={handleInputChange} />
-                                                <label htmlFor={"hwaHwaHwa"}>{"hwaHwaHwa"}</label>
-                                                <label htmlFor={"hwaHwaHwa"}>{validation("hwaHwaHwa")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('sw').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"sw"} value={state.sw} onChange={handleInputChange} />
-                                                <label htmlFor={"sw"}>{"sw"}</label>
-                                                <label htmlFor={"sw"}>{validation("sw")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('tbTbTb').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"tbTbTb"} value={state.tbTbTb} onChange={handleInputChange} />
-                                                <label htmlFor={"tbTbTb"}>{"tbTbTb"}</label>
-                                                <label htmlFor={"tbTbTb"}>{validation("tbTbTb")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('is_ice').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"is_ice"} value={state.is_ice} onChange={handleInputChange} />
-                                                <label htmlFor={"is_ice"}>{"is_ice"}</label>
-                                                <label htmlFor={"is_ice"}>{validation("is_ice")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('ci').length !== 0 ? true : false} historic={true}>
+                                        <InputGroup error={validation('ci').length !== 0 ? true : false}>
                                             <span>
                                                 <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ci"} value={state.ci} onChange={handleInputChange} />
-                                                <label htmlFor={"ci"}>{"ci"}</label>
                                                 <label htmlFor={"ci"}>{validation("ci")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('si').length !== 0 ? true : false} historic={true}>
-                                            <span>
                                                 <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"si"} value={state.si} onChange={handleInputChange} />
-                                                <label htmlFor={"si"}>{"si"}</label>
                                                 <label htmlFor={"si"}>{validation("si")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('bi').length !== 0 ? true : false} historic={true}>
-                                            <span>
                                                 <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"bi"} value={state.bi} onChange={handleInputChange} />
-                                                <label htmlFor={"bi"}>{"bi"}</label>
                                                 <label htmlFor={"bi"}>{validation("bi")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('di').length !== 0 ? true : false} historic={true}>
-                                            <span>
                                                 <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"di"} value={state.di} onChange={handleInputChange} />
-                                                <label htmlFor={"di"}>{"di"}</label>
                                                 <label htmlFor={"di"}>{validation("di")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('zi').length !== 0 ? true : false} historic={true}>
-                                            <span>
                                                 <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"zi"} value={state.zi} onChange={handleInputChange} />
-                                                <label htmlFor={"zi"}>{"zi"}</label>
                                                 <label htmlFor={"zi"}>{validation("zi")}</label>
                                             </span>
-                                        </ContainerInput2>
+                                        </InputGroup>
+
                                         {/* 
                                                             <ContainerInput2 error={validation('eses').length !== 0 ? true : false} historic={true}>
                                                                 <span>
@@ -757,23 +663,19 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                     </div>
                                     {/*begining of section 3*/}
                                     <div className={tab === 3 ? 'tab' : 'hide'}>
-                                        <ContainerInput2 error={validation('sn1_3').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"sn1_3"} value={state.sn1_3} onChange={handleInputChange} />
-                                                <label htmlFor={"sn1_3"}>{"sn"}</label>
-                                                <label htmlFor={"sn1_3"}>{validation("sn1_3")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('sn1_3').length !== 0 ? true : false}>
+                                            <input className="child label" value="333" tabIndex={-1}/>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('txTxTx').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"txTxTx"} value={state.txTxTx} onChange={handleInputChange} />
-                                                <label htmlFor={"txTxTx"}>{"txTxTx"}</label>
-                                                <label htmlFor={"txTxTx"}>{validation("txTxTx")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('sn1_3').length !== 0 ? true : false}>
+                                            <input className="child label" value="1" tabIndex={-1}/>
+                                            <input type="text" name={"sn1_3"} value={state.sn1_3} onChange={handleInputChange} />
+                                            <label htmlFor={"sn1_3"}>{validation("sn1_3")}</label>
+                                            <input type="text" name={"txTxTx"} value={state.txTxTx} onChange={handleInputChange} />
+                                            <label htmlFor={"txTxTx"}>{validation("txTxTx")}</label>
+                                        </InputGroup>
 
-                                        <ContainerInput2 error={validation('sn2_3').length !== 0 ? true : false} historic={true}>
+                                        {/* <ContainerInput2 error={validation('sn2_3').length !== 0 ? true : false} historic={true}>
                                             <span>
                                                 <input type="text" name={"sn2_3"} value={state.sn2_3} onChange={handleInputChange} />
                                                 <label htmlFor={"sn2_3"}>{"sn"}</label>
@@ -787,73 +689,32 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                 <label htmlFor={"tnTnTn"}>{"tnTnTn"}</label>
                                                 <label htmlFor={"tnTnTn"}>{validation("tnTnTn")}</label>
                                             </span>
-                                        </ContainerInput2>
+                                        </ContainerInput2> */}
 
-                                        <ContainerInput2 error={validation('ind89').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"ind89"} value={state.ind89} onChange={handleInputChange} />
-                                                <label htmlFor={"ind89"}>{"ind89"}</label>
-                                                <label htmlFor={"ind89"}>{validation("ind89")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('p24P24P24').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input type="text" name={"p24P24P24"} value={state.p24P24P24} onChange={handleInputChange} />
-                                                <label htmlFor={"p24P24P24"}>{"p24P24P24"}</label>
-                                                <label htmlFor={"p24P24P24"}>{validation("p24P24P24")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('ind89').length !== 0 ? true : false}>
+                                            <input className="child label" value="333" tabIndex={-1}/>
+                                            <input type="text" name={"ind89"} value={state.ind89} onChange={handleInputChange} />
+                                            <label htmlFor={"ind89"}>{validation("ind89")}</label>
+                                            <input type="text" name={"p24P24P24"} value={state.p24P24P24} onChange={handleInputChange} />
+                                            <label htmlFor={"p24P24P24"}>{validation("p24P24P24")}</label>
+                                        </InputGroup>
                                     </div>
                                     {/*begning of section 5*/}
                                     <div className={tab === 4 ? 'tab' : 'hide'}>
-                                        <ContainerInput2 error={validation('iChw').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iChw"} value={state.iChw} onChange={handleInputChange} />
-                                                <label htmlFor={"iChw"}>{"iChw"}</label>
-                                                <label htmlFor={"iChw"}>{validation("iChw")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('iCm').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCm"} value={state.iCm} onChange={handleInputChange} />
-                                                <label htmlFor={"iCm"}>{"iCm"}</label>
-                                                <label htmlFor={"iCm"}>{validation("iCm")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('cs').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"cs"} value={state.cs} onChange={handleInputChange} />
-                                                <label htmlFor={"cs"}>{"cs"}</label>
-                                                <label htmlFor={"cs"}>{validation("cs")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('iCf').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCf"} value={state.iCf} onChange={handleInputChange} />
-                                                <label htmlFor={"iCf"}>{"iCf"}</label>
-                                                <label htmlFor={"iCf"}>{validation("iCf")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('iCp').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCp"} value={state.iCp} onChange={handleInputChange} />
-                                                <label htmlFor={"iCp"}>{"iCp"}</label>
-                                                <label htmlFor={"iCp"}>{validation("iCp")}</label>
-                                            </span>
-                                        </ContainerInput2>
-
-                                        <ContainerInput2 error={validation('iCq').length !== 0 ? true : false} historic={true}>
-                                            <span>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCq"} value={state.iCq} onChange={handleInputChange} />
-                                                <label htmlFor={"iCq"}>{"iCq"}</label>
-                                                <label htmlFor={"iCq"}>{validation("iCq")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                        <InputGroup error={validation('iChw').length !== 0 ? true : false}>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iChw"} value={state.iChw} onChange={handleInputChange} />
+                                            <label htmlFor={"iChw"}>{validation("iChw")}</label>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCm"} value={state.iCm} onChange={handleInputChange} />
+                                            <label htmlFor={"iCm"}>{validation("iCm")}</label>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"cs"} value={state.cs} onChange={handleInputChange} />
+                                            <label htmlFor={"cs"}>{validation("cs")}</label>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCf"} value={state.iCf} onChange={handleInputChange} />
+                                            <label htmlFor={"iCf"}>{validation("iCf")}</label>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCp"} value={state.iCp} onChange={handleInputChange} />
+                                            <label htmlFor={"iCp"}>{validation("iCp")}</label>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCq"} value={state.iCq} onChange={handleInputChange} />
+                                            <label htmlFor={"iCq"}>{validation("iCq")}</label>
+                                        </InputGroup>
                                     </div>
 
                                 </Container>
