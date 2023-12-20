@@ -260,8 +260,37 @@ export const InputGroup = styled('span', {
         transition: 'background-color .3s ease-in-out',
     },
     '.label:hover': {
+        transform: 'translateY(-1.2rem)',
         backgroundColor: '#52796F',
     },
+    'input:hover': {
+        '&::placeholder': {
+            fontWeight: 'bold',
+            opacity: '0.5',
+            color: 'red',
+            transition: 'all .3s ease-in-out',
+            transform: 'translateY(-1.2rem)',
+            verticalAlign: 'top',
+        },
+    },
+    // 'input:placeholder-shown' : {
+    //     '&::placeholder': {
+    //         color: 'blue',
+    //         fontSize: '2rem',
+    //         transform: 'translateY(-100%) scale(0.75)',
+    //     }
+    // },
+    'input:not(placeholder-shown)' : {
+        color: 'pink',
+    },
+    'input:focus': {
+        color: 'gray',
+    },
+    // 'input::placeholder': {
+    //     fontWeight: 'bold',
+    //     opacity: '0.5',
+    //     color: 'red',
+    // },
     'input:focus, input:focus-visible': {
         borderColor: '#84A98C',
         outline: 'none',
@@ -282,7 +311,9 @@ export const InputGroup = styled('span', {
         opacity: '0',
         transition: 'opacity 1s',
     },
-    
+    'input:disabled': {
+        backgroundColor: '$eleventh',
+    },
     variants: {
         error: {
             true: {
