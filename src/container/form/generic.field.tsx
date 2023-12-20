@@ -282,11 +282,6 @@ export const InputGroup = styled('span', {
     'input:focus': {
         color: 'gray',
     },
-    // 'input::placeholder': {
-    //     fontWeight: 'bold',
-    //     opacity: '0.5',
-    //     color: 'red',
-    // },
     'input:focus, input:focus-visible': {
         borderColor: '#84A98C',
         outline: 'none',
