@@ -263,25 +263,25 @@ export const InputGroup = styled('span', {
         transform: 'translateY(-1.2rem)',
         backgroundColor: '#52796F',
     },
-    'input:hover': {
-        '&::placeholder': {
-            fontWeight: 'bold',
-            opacity: '0.5',
-            color: 'red',
-            transition: 'all .3s ease-in-out',
-            transform: 'translateY(-1.2rem)',
-            verticalAlign: 'top',
-        },
-    },
-    'input:placeholder-shown' : {
-        color: '$third',
-    },
-    'input:not(placeholder-shown)' : {
-        color: 'pink',
-    },
-    'input:focus': {
-        color: 'gray',
-    },
+    // 'input:hover': {
+    //     '&::placeholder': {
+    //         fontWeight: 'bold',
+    //         opacity: '0.5',
+    //         color: 'red',
+    //         transition: 'all .3s ease-in-out',
+    //         transform: 'translateY(-1.2rem)',
+    //         verticalAlign: 'top',
+    //     },
+    // },
+    // 'input:placeholder-shown' : {
+    //     color: '$third',
+    // },
+    // 'input:not(placeholder-shown)' : {
+    //     color: 'pink',
+    // },
+    // 'input:focus': {
+    //     color: 'gray',
+    // },
     'input:focus, input:focus-visible': {
         borderColor: '#84A98C',
         outline: 'none',
