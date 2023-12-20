@@ -313,6 +313,7 @@ export const InputGroup = styled('span', {
     },
     'input:disabled': {
         backgroundColor: '$eleventh',
+        cursor: 'not-allowed',
     },
     variants: {
         error: {
