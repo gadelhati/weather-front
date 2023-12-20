@@ -273,13 +273,9 @@ export const InputGroup = styled('span', {
             verticalAlign: 'top',
         },
     },
-    // 'input:placeholder-shown' : {
-    //     '&::placeholder': {
-    //         color: 'blue',
-    //         fontSize: '2rem',
-    //         transform: 'translateY(-100%) scale(0.75)',
-    //     }
-    // },
+    'input:placeholder-shown' : {
+        color: '$third',
+    },
     'input:not(placeholder-shown)' : {
         color: 'pink',
     },
