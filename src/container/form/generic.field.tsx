@@ -232,6 +232,7 @@ export const InputGroup = styled('span', {
     display: 'inline-block',
     padding: '.2rem',
     'span': {
+        opacity: '0',
         position: 'absolute',
         padding: '0 .05rem',
         borderRadius: '.3rem',
@@ -259,10 +260,6 @@ export const InputGroup = styled('span', {
         fontSize: '15px',
         border: '1px solid #354F52',
         backgroundColor: '$sixth',
-        '&:placeholder': {
-            color: 'red',
-            justifyContent: 'center',
-        },
     },
     '.label': {
         pointerEvents: 'none',
@@ -278,28 +275,13 @@ export const InputGroup = styled('span', {
         transform: 'translateY(-1.2rem)',
         backgroundColor: '#52796F',
     },
-    // 'input:hover': {
-    //     '&::placeholder': {
-    //         fontWeight: 'bold',
-    //         opacity: '0.5',
-    //         color: 'red',
-    //         transition: 'all .3s ease-in-out',
-    //         transform: 'translateY(-1.2rem)',
-    //         verticalAlign: 'top',
-    //     },
-    // },
-    // 'input:placeholder-shown' : {
-    //     color: '$third',
-    // },
-    // 'input:not(placeholder-shown)' : {
-    //     color: 'pink',
-    // },
-    // 'input:focus': {
-    //     color: 'gray',
-    // },
-    'input:focus, input:focus-visible': {
-        borderColor: '#84A98C',
-        outline: 'none',
+    'input:placeholder-shown + label + span' : {
+        opacity: '0',
+    },
+    'input:not(placeholder-shown) + label + span, input:focus + label + span, input:hover + label + span': {
+        transition: 'all .4s ease-in-out',
+        color: 'gray',
+        opacity: '1',
     },
     '.validation': {
         fontSize: '.8rem',
