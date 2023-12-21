@@ -309,6 +309,10 @@ export const InputGroup = styled('span', {
     variants: {
         error: {
             true: {
+                'input:not(placeholder-shown) + label + span, input:focus + label + span, input:hover + label + span': {
+                    color: '$sixth',
+                    backgroundImage: 'linear-gradient($ninth, $fifteenth)',
+                },
                 'input, select': {
                     color: '$tenth',
                     background: '$fifteenth',
