@@ -25,12 +25,10 @@ It is called weatheral information, also known as weatheral labeling, the table 
 
 ## Roadmap
 ### in development
-- [x] input group
 - [ ] user: improve visual of add multiple roles
-- [ ] extract all records in pdf
+- [x] extract all records in pdf
 - [ ] load privileges on role's form
 - [ ] set combobox, turn with switch
-- [ ] counter only increases by 1
 
 ### in concept
 - [ ] sidebar: personal icons
