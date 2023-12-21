@@ -344,13 +344,16 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ddddddd"} value={state.ddddddd} onChange={handleInputChange} placeholder={'ddddddd'} />
                                             {/* <label htmlFor={"ddddddd"}>{"ddddddd"}</label> */}
                                             <label htmlFor={"ddddddd"}>{validation("ddddddd")}</label>
+                                            <span>{"ddddddd"}</span>
                                         </InputGroup>
 
                                         <InputGroup>
                                             <input disabled={state.miMi === 'BB' ? true : false} type="text" name={"ii"} value={state.ii} onChange={handleInputChange} placeholder={'ii'} />
                                             <label htmlFor={"ii"} className={'validation'}>{validation("ii")}</label>
+                                            <span>{"ii"}</span>
                                             <input disabled={state.miMi === 'BB' ? true : false} type="text" name={"iii"} value={state.iii} onChange={handleInputChange} placeholder={'iii'} />
                                             <label htmlFor={"iii"} className={'validation'}>{validation("iii")}</label>
+                                            <span>{"iii"}</span>
                                         </InputGroup>
 
                                         {/* <ContainerInput2 error={validation('nbNbNb').length !== 0 ? true : false} historic={true}>
@@ -363,23 +366,29 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         <InputGroup>
                                             <input type="text" name={"yy"} required value={state.yy} onChange={handleInputChange} placeholder={'yy'} />
                                             <label htmlFor={"yy"} className={'validation'}>{validation("yy")}</label>
+                                            <span>{"yy"}</span>
                                             <input type="text" name={"gg"} required value={state.gg} onChange={handleInputChange} placeholder={'gg'} />
                                             <label htmlFor={"gg"} className={'validation'}>{validation("gg")}</label>
+                                            <span>{"gg"}</span>
                                             <input type="text" name={"iw"} required value={state.iw} onChange={handleInputChange} placeholder={'iw'} />
                                             <label htmlFor={"iw"} className={'validation'}>{validation("iw")}</label>
+                                            <span>{"iw"}</span>
                                         </InputGroup>
 
-                                        <InputGroup>
+                                        <InputGroup data-name={'12'}>
                                             <input className="child label" value="99" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"laLaLa"} value={state.laLaLa} onChange={handleInputChange} placeholder={'laLaLa'} />
                                             <label htmlFor={"laLaLa"} className={'validation'}>{validation("laLaLa")}</label>
+                                            <span>{"laLaLa"}</span>
                                         </InputGroup>
 
                                         <InputGroup>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"qc"} value={state.qc} onChange={handleInputChange} placeholder={'qc'} />
                                             <label htmlFor={"qc"} className={'validation'}>{validation("qc")}</label>
+                                            <span>{"qc"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"loLoLoLo"} value={state.loLoLoLo} onChange={handleInputChange} placeholder={'loLoLoLo'} />
                                             <label htmlFor={"loLoLoLo"} className={'validation'}>{validation("loLoLoLo")}</label>
+                                            <span>{"loLoLoLo"}</span>
                                         </InputGroup>
                                     </div>
                                     {/*begining of section 1*/}
@@ -387,52 +396,66 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         <InputGroup>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ir"} value={state.ir} onChange={handleInputChange} placeholder={'ir'} />
                                             <label htmlFor={"ir"} className={'validation'}>{validation("ir")}</label>
+                                            <span>{"ir"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ix"} value={state.ix} onChange={handleInputChange} placeholder={'ix'} />
                                             <label htmlFor={"ix"} className={'validation'}>{validation("ix")}</label>
+                                            <span>{"ix"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"h"} value={state.h} onChange={handleInputChange} placeholder={'h'} />
                                             <label htmlFor={"h"} className={'validation'}>{validation("h")}</label>
+                                            <span>{"h"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"vv"} value={state.vv} onChange={handleInputChange} placeholder={'vv'} />
                                             <label htmlFor={"vv"} className={'validation'}>{validation("vv")}</label>
+                                            <span>{"vv"}</span>
                                         </InputGroup>
 
                                         <InputGroup>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"n"} value={state.n} onChange={handleInputChange} placeholder={'n'} />
+                                            <span>{"n"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"dd"} value={state.dd} onChange={handleInputChange} placeholder={'dd'} />
+                                            <span>{"dd"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ff"} value={state.ff} onChange={handleInputChange} placeholder={'ff'} />
+                                            <span>{"ff"}</span>
                                         </InputGroup>
 
                                         <InputGroup>
                                             <input className="child label" value="00" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"fff"} value={state.fff} onChange={handleInputChange} placeholder={'fff'} />
                                             <label htmlFor={"fff"} className={'validation'}>{validation("fff")}</label>
+                                            <span>{"fff"}</span>
                                         </InputGroup>
 
                                         <InputGroup>
                                             <input className="child label" value="1" tabIndex={-1} />
                                             <input type="text" name={"sn1_1"} value={state.sn1_1} onChange={handleInputChange} placeholder={'sn1_1'} />
                                             <label htmlFor={"sn1_1"} className={'validation'}>{validation("sn1_1")}</label>
+                                            <span>{"sn"}</span>
                                             <input type="text" name={"ttt"} value={state.ttt} onChange={handleInputChange} placeholder={'ttt'} />
                                             <label htmlFor={"ttt"} className={'validation'}>{validation("ttt")}</label>
+                                            <span>{"ttt"}</span>
                                         </InputGroup>
 
                                         <InputGroup>
                                             <input className="child label" value="2" tabIndex={-1} />
                                             <input type="text" name={"sn2_1"} value={state.sn2_1} onChange={handleInputChange} placeholder={'sn2_1'} />
                                             <label htmlFor={"sn2_1"} className={'validation'}>{validation("sn2_1")}</label>
+                                            <span>{"sn"}</span>
                                             <input type="text" name={"tdTdTd"} value={state.tdTdTd} onChange={handleInputChange} placeholder={'tdTdTd'} />
                                             <label htmlFor={"tdTdTd"} className={'validation'}>{validation("tdTdTd")}</label>
+                                            <span>{"tdTdTd"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('poPoPoPo').length !== 0 ? true : false} >
                                             <input className="child label" value="3" tabIndex={-1} />
                                             <input type="text" name={"poPoPoPo"} value={state.poPoPoPo} onChange={handleInputChange} placeholder={'poPoPoPo'} />
                                             <label htmlFor={"poPoPoPo"} className={'validation'}>{validation("poPoPoPo")}</label>
+                                            <span>{"poPoPoPo"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('pppp').length !== 0 ? true : false}>
                                             <input className="child label" value="4" tabIndex={-1} />
                                             <input type="text" name={"pppp"} value={state.pppp} onChange={handleInputChange} placeholder={'pppp'} />
                                             <label htmlFor={"pppp"} className={'validation'}>{validation("pppp")}</label>
+                                            <span>{"pppp"}</span>
                                         </InputGroup>
 
                                         {/* <ContainerInput2 error={validation('a3').length !== 0 ? true : false} historic={true}>
@@ -455,24 +478,30 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                             <input className="child label" value="5" tabIndex={-1} />
                                             <input type="text" name={"a"} value={state.a} onChange={handleInputChange} placeholder={'a'} />
                                             <label htmlFor={"a"} className={'validation'}>{validation("a")}</label>
+                                            <span>{"a"}</span>
                                             <input type="text" name={"ppp"} value={state.ppp} onChange={handleInputChange} placeholder={'ppp'} />
                                             <label htmlFor={"ppp"} className={'validation'}>{validation("ppp")}</label>
+                                            <span>{"ppp"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('rrr').length !== 0 ? true : false}>
                                             <input className="child label" value="6" tabIndex={-1} />
                                             <input type="text" name={"rrr"} value={state.rrr} onChange={handleInputChange} placeholder={'rrr'} />
                                             <label htmlFor={"rrr"}>{validation("rrr")}</label>
+                                            <span>{"rrr"}</span>
                                             <input type="text" name={"tr"} value={state.tr} onChange={handleInputChange} placeholder={'tr'} />
                                             <label htmlFor={"tr"}>{validation("tr")}</label>
+                                            <span>{"tr"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('ww').length !== 0 ? true : false}>
                                             <input className="child label" value="7" tabIndex={-1} />
                                             <input type="text" name={"ww"} value={state.ww} onChange={handleInputChange} placeholder={'ww'} />
                                             <label htmlFor={"ww"} className={'validation'}>{validation("ww")}</label>
+                                            <span>{"ww"}</span>
                                             <input type="text" name={"w1W2"} value={state.w1W2} onChange={handleInputChange} placeholder={'w1W2'} />
                                             <label htmlFor={"w1W2"} className={'validation'}>{validation("w1W2")}</label>
+                                            <span>{"w1W2"}</span>
                                         </InputGroup>
 
                                         {/* <ContainerInput2 error={validation('waWa').length !== 0 ? true : false} historic={true}>
@@ -503,18 +532,23 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                             <input className="child label" value="8" tabIndex={-1} />
                                             <input type="text" name={"nh"} value={state.nh} onChange={handleInputChange} placeholder={'nh'} />
                                             <label htmlFor={"nh"}>{validation("nh")}</label>
+                                            <span>{"nh"}</span>
                                             <input type="text" name={"cl"} value={state.cl} onChange={handleInputChange} placeholder={'cl'} />
                                             <label htmlFor={"cl"}>{validation("cl")}</label>
+                                            <span>{"cl"}</span>
                                             <input type="text" name={"cm"} value={state.cm} onChange={handleInputChange} placeholder={'cm'} />
                                             <label htmlFor={"cm"}>{validation("cm")}</label>
+                                            <span>{"cm"}</span>
                                             <input type="text" name={"ch"} value={state.ch} onChange={handleInputChange} placeholder={'ch'} />
                                             <label htmlFor={"ch"}>{validation("ch")}</label>
+                                            <span>{"ch"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('gggg').length !== 0 ? true : false}>
                                             <input className="child label" value="9" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"gggg"} value={state.gggg} onChange={handleInputChange} placeholder={'gggg'} />
                                             <label htmlFor={"gggg"}>{validation("gggg")}</label>
+                                            <span>{"gggg"}</span>
                                         </InputGroup>
                                     </div>
                                     {/* begining of section 2 */}
@@ -523,32 +557,40 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                             <input className="child label" value="222" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ds"} value={state.ds} onChange={handleInputChange} placeholder={'ds'} />
                                             <label htmlFor={"ds"}>{validation("ds")}</label>
+                                            <span>{"ds"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"vs"} value={state.vs} onChange={handleInputChange} placeholder={'vs'} />
                                             <label htmlFor={"vs"}>{validation("vs")}</label>
+                                            <span>{"vs"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('ss').length !== 0 ? true : false}>
                                             <input className="child label" value="0" tabIndex={-1} />
                                             <input type="text" name={"ss"} value={state.ss} onChange={handleInputChange} placeholder={'ss'} />
                                             <label htmlFor={"ss"}>{validation("ss")}</label>
+                                            <span>{"ss"}</span>
                                             <input type="text" name={"twTwTw"} value={state.twTwTw} onChange={handleInputChange} placeholder={'twTwTwTw'} />
                                             <label htmlFor={"twTwTw"}>{validation("twTwTw")}</label>
+                                            <span>{"twTwTw"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('pwaPwa').length !== 0 ? true : false}>
                                             <input className="child label" value="1" tabIndex={-1} />
                                             <input type="text" name={"pwaPwa"} value={state.pwaPwa} onChange={handleInputChange} placeholder={'pwaPwa'} />
                                             <label htmlFor={"pwaPwa"}>{validation("pwaPwa")}</label>
+                                            <span>{"pwaPwa"}</span>
                                             <input type="text" name={"hwaHwa"} value={state.hwaHwa} onChange={handleInputChange} placeholder={'hwaHwa'} />
                                             <label htmlFor={"hwaHwa"}>{validation("hwaHwa")}</label>
+                                            <span>{"hwaHwa"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('pwPw').length !== 0 ? true : false}>
                                             <input className="child label" value="2" tabIndex={-1} />
                                             <input type="text" name={"pwPw"} value={state.pwPw} onChange={handleInputChange} placeholder={'pwPw'} />
                                             <label htmlFor={"pwPw"}>{validation("pwPw")}</label>
+                                            <span>{"pwPw"}</span>
                                             <input type="text" name={"hwHw"} value={state.hwHw} onChange={handleInputChange} placeholder={'hwHw'} />
                                             <label htmlFor={"hwHw"}>{validation("hwHw")}</label>
+                                            <span>{"hwHw"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('dw1Dw1').length !== 0 ? true : false}>
@@ -563,40 +605,50 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                             <input className="child label" value="4" tabIndex={-1} />
                                             <input type="text" name={"pw1Pw1"} value={state.pw1Pw1} onChange={handleInputChange} placeholder={'pw1Pw1'} />
                                             <label htmlFor={"pw1Pw1"}>{validation("pw1Pw1")}</label>
+                                            <span>{"pw1Pw1"}</span>
                                             <input type="text" name={"hw1Hw1"} value={state.hw1Hw1} onChange={handleInputChange} placeholder={'hw1hw1'} />
                                             <label htmlFor={"hw1Hw1"}>{validation("hw1Hw1")}</label>
+                                            <span>{"pw1Pw1"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('pw2Pw2').length !== 0 ? true : false}>
                                             <input className="child label" value="5" tabIndex={-1} />
                                             <input type="text" name={"pw2Pw2"} value={state.pw2Pw2} onChange={handleInputChange} placeholder={'pw2Pw2'} />
                                             <label htmlFor={"pw2Pw2"}>{validation("pw2Pw2")}</label>
+                                            <span>{"pw2Pw2"}</span>
                                             <input type="text" name={"hw2Hw2"} value={state.hw2Hw2} onChange={handleInputChange} placeholder={'hw2Hw2'} />
                                             <label htmlFor={"hw2Hw2"}>{validation("hw2Hw2")}</label>
+                                            <span>{"hw2Hw2"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('eses').length !== 0 ? true : false}>
                                             <input className="child label" value="6" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"is_ice"} value={state.is_ice} onChange={handleInputChange} placeholder={'is_ice'} />
                                             <label htmlFor={"is_ice"}>{validation("is_ice")}</label>
+                                            <span>{"is_ice"}</span>
                                             <input type="text" name={"eses"} value={state.eses} onChange={handleInputChange} placeholder={'eses'} />
                                             <label htmlFor={"eses"}>{validation("eses")}</label>
+                                            <span>{"eses"}</span>
                                             <input type="text" name={"rs"} value={state.rs} onChange={handleInputChange} placeholder={'rs'} />
                                             <label htmlFor={"rs"}>{validation("rs")}</label>
+                                            <span>{"rs"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('hwaHwaHwa').length !== 0 ? true : false}>
                                             <input className="child label" value="70" tabIndex={-1} />
                                             <input type="text" name={"hwaHwaHwa"} value={state.hwaHwaHwa} onChange={handleInputChange} placeholder={'hwaHwaHwa'} />
                                             <label htmlFor={"hwaHwaHwa"}>{validation("hwaHwaHwa")}</label>
+                                            <span>{"hwaHwaHwa"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('sw').length !== 0 ? true : false}>
                                             <input className="child label" value="8" tabIndex={-1} />
                                             <input type="text" name={"sw"} value={state.sw} onChange={handleInputChange} placeholder={'sw'} />
                                             <label htmlFor={"sw"}>{validation("sw")}</label>
+                                            <span>{"sw"}</span>
                                             <input type="text" name={"tbTbTb"} value={state.tbTbTb} onChange={handleInputChange} placeholder={'tbTbTbTb'} />
                                             <label htmlFor={"tbTbTb"}>{validation("tbTbTb")}</label>
+                                            <span>{"tbTbTb"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('is_ice').length !== 0 ? true : false}>
@@ -604,18 +656,21 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('ci').length !== 0 ? true : false}>
-                                            <span>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ci"} value={state.ci} onChange={handleInputChange} placeholder={'ci'} />
-                                                <label htmlFor={"ci"}>{validation("ci")}</label>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"si"} value={state.si} onChange={handleInputChange} placeholder={'si'} />
-                                                <label htmlFor={"si"}>{validation("si")}</label>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"bi"} value={state.bi} onChange={handleInputChange} placeholder={'bi'} />
-                                                <label htmlFor={"bi"}>{validation("bi")}</label>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"di"} value={state.di} onChange={handleInputChange} placeholder={'di'} />
-                                                <label htmlFor={"di"}>{validation("di")}</label>
-                                                <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"zi"} value={state.zi} onChange={handleInputChange} placeholder={'zi'} />
-                                                <label htmlFor={"zi"}>{validation("zi")}</label>
-                                            </span>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ci"} value={state.ci} onChange={handleInputChange} placeholder={'ci'} />
+                                            <label htmlFor={"ci"}>{validation("ci")}</label>
+                                            <span>{"ci"}</span>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"si"} value={state.si} onChange={handleInputChange} placeholder={'si'} />
+                                            <label htmlFor={"si"}>{validation("si")}</label>
+                                            <span>{"si"}</span>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"bi"} value={state.bi} onChange={handleInputChange} placeholder={'bi'} />
+                                            <label htmlFor={"bi"}>{validation("bi")}</label>
+                                            <span>{"bi"}</span>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"di"} value={state.di} onChange={handleInputChange} placeholder={'di'} />
+                                            <label htmlFor={"di"}>{validation("di")}</label>
+                                            <span>{"di"}</span>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"zi"} value={state.zi} onChange={handleInputChange} placeholder={'zi'} />
+                                            <label htmlFor={"zi"}>{validation("zi")}</label>
+                                            <span>{"zi"}</span>
                                         </InputGroup>
 
                                     </div>
@@ -629,24 +684,30 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                             <input className="child label" value="1" tabIndex={-1} />
                                             <input type="text" name={"sn1_3"} value={state.sn1_3} onChange={handleInputChange} placeholder={'sn1_3'} />
                                             <label htmlFor={"sn1_3"}>{validation("sn1_3")}</label>
+                                            <span>{"sn"}</span>
                                             <input type="text" name={"txTxTx"} value={state.txTxTx} onChange={handleInputChange} placeholder={'txTxTxTx'} />
                                             <label htmlFor={"txTxTx"}>{validation("txTxTx")}</label>
+                                            <span>{"txTxTx"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('sn2_3').length !== 0 ? true : false}>
                                             <input className="child label" value="2" tabIndex={-1} />
                                             <input type="text" name={"sn2_3"} value={state.sn2_3} onChange={handleInputChange} placeholder={'sn2_3'} />
                                             <label htmlFor={"sn2_3"}>{validation("sn2_3")}</label>
+                                            <span>{"sn"}</span>
                                             <input type="text" name={"tnTnTn"} value={state.tnTnTn} onChange={handleInputChange} placeholder={'tnTnTn'} />
                                             <label htmlFor={"tnTnTn"}>{validation("tnTnTn")}</label>
+                                            <span>{"tnTnTn"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('ind89').length !== 0 ? true : false}>
                                             <input className="child label" value="5" tabIndex={-1} />
                                             <input type="text" name={"ind89"} value={state.ind89} onChange={handleInputChange} placeholder={'ind89'} />
                                             <label htmlFor={"ind89"}>{validation("ind89")}</label>
+                                            <span>{"8/9"}</span>
                                             <input type="text" name={"p24P24P24"} value={state.p24P24P24} onChange={handleInputChange} placeholder={'p24P24P24'} />
                                             <label htmlFor={"p24P24P24"}>{validation("p24P24P24")}</label>
+                                            <span>{"p24P24P24"}</span>
                                         </InputGroup>
                                     </div>
                                     {/*begning of section 5*/}
@@ -655,16 +716,22 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                             <input className="child label" value="555" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iChw"} value={state.iChw} onChange={handleInputChange} placeholder={'iChw'} />
                                             <label htmlFor={"iChw"}>{validation("iChw")}</label>
+                                            <span>{"iChw"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCm"} value={state.iCm} onChange={handleInputChange} placeholder={'iCm'} />
                                             <label htmlFor={"iCm"}>{validation("iCm")}</label>
+                                            <span>{"iCm"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"cs"} value={state.cs} onChange={handleInputChange} placeholder={'cs'} />
                                             <label htmlFor={"cs"}>{validation("cs")}</label>
+                                            <span>{"cs"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCf"} value={state.iCf} onChange={handleInputChange} placeholder={'iCf'} />
                                             <label htmlFor={"iCf"}>{validation("iCf")}</label>
+                                            <span>{"iCf"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCp"} value={state.iCp} onChange={handleInputChange} placeholder={'iCp'} />
                                             <label htmlFor={"iCp"}>{validation("iCp")}</label>
+                                            <span>{"iCp"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCq"} value={state.iCq} onChange={handleInputChange} placeholder={'iCq'} />
                                             <label htmlFor={"iCq"}>{validation("iCq")}</label>
+                                            <span>{"iCq"}</span>
                                         </InputGroup>
                                     </div>
 

@@ -225,10 +225,21 @@ export const ContainerLabel = styled('label', {
 })
 
 export const InputGroup = styled('span', {
-    fontSize: '.8rem',
+    // '&::after': {
+    //     content: `attr(data-name)`,
+    // },
     position: 'relative',
     display: 'inline-block',
     padding: '.2rem',
+    'span': {
+        position: 'absolute',
+        fontSize: '1rem',
+        color: '$fourth',
+        backgroundImage: 'linear-gradient($ninth, $sixth)',
+        padding: '0 .05rem',
+        borderRadius: '.3rem',
+        transform: 'translateY(-0.4rem) translateX(-2.6rem)',
+    },
     'input:first-child': {
         borderTopLeftRadius: '.3rem',
         borderBottomLeftRadius: '.3rem',
@@ -305,6 +316,9 @@ export const InputGroup = styled('span', {
     'input:disabled': {
         backgroundColor: '$eleventh',
         cursor: 'not-allowed',
+    },
+    'input:disabled + label + span': {
+        backgroundImage: 'linear-gradient($ninth, $eleventh)',
     },
     variants: {
         error: {
