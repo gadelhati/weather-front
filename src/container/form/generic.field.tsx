@@ -211,6 +211,41 @@ export const ContainerInput = styled('div', {
         transition: 'all 0.3s ease',
         boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
     },
+    variants: {
+        historic: {
+            true: {
+                'input, select': {
+                    width: '10em',
+                    '+ label': {
+                        width: '8em',
+                    },
+                },
+            },
+            false: {
+                'input, select': {
+                    '+ label': {
+                        width: '7rem',
+                    },
+                },
+            },
+        },
+        error: {
+            true: {
+                'input, select': {
+                    color: '$tenth',
+                    background: '$fifteenth',
+                },
+                'input:focus, input:active, input:hover, select:focus, select:active, select:hover': {
+                    '+ label + label': {
+                        height: '4rem',
+                        background: '$fifteenth',
+                        display: 'inline-block',
+                        zIndex: '1',
+                    },
+                },
+            },
+        },
+    },
 })
 
 export const ContainerLabel = styled('label', {
