@@ -1,7 +1,7 @@
-# _Shopping_
+# _Weather_
 
-![gitlab](https://img.shields.io/gitlab/stars/gadelhati/shopping-front?style=social "Gitlab")
-![github](https://img.shields.io/github/stars/gadelhati/shopping-front?style=social "Github")
+![gitlab](https://img.shields.io/gitlab/stars/gadelhati/weather-front?style=social "Gitlab")
+![github](https://img.shields.io/github/stars/gadelhati/weather-front?style=social "Github")
 ![typescript](https://img.shields.io/badge/typescript-4.7-0076c6 "Typescript")
 ![node](https://img.shields.io/badge/node-18.8.0-75AC64 "Node")
 ![vscode](https://img.shields.io/badge/vscode-1.70.2-1E97E8 "Visual Studio Code")
@@ -21,7 +21,7 @@
 <!-- |`python`           |python-3.10.6-amd64        |https://www.python.org/ftp/python/3.10.6/python-3.10.6-amd64.exe -->
 
 # Description
-It is called shoppingal information, also known as shoppingal labeling, the table of information regarding the amounts of vitamins, mineral salts, fats, proteins, fibers, among others, per portion, contained in most product packaging.
+It is called weatheral information, also known as weatheral labeling, the table of information regarding the amounts of vitamins, mineral salts, fats, proteins, fibers, among others, per portion, contained in most product packaging.
 
 ## Roadmap
 ### in development
@@ -45,7 +45,7 @@ It is called shoppingal information, also known as shoppingal labeling, the tabl
 
 ## how to create this project
 ```
-npm create vite@latest shopping-front -- --template react-ts
+npm create vite@latest weather-front -- --template react-ts
 ```
 ## how to install dependencies for this project
 ```
@@ -82,11 +82,11 @@ npm run build
 
 # Reference API download link
 
-> [https://github.com/gadelhati/shopping-back](https://github.com/gadelhati/shopping-back)
+> [https://github.com/gadelhati/weather-back](https://github.com/gadelhati/weather-back)
 
 # Reference API, running locally
 
-> [http://localhost:8080/shopping-back](http://localhost:8080/shopping-back)
+> [http://localhost:8080/weather-back](http://localhost:8080/weather-back)
 
 # Git
 
