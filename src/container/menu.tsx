@@ -17,7 +17,7 @@ export const vector: string[][] = [
     // ["harbor", "grid", "sixth"],
     // ["institution", "collection", "sixth"],
     // ["manufacturer", "collection", "sixth"],
-    // ["observer", "collection", "sixth"],
+    ["observer", "collection", "sixth"],
     // ["om", "collection", "sixth"],
     // ["platform", "calendar3", "sixth"],
     // ["platform_category", "chat-quote-fill", "sixth"],
