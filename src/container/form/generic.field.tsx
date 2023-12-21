@@ -233,12 +233,12 @@ export const InputGroup = styled('span', {
     padding: '.2rem',
     'span': {
         position: 'absolute',
-        fontSize: '1rem',
-        color: '$fourth',
-        backgroundImage: 'linear-gradient($ninth, $sixth)',
         padding: '0 .05rem',
         borderRadius: '.3rem',
-        transform: 'translateY(-0.4rem) translateX(-2.6rem)',
+        color: '$fourth',
+        fontSize: '.75rem',
+        backgroundImage: 'linear-gradient($ninth, $sixth)',
+        transform: 'translateY(-0.25rem) translateX(-120%)',
     },
     'input:first-child': {
         borderTopLeftRadius: '.3rem',
@@ -253,12 +253,16 @@ export const InputGroup = styled('span', {
     },
     input: {
         height: '2.2rem',
-        width: '4rem',
+        width: '5rem',
         padding: '0 1rem',
         color: '#354F52',
         fontSize: '15px',
         border: '1px solid #354F52',
         backgroundColor: '$sixth',
+        '&:placeholder': {
+            color: 'red',
+            justifyContent: 'center',
+        },
     },
     '.label': {
         pointerEvents: 'none',

@@ -410,10 +410,13 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
 
                                         <InputGroup>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"n"} value={state.n} onChange={handleInputChange} placeholder={'n'} />
+                                            <label htmlFor={"n"} className={'validation'}>{validation("n")}</label>
                                             <span>{"n"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"dd"} value={state.dd} onChange={handleInputChange} placeholder={'dd'} />
+                                            <label htmlFor={"dd"} className={'validation'}>{validation("dd")}</label>
                                             <span>{"dd"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ff"} value={state.ff} onChange={handleInputChange} placeholder={'ff'} />
+                                            <label htmlFor={"ff"} className={'validation'}>{validation("ff")}</label>
                                             <span>{"ff"}</span>
                                         </InputGroup>
 
