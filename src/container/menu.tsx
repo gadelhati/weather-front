@@ -22,7 +22,7 @@ export const vector: string[][] = [
     // ["platform", "calendar3", "sixth"],
     // ["platform_category", "chat-quote-fill", "sixth"],
     // ["researcher", "collection", "sixth"],
-    // ["station", "chm", "sixth"],
+    ["station", "chm", "sixth"],
     // ["stationCategory", "gear-fill", "sixth"],
     // ["station_historic", "cpu-fill", "sixth"],
     // ["stationOffShore", "speedometer", "sixth"],
