@@ -214,7 +214,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
     const showObject = (values: any): any => {
         return (
             Object.entries(values).map(([key, value]: any, index) => {
-                if (key === 'date' || key === 'observer' || key === 'ddddddd' || key === 'ii' || key === 'iii' || key === 'yy' || key === 'miMi') {
+                if (key === 'dateObservation' || key === 'observer' || key === 'ddddddd' || key === 'ii' || key === 'iii' || key === 'yy' || key === 'miMi') {
                     return (<td key={Math.random()}>
                         {Array.isArray(value) ?
                             <>
@@ -790,7 +790,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                             </tr>
                             <tr>
                                 {Object.entries(state).map(([key]: any, index) => {
-                                    if (key === 'date' || key === 'observer' || key === 'ddddddd' || key === 'ii' || key === 'iii' || key === 'yy' || key === 'miMi' ) {
+                                    if (key === 'dateObservation' || key === 'observer' || key === 'ddddddd' || key === 'ii' || key === 'iii' || key === 'yy' || key === 'miMi' ) {
                                         return (<th key={Math.random()} onClick={() => searchKey(key)}>{key}</th>)
                                     }
                                     // else { 
