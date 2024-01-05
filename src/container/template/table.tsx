@@ -33,7 +33,6 @@ export const Table = styled('table', {
         boxShadow: '0 .3rem .6rem rgba(0,0,0,0.16)',
         'tr th': {
             padding: '1rem',
-            paddingLeft: '2em',
         },
     },
     'thead > tr': {
@@ -43,10 +42,11 @@ export const Table = styled('table', {
     },
     'td, th': {
         borderBottom: '1px solid $eighth',
-        paddingLeft: '2.1em',
+        paddingLeft: '1em',
         textAlign: 'left',
         height: '3em',
-        width: '100%',
+        minWidth: '5%',
+        maxWidth: '50%',
     },
     'tr:nth-child(even)': {
         backgroundColor: '$tenth',
