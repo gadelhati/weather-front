@@ -297,7 +297,7 @@ export const InputGroup = styled('span', {
         border: '1px solid #354F52',
         backgroundColor: '$sixth',
     },
-    '.label': {
+    '.title': {
         pointerEvents: 'none',
         // cursor: 'not-allowed',
         padding: '.5em 1em',
@@ -307,7 +307,7 @@ export const InputGroup = styled('span', {
         fontSize: '15px',
         transition: 'background-color .3s ease-in-out',
     },
-    '.label:hover': {
+    '.title:hover': {
         transform: 'translateY(-1.2rem)',
         backgroundColor: '#52796F',
     },

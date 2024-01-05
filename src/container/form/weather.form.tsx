@@ -376,7 +376,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup data-name={'12'} error={validation('laLaLa').length !== 0 ? true : false}>
-                                            <input className="child label" value="99" tabIndex={-1} />
+                                            <input className="title" value="99" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"laLaLa"} value={state.laLaLa} onChange={handleInputChange} placeholder={'laLaLa'} />
                                             <label htmlFor={"laLaLa"}>{validation("laLaLa")}</label>
                                             <span>{"laLaLa"}</span>
@@ -421,14 +421,14 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('fff').length !== 0 ? true : false}>
-                                            <input className="child label" value="00" tabIndex={-1} />
+                                            <input className="title" value="00" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"fff"} value={state.fff} onChange={handleInputChange} placeholder={'fff'} />
                                             <label htmlFor={"fff"}>{validation("fff")}</label>
                                             <span>{"fff"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('sn1_1').length !== 0 || validation('ttt').length !== 0 ? true : false}>
-                                            <input className="child label" value="1" tabIndex={-1} />
+                                            <input className="title" value="1" tabIndex={-1} />
                                             <input type="text" name={"sn1_1"} value={state.sn1_1} onChange={handleInputChange} placeholder={'sn1_1'} />
                                             <label htmlFor={"sn1_1"}>{validation("sn1_1")}</label>
                                             <span>{"sn"}</span>
@@ -438,7 +438,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('sn2_1').length !== 0 || validation('tdTdTd').length !== 0 ? true : false}>
-                                            <input className="child label" value="2" tabIndex={-1} />
+                                            <input className="title" value="2" tabIndex={-1} />
                                             <input type="text" name={"sn2_1"} value={state.sn2_1} onChange={handleInputChange} placeholder={'sn2_1'} />
                                             <label htmlFor={"sn2_1"}>{validation("sn2_1")}</label>
                                             <span>{"sn"}</span>
@@ -448,14 +448,14 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('poPoPoPo').length !== 0 ? true : false} >
-                                            <input className="child label" value="3" tabIndex={-1} />
+                                            <input className="title" value="3" tabIndex={-1} />
                                             <input type="text" name={"poPoPoPo"} value={state.poPoPoPo} onChange={handleInputChange} placeholder={'poPoPoPo'} />
                                             <label htmlFor={"poPoPoPo"}>{validation("poPoPoPo")}</label>
                                             <span>{"poPoPoPo"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('pppp').length !== 0 ? true : false}>
-                                            <input className="child label" value="4" tabIndex={-1} />
+                                            <input className="title" value="4" tabIndex={-1} />
                                             <input type="text" name={"pppp"} value={state.pppp} onChange={handleInputChange} placeholder={'pppp'} />
                                             <label htmlFor={"pppp"}>{validation("pppp")}</label>
                                             <span>{"pppp"}</span>
@@ -478,7 +478,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                             </ContainerInput2> */}
 
                                         <InputGroup  error={validation('a').length !== 0 || validation('ppp').length !== 0 ? true : false}>
-                                            <input className="child label" value="5" tabIndex={-1} />
+                                            <input className="title" value="5" tabIndex={-1} />
                                             <input type="text" name={"a"} value={state.a} onChange={handleInputChange} placeholder={'a'} />
                                             <label htmlFor={"a"}>{validation("a")}</label>
                                             <span>{"a"}</span>
@@ -488,7 +488,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('rrr').length !== 0 || validation('tr').length !== 0 ? true : false}>
-                                            <input className="child label" value="6" tabIndex={-1} />
+                                            <input className="title" value="6" tabIndex={-1} />
                                             <input type="text" name={"rrr"} value={state.rrr} onChange={handleInputChange} placeholder={'rrr'} />
                                             <label htmlFor={"rrr"}>{validation("rrr")}</label>
                                             <span>{"rrr"}</span>
@@ -498,7 +498,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('ww').length !== 0 || validation('w1w2').length !== 0 ? true : false}>
-                                            <input className="child label" value="7" tabIndex={-1} />
+                                            <input className="title" value="7" tabIndex={-1} />
                                             <input type="text" name={"ww"} value={state.ww} onChange={handleInputChange} placeholder={'ww'} />
                                             <label htmlFor={"ww"}>{validation("ww")}</label>
                                             <span>{"ww"}</span>
@@ -532,7 +532,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                             </ContainerInput2> */}
 
                                         <InputGroup error={validation('nh').length !== 0 || validation('cl').length !== 0 || validation('cm').length !== 0 || validation('ch').length !== 0 ? true : false}>
-                                            <input className="child label" value="8" tabIndex={-1} />
+                                            <input className="title" value="8" tabIndex={-1} />
                                             <input type="text" name={"nh"} value={state.nh} onChange={handleInputChange} placeholder={'nh'} />
                                             <label htmlFor={"nh"}>{validation("nh")}</label>
                                             <span>{"nh"}</span>
@@ -548,7 +548,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('gggg').length !== 0 ? true : false}>
-                                            <input className="child label" value="9" tabIndex={-1} />
+                                            <input className="title" value="9" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"gggg"} value={state.gggg} onChange={handleInputChange} placeholder={'gggg'} />
                                             <label htmlFor={"gggg"}>{validation("gggg")}</label>
                                             <span>{"gggg"}</span>
@@ -557,7 +557,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                     {/* begining of section 2 */}
                                     <div className={tab === 2 ? 'tab' : 'hide'}>
                                         <InputGroup error={validation('ds').length !== 0 || validation('vs').length !== 0 ? true : false}>
-                                            <input className="child label" value="222" tabIndex={-1} />
+                                            <input className="title" value="222" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ds"} value={state.ds} onChange={handleInputChange} placeholder={'ds'} />
                                             <label htmlFor={"ds"}>{validation("ds")}</label>
                                             <span>{"ds"}</span>
@@ -567,7 +567,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('ss').length !== 0 || validation('twTwTw').length !== 0 ? true : false}>
-                                            <input className="child label" value="0" tabIndex={-1} />
+                                            <input className="title" value="0" tabIndex={-1} />
                                             <input type="text" name={"ss"} value={state.ss} onChange={handleInputChange} placeholder={'ss'} />
                                             <label htmlFor={"ss"}>{validation("ss")}</label>
                                             <span>{"ss"}</span>
@@ -577,7 +577,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('pwaPwa').length !== 0 || validation('hwaHwa').length !== 0 ? true : false}>
-                                            <input className="child label" value="1" tabIndex={-1} />
+                                            <input className="title" value="1" tabIndex={-1} />
                                             <input type="text" name={"pwaPwa"} value={state.pwaPwa} onChange={handleInputChange} placeholder={'pwaPwa'} />
                                             <label htmlFor={"pwaPwa"}>{validation("pwaPwa")}</label>
                                             <span>{"pwaPwa"}</span>
@@ -587,7 +587,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('pwPw').length !== 0 || validation('hwHw').length !== 0 ? true : false}>
-                                            <input className="child label" value="2" tabIndex={-1} />
+                                            <input className="title" value="2" tabIndex={-1} />
                                             <input type="text" name={"pwPw"} value={state.pwPw} onChange={handleInputChange} placeholder={'pwPw'} />
                                             <label htmlFor={"pwPw"}>{validation("pwPw")}</label>
                                             <span>{"pwPw"}</span>
@@ -597,7 +597,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('dw1Dw1').length !== 0 || validation('dw2Dw2').length !== 0 ? true : false}>
-                                            <input className="child label" value="3" tabIndex={-1} />
+                                            <input className="title" value="3" tabIndex={-1} />
                                             <input type="text" name={"dw1Dw1"} value={state.dw1Dw1} onChange={handleInputChange} placeholder={'dw1Dw1'} />
                                             <label htmlFor={"dw1Dw1"}>{validation("dw1Dw1")}</label>
                                             <input type="text" name={"dw2Dw2"} value={state.dw2Dw2} onChange={handleInputChange} placeholder={'dw2Dw2'} />
@@ -605,7 +605,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('pw1Pw1').length !== 0 || validation('hw1Hw1').length !== 0 ? true : false}>
-                                            <input className="child label" value="4" tabIndex={-1} />
+                                            <input className="title" value="4" tabIndex={-1} />
                                             <input type="text" name={"pw1Pw1"} value={state.pw1Pw1} onChange={handleInputChange} placeholder={'pw1Pw1'} />
                                             <label htmlFor={"pw1Pw1"}>{validation("pw1Pw1")}</label>
                                             <span>{"pw1Pw1"}</span>
@@ -615,7 +615,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('pw2Pw2').length !== 0 || validation('hw2Hw2').length !== 0 ? true : false}>
-                                            <input className="child label" value="5" tabIndex={-1} />
+                                            <input className="title" value="5" tabIndex={-1} />
                                             <input type="text" name={"pw2Pw2"} value={state.pw2Pw2} onChange={handleInputChange} placeholder={'pw2Pw2'} />
                                             <label htmlFor={"pw2Pw2"}>{validation("pw2Pw2")}</label>
                                             <span>{"pw2Pw2"}</span>
@@ -625,7 +625,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('ic_ice').length !== 0 || validation('eses').length !== 0 || validation('rs').length !== 0 ? true : false}>
-                                            <input className="child label" value="6" tabIndex={-1} />
+                                            <input className="title" value="6" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"is_ice"} value={state.is_ice} onChange={handleInputChange} placeholder={'is_ice'} />
                                             <label htmlFor={"is_ice"}>{validation("is_ice")}</label>
                                             <span>{"is_ice"}</span>
@@ -638,14 +638,14 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('hwaHwaHwa').length !== 0 ? true : false}>
-                                            <input className="child label" value="70" tabIndex={-1} />
+                                            <input className="title" value="70" tabIndex={-1} />
                                             <input type="text" name={"hwaHwaHwa"} value={state.hwaHwaHwa} onChange={handleInputChange} placeholder={'hwaHwaHwa'} />
                                             <label htmlFor={"hwaHwaHwa"}>{validation("hwaHwaHwa")}</label>
                                             <span>{"hwaHwaHwa"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('tbTbTb').length !== 0 || validation('sw').length !== 0 ? true : false}>
-                                            <input className="child label" value="8" tabIndex={-1} />
+                                            <input className="title" value="8" tabIndex={-1} />
                                             <input type="text" name={"sw"} value={state.sw} onChange={handleInputChange} placeholder={'sw'} />
                                             <label htmlFor={"sw"}>{validation("sw")}</label>
                                             <span>{"sw"}</span>
@@ -655,7 +655,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup>
-                                            <input className="child label" value="ICE" tabIndex={-1} />
+                                            <input className="title" value="ICE" tabIndex={-1} />
                                         </InputGroup>
 
                                         <InputGroup error={validation('ci').length !== 0 || validation('si').length !== 0 || validation('bi').length !== 0 || validation('di').length !== 0 || validation('zi').length !== 0 ? true : false}>
@@ -680,11 +680,11 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                     {/*begining of section 3*/}
                                     <div className={tab === 3 ? 'tab' : 'hide'}>
                                         <InputGroup>
-                                            <input className="child label" value="333" tabIndex={-1} />
+                                            <input className="title" value="333" tabIndex={-1} />
                                         </InputGroup>
 
                                         <InputGroup error={validation('sn1_3').length !== 0 || validation('txTxTx').length !== 0 ? true : false}>
-                                            <input className="child label" value="1" tabIndex={-1} />
+                                            <input className="title" value="1" tabIndex={-1} />
                                             <input type="text" name={"sn1_3"} value={state.sn1_3} onChange={handleInputChange} placeholder={'sn1_3'} />
                                             <label htmlFor={"sn1_3"}>{validation("sn1_3")}</label>
                                             <span>{"sn"}</span>
@@ -694,7 +694,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('sn2_3').length !== 0 || validation('tnTnTn').length !== 0 ? true : false}>
-                                            <input className="child label" value="2" tabIndex={-1} />
+                                            <input className="title" value="2" tabIndex={-1} />
                                             <input type="text" name={"sn2_3"} value={state.sn2_3} onChange={handleInputChange} placeholder={'sn2_3'} />
                                             <label htmlFor={"sn2_3"}>{validation("sn2_3")}</label>
                                             <span>{"sn"}</span>
@@ -704,7 +704,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </InputGroup>
 
                                         <InputGroup error={validation('ind89').length !== 0 || validation('p24P24P24').length !== 0 ? true : false}>
-                                            <input className="child label" value="5" tabIndex={-1} />
+                                            <input className="title" value="5" tabIndex={-1} />
                                             <input type="text" name={"ind89"} value={state.ind89} onChange={handleInputChange} placeholder={'ind89'} />
                                             <label htmlFor={"ind89"}>{validation("ind89")}</label>
                                             <span>{"8/9"}</span>
@@ -716,7 +716,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                     {/*begning of section 5*/}
                                     <div className={tab === 4 ? 'tab' : 'hide'}>
                                         <InputGroup error={validation('iChw').length !== 0 || validation('iCm').length !== 0 || validation('cs').length !== 0 || validation('iCf').length !== 0 || validation('iCp').length !== 0 || validation('iCq').length !== 0 ? true : false}>
-                                            <input className="child label" value="555" tabIndex={-1} />
+                                            <input className="title" value="555" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iChw"} value={state.iChw} onChange={handleInputChange} placeholder={'iChw'} />
                                             <label htmlFor={"iChw"}>{validation("iChw")}</label>
                                             <span>{"iChw"}</span>
