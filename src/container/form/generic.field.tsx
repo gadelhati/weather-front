@@ -31,6 +31,7 @@ export const Container = styled('div', {
             },
             response: {
                 height: '5rem',
+                color: '$first',
             },
         },
     },
