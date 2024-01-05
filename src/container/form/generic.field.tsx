@@ -319,7 +319,7 @@ export const InputGroup = styled('span', {
         color: 'gray',
         opacity: '1',
     },
-    '.validation': {
+    'input + label': {
         fontSize: '.8rem',
         visibility: 'hidden',
         backgroundColor: 'black',
