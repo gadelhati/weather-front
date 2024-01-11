@@ -14,7 +14,7 @@ export const Container = styled('div', {
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        paddingBottom: '12rem',
+        paddingBottom: '5rem',
     },
     variants: {
         align: {
@@ -266,6 +266,7 @@ export const InputGroup = styled('span', {
     // },
     position: 'relative',
     display: 'inline-block',
+    border: '1px solid red',
     padding: '.2rem',
     'span': {
         opacity: '0',
