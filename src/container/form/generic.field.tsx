@@ -40,7 +40,7 @@ export const Container = styled('div', {
 export const ContainerInput2 = styled('span', {
     position: 'relative',
     display: 'inline-block',
-    margin: 'min(.2em) min(.2em) 0em 0em',
+    padding: '.2rem',
     overflowX: 'clip',
     ':has(label)': {
         outline: '2px solid blue',
@@ -68,7 +68,7 @@ export const ContainerInput2 = styled('span', {
         padding: '10px 0 10px 35px',
         color: '$fourth',
         background: '$tenth',
-        border: '0',
+        border: '1px solid #354F52',
         borderRadius: '.25rem',
         outline: '0',
         transition: 'all .3s ease-in-out',
@@ -266,7 +266,6 @@ export const InputGroup = styled('span', {
     // },
     position: 'relative',
     display: 'inline-block',
-    border: '1px solid red',
     padding: '.2rem',
     'span': {
         opacity: '0',
