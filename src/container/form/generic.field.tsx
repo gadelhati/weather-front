@@ -277,18 +277,18 @@ export const InputGroup = styled('span', {
         backgroundImage: 'linear-gradient($ninth, $sixth)',
         transform: 'translateY(-0.25rem) translateX(-120%)',
     },
-    'input:first-child': {
+    'input:first-child, select:first-child': {
         borderTopLeftRadius: '.3rem',
         borderBottomLeftRadius: '.3rem',
     },
-    'input:not(:last-of-type)': {
+    'input:not(:last-of-type), select:not(:last-of-type)': {
         borderRight: 'none',
     },
-    'input:last-of-type': {
+    'input:last-of-type, select:last-of-type': {
         borderTopRightRadius: '.3rem',
         borderBottomRightRadius: '.3rem',
     },
-    input: {
+    'input, select': {
         height: '2.2rem',
         width: '5rem',
         padding: '0 1rem',
@@ -311,15 +311,15 @@ export const InputGroup = styled('span', {
         transform: 'translateY(-1.2rem)',
         backgroundColor: '#52796F',
     },
-    'input:placeholder-shown + label + span' : {
+    'input:placeholder-shown + label + span, select:placeholder-shown + label + span' : {
         opacity: '0',
     },
-    'input:not(placeholder-shown) + label + span, input:focus + label + span, input:hover + label + span': {
+    'input:not(placeholder-shown) + label + span, input:focus + label + span, input:hover + label + span, select:not(placeholder-shown) + label + span, select:focus + label + span, select:hover + label + span': {
         transition: 'all .4s ease-in-out',
         color: 'gray',
         opacity: '1',
     },
-    'input + label': {
+    'input + label, select + label': {
         fontSize: '.8rem',
         visibility: 'hidden',
         backgroundColor: 'black',
@@ -335,17 +335,17 @@ export const InputGroup = styled('span', {
         opacity: '0',
         transition: 'opacity 1s',
     },
-    'input:disabled': {
+    'input:disabled, select:disabled': {
         backgroundColor: '$eleventh',
         cursor: 'not-allowed',
     },
-    'input:disabled + label + span': {
+    'input:disabled + label + span, select:disabled + label + span': {
         backgroundImage: 'linear-gradient($ninth, $eleventh)',
     },
     variants: {
         error: {
             true: {
-                'input:not(placeholder-shown) + label + span, input:focus + label + span, input:hover + label + span': {
+                'input:not(placeholder-shown) + label + span, input:focus + label + span, input:hover + label + span, select:not(placeholder-shown) + label + span, select:focus + label + span, select:hover + label + span': {
                     color: '$sixth',
                     backgroundImage: 'linear-gradient($ninth, $fifteenth)',
                 },
@@ -361,7 +361,7 @@ export const InputGroup = styled('span', {
                         zIndex: '1',
                     },
                 },
-                'input:hover + .validation': {
+                'input:hover + .validation, select:hover + .validation': {
                     visibility: 'visible',
                     opacity: '1',
                 },

@@ -303,35 +303,35 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                 </div>
                                 <Container align={'line'} style={{ flex: '1', overflow: 'auto' }}>
                                     <div className={tab === 0 ? 'tab' : 'hide'}>
-                                        <ContainerInput2 error={validation('observer').length !== 0 ? true : false} historic={true}>
+                                        <InputGroup error={validation('observer').length !== 0 ? true : false}>
                                             <select key={'observer'} name={'observer'} onChange={handleInputChangeSubSelect}
                                                 value={state.observer}>
                                                 <option selected value={state.observer === undefined || state.observer === null || state.observer[0] === null ? null : state.observer}>{state.observer === undefined || state.observer === null ? null : state.observer.name !== undefined ? state.observer?.name : state.observer?.id}</option>
                                                 {subStates[Object.keys(state).indexOf('observer')]?.map(((result: any) => <option key={Math.random()} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                             </select>
-                                            <label className='label' htmlFor={'observer'} >observer</label>
-                                            <label htmlFor={'observer'}>{validation('observer')}</label>
-                                        </ContainerInput2>
-                                        <ContainerInput2 error={validation('station').length !== 0 ? true : false} historic={true}>
+                                            <label htmlFor={'observer'} >{validation("observer")}</label>
+                                            <span>{"observer"}</span>
+                                        </InputGroup>
+
+                                        <InputGroup error={validation('station').length !== 0 ? true : false}>
                                             <select key={'station'} name={'station'} onChange={handleInputChangeSubSelect}
                                                 value={state.station}>
                                                 <option selected value={state.station === undefined || state.station === null || state.station[0] === null ? null : state.station}>{state.station === undefined || state.station === null ? null : state.station.name !== undefined ? state.station?.name : state.station?.id}</option>
                                                 {subStates[Object.keys(state).indexOf('station')]?.map(((result: any) => <option key={Math.random()} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                             </select>
-                                            <label className='label' htmlFor={'station'} >station</label>
-                                            <label htmlFor={'station'}>{validation('station')}</label>
-                                        </ContainerInput2>
-                                        <ContainerInput2 error={validation('miMi').length !== 0 ? true : false} historic={true}>
-                                            <span>
+                                            <label htmlFor={'station'} >{validation('station')}</label>
+                                            <span>{"station"}</span>
+                                        </InputGroup>
+
+                                        <InputGroup>
                                                 <select key={'miMi'} name={"miMi"} required onChange={handleSelectChange}
                                                     value={state.miMi} >
                                                     <option selected value={'AA'}>AA</option>
                                                     <option value={'BB'}>BB</option>
                                                 </select>
-                                                <label htmlFor={"miMi"} >{"miMi"}</label>
-                                                <label htmlFor={"miMi"}>{validation("miMi")}</label>
-                                            </span>
-                                        </ContainerInput2>
+                                                <label htmlFor={"miMi"} >{validation("miMi")}</label>
+                                                <span>{"miMi"}</span>
+                                        </InputGroup>
                                         {/* <ContainerInput2 error={validation('mjMj').length !== 0 ? true : false} historic={true}>
                                                                 <span>
                                                                 <input type="text" name={"mjMj"} required value={state.mjMj} placeholder='XX' readOnly= {true} onChange={handleInputChange}/>
