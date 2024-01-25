@@ -127,7 +127,7 @@ cp /home/<user>/<application-name>.zip /usr/share/nginx/html/
 cd /usr/share/nginx/html
 unzip <application-name>.zip
 chown nginx:nginx <application-name>
-rm <application-name>.zip
+rm <application-name>.zip -y
 service nginx start
 ```
 
