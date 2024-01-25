@@ -124,9 +124,10 @@ npm run preview
 service nginx stop
 rm -rf /usr/share/nginx/html/<old-name>
 cp /home/<user>/<application-name>.zip /usr/share/nginx/html/
-unzip /usr/share/nginx/html/<application-name>.zip
-chown nginx:nginx /usr/share/nginx/html/<application-name>
-rm /usr/share/nginx/html/<application-name>.zip
+cd /usr/share/nginx/html
+unzip <application-name>.zip
+chown nginx:nginx <application-name>
+rm <application-name>.zip
 service nginx start
 ```
 
