@@ -6,6 +6,7 @@ import { logout } from '../../service/service.crud'
 import { accessList } from '../access.list'
 import { vector } from '../menu'
 import logo from '../../assets/image/marinha.png'
+import { getRoles } from '../../service/service.token'
 
 export const SideContainer = () => {
   // const [ispending, startTransition] = useTransition()
@@ -35,15 +36,19 @@ export const SideContainer = () => {
             <p>{UriScreenFormat(vector[index][0] === 'weather' ? 'Observação' : vector[index][0] === 'observer' ? 'observador' : vector[index][0] === 'station' ? 'estação': vector[index][0])}</p>
           </SideItem>
         })}
-        {/* <SidebarCollapsible collapsible={collapsible}>
-            <SideItem key={0} onClick={showCollapsible}>
-              <div><span>historic</span><Icon name="geo2" /></div></SideItem>
-            {collapse.map((element) => {
-              return <SideItem key={element[1]} href={`#/${element[0]}`} ><Icon name={element[1]} /><p>{UriScreenFormat(element[0])}</p></SideItem>
-            })}
-        </SidebarCollapsible> */}
       </SidebarHeader>
-      <SideItem key={'logout'} href={`#/${'login'}`} element={'final'} onClick={logout}><Icon name={'geo-fill'} /><p>logout</p></SideItem>
+      <SidebarHeader>
+      <SidebarCollapsible collapsible={collapsible}>
+            <SideItem key={0} onClick={showCollapsible}>
+              <div><span>Observações Historicas</span><Icon name="geo2" /></div></SideItem>
+            {collapse.map((element) => {
+              return <SideItem key={element[1]} href={`#/${element[0]}`} ><Icon name={element[1]} /><p>
+                {UriScreenFormat(element[0] === 'weather/historic' ? 'observações gerais' : element[0] === 'weatherOffShore/historic' ? 'ship' : element[0] === 'weatherOnShore/historic' ? 'synop': element[0] === 'station/historic' ? 'estações': element[0])}
+              </p></SideItem>
+            })}
+        </SidebarCollapsible>
+        <SideItem key={'logout'} href={`#/${'login'}`} element={'final'} onClick={logout}><Icon name={'geo-fill'} /><p>logout</p></SideItem>
+      </SidebarHeader>
     </Sidebar>
   )
 }

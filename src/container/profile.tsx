@@ -68,7 +68,7 @@ export const Profile = () => {
     return (
         <>
             <Header>
-                <TitleHeader>Profile
+                <TitleHeader>Perfil
                     <h1>{getPayload().sub}</h1>
                 </TitleHeader>
                 <p>{getRoles()}</p>
@@ -79,12 +79,12 @@ export const Profile = () => {
                     <ContainerInput2 error={validation("password").length !== 0 ? true : false} >
                         <span>
                             <input type={'password'} required name={'password'} value={state.password} onChange={handleInputChange} autoComplete='off' />
-                            <label htmlFor={"password"}>New Password</label>
+                            <label htmlFor={"password"}>Nova Senha</label>
                             <label htmlFor={"password"}>{validation("password")}</label>
                         </span>
                     </ContainerInput2>
                 </div>
-                <Button onClick={changePasswordItem}>Change</Button>
+                <Button onClick={changePasswordItem}>Trocar Senha</Button>
             </Header >
             <div>{/\d/.test(state.password) ? 'OK, contém números' : 'não contém números'}</div>
             <div>{/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(state.password) ? 'OK, contém caracteres especiais' : 'não contém caracteres especiais'}</div>
