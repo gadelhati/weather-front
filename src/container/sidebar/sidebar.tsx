@@ -28,10 +28,12 @@ export const SideContainer = () => {
     <Sidebar>
       <SidebarHeader>
         <SideTitle sidehide={show} key={0} href={`#/`} >
-          <p>Home</p><img src={logo} />
+          <p>Início</p><img src={logo} />
         </SideTitle>
         {vector.map((element, index) => {
-          return <SideItem key={Math.random()} href={`#/${vector[index][0]}`}><Icon name={vector[index][1]} /><p>{UriScreenFormat(vector[index][0])}</p></SideItem>
+          return <SideItem key={Math.random()} href={`#/${vector[index][0]}`}><Icon name={vector[index][1]} />
+            <p>{UriScreenFormat(vector[index][0] === 'weather' ? 'Observação' : vector[index][0] === 'observer' ? 'observador' : vector[index][0] === 'station' ? 'estação': vector[index][0])}</p>
+          </SideItem>
         })}
         {/* <SidebarCollapsible collapsible={collapsible}>
             <SideItem key={0} onClick={showCollapsible}>

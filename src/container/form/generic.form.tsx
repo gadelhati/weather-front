@@ -280,7 +280,9 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                         onClickModal(evt)
                     }}>
                         <article>
-                            <header><span onClick={handleModal}>&times;</span><h2>{UriScreenFormat(object.url)}</h2></header>
+                            <header><span onClick={handleModal}>&times;</span><h2>
+                                {UriScreenFormat(object.url) === 'Observer' ? 'Observador' : UriScreenFormat(object.url) === 'Station' ? 'Estação' : UriScreenFormat(object.url)}
+                            </h2></header>
                             {atribute &&
                                 <>
                                 <center>
@@ -334,9 +336,9 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                     </Modal>
                     <Header>
                         <span>
-                            {!object.url.includes('istoric') && <Button category={'primary'} onClick={newItem}>New</Button>}
+                            {!object.url.includes('istoric') && <Button category={'primary'} onClick={newItem}>Novo</Button>}
                             <TitleHeader>
-                                <h1>{UriScreenFormat(object.url)}</h1>
+                                <h1>{UriScreenFormat(object.url) === 'Observer' ? 'Observador' : UriScreenFormat(object.url) === 'Station' ? 'Estação' : UriScreenFormat(object.url)}</h1>
                             </TitleHeader>
                         </span>
                         <a href={`#/${'profile'}`}><Button category={'secondary'}>{getPayload().sub}</Button></a>
@@ -348,7 +350,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                 <th colSpan={9}>
                                     <div className='header'>
                                         <div>
-                                            <span>show</span>
+                                            <span>mostrar</span>
                                             <select onChange={handleSize} >
                                                 <option value={5}>5</option>
                                                 <option value={10}>10</option>
@@ -356,7 +358,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                             </select>
                                         </div>
                                         <div>
-                                            <span>search {key}</span>
+                                            <span>buscar por {key}</span>
                                             <input name={search} onChange={searchItem} placeholder={`${key}`} value={search}></input>
                                         </div>
                                     </div>
@@ -396,7 +398,7 @@ export const GenericForm = <T extends { id: string, name: string }>(object: any)
                                     </GroupButton>
                                 </th>
                             </tr>
-                            <tr><th>Total amount {pageable.totalElements}</th></tr>
+                            <tr><th>Quantidade total {pageable.totalElements}</th></tr>
                         </tfoot>
                     </Table>
                     <Toast className="notifications"></Toast>

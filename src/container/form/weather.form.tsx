@@ -292,7 +292,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                         onClickModal(evt)
                     }}>
                         <article>
-                            <header><span onClick={handleModal}>&times;</span><h2>{UriScreenFormat(object.url)}</h2></header>
+                            <header><span onClick={handleModal}>&times;</span><h2>Observação</h2></header>
                             <center>
                                 <div className='tabs'>
                                     <button className={tab === 0 ? 'show' : 'inative'} onClick={() => changeTab(0)}>Seção 0</button>
@@ -310,7 +310,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                 {subStates[Object.keys(state).indexOf('observer')]?.map(((result: any) => <option key={Math.random()} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                             </select>
                                             <label htmlFor={'observer'} >{validation("observer")}</label>
-                                            <span>{"observer"}</span>
+                                            <span>{"observador"}</span>
                                         </InputGroup>
 
                                         <InputGroup error={validation('station').length !== 0 ? true : false}>
@@ -320,7 +320,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                 {subStates[Object.keys(state).indexOf('station')]?.map(((result: any) => <option key={Math.random()} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                             </select>
                                             <label htmlFor={'station'} >{validation('station')}</label>
-                                            <span>{"station"}</span>
+                                            <span>{"estação"}</span>
                                         </InputGroup>
 
                                         <InputGroup>
@@ -330,7 +330,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                     <option value={'BB'}>BB</option>
                                                 </select>
                                                 <label htmlFor={"miMi"} >{validation("miMi")}</label>
-                                                <span>{"miMi"}</span>
+                                                <span>{"tipo"}</span>
                                         </InputGroup>
                                         {/* <ContainerInput2 error={validation('mjMj').length !== 0 ? true : false} historic={true}>
                                                                 <span>
@@ -749,19 +749,19 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         {({ loading }) => loading ? <Button disabled={true} category={'secondary'} >Wait</Button> : <Button category={'secondary'} >Download</Button>}
                                     </PDFDownloadLink>}
                                 <Button category={'primary'} onClick={resetItem} type='reset' >Reset</Button> */}
-                                <Button category={'primary'} onClick={() => handleNext()} hidden={tab === 4}>Next</Button>
-                                <Button category={'primary'} onClick={() => handleConfirm('create')} hidden={compositeOrNot() || tab !== 4}>Create</Button>
-                                <Button category={'warning'} onClick={() => handleConfirm('update')} hidden={!compositeOrNot()}>Update</Button>
-                                <Button category={'danger'} onClick={() => handleConfirm('delete')} hidden={!compositeOrNot()}>Delete</Button>
-                                <Button category={'secondary'} onClick={handleModal}>Close</Button>
+                                <Button category={'primary'} onClick={() => handleNext()} hidden={tab === 4}>Próximo</Button>
+                                <Button category={'primary'} onClick={() => handleConfirm('create')} hidden={compositeOrNot() || tab !== 4}>Criar</Button>
+                                <Button category={'warning'} onClick={() => handleConfirm('update')} hidden={!compositeOrNot()}>Atualizar</Button>
+                                <Button category={'danger'} onClick={() => handleConfirm('delete')} hidden={!compositeOrNot()}>Deletar</Button>
+                                <Button category={'secondary'} onClick={handleModal}>Fechar</Button>
                             </footer>
                         </article>
                     </Modal>
                     <Header>
                         <span>
-                            {!object.url.includes('istoric') && <Button category={'primary'} onClick={newItem}>New</Button>}
+                            {!object.url.includes('istoric') && <Button category={'primary'} onClick={newItem}>Novo</Button>}
                             <TitleHeader>
-                                <h1>{UriScreenFormat(object.url)}</h1>
+                                <h1>Observação</h1>
                             </TitleHeader>
                             <WeatherUpload></WeatherUpload>
                         </span>
@@ -774,24 +774,26 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                 <th colSpan={9}>
                                     <div className='header'>
                                         <div>
-                                            <span>show</span>
+                                            <span>mostrar</span>
                                             <select onChange={handleSize} >
                                                 <option value={5}>5</option>
                                                 <option value={10}>10</option>
                                                 <option value={20}>20</option>
                                             </select>
                                         </div>
-                                        <div>
-                                            <span>search {key}</span>
+                                        {/* <div>
+                                            <span>buscar por {key}</span>
                                             <input name={search} onChange={searchItem} placeholder={`${key}`} value={search}></input>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </th>
                             </tr>
                             <tr>
                                 {Object.entries(state).map(([key]: any, index) => {
                                     if (key === 'dateObservation' || key === 'observer' || key === 'ddddddd' || key === 'ii' || key === 'iii' || key === 'yy' || key === 'miMi' ) {
-                                        return (<th key={Math.random()} onClick={() => searchKey(key)}>{key}</th>)
+                                        return (<th key={Math.random()} onClick={() => searchKey(key)}>
+                                            {key === 'observer' ? 'observador' : key === 'dateObservation' ? 'data' : key === 'miMi' ? 'tipo' : key }
+                                        </th>)
                                     }
                                     // else { 
                                     //     return (<th key={Math.random()} onClick={() => searchKey(key)}>{any}</th>)
@@ -823,7 +825,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                     </GroupButton>
                                 </th>
                             </tr>
-                            <tr><th>Total amount {pageable.totalElements}</th></tr>
+                            <tr><th>Quantidade total {pageable.totalElements}</th></tr>
                         </tfoot>
                     </Table>
                     <Toast className="notifications"></Toast>

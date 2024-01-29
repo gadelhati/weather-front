@@ -18,7 +18,7 @@ export const Home = () => {
     return (
         <>
             <Header>
-                <TitleHeader><h1>Home</h1></TitleHeader>
+                <TitleHeader><h1>Início</h1></TitleHeader>
                 <a href={`#/${'profile'}`}><Button category={'secondary'}>{getPayload().sub}</Button></a>
             </Header>
             <CardContainer>
