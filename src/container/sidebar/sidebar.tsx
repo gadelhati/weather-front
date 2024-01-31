@@ -36,6 +36,9 @@ export const SideContainer = () => {
             <p>{UriScreenFormat(vector[index][0] === 'weather' ? 'Observação' : vector[index][0] === 'observer' ? 'observador' : vector[index][0] === 'station' ? 'estação': vector[index][0])}</p>
           </SideItem>
         })}
+        {getRoles() == 'ROLE_ADMIN' &&
+        <SideItem key={Math.random()} href={`#/userEntity`}><Icon name={vector[0][1]} /><p>{UriScreenFormat('usuários')}</p></SideItem>
+      }
       </SidebarHeader>
       <SidebarHeader>
       <SidebarCollapsible collapsible={collapsible}>
