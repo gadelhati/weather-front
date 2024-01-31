@@ -536,7 +536,6 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                             <label htmlFor={"ds"}>{"ds"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"vs"} value={state.vs} onChange={handleInputChange} placeholder={'vs'} />
                                             <label htmlFor={"vs"}>{"vs"}</label>
-                                            <span>{"vs"}</span>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('ss').concat(validation('twTwTw'))}>
