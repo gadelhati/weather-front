@@ -679,7 +679,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
 
                                 </Container>
                                 <Container align={'response'}>
-                                    <div>{validationDTO()}</div>
+                                    <div>{validationDTO().map((element: any) => { return <div>{element}</div> })}</div>
                                 </Container>
                             </center>
                             <footer>
