@@ -66,6 +66,12 @@ export const retrieve = async<T,>(url: string, page?: number, size?: number, key
     }
 }
 
+export const message = async<T,>(url: string, id?: string) => {
+    return await api.get<T>(`/${url}?id=${id}`)
+        .then(response => { return response.data })
+        .catch(error => { return addError(error) })
+}
+
 export const update = async<T,>(url: string, object: T) => {
     return await api.put<T>(`/${url}`, object)
         .then(response => { return response.data })
