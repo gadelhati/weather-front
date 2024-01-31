@@ -41,12 +41,14 @@ export const Toast = styled('ul', {
     '.error': {
         border: 'red solid 0.1rem',
         borderLeft: 'red solid 1rem',
+        color: 'red',
         '::before': {
             background: '$seventeenth',
         },
         '.column i': {
             color: '$seventeenth',
-        }
+        },   
+   
     },
     '.warning': {
         border: '$nineteenth solid 0.1rem',
@@ -96,6 +98,9 @@ export const Toast = styled('ul', {
         background: `$tenth`,
         justifyContent: 'space-between',
         animation: `${show_toast} 0.3s ease forwards`,
+        '.column p': {
+            paddingLeft: '20px',
+        }, 
         '::before': {
             position: 'absolute',
             content: "",
