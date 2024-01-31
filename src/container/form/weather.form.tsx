@@ -385,7 +385,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('qc').concat(validation('loLoLoLo'))}>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"qc"} value={state.qc} onChange={handleInputChange} placeholder={'qc'} />
-                                            <label htmlFor={"qc"}>{validation("qc")}</label>
+                                            <label htmlFor={"qc"}>{"qc"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"loLoLoLo"} value={state.loLoLoLo} onChange={handleInputChange} placeholder={'loLoLoLo'} />
                                             <label htmlFor={"loLoLoLo"}>{"loLoLoLo"}</label>
                                         </span>
@@ -415,7 +415,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         <span className={'inputgroup tooltip'} data-tip={validation('fff')}>
                                             <input className="title" value="00" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"fff"} value={state.fff} onChange={handleInputChange} placeholder={'fff'} />
-                                            <label htmlFor={"fff"}>{validation("fff")}</label>
+                                            <label htmlFor={"fff"}>{"fff"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('sn1_1').concat(validation('ttt'))}>
@@ -467,7 +467,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                             <input type="text" name={"a"} value={state.a} onChange={handleInputChange} placeholder={'a'} />
                                             <label htmlFor={"a"}>{"a"}</label>
                                             <input type="text" name={"ppp"} value={state.ppp} onChange={handleInputChange} placeholder={'ppp'} />
-                                            <label htmlFor={"ppp"}>{validation("ppp")}</label>
+                                            <label htmlFor={"ppp"}>{"ppp"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('rrr').concat(validation('tr'))}>
@@ -513,13 +513,13 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         <span className={'inputgroup tooltip'} data-tip={validation('nh').concat(validation('cl')).concat(validation('cm')).concat(validation('ch'))}>
                                             <input className="title" value="8" tabIndex={-1} />
                                             <input type="text" name={"nh"} value={state.nh} onChange={handleInputChange} placeholder={'nh'} />
-                                            <label htmlFor={"nh"}>{validation("nh")}</label>
+                                            <label htmlFor={"nh"}>{"nh"}</label>
                                             <input type="text" name={"cl"} value={state.cl} onChange={handleInputChange} placeholder={'cl'} />
-                                            <label htmlFor={"cl"}>{validation("cl")}</label>
+                                            <label htmlFor={"cl"}>{"cl"}</label>
                                             <input type="text" name={"cm"} value={state.cm} onChange={handleInputChange} placeholder={'cm'} />
-                                            <label htmlFor={"cm"}>{validation("cm")}</label>
+                                            <label htmlFor={"cm"}>{"cm"}</label>
                                             <input type="text" name={"ch"} value={state.ch} onChange={handleInputChange} placeholder={'ch'} />
-                                            <label htmlFor={"ch"}>{validation("ch")}</label>
+                                            <label htmlFor={"ch"}>{"ch"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('gggg')}>
@@ -622,9 +622,9 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"bi"} value={state.bi} onChange={handleInputChange} placeholder={'bi'} />
                                             <label htmlFor={"bi"}>{"bi"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"di"} value={state.di} onChange={handleInputChange} placeholder={'di'} />
-                                            <label htmlFor={"di"}>{validation("di")}</label>
+                                            <label htmlFor={"di"}>{"di"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"zi"} value={state.zi} onChange={handleInputChange} placeholder={'zi'} />
-                                            <label htmlFor={"zi"}>{validation("zi")}</label>
+                                            <label htmlFor={"zi"}>{"zi"}</label>
                                         </span>
 
                                     </div>
