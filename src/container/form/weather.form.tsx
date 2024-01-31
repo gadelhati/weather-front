@@ -3,7 +3,7 @@ import { getPayload, isValidToken } from '../../service/service.token'
 import { ErrorMessage } from '../../assets/error/errorMessage'
 import { initialErrorMessage } from '../../assets/error/errorMessage.initial'
 import { create, update, remove, retrieve, removeComposite } from '../../service/service.crud'
-import { Container, ContainerInput2, InputGroup } from './generic.field'
+import { Container, ContainerInput2 } from './generic.field'
 import { AtributeSet } from './generic.atribute'
 import { Atribute } from '../../component/atribute/atribute.interface'
 import { Table } from '../template/table'
@@ -26,6 +26,8 @@ import { PDFDocument } from '../../component/pdf/PDFDocument'
 // import { InputInterface } from './input/assets/input.interface'
 import { Icon } from '../../assets/svg.access'
 import { WeatherUpload } from '../weather.upload'
+import './inputgroup.css'
+import './tooltip.css'
 
 export const WeatherForm = <T extends { id: string, name: string }>(object: any) => {
     const [state, setState] = useState<any>(object.object)
@@ -272,6 +274,15 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
             setConfirm({ ...confirm, show: false });
         }
     }
+    const copyContent = async () => {
+        let text = document.getElementById('myText')!.innerHTML;
+        try {
+          await navigator.clipboard.writeText(text);
+          console.log('Content copied to clipboard');
+        } catch (err) {
+          console.error('Failed to copy: ', err);
+        }
+    }
     return (
         <>
             {/* <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton> */}
@@ -303,36 +314,33 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                 </div>
                                 <Container align={'line'} style={{ flex: '1', overflow: 'auto' }}>
                                     <div className={tab === 0 ? 'tab' : 'hide'}>
-                                        <InputGroup error={validation('observer').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('observer')}>
                                             <select key={'observer'} name={'observer'} onChange={handleInputChangeSubSelect}
                                                 value={state.observer}>
                                                 <option selected value={state.observer === undefined || state.observer === null || state.observer[0] === null ? null : state.observer}>{state.observer === undefined || state.observer === null ? null : state.observer.name !== undefined ? state.observer?.name : state.observer?.id}</option>
                                                 {subStates[Object.keys(state).indexOf('observer')]?.map(((result: any) => <option key={Math.random()} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                             </select>
-                                            <label htmlFor={'observer'} >{validation("observer")}</label>
-                                            <span>{"observador"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={'observer'} >{"observer"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('station').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('station')}>
                                             <select key={'station'} name={'station'} onChange={handleInputChangeSubSelect}
                                                 value={state.station}>
                                                 <option selected value={state.station === undefined || state.station === null || state.station[0] === null ? null : state.station}>{state.station === undefined || state.station === null ? null : state.station.name !== undefined ? state.station?.name : state.station?.id}</option>
                                                 {subStates[Object.keys(state).indexOf('station')]?.map(((result: any) => <option key={Math.random()} value={result.id}>{result?.name ? result.name : result.id}</option>))}
                                             </select>
-                                            <label htmlFor={'station'} >{validation('station')}</label>
-                                            <span>{"estação"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={'station'} >{'station'}</label>
+                                        </span>
 
-                                        <InputGroup>
+                                        <span className={'inputgroup tooltip'} data-tip={''}>
                                                 <select key={'miMi'} name={"miMi"} required onChange={handleSelectChange}
                                                     value={state.miMi} >
                                                     <option selected value={'AA'}>AA</option>
                                                     <option value={'BB'}>BB</option>
                                                 </select>
-                                                <label htmlFor={"miMi"} >{validation("miMi")}</label>
-                                                <span>{"tipo"}</span>
-                                        </InputGroup>
-                                        {/* <ContainerInput2 error={validation('mjMj').length !== 0 ? true : false} historic={true}>
+                                                <label htmlFor={"miMi"} >{"miMi"}</label>
+                                        </span>
+                                        {/* <ContainerInput2 data-tip={validation('mjMj')} historic={true}>
                                                                 <span>
                                                                 <input type="text" name={"mjMj"} required value={state.mjMj} placeholder='XX' readOnly= {true} onChange={handleInputChange}/>
                                                                 <label htmlFor={"mjMj"}>{"mjMj"}</label>
@@ -340,128 +348,105 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                                 </span>
                                                             </ContainerInput2> */}
 
-                                        <InputGroup error={validation('ddddddd').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('ddddddd')}>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ddddddd"} value={state.ddddddd} onChange={handleInputChange} placeholder={'ddddddd'} />
                                             {/* <label htmlFor={"ddddddd"}>{"ddddddd"}</label> */}
-                                            <label htmlFor={"ddddddd"}>{validation("ddddddd")}</label>
-                                            <span>{"ddddddd"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"ddddddd"}>{"ddddddd"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('ii').length !== 0 || validation('iii').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('ii')}>
                                             <input disabled={state.miMi === 'BB' ? true : false} type="text" name={"ii"} value={state.ii} onChange={handleInputChange} placeholder={'ii'} />
-                                            <label htmlFor={"ii"}>{validation("ii")}</label>
-                                            <span>{"ii"}</span>
+                                            <label htmlFor={"ii"}>{"ii"}</label>
                                             <input disabled={state.miMi === 'BB' ? true : false} type="text" name={"iii"} value={state.iii} onChange={handleInputChange} placeholder={'iii'} />
-                                            <label htmlFor={"iii"}>{validation("iii")}</label>
-                                            <span>{"iii"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"iii"}>{"iii"}</label>
+                                        </span>
 
-                                        {/* <ContainerInput2 error={validation('nbNbNb').length !== 0 ? true : false} historic={true}>
+                                        {/* <ContainerInput2 data-tip={validation('nbNbNb')} historic={true}>
                                                                 <span>
                                                                 <input type="text" name={"nbNbNb"} value={state.nbNbNb} onChange={handleInputChange}/>
                                                                 <label htmlFor={"nbNbNb"}>{"nbNbNb"}</label>
                                                                 <label htmlFor={"nbNbNb"}>{validation("nbNbNb")}</label>
                                                                 </span>
                                                             </ContainerInput2> */}
-                                        <InputGroup error={validation('yy').length !== 0 || validation('gg').length !== 0 || validation('iw').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('yy').concat(validation('gg')).concat(validation('iw'))} >
                                             <input type="text" name={"yy"} required value={state.yy} onChange={handleInputChange} placeholder={'yy'} />
-                                            <label htmlFor={"yy"}>{validation("yy")}</label>
-                                            <span>{"yy"}</span>
+                                            <label htmlFor={"yy"}>{"yy"}</label>
                                             <input type="text" name={"gg"} required value={state.gg} onChange={handleInputChange} placeholder={'gg'} />
-                                            <label htmlFor={"gg"}>{validation("gg")}</label>
-                                            <span>{"gg"}</span>
+                                            <label htmlFor={"gg"}>{"gg"}</label>
                                             <input type="text" name={"iw"} required value={state.iw} onChange={handleInputChange} placeholder={'iw'} />
-                                            <label htmlFor={"iw"}>{validation("iw")}</label>
-                                            <span>{"iw"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"iw"}>{"iw"}</label>
+                                        </span>
 
-                                        <InputGroup data-name={'12'} error={validation('laLaLa').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('laLaLa')}>
                                             <input className="title" value="99" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"laLaLa"} value={state.laLaLa} onChange={handleInputChange} placeholder={'laLaLa'} />
-                                            <label htmlFor={"laLaLa"}>{validation("laLaLa")}</label>
-                                            <span>{"laLaLa"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"laLaLa"}>{"laLaLa"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('qc').length !== 0 || validation('loLoLoLo').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('qc').concat(validation('loLoLoLo'))}>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"qc"} value={state.qc} onChange={handleInputChange} placeholder={'qc'} />
                                             <label htmlFor={"qc"}>{validation("qc")}</label>
-                                            <span>{"qc"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"loLoLoLo"} value={state.loLoLoLo} onChange={handleInputChange} placeholder={'loLoLoLo'} />
-                                            <label htmlFor={"loLoLoLo"}>{validation("loLoLoLo")}</label>
-                                            <span>{"loLoLoLo"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"loLoLoLo"}>{"loLoLoLo"}</label>
+                                        </span>
                                     </div>
                                     {/*begining of section 1*/}
                                     <div className={tab === 1 ? 'tab' : 'hide'}>
-                                        <InputGroup error={validation('ir').length !== 0 || validation('ix').length !== 0 || validation('h').length !== 0 || validation('vv').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('ir').concat(validation('ix')).concat(validation('h')).concat(validation('vv'))}>
                                             <input type="text" name={"ir"} value={state.ir} onChange={handleInputChange} placeholder={'ir'} />
-                                            <label htmlFor={"ir"}>{validation("ir")}</label>
-                                            <span>{"ir"}</span>
+                                            <label htmlFor={"ir"}>{"ir"}</label>
                                             <input type="text" name={"ix"} value={state.ix} onChange={handleInputChange} placeholder={'ix'} />
-                                            <label htmlFor={"ix"}>{validation("ix")}</label>
-                                            <span>{"ix"}</span>
+                                            <label htmlFor={"ix"}>{"ix"}</label>
                                             <input type="text" name={"h"} value={state.h} onChange={handleInputChange} placeholder={'h'} />
-                                            <label htmlFor={"h"}>{validation("h")}</label>
-                                            <span>{"h"}</span>
+                                            <label htmlFor={"h"}>{"h"}</label>
                                             <input type="text" name={"vv"} value={state.vv} onChange={handleInputChange} placeholder={'vv'} />
-                                            <label htmlFor={"vv"}>{validation("vv")}</label>
-                                            <span>{"vv"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"vv"}>{"vv"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('n').length !== 0 || validation('dd').length !== 0 || validation('ff').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('n').concat(validation('dd')).concat(validation('ff'))}>
                                             <input type="text" name={"n"} value={state.n} onChange={handleInputChange} placeholder={'n'} />
-                                            <label htmlFor={"n"}>{validation("n")}</label>
-                                            <span>{"n"}</span>
+                                            <label htmlFor={"n"}>{"n"}</label>
                                             <input type="text" name={"dd"} value={state.dd} onChange={handleInputChange} placeholder={'dd'} />
-                                            <label htmlFor={"dd"}>{validation("dd")}</label>
-                                            <span>{"dd"}</span>
+                                            <label htmlFor={"dd"}>{"dd"}</label>
                                             <input type="text" name={"ff"} value={state.ff} onChange={handleInputChange} placeholder={'ff'} />
-                                            <label htmlFor={"ff"}>{validation("ff")}</label>
-                                            <span>{"ff"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"ff"}>{"ff"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('fff').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('fff')}>
                                             <input className="title" value="00" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"fff"} value={state.fff} onChange={handleInputChange} placeholder={'fff'} />
                                             <label htmlFor={"fff"}>{validation("fff")}</label>
-                                            <span>{"fff"}</span>
-                                        </InputGroup>
+                                        </span>
 
-                                        <InputGroup error={validation('sn1_1').length !== 0 || validation('ttt').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('sn1_1').concat(validation('ttt'))}>
                                             <input className="title" value="1" tabIndex={-1} />
                                             <input type="text" name={"sn1_1"} value={state.sn1_1} onChange={handleInputChange} placeholder={'sn1_1'} />
-                                            <label htmlFor={"sn1_1"}>{validation("sn1_1")}</label>
-                                            <span>{"sn"}</span>
+                                            <label htmlFor={"sn1_1"}>{"sn1_1"}</label>
                                             <input type="text" name={"ttt"} value={state.ttt} onChange={handleInputChange} placeholder={'ttt'} />
-                                            <label htmlFor={"ttt"}>{validation("ttt")}</label>
-                                            <span>{"ttt"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"ttt"}>{"ttt"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('sn2_1').length !== 0 || validation('tdTdTd').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('sn2_1').concat(validation('tdTdTd'))}>
                                             <input className="title" value="2" tabIndex={-1} />
                                             <input type="text" name={"sn2_1"} value={state.sn2_1} onChange={handleInputChange} placeholder={'sn2_1'} />
-                                            <label htmlFor={"sn2_1"}>{validation("sn2_1")}</label>
-                                            <span>{"sn"}</span>
+                                            <label htmlFor={"sn2_1"}>{"sn2_1"}</label>
                                             <input type="text" name={"tdTdTd"} value={state.tdTdTd} onChange={handleInputChange} placeholder={'tdTdTd'} />
-                                            <label htmlFor={"tdTdTd"}>{validation("tdTdTd")}</label>
-                                            <span>{"tdTdTd"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"tdTdTd"}>{"tdTdTd"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('poPoPoPo').length !== 0 ? true : false} >
+                                        <span className={'inputgroup tooltip'} data-tip={validation('poPoPoPo')} >
                                             <input className="title" value="3" tabIndex={-1} />
                                             <input type="text" name={"poPoPoPo"} value={state.poPoPoPo} onChange={handleInputChange} placeholder={'poPoPoPo'} />
-                                            <label htmlFor={"poPoPoPo"}>{validation("poPoPoPo")}</label>
-                                            <span>{"poPoPoPo"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"poPoPoPo"}>{"poPoPoPo"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('pppp').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('pppp')}>
                                             <input className="title" value="4" tabIndex={-1} />
                                             <input type="text" name={"pppp"} value={state.pppp} onChange={handleInputChange} placeholder={'pppp'} />
-                                            <label htmlFor={"pppp"}>{validation("pppp")}</label>
-                                            <span>{"pppp"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"pppp"}>{"pppp"}</label>
+                                        </span>
 
-                                        {/* <ContainerInput2 error={validation('a3').length !== 0 ? true : false} historic={true}>
+                                        {/* <ContainerInput2 data-tip={validation('a3')} historic={true}>
                                                                 <span>
                                                                 <input type="text" name={"a3"} value={state.a3} onChange={handleInputChange}/>
                                                                 <label htmlFor={"a3"}>{"a3"}</label>
@@ -469,7 +454,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                                 </span>
                                                             </ContainerInput2> */}
 
-                                        {/* <ContainerInput2 error={validation('hhh').length !== 0 ? true : false} historic={true}>
+                                        {/* <ContainerInput2 data-tip={validation('hhh')} historic={true}>
                                                                 <span>
                                                                 <input disabled={state.miMi === 'AA'? true : false} type="text" name={"hhh"} value={state.hhh} onChange={handleInputChange}/>
                                                                 <label htmlFor={"hhh"}>{"hhh"}</label>
@@ -477,37 +462,31 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                                 </span>
                                                             </ContainerInput2> */}
 
-                                        <InputGroup  error={validation('a').length !== 0 || validation('ppp').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'}  data-tip={validation('a').concat(validation('ppp'))}>
                                             <input className="title" value="5" tabIndex={-1} />
                                             <input type="text" name={"a"} value={state.a} onChange={handleInputChange} placeholder={'a'} />
-                                            <label htmlFor={"a"}>{validation("a")}</label>
-                                            <span>{"a"}</span>
+                                            <label htmlFor={"a"}>{"a"}</label>
                                             <input type="text" name={"ppp"} value={state.ppp} onChange={handleInputChange} placeholder={'ppp'} />
                                             <label htmlFor={"ppp"}>{validation("ppp")}</label>
-                                            <span>{"ppp"}</span>
-                                        </InputGroup>
+                                        </span>
 
-                                        <InputGroup error={validation('rrr').length !== 0 || validation('tr').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('rrr').concat(validation('tr'))}>
                                             <input className="title" value="6" tabIndex={-1} />
                                             <input type="text" name={"rrr"} value={state.rrr} onChange={handleInputChange} placeholder={'rrr'} />
-                                            <label htmlFor={"rrr"}>{validation("rrr")}</label>
-                                            <span>{"rrr"}</span>
+                                            <label htmlFor={"rrr"}>{"rrr"}</label>
                                             <input type="text" name={"tr"} value={state.tr} onChange={handleInputChange} placeholder={'tr'} />
-                                            <label htmlFor={"tr"}>{validation("tr")}</label>
-                                            <span>{"tr"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"tr"}>{"tr"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('ww').length !== 0 || validation('w1w2').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('ww').concat(validation('w1w2'))}>
                                             <input className="title" value="7" tabIndex={-1} />
                                             <input type="text" name={"ww"} value={state.ww} onChange={handleInputChange} placeholder={'ww'} />
-                                            <label htmlFor={"ww"}>{validation("ww")}</label>
-                                            <span>{"ww"}</span>
+                                            <label htmlFor={"ww"}>{"ww"}</label>
                                             <input type="text" name={"w1W2"} value={state.w1W2} onChange={handleInputChange} placeholder={'w1W2'} />
-                                            <label htmlFor={"w1W2"}>{validation("w1W2")}</label>
-                                            <span>{"w1W2"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"w1W2"}>{"w1W2"}</label>
+                                        </span>
 
-                                        {/* <ContainerInput2 error={validation('waWa').length !== 0 ? true : false} historic={true}>
+                                        {/* <ContainerInput2 data-tip={validation('waWa')} historic={true}>
                                                                 <span>
                                                                 <input type="text" name={"waWa"} value={state.waWa} onChange={handleInputChange}/>
                                                                 <label htmlFor={"waWa"}>{"waWa"}</label>
@@ -515,7 +494,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                                 </span>
                                                             </ContainerInput2>
 
-                                                            <ContainerInput2 error={validation('wa1').length !== 0 ? true : false} historic={true}>
+                                                            <ContainerInput2 data-tip={validation('wa1')} historic={true}>
                                                                 <span>
                                                                 <input type="text" name={"wa1"} value={state.wa1} onChange={handleInputChange}/>
                                                                 <label htmlFor={"wa1"}>{"wa1"}</label>
@@ -523,7 +502,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                                 </span>
                                                             </ContainerInput2>
 
-                                                            <ContainerInput2 error={validation('wa2').length !== 0 ? true : false} historic={true}>
+                                                            <ContainerInput2 data-tip={validation('wa2')} historic={true}>
                                                                 <span>
                                                                 <input type="text" name={"wa2"} value={state.wa2} onChange={handleInputChange}/>
                                                                 <label htmlFor={"wa2"}>{"wa2"}</label>
@@ -531,211 +510,172 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                                 </span>
                                                             </ContainerInput2> */}
 
-                                        <InputGroup error={validation('nh').length !== 0 || validation('cl').length !== 0 || validation('cm').length !== 0 || validation('ch').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('nh').concat(validation('cl')).concat(validation('cm')).concat(validation('ch'))}>
                                             <input className="title" value="8" tabIndex={-1} />
                                             <input type="text" name={"nh"} value={state.nh} onChange={handleInputChange} placeholder={'nh'} />
                                             <label htmlFor={"nh"}>{validation("nh")}</label>
-                                            <span>{"nh"}</span>
                                             <input type="text" name={"cl"} value={state.cl} onChange={handleInputChange} placeholder={'cl'} />
                                             <label htmlFor={"cl"}>{validation("cl")}</label>
-                                            <span>{"cl"}</span>
                                             <input type="text" name={"cm"} value={state.cm} onChange={handleInputChange} placeholder={'cm'} />
                                             <label htmlFor={"cm"}>{validation("cm")}</label>
-                                            <span>{"cm"}</span>
                                             <input type="text" name={"ch"} value={state.ch} onChange={handleInputChange} placeholder={'ch'} />
                                             <label htmlFor={"ch"}>{validation("ch")}</label>
-                                            <span>{"ch"}</span>
-                                        </InputGroup>
+                                        </span>
 
-                                        <InputGroup error={validation('gggg').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('gggg')}>
                                             <input className="title" value="9" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"gggg"} value={state.gggg} onChange={handleInputChange} placeholder={'gggg'} />
-                                            <label htmlFor={"gggg"}>{validation("gggg")}</label>
-                                            <span>{"gggg"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"gggg"}>{"gggg"}</label>
+                                        </span>
                                     </div>
                                     {/* begining of section 2 */}
                                     <div className={tab === 2 ? 'tab' : 'hide'}>
-                                        <InputGroup error={validation('ds').length !== 0 || validation('vs').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('ds').concat(validation('vs'))}>
                                             <input className="title" value="222" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ds"} value={state.ds} onChange={handleInputChange} placeholder={'ds'} />
-                                            <label htmlFor={"ds"}>{validation("ds")}</label>
-                                            <span>{"ds"}</span>
+                                            <label htmlFor={"ds"}>{"ds"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"vs"} value={state.vs} onChange={handleInputChange} placeholder={'vs'} />
-                                            <label htmlFor={"vs"}>{validation("vs")}</label>
+                                            <label htmlFor={"vs"}>{"vs"}</label>
                                             <span>{"vs"}</span>
-                                        </InputGroup>
+                                        </span>
 
-                                        <InputGroup error={validation('ss').length !== 0 || validation('twTwTw').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('ss').concat(validation('twTwTw'))}>
                                             <input className="title" value="0" tabIndex={-1} />
                                             <input type="text" name={"ss"} value={state.ss} onChange={handleInputChange} placeholder={'ss'} />
-                                            <label htmlFor={"ss"}>{validation("ss")}</label>
-                                            <span>{"ss"}</span>
+                                            <label htmlFor={"ss"}>{"ss"}</label>
                                             <input type="text" name={"twTwTw"} value={state.twTwTw} onChange={handleInputChange} placeholder={'twTwTwTw'} />
-                                            <label htmlFor={"twTwTw"}>{validation("twTwTw")}</label>
-                                            <span>{"twTwTw"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"twTwTw"}>{"twTwTw"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('pwaPwa').length !== 0 || validation('hwaHwa').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('pwaPwa').concat(validation('hwaHwa'))}>
                                             <input className="title" value="1" tabIndex={-1} />
                                             <input type="text" name={"pwaPwa"} value={state.pwaPwa} onChange={handleInputChange} placeholder={'pwaPwa'} />
-                                            <label htmlFor={"pwaPwa"}>{validation("pwaPwa")}</label>
-                                            <span>{"pwaPwa"}</span>
+                                            <label htmlFor={"pwaPwa"}>{"pwaPwa"}</label>
                                             <input type="text" name={"hwaHwa"} value={state.hwaHwa} onChange={handleInputChange} placeholder={'hwaHwa'} />
-                                            <label htmlFor={"hwaHwa"}>{validation("hwaHwa")}</label>
-                                            <span>{"hwaHwa"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"hwaHwa"}>{"hwaHwa"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('pwPw').length !== 0 || validation('hwHw').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('pwPw').concat(validation('hwHw'))}>
                                             <input className="title" value="2" tabIndex={-1} />
                                             <input type="text" name={"pwPw"} value={state.pwPw} onChange={handleInputChange} placeholder={'pwPw'} />
-                                            <label htmlFor={"pwPw"}>{validation("pwPw")}</label>
-                                            <span>{"pwPw"}</span>
+                                            <label htmlFor={"pwPw"}>{"pwPw"}</label>
                                             <input type="text" name={"hwHw"} value={state.hwHw} onChange={handleInputChange} placeholder={'hwHw'} />
-                                            <label htmlFor={"hwHw"}>{validation("hwHw")}</label>
-                                            <span>{"hwHw"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"hwHw"}>{"hwHw"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('dw1Dw1').length !== 0 || validation('dw2Dw2').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('dw1Dw1').concat(validation('dw2Dw2'))}>
                                             <input className="title" value="3" tabIndex={-1} />
                                             <input type="text" name={"dw1Dw1"} value={state.dw1Dw1} onChange={handleInputChange} placeholder={'dw1Dw1'} />
-                                            <label htmlFor={"dw1Dw1"}>{validation("dw1Dw1")}</label>
+                                            <label htmlFor={"dw1Dw1"}>{"dw1Dw1"}</label>
                                             <input type="text" name={"dw2Dw2"} value={state.dw2Dw2} onChange={handleInputChange} placeholder={'dw2Dw2'} />
-                                            <label htmlFor={"dw2Dw2"}>{validation("dw2Dw2")}</label>
-                                        </InputGroup>
+                                            <label htmlFor={"dw2Dw2"}>{"dw2Dw2"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('pw1Pw1').length !== 0 || validation('hw1Hw1').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('pw1Pw1').concat(validation('hw1Hw1'))}>
                                             <input className="title" value="4" tabIndex={-1} />
                                             <input type="text" name={"pw1Pw1"} value={state.pw1Pw1} onChange={handleInputChange} placeholder={'pw1Pw1'} />
-                                            <label htmlFor={"pw1Pw1"}>{validation("pw1Pw1")}</label>
-                                            <span>{"pw1Pw1"}</span>
+                                            <label htmlFor={"pw1Pw1"}>{"pw1Pw1"}</label>
                                             <input type="text" name={"hw1Hw1"} value={state.hw1Hw1} onChange={handleInputChange} placeholder={'hw1hw1'} />
-                                            <label htmlFor={"hw1Hw1"}>{validation("hw1Hw1")}</label>
-                                            <span>{"pw1Pw1"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"hw1Hw1"}>{"hw1Hw1"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('pw2Pw2').length !== 0 || validation('hw2Hw2').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('pw2Pw2').concat(validation('hw2Hw2'))}>
                                             <input className="title" value="5" tabIndex={-1} />
                                             <input type="text" name={"pw2Pw2"} value={state.pw2Pw2} onChange={handleInputChange} placeholder={'pw2Pw2'} />
-                                            <label htmlFor={"pw2Pw2"}>{validation("pw2Pw2")}</label>
-                                            <span>{"pw2Pw2"}</span>
+                                            <label htmlFor={"pw2Pw2"}>{"pw2Pw2"}</label>
                                             <input type="text" name={"hw2Hw2"} value={state.hw2Hw2} onChange={handleInputChange} placeholder={'hw2Hw2'} />
-                                            <label htmlFor={"hw2Hw2"}>{validation("hw2Hw2")}</label>
-                                            <span>{"hw2Hw2"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"hw2Hw2"}>{"hw2Hw2"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('ic_ice').length !== 0 || validation('eses').length !== 0 || validation('rs').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('ic_ice').concat(validation('eses')).concat(validation('rs'))}>
                                             <input className="title" value="6" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"is_ice"} value={state.is_ice} onChange={handleInputChange} placeholder={'is_ice'} />
-                                            <label htmlFor={"is_ice"}>{validation("is_ice")}</label>
-                                            <span>{"is_ice"}</span>
+                                            <label htmlFor={"is_ice"}>{"is_ice"}</label>
                                             <input type="text" name={"eses"} value={state.eses} onChange={handleInputChange} placeholder={'eses'} />
-                                            <label htmlFor={"eses"}>{validation("eses")}</label>
-                                            <span>{"eses"}</span>
+                                            <label htmlFor={"eses"}>{"eses"}</label>
                                             <input type="text" name={"rs"} value={state.rs} onChange={handleInputChange} placeholder={'rs'} />
-                                            <label htmlFor={"rs"}>{validation("rs")}</label>
-                                            <span>{"rs"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"rs"}>{"rs"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('hwaHwaHwa').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('hwaHwaHwa')}>
                                             <input className="title" value="70" tabIndex={-1} />
                                             <input type="text" name={"hwaHwaHwa"} value={state.hwaHwaHwa} onChange={handleInputChange} placeholder={'hwaHwaHwa'} />
-                                            <label htmlFor={"hwaHwaHwa"}>{validation("hwaHwaHwa")}</label>
-                                            <span>{"hwaHwaHwa"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"hwaHwaHwa"}>{"hwaHwaHwa"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('tbTbTb').length !== 0 || validation('sw').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('tbTbTb').concat(validation('sw'))}>
                                             <input className="title" value="8" tabIndex={-1} />
                                             <input type="text" name={"sw"} value={state.sw} onChange={handleInputChange} placeholder={'sw'} />
-                                            <label htmlFor={"sw"}>{validation("sw")}</label>
-                                            <span>{"sw"}</span>
+                                            <label htmlFor={"sw"}>{"sw"}</label>
                                             <input type="text" name={"tbTbTb"} value={state.tbTbTb} onChange={handleInputChange} placeholder={'tbTbTbTb'} />
-                                            <label htmlFor={"tbTbTb"}>{validation("tbTbTb")}</label>
-                                            <span>{"tbTbTb"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"tbTbTb"}>{"tbTbTb"}</label>
+                                        </span>
 
-                                        <InputGroup>
+                                        <span className={'inputgroup tooltip'} data-tip={''}>
                                             <input className="title" value="ICE" tabIndex={-1} />
-                                        </InputGroup>
+                                        </span>
 
-                                        <InputGroup error={validation('ci').length !== 0 || validation('si').length !== 0 || validation('bi').length !== 0 || validation('di').length !== 0 || validation('zi').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('ci').concat(validation('si')).concat(validation('bi')).concat(validation('di')).concat(validation('zi'))}>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ci"} value={state.ci} onChange={handleInputChange} placeholder={'ci'} />
-                                            <label htmlFor={"ci"}>{validation("ci")}</label>
-                                            <span>{"ci"}</span>
+                                            <label htmlFor={"ci"}>{"ci"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"si"} value={state.si} onChange={handleInputChange} placeholder={'si'} />
-                                            <label htmlFor={"si"}>{validation("si")}</label>
-                                            <span>{"si"}</span>
+                                            <label htmlFor={"si"}>{"si"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"bi"} value={state.bi} onChange={handleInputChange} placeholder={'bi'} />
-                                            <label htmlFor={"bi"}>{validation("bi")}</label>
-                                            <span>{"bi"}</span>
+                                            <label htmlFor={"bi"}>{"bi"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"di"} value={state.di} onChange={handleInputChange} placeholder={'di'} />
                                             <label htmlFor={"di"}>{validation("di")}</label>
-                                            <span>{"di"}</span>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"zi"} value={state.zi} onChange={handleInputChange} placeholder={'zi'} />
                                             <label htmlFor={"zi"}>{validation("zi")}</label>
-                                            <span>{"zi"}</span>
-                                        </InputGroup>
+                                        </span>
 
                                     </div>
                                     {/*begining of section 3*/}
                                     <div className={tab === 3 ? 'tab' : 'hide'}>
-                                        <InputGroup>
+                                        <span className={'inputgroup tooltip'} data-tip={''}>
                                             <input className="title" value="333" tabIndex={-1} />
-                                        </InputGroup>
+                                        </span>
 
-                                        <InputGroup error={validation('sn1_3').length !== 0 || validation('txTxTx').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('sn1_3').concat(validation('txTxTx'))}>
                                             <input className="title" value="1" tabIndex={-1} />
                                             <input type="text" name={"sn1_3"} value={state.sn1_3} onChange={handleInputChange} placeholder={'sn1_3'} />
-                                            <label htmlFor={"sn1_3"}>{validation("sn1_3")}</label>
-                                            <span>{"sn"}</span>
+                                            <label htmlFor={"sn1_3"}>{"sn1_3"}</label>
                                             <input type="text" name={"txTxTx"} value={state.txTxTx} onChange={handleInputChange} placeholder={'txTxTxTx'} />
-                                            <label htmlFor={"txTxTx"}>{validation("txTxTx")}</label>
-                                            <span>{"txTxTx"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"txTxTx"}>{"txTxTx"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('sn2_3').length !== 0 || validation('tnTnTn').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('sn2_3').concat(validation('tnTnTn'))}>
                                             <input className="title" value="2" tabIndex={-1} />
                                             <input type="text" name={"sn2_3"} value={state.sn2_3} onChange={handleInputChange} placeholder={'sn2_3'} />
-                                            <label htmlFor={"sn2_3"}>{validation("sn2_3")}</label>
-                                            <span>{"sn"}</span>
+                                            <label htmlFor={"sn2_3"}>{"sn2_3"}</label>
                                             <input type="text" name={"tnTnTn"} value={state.tnTnTn} onChange={handleInputChange} placeholder={'tnTnTn'} />
-                                            <label htmlFor={"tnTnTn"}>{validation("tnTnTn")}</label>
-                                            <span>{"tnTnTn"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"tnTnTn"}>{"tnTnTn"}</label>
+                                        </span>
 
-                                        <InputGroup error={validation('ind89').length !== 0 || validation('p24P24P24').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('ind89').concat(validation('p24P24P24'))}>
                                             <input className="title" value="5" tabIndex={-1} />
                                             <input type="text" name={"ind89"} value={state.ind89} onChange={handleInputChange} placeholder={'ind89'} />
-                                            <label htmlFor={"ind89"}>{validation("ind89")}</label>
-                                            <span>{"8/9"}</span>
+                                            <label htmlFor={"ind89"}>{"ind89"}</label>
                                             <input type="text" name={"p24P24P24"} value={state.p24P24P24} onChange={handleInputChange} placeholder={'p24P24P24'} />
-                                            <label htmlFor={"p24P24P24"}>{validation("p24P24P24")}</label>
-                                            <span>{"p24P24P24"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"p24P24P24"}>{"p24P24P24"}</label>
+                                        </span>
                                     </div>
                                     {/*begning of section 5*/}
                                     <div className={tab === 4 ? 'tab' : 'hide'}>
-                                        <InputGroup error={validation('iChw').length !== 0 || validation('iCm').length !== 0 || validation('cs').length !== 0 || validation('iCf').length !== 0 || validation('iCp').length !== 0 || validation('iCq').length !== 0 ? true : false}>
+                                        <span className={'inputgroup tooltip'} data-tip={validation('iChw').concat(validation('iCm')).concat(validation('cs')).concat(validation('iCf')).concat(validation('iCp')).concat(validation('iCq'))}>
                                             <input className="title" value="555" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iChw"} value={state.iChw} onChange={handleInputChange} placeholder={'iChw'} />
-                                            <label htmlFor={"iChw"}>{validation("iChw")}</label>
-                                            <span>{"iChw"}</span>
+                                            <label htmlFor={"iChw"}>{"iChw"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCm"} value={state.iCm} onChange={handleInputChange} placeholder={'iCm'} />
-                                            <label htmlFor={"iCm"}>{validation("iCm")}</label>
-                                            <span>{"iCm"}</span>
+                                            <label htmlFor={"iCm"}>{"iCm"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"cs"} value={state.cs} onChange={handleInputChange} placeholder={'cs'} />
-                                            <label htmlFor={"cs"}>{validation("cs")}</label>
-                                            <span>{"cs"}</span>
+                                            <label htmlFor={"cs"}>{"cs"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCf"} value={state.iCf} onChange={handleInputChange} placeholder={'iCf'} />
-                                            <label htmlFor={"iCf"}>{validation("iCf")}</label>
-                                            <span>{"iCf"}</span>
+                                            <label htmlFor={"iCf"}>{"iCf"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCp"} value={state.iCp} onChange={handleInputChange} placeholder={'iCp'} />
-                                            <label htmlFor={"iCp"}>{validation("iCp")}</label>
-                                            <span>{"iCp"}</span>
+                                            <label htmlFor={"iCp"}>{"iCp"}</label>
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCq"} value={state.iCq} onChange={handleInputChange} placeholder={'iCq'} />
-                                            <label htmlFor={"iCq"}>{validation("iCq")}</label>
-                                            <span>{"iCq"}</span>
-                                        </InputGroup>
+                                            <label htmlFor={"iCq"}>{"iCq"}</label>
+                                        </span>
                                     </div>
 
                                 </Container>
@@ -781,10 +721,10 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                 <option value={20}>20</option>
                                             </select>
                                         </div>
-                                        {/* <div>
+                                        <div>
                                             <span>buscar por {key}</span>
                                             <input name={search} onChange={searchItem} placeholder={`${key}`} value={search}></input>
-                                        </div> */}
+                                        </div>
                                     </div>
                                 </th>
                             </tr>
@@ -799,6 +739,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                     //     return (<th key={Math.random()} onClick={() => searchKey(key)}>{any}</th>)
                                     // }
                                 })}
+                                {/* <th>EX</th> */}
                             </tr>
                         </thead>
                         <ErrorBoundary fallback={<div> Something went wrong </div>} >
@@ -807,6 +748,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                     return (
                                         <tr key={Math.random()} onClick={() => selectItem(element)}>
                                             <>{showObject(element)}</>
+                                            {/* <th><Button id={"myText"} onClick={copyContent} name='123'>"123123ddsfffffffffffffffffffffffffffffffff12"</Button></th> */}
                                         </tr>)
                                 })}
                             </tbody>
