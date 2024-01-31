@@ -15,8 +15,8 @@ export const toastDetails : ToastDetails[] = [
     {
         name: 'error',
         icon: '&#10008;',
-        title: 'Error',
-        text: 'This is an error toast.',
+        title: 'Erro',
+        text: 'Erro encontrado.',
     },
     {
         name: 'warning',
