@@ -420,16 +420,16 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('sn1_1').concat(validation('ttt'))}>
                                             <input className="title" value="1" tabIndex={-1} />
-                                            <input type="text" name={"sn1_1"} value={state.sn1_1} onChange={handleInputChange} placeholder={'sn1_1'} maxLength={1} />
-                                            <label htmlFor={"sn1_1"}>{"sn1_1"}</label>
+                                            <input type="text" name={"sn1_1"} value={state.sn1_1} onChange={handleInputChange} placeholder={'sn'} maxLength={1} />
+                                            <label htmlFor={"sn1_1"}>{"sn"}</label>
                                             <input type="text" name={"ttt"} value={state.ttt} onChange={handleInputChange} placeholder={'ttt'} maxLength={3} />
                                             <label htmlFor={"ttt"}>{"ttt"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('sn2_1').concat(validation('tdTdTd'))}>
                                             <input className="title" value="2" tabIndex={-1} />
-                                            <input type="text" name={"sn2_1"} value={state.sn2_1} onChange={handleInputChange} placeholder={'sn2_1'} maxLength={1} />
-                                            <label htmlFor={"sn2_1"}>{"sn2_1"}</label>
+                                            <input type="text" name={"sn2_1"} value={state.sn2_1} onChange={handleInputChange} placeholder={'sn'} maxLength={1} />
+                                            <label htmlFor={"sn2_1"}>{"sn"}</label>
                                             <input type="text" name={"tdTdTd"} value={state.tdTdTd} onChange={handleInputChange} placeholder={'tdTdTd'} maxLength={3} />
                                             <label htmlFor={"tdTdTd"}>{"tdTdTd"}</label>
                                         </span>
@@ -636,16 +636,16 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('sn1_3').concat(validation('txTxTx'))}>
                                             <input className="title" value="1" tabIndex={-1} />
-                                            <input type="text" name={"sn1_3"} value={state.sn1_3} onChange={handleInputChange} placeholder={'sn1_3'} maxLength={1} />
-                                            <label htmlFor={"sn1_3"}>{"sn1_3"}</label>
+                                            <input type="text" name={"sn1_3"} value={state.sn1_3} onChange={handleInputChange} placeholder={'sn'} maxLength={1} />
+                                            <label htmlFor={"sn1_3"}>{"sn"}</label>
                                             <input type="text" name={"txTxTx"} value={state.txTxTx} onChange={handleInputChange} placeholder={'txTxTx'} maxLength={3} />
                                             <label htmlFor={"txTxTx"}>{"txTxTx"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('sn2_3').concat(validation('tnTnTn'))}>
                                             <input className="title" value="2" tabIndex={-1} />
-                                            <input type="text" name={"sn2_3"} value={state.sn2_3} onChange={handleInputChange} placeholder={'sn2_3'} maxLength={1} />
-                                            <label htmlFor={"sn2_3"}>{"sn2_3"}</label>
+                                            <input type="text" name={"sn2_3"} value={state.sn2_3} onChange={handleInputChange} placeholder={'sn'} maxLength={1} />
+                                            <label htmlFor={"sn2_3"}>{"sn"}</label>
                                             <input type="text" name={"tnTnTn"} value={state.tnTnTn} onChange={handleInputChange} placeholder={'tnTnTn'} maxLength={3} />
                                             <label htmlFor={"tnTnTn"}>{"tnTnTn"}</label>
                                         </span>
