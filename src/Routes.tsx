@@ -59,6 +59,7 @@ import { initialPrivilege } from "./component/privilege/privilege.initial";
 import { WeatherForm } from "./container/form/weather.form";
 import { initialCity } from "./component/city/city.initial";
 import { initialState } from "./component/state/state.initial";
+import { initialWeatherHistoric } from "./component/weather.historic/weather.historic.initial";
 
 export const ROLES = {
     'USER': "ROLE_USER",
@@ -112,7 +113,7 @@ export default function AppRoutes() {
                                 <Route path="/researcher" element={<GenericForm key='researcher' object={initialResearcher} url={'researcher'} />}></Route>
                                 <Route path="/station" element={<GenericForm key='station' object={initialStation} url={'station'} />}></Route>
                                 <Route path="/stationCategory" element={<GenericForm key='stationCategory' object={initialStationCategory} url={'stationCategory'} />}></Route>
-                                <Route path="/station/historic" element={<GenericForm key='stationHistoric' object={initialStationHistoric} url={'stationHistoric'} />}></Route>
+                                <Route path="/station/historic" element={<GenericForm key='stationHistoric' object={initialStationHistoric} url={'station/historic'} />}></Route>
                                 <Route path="/stationHistoricOffShore" element={<GenericForm key='stationHistoricOffShore' object={initialStationHistoricOffShore} url={'stationHistoricOffShore'} />}></Route>
                                 <Route path="/stationHistoricOnShore" element={<GenericForm key='stationHistoricOnShore' object={initialStationHistoricOnShore} url={'stationHistoricOnShore'} />}></Route>
                                 <Route path="/stationOffShore" element={<GenericForm key='stationOffShore' object={initialStationOffShore} url={'stationOffShore'} />}></Route>
@@ -120,9 +121,9 @@ export default function AppRoutes() {
                                 <Route path="/structure" element={<GenericForm key='structure' object={initialStructure} url={'structure'} />}></Route>
                                 <Route path="/surveying" element={<GenericForm key='surveying' object={initialSurveying} url={'surveying'} />}></Route>
                                 <Route path="/weather" element={<WeatherForm key='weather' object={initialWeather} url={'weather'} />}></Route>
-                                <Route path="/weather/historic" element={<GenericForm key='weatherHistoric' object={initialWeather} url={'weatherHistoric'} />}></Route>
-                                <Route path="/weatherOffShore/historic" element={<GenericForm key='weatherHistoricOffShore' object={initialWeatherHistoricOffShore} url={'weatherHistoricOffShore'} />}></Route>
-                                <Route path="/weatherOnShore/historic" element={<GenericForm key='weatherHistoricOnShore' object={initialWeatherHistoricOnShore} url={'weatherHistoricOnShore'} />}></Route>
+                                <Route path="/weather/historic" element={<GenericForm key='weather/historic' object={initialWeatherHistoric} url={'weather/historic'} />}></Route>
+                                <Route path="/weather/historic/offShore" element={<GenericForm key='weather/historic/offShore' object={initialWeatherHistoricOffShore} url={'weather/historic/offShore'} />}></Route>
+                                <Route path="/weather/historic/onShore" element={<GenericForm key='weather/historic/onShore' object={initialWeatherHistoricOnShore} url={'weather/historic/onShore'} />}></Route>
                                 <Route path="/weatherOffShore" element={<GenericForm key='weatherOffShore' object={initialWeatherOffShore} url={'weatherOffShore'} />}></Route>
                                 <Route path="/weatherOnShore" element={<GenericForm key='weatherOnShore' object={initialWeatherOnShore} url={'weatherOnShore'} />}></Route>
 

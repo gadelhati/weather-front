@@ -18,8 +18,8 @@ export const SideContainer = () => {
 
   const collapse: string[][] = [
     ["weather/historic", "bootstrap", "sixth"],
-    ["weatherOffShore/historic", "table", "sixth"],
-    ["weatherOnShore/historic", "geo-fill", "sixth"],
+    ["weather/historic/offShore", "table", "sixth"],
+    ["weather/historic/onShore", "geo-fill", "sixth"],
     ["station/historic", "cpu-fill", "sixth"]]
 
   // useEffect(()=> {
@@ -46,7 +46,7 @@ export const SideContainer = () => {
               <div><span>Observações Historicas</span><Icon name="geo2" /></div></SideItem>
             {collapse.map((element) => {
               return <SideItem key={element[1]} href={`#/${element[0]}`} ><Icon name={element[1]} /><p>
-                {UriScreenFormat(element[0] === 'weather/historic' ? 'observações gerais' : element[0] === 'weatherOffShore/historic' ? 'ship' : element[0] === 'weatherOnShore/historic' ? 'synop': element[0] === 'station/historic' ? 'estações': element[0])}
+                {UriScreenFormat(element[0] === 'weather/historic' ? 'observações gerais' : element[0] === 'weather/offShore/historic' ? 'ship' : element[0] === 'weather/onShore/historic' ? 'synop': element[0] === 'station/historic' ? 'estações': element[0])}
               </p></SideItem>
             })}
         </SidebarCollapsible>
