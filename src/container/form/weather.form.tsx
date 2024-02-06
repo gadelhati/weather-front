@@ -588,8 +588,8 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('ic_ice').concat(validation('eses')).concat(validation('rs'))}>
                                             <input className="title" value="6" tabIndex={-1} />
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"is_ice"} value={state.is_ice} onChange={handleInputChange} placeholder={'is_ice'} maxLength={1} />
-                                            <label htmlFor={"is_ice"}>{"is_ice"}</label>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"is_ice"} value={state.is_ice} onChange={handleInputChange} placeholder={'is'} maxLength={1} />
+                                            <label htmlFor={"is_ice"}>{"is"}</label>
                                             <input type="text" name={"eses"} value={state.eses} onChange={handleInputChange} placeholder={'eses'} maxLength={2} />
                                             <label htmlFor={"eses"}>{"eses"}</label>
                                             <input type="text" name={"rs"} value={state.rs} onChange={handleInputChange} placeholder={'rs'} maxLength={1} />
