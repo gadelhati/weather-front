@@ -3,9 +3,9 @@ import { Observer } from "../observer/observer.interface";
 
 export interface WeatherHistoric {
     //SECTION 0
-    aabbxx?: string,
+    // aabbxx?: string,
     mimi?: string,
-    mjmj?: string,
+    // mjmj?: string,
     estacao?: string,
     ddddddd: string,
     // a1?: string,

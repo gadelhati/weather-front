@@ -2,9 +2,9 @@ import { WeatherHistoricOnShore } from "./weather.historic.on.shore.interface";
 
 export const initialWeatherHistoricOnShore: WeatherHistoricOnShore = {
     //SECTION 0
-    aabbxx: '',
+    // aabbxx: '',
     mimi: '',
-    mjmj: 'XX',
+    // mjmj: 'XX',
     estacao: '',
     ddddddd: '',
     // a1: '',
