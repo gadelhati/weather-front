@@ -548,9 +548,9 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('pwaPwa').concat(validation('hwaHwa'))}>
                                             <input className="title" value="1" tabIndex={-1} />
-                                            <input type="text" name={"pwaPwa"} value={state.pwaPwa} onChange={handleInputChange} placeholder={'pwaPwa'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"pwaPwa"} value={state.pwaPwa} onChange={handleInputChange} placeholder={'pwaPwa'} maxLength={2} />
                                             <label htmlFor={"pwaPwa"}>{"pwaPwa"}</label>
-                                            <input type="text" name={"hwaHwa"} value={state.hwaHwa} onChange={handleInputChange} placeholder={'hwaHwa'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"hwaHwa"} value={state.hwaHwa} onChange={handleInputChange} placeholder={'hwaHwa'} maxLength={2} />
                                             <label htmlFor={"hwaHwa"}>{"hwaHwa"}</label>
                                         </span>
 
@@ -572,17 +572,17 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('pw1Pw1').concat(validation('hw1Hw1'))}>
                                             <input className="title" value="4" tabIndex={-1} />
-                                            <input type="text" name={"pw1Pw1"} value={state.pw1Pw1} onChange={handleInputChange} placeholder={'pw1Pw1'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"pw1Pw1"} value={state.pw1Pw1} onChange={handleInputChange} placeholder={'pw1Pw1'} maxLength={2} />
                                             <label htmlFor={"pw1Pw1"}>{"pw1Pw1"}</label>
-                                            <input type="text" name={"hw1Hw1"} value={state.hw1Hw1} onChange={handleInputChange} placeholder={'hw1hw1'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"hw1Hw1"} value={state.hw1Hw1} onChange={handleInputChange} placeholder={'hw1hw1'} maxLength={2} />
                                             <label htmlFor={"hw1Hw1"}>{"hw1Hw1"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('pw2Pw2').concat(validation('hw2Hw2'))}>
                                             <input className="title" value="5" tabIndex={-1} />
-                                            <input type="text" name={"pw2Pw2"} value={state.pw2Pw2} onChange={handleInputChange} placeholder={'pw2Pw2'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"pw2Pw2"} value={state.pw2Pw2} onChange={handleInputChange} placeholder={'pw2Pw2'} maxLength={2} />
                                             <label htmlFor={"pw2Pw2"}>{"pw2Pw2"}</label>
-                                            <input type="text" name={"hw2Hw2"} value={state.hw2Hw2} onChange={handleInputChange} placeholder={'hw2Hw2'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"hw2Hw2"} value={state.hw2Hw2} onChange={handleInputChange} placeholder={'hw2Hw2'} maxLength={2} />
                                             <label htmlFor={"hw2Hw2"}>{"hw2Hw2"}</label>
                                         </span>
 
@@ -590,9 +590,9 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                             <input className="title" value="6" tabIndex={-1} />
                                             <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"is_ice"} value={state.is_ice} onChange={handleInputChange} placeholder={'is'} maxLength={1} />
                                             <label htmlFor={"is_ice"}>{"is"}</label>
-                                            <input type="text" name={"eses"} value={state.eses} onChange={handleInputChange} placeholder={'eses'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"eses"} value={state.eses} onChange={handleInputChange} placeholder={'eses'} maxLength={2} />
                                             <label htmlFor={"eses"}>{"eses"}</label>
-                                            <input type="text" name={"rs"} value={state.rs} onChange={handleInputChange} placeholder={'rs'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"rs"} value={state.rs} onChange={handleInputChange} placeholder={'rs'} maxLength={1} />
                                             <label htmlFor={"rs"}>{"rs"}</label>
                                         </span>
 
