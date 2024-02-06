@@ -4,8 +4,8 @@ import { getAccessToken } from "../../service/service.token"
 const token = getAccessToken();
 
 export const api = axios.create({
-  // baseURL: "http://localhost:3120/weather",
-  baseURL: "https://10.5.193.20/weather",
+  baseURL: "http://localhost:3120/shipsynop",
+  // baseURL: "https://10.5.193.20/shipsynop",
   // headers: { 'content-type': 'application/json' }
 });
 
