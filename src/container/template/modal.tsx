@@ -67,12 +67,13 @@ export const Modal = styled('div', {
             display: 'flex',
             justifyContent: 'center',
             width: '80%',
-            // trying to moving tabs up
-            // backgroundColor: '$eleventh',
             padding: '1rem 1rem 6rem',
             margin: '-5.8rem',
+            
             'button': {
                 borderRadius: '1rem 1rem 0rem 0rem',
+                // display: 'flex',
+
             },
         },
         '.hide': {
