@@ -5,7 +5,7 @@ export const initialWeatherHistoric: WeatherHistoric = {
     // aabbxx: '',
     mimi: '',
     // mjmj: 'XX',
-    estacao: '',
+    // estacao: '',
     ddddddd: '',
     // a1: '',
     // bw: '',

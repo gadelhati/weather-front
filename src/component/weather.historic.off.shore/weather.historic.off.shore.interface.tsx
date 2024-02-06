@@ -6,7 +6,7 @@ export interface WeatherHistoricOffShore {
     // aabbxx?: string,
     mimi?: string,
     // mjmj?: string,
-    estacao?: string,
+    // estacao?: string,
     ddddddd: string,
     // a1?: string,
     // bw?: string,

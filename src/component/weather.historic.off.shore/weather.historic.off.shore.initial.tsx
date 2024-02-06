@@ -5,7 +5,7 @@ export const initialWeatherHistoricOffShore: WeatherHistoricOffShore = {
     // aabbxx: '',
     mimi: '',
     // mjmj: 'XX',
-    estacao: '',
+    // estacao: '',
     ddddddd: '',
     // a1: '',
     // bw: '',
