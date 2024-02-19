@@ -283,6 +283,15 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
           console.error('Failed to copy: ', err);
         }
     }
+
+    const regexMatch = (event: ChangeEvent<HTMLInputElement>) => {      
+        console.log(new RegExp(event.target.pattern).test(event.target.value))
+        let teste = new RegExp(event.target.pattern)
+        if (teste.test(event.target.value) || event.target.value === '') { 
+                setState({...state,[event.target.name]:event.target.value})
+            }   
+    }
+     
     return (
         <>
             {/* <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton> */}
@@ -349,7 +358,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                             </ContainerInput2> */}
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('ddddddd')}>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ddddddd"} value={state.ddddddd} onChange={handleInputChange} placeholder={'ddddddd'} pattern="\(\d{2}\)\d{4}-\d{4}" maxLength={7}/>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ddddddd"} value={state.ddddddd} onChange={regexMatch} placeholder={'ddddddd'} pattern="^[a-zA-Z]{0,7}$"/>
                                             {/* <label htmlFor={"ddddddd"}>{"ddddddd"}</label> */}
                                             <label htmlFor={"ddddddd"}>{"ddddddd"}</label>
                                         </span>
