@@ -163,7 +163,9 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
     // }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value
-        setState({ ...state, [event.target.name]: typeof value !== 'boolean' ? value.toUpperCase() : value })
+        if (new RegExp(event.target.pattern).test(event.target.value) || event.target.value === '') {
+            setState({ ...state, [event.target.name]: typeof value !== 'boolean' ? value.toUpperCase() : value })
+        }
     }
     const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setState({ ...state, [event.target.name]: event.target.value })
@@ -283,15 +285,7 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
           console.error('Failed to copy: ', err);
         }
     }
-
-    const regexMatch = (event: ChangeEvent<HTMLInputElement>) => {      
-        console.log(new RegExp(event.target.pattern).test(event.target.value))
-        let teste = new RegExp(event.target.pattern)
-        if (teste.test(event.target.value) || event.target.value === '') { 
-                setState({...state,[event.target.name]:event.target.value})
-            }   
-    }
-     
+    
     return (
         <>
             {/* <ShineButton onMouseMove={shine} className='shiny'>Shine Button</ShineButton> */}
@@ -358,15 +352,15 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                             </ContainerInput2> */}
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('ddddddd')}>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ddddddd"} value={state.ddddddd} onChange={regexMatch} placeholder={'ddddddd'} pattern="^[a-zA-Z]{0,7}$"/>
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ddddddd"} value={state.ddddddd} onChange={handleInputChange} placeholder={'ddddddd'} pattern="^[a-z|A-Z]{0,7}$"/>
                                             {/* <label htmlFor={"ddddddd"}>{"ddddddd"}</label> */}
                                             <label htmlFor={"ddddddd"}>{"ddddddd"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('ii')}>
-                                            <input disabled={state.miMi === 'BB' ? true : false} type="text" name={"ii"} value={state.ii} onChange={handleInputChange} placeholder={'ii'} maxLength={2} />
+                                            <input disabled={state.miMi === 'BB' ? true : false} type="text" name={"ii"} value={state.ii} onChange={handleInputChange} placeholder={'ii'} pattern='^8[2|3]?$' />
                                             <label htmlFor={"ii"}>{"ii"}</label>
-                                            <input disabled={state.miMi === 'BB' ? true : false} type="text" name={"iii"} value={state.iii} onChange={handleInputChange} placeholder={'iii'} maxLength={3} />
+                                            <input disabled={state.miMi === 'BB' ? true : false} type="text" name={"iii"} value={state.iii} onChange={handleInputChange} placeholder={'iii'} pattern='^[0-9]?[0-9]?[0-9]?$' />
                                             <label htmlFor={"iii"}>{"iii"}</label>
                                         </span>
 
@@ -378,80 +372,80 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                                                 </span>
                                                             </ContainerInput2> */}
                                         <span className={'inputgroup tooltip'} data-tip={validation('yy').concat(validation('gg')).concat(validation('iw'))} >
-                                            <input type="text" name={"yy"} required value={state.yy} onChange={handleInputChange} placeholder={'yy'} maxLength={2} />
+                                            <input type="text" name={"yy"} required value={state.yy} onChange={handleInputChange} placeholder={'yy'} pattern='^(0[1-9]?|1[0-9]?|2[0-9]?|3[0-1]?)$' />
                                             <label htmlFor={"yy"}>{"yy"}</label>
-                                            <input type="text" name={"gg"} required value={state.gg} onChange={handleInputChange} placeholder={'gg'} maxLength={2} />
+                                            <input type="text" name={"gg"} required value={state.gg} onChange={handleInputChange} placeholder={'gg'} pattern='^(0[0|3|6|9]?|1[2|5|8]?|21?)$' />
                                             <label htmlFor={"gg"}>{"gg"}</label>
-                                            <input type="text" name={"iw"} required value={state.iw} onChange={handleInputChange} placeholder={'iw'} maxLength={1} />
+                                            <input type="text" name={"iw"} required value={state.iw} onChange={handleInputChange} placeholder={'iw'} pattern='^[0|1|2|3|4]?$' />
                                             <label htmlFor={"iw"}>{"iw"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('laLaLa')}>
                                             <input className="title" value="99" tabIndex={-1} />
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"laLaLa"} value={state.laLaLa} onChange={handleInputChange} placeholder={'laLaLa'} maxLength={3} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"laLaLa"} value={state.laLaLa} onChange={handleInputChange} placeholder={'laLaLa'} pattern='^([0-8]?[0-9]?[0-9]?|900?)$' />
                                             <label htmlFor={"laLaLa"}>{"laLaLa"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('qc').concat(validation('loLoLoLo'))}>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"qc"} value={state.qc} onChange={handleInputChange} placeholder={'qc'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"qc"} value={state.qc} onChange={handleInputChange} placeholder={'qc'} pattern='^([1|3|5|7]?)$' />
                                             <label htmlFor={"qc"}>{"qc"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"loLoLoLo"} value={state.loLoLoLo} onChange={handleInputChange} placeholder={'loLoLoLo'} maxLength={4} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"loLoLoLo"} value={state.loLoLoLo} onChange={handleInputChange} placeholder={'loLoLoLo'} pattern='^([0-1]?[0-7]?[0-9]?[0-9]?|1800?)$' />
                                             <label htmlFor={"loLoLoLo"}>{"loLoLoLo"}</label>
                                         </span>
                                     </div>
                                     {/*begining of section 1*/}
                                     <div className={tab === 1 ? 'tab' : 'hide'}>
                                         <span className={'inputgroup tooltip'} data-tip={validation('ir').concat(validation('ix')).concat(validation('h')).concat(validation('vv'))}>
-                                            <input type="text" name={"ir"} value={state.ir} onChange={handleInputChange} placeholder={'ir'} maxLength={1} />
+                                            <input type="text" name={"ir"} value={state.ir} onChange={handleInputChange} placeholder={'ir'} pattern='^([1|3|4]?)$' />
                                             <label htmlFor={"ir"}>{"ir"}</label>
-                                            <input type="text" name={"ix"} value={state.ix} onChange={handleInputChange} placeholder={'ix'} maxLength={1} />
+                                            <input type="text" name={"ix"} value={state.ix} onChange={handleInputChange} placeholder={'ix'} pattern='^([1-7]?)$' />
                                             <label htmlFor={"ix"}>{"ix"}</label>
-                                            <input type="text" name={"h"} value={state.h} onChange={handleInputChange} placeholder={'h'} maxLength={1} />
+                                            <input type="text" name={"h"} value={state.h} onChange={handleInputChange} placeholder={'h'} pattern='^([0-9]?|/?)$' />
                                             <label htmlFor={"h"}>{"h"}</label>
-                                            <input type="text" name={"vv"} value={state.vv} onChange={handleInputChange} placeholder={'vv'} maxLength={2} />
+                                            <input type="text" name={"vv"} value={state.vv} onChange={handleInputChange} placeholder={'vv'} pattern='^(9[0-9]?)$' />
                                             <label htmlFor={"vv"}>{"vv"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('n').concat(validation('dd')).concat(validation('ff'))}>
-                                            <input type="text" name={"n"} value={state.n} onChange={handleInputChange} placeholder={'n'} maxLength={1} />
+                                            <input type="text" name={"n"} value={state.n} onChange={handleInputChange} placeholder={'n'} pattern='^([0-8]?|/?)$' />
                                             <label htmlFor={"n"}>{"n"}</label>
-                                            <input type="text" name={"dd"} value={state.dd} onChange={handleInputChange} placeholder={'dd'} maxLength={2} />
+                                            <input type="text" name={"dd"} value={state.dd} onChange={handleInputChange} placeholder={'dd'} pattern='^([0-2]?[0-9]?|3[0-6]?|//?)$' />
                                             <label htmlFor={"dd"}>{"dd"}</label>
-                                            <input type="text" name={"ff"} value={state.ff} onChange={handleInputChange} placeholder={'ff'} maxLength={2} />
+                                            <input type="text" name={"ff"} value={state.ff} onChange={handleInputChange} placeholder={'ff'} pattern='^([0-9]?[0-9]?|//?)$' />
                                             <label htmlFor={"ff"}>{"ff"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('fff')}>
                                             <input className="title" value="00" tabIndex={-1} />
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"fff"} value={state.fff} onChange={handleInputChange} placeholder={'fff'} maxLength={3} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"fff"} value={state.fff} onChange={handleInputChange} placeholder={'fff'} pattern='^([1-9]?[0-9]?[0-9]?)$' />
                                             <label htmlFor={"fff"}>{"fff"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('sn1_1').concat(validation('ttt'))}>
                                             <input className="title" value="1" tabIndex={-1} />
-                                            <input type="text" name={"sn1_1"} value={state.sn1_1} onChange={handleInputChange} placeholder={'sn'} maxLength={1} />
+                                            <input type="text" name={"sn1_1"} value={state.sn1_1} onChange={handleInputChange} placeholder={'sn'} pattern='^([0-1]?)$' />
                                             <label htmlFor={"sn1_1"}>{"sn"}</label>
-                                            <input type="text" name={"ttt"} value={state.ttt} onChange={handleInputChange} placeholder={'ttt'} maxLength={3} />
+                                            <input type="text" name={"ttt"} value={state.ttt} onChange={handleInputChange} placeholder={'ttt'} pattern='^([0-4]?[0-9]?[0-9]?|500?|///?)$' />
                                             <label htmlFor={"ttt"}>{"ttt"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('sn2_1').concat(validation('tdTdTd'))}>
                                             <input className="title" value="2" tabIndex={-1} />
-                                            <input type="text" name={"sn2_1"} value={state.sn2_1} onChange={handleInputChange} placeholder={'sn'} maxLength={1} />
+                                            <input type="text" name={"sn2_1"} value={state.sn2_1} onChange={handleInputChange} placeholder={'sn'} pattern='^([0|1|9]?)$' />
                                             <label htmlFor={"sn2_1"}>{"sn"}</label>
-                                            <input type="text" name={"tdTdTd"} value={state.tdTdTd} onChange={handleInputChange} placeholder={'tdTdTd'} maxLength={3} />
+                                            <input type="text" name={"tdTdTd"} value={state.tdTdTd} onChange={handleInputChange} placeholder={'tdTdTd'} pattern='^([0-4]?[0-9]?[0-9]?|500?|///?)$' />
                                             <label htmlFor={"tdTdTd"}>{"tdTdTd"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('poPoPoPo')} >
                                             <input className="title" value="3" tabIndex={-1} />
-                                            <input type="text" name={"poPoPoPo"} value={state.poPoPoPo} onChange={handleInputChange} placeholder={'poPoPoPo'} maxLength={4} />
+                                            <input type="text" name={"poPoPoPo"} value={state.poPoPoPo} onChange={handleInputChange} placeholder={'poPoPoPo'} pattern='^(0?[0-9]?[0-9]?[0-9]?|1000|8?[7-9]?[0-9]?[0-9]?|9[0-9]?[0-9]?[0-9]?)$' />
                                             <label htmlFor={"poPoPoPo"}>{"poPoPoPo"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('pppp')}>
                                             <input className="title" value="4" tabIndex={-1} />
-                                            <input type="text" name={"pppp"} value={state.pppp} onChange={handleInputChange} placeholder={'pppp'} maxLength={4} />
+                                            <input type="text" name={"pppp"} value={state.pppp} onChange={handleInputChange} placeholder={'pppp'} pattern='^([0-9]?[0-9]?[0-9]?[0-9]?)$' />
                                             <label htmlFor={"pppp"}>{"pppp"}</label>
                                         </span>
 
@@ -473,25 +467,25 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
 
                                         <span className={'inputgroup tooltip'}  data-tip={validation('a').concat(validation('ppp'))}>
                                             <input className="title" value="5" tabIndex={-1} />
-                                            <input type="text" name={"a"} value={state.a} onChange={handleInputChange} placeholder={'a'} maxLength={1} />
+                                            <input type="text" name={"a"} value={state.a} onChange={handleInputChange} placeholder={'a'} pattern='^([0-8]?|/?)$' />
                                             <label htmlFor={"a"}>{"a"}</label>
-                                            <input type="text" name={"ppp"} value={state.ppp} onChange={handleInputChange} placeholder={'ppp'} maxLength={3} />
+                                            <input type="text" name={"ppp"} value={state.ppp} onChange={handleInputChange} placeholder={'ppp'} pattern='^([0-1]?[0-9]?[0-9]?|200|///?)$' />
                                             <label htmlFor={"ppp"}>{"ppp"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('rrr').concat(validation('tr'))}>
                                             <input className="title" value="6" tabIndex={-1} />
-                                            <input type="text" name={"rrr"} value={state.rrr} onChange={handleInputChange} placeholder={'rrr'} maxLength={3} />
+                                            <input type="text" name={"rrr"} value={state.rrr} onChange={handleInputChange} placeholder={'rrr'} pattern='^([0-9]?[0-9]?[0-9]?|200|///?)$' />
                                             <label htmlFor={"rrr"}>{"rrr"}</label>
-                                            <input type="text" name={"tr"} value={state.tr} onChange={handleInputChange} placeholder={'tr'} maxLength={1} />
+                                            <input type="text" name={"tr"} value={state.tr} onChange={handleInputChange} placeholder={'tr'} pattern='^([0-9]?)$' />
                                             <label htmlFor={"tr"}>{"tr"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('ww').concat(validation('w1w2'))}>
                                             <input className="title" value="7" tabIndex={-1} />
-                                            <input type="text" name={"ww"} value={state.ww} onChange={handleInputChange} placeholder={'ww'} maxLength={2} />
+                                            <input type="text" name={"ww"} value={state.ww} onChange={handleInputChange} placeholder={'ww'} pattern='^([0-9]?[0-9]?)$' />
                                             <label htmlFor={"ww"}>{"ww"}</label>
-                                            <input type="text" name={"w1W2"} value={state.w1W2} onChange={handleInputChange} placeholder={'w1W2'} maxLength={2} />
+                                            <input type="text" name={"w1W2"} value={state.w1W2} onChange={handleInputChange} placeholder={'w1W2'} pattern='^([0-9]?[0-9]?|//?|[0-9]/?|/[0-9]?)$' />
                                             <label htmlFor={"w1W2"}>{"w1W2"}</label>
                                         </span>
 
@@ -521,19 +515,19 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('nh').concat(validation('cl')).concat(validation('cm')).concat(validation('ch'))}>
                                             <input className="title" value="8" tabIndex={-1} />
-                                            <input type="text" name={"nh"} value={state.nh} onChange={handleInputChange} placeholder={'nh'} maxLength={1} />
+                                            <input type="text" name={"nh"} value={state.nh} onChange={handleInputChange} placeholder={'nh'} pattern='^([0-8]?|/?)$' />
                                             <label htmlFor={"nh"}>{"nh"}</label>
-                                            <input type="text" name={"cl"} value={state.cl} onChange={handleInputChange} placeholder={'cl'} maxLength={1} />
+                                            <input type="text" name={"cl"} value={state.cl} onChange={handleInputChange} placeholder={'cl'} pattern='^([0-9]?|/?)$' />
                                             <label htmlFor={"cl"}>{"cl"}</label>
-                                            <input type="text" name={"cm"} value={state.cm} onChange={handleInputChange} placeholder={'cm'} maxLength={1} />
+                                            <input type="text" name={"cm"} value={state.cm} onChange={handleInputChange} placeholder={'cm'} pattern='^([0-9]?|/?)$' />
                                             <label htmlFor={"cm"}>{"cm"}</label>
-                                            <input type="text" name={"ch"} value={state.ch} onChange={handleInputChange} placeholder={'ch'} maxLength={1} />
+                                            <input type="text" name={"ch"} value={state.ch} onChange={handleInputChange} placeholder={'ch'} pattern='^([0-9]?|/?)$' />
                                             <label htmlFor={"ch"}>{"ch"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('gggg')}>
                                             <input className="title" value="9" tabIndex={-1} />
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"gggg"} value={state.gggg} onChange={handleInputChange} placeholder={'gggg'} maxLength={4} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"gggg"} value={state.gggg} onChange={handleInputChange} placeholder={'gggg'} pattern='^([0-9]?[0-9]?[0-9]?[0-9]?)$' />
                                             <label htmlFor={"gggg"}>{"gggg"}</label>
                                         </span>
                                     </div>
@@ -541,81 +535,81 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                     <div className={tab === 2 ? 'tab' : 'hide'}>
                                         <span className={'inputgroup tooltip'} data-tip={validation('ds').concat(validation('vs'))}>
                                             <input className="title" value="222" tabIndex={-1} />
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ds"} value={state.ds} onChange={handleInputChange} placeholder={'ds'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ds"} value={state.ds} onChange={handleInputChange} placeholder={'ds'} pattern='^([0-9]?|/?)$' />
                                             <label htmlFor={"ds"}>{"ds"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"vs"} value={state.vs} onChange={handleInputChange} placeholder={'vs'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"vs"} value={state.vs} onChange={handleInputChange} placeholder={'vs'} pattern='^([0-9]?|/?)$' />
                                             <label htmlFor={"vs"}>{"vs"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('ss').concat(validation('twTwTw'))}>
                                             <input className="title" value="0" tabIndex={-1} />
-                                            <input type="text" name={"ss"} value={state.ss} onChange={handleInputChange} placeholder={'ss'} maxLength={1} />
+                                            <input type="text" name={"ss"} value={state.ss} onChange={handleInputChange} placeholder={'ss'} pattern='^([0-7]?)$' />
                                             <label htmlFor={"ss"}>{"ss"}</label>
-                                            <input type="text" name={"twTwTw"} value={state.twTwTw} onChange={handleInputChange} placeholder={'twTwTwTw'} maxLength={4} />
+                                            <input type="text" name={"twTwTw"} value={state.twTwTw} onChange={handleInputChange} placeholder={'twTwTwTw'} pattern='^([0-3]?[0-9]?[0-9]?|400?)$' />
                                             <label htmlFor={"twTwTw"}>{"twTwTw"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('pwaPwa').concat(validation('hwaHwa'))}>
                                             <input className="title" value="1" tabIndex={-1} />
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"pwaPwa"} value={state.pwaPwa} onChange={handleInputChange} placeholder={'pwaPwa'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"pwaPwa"} value={state.pwaPwa} onChange={handleInputChange} placeholder={'pwaPwa'} pattern='^([0-2]?[0-9]?|30?)$' />
                                             <label htmlFor={"pwaPwa"}>{"pwaPwa"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"hwaHwa"} value={state.hwaHwa} onChange={handleInputChange} placeholder={'hwaHwa'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"hwaHwa"} value={state.hwaHwa} onChange={handleInputChange} placeholder={'hwaHwa'} pattern='^(0[0-9]?|10|//?)$' />
                                             <label htmlFor={"hwaHwa"}>{"hwaHwa"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('pwPw').concat(validation('hwHw'))}>
                                             <input className="title" value="2" tabIndex={-1} />
-                                            <input type="text" name={"pwPw"} value={state.pwPw} onChange={handleInputChange} placeholder={'pwPw'} maxLength={2} />
+                                            <input type="text" name={"pwPw"} value={state.pwPw} onChange={handleInputChange} placeholder={'pwPw'} pattern='^([0-1]?[0-9]?|20?|99?)$' />
                                             <label htmlFor={"pwPw"}>{"pwPw"}</label>
-                                            <input type="text" name={"hwHw"} value={state.hwHw} onChange={handleInputChange} placeholder={'hwHw'} maxLength={2} />
+                                            <input type="text" name={"hwHw"} value={state.hwHw} onChange={handleInputChange} placeholder={'hwHw'} pattern='^([0-2]?[0-9]?|30|//?)$' />
                                             <label htmlFor={"hwHw"}>{"hwHw"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('dw1Dw1').concat(validation('dw2Dw2'))}>
                                             <input className="title" value="3" tabIndex={-1} />
-                                            <input type="text" name={"dw1Dw1"} value={state.dw1Dw1} onChange={handleInputChange} placeholder={'dw1Dw1'} maxLength={2} />
+                                            <input type="text" name={"dw1Dw1"} value={state.dw1Dw1} onChange={handleInputChange} placeholder={'dw1Dw1'} pattern='^([0-2]?[0-9]?|3[0-6]?)$' />
                                             <label htmlFor={"dw1Dw1"}>{"dw1Dw1"}</label>
-                                            <input type="text" name={"dw2Dw2"} value={state.dw2Dw2} onChange={handleInputChange} placeholder={'dw2Dw2'} maxLength={2} />
+                                            <input type="text" name={"dw2Dw2"} value={state.dw2Dw2} onChange={handleInputChange} placeholder={'dw2Dw2'} pattern='^([0-2]?[0-9]?|3[0-6]?)$' />
                                             <label htmlFor={"dw2Dw2"}>{"dw2Dw2"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('pw1Pw1').concat(validation('hw1Hw1'))}>
                                             <input className="title" value="4" tabIndex={-1} />
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"pw1Pw1"} value={state.pw1Pw1} onChange={handleInputChange} placeholder={'pw1Pw1'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"pw1Pw1"} value={state.pw1Pw1} onChange={handleInputChange} placeholder={'pw1Pw1'} pattern='^([0-2]?[0-9]?|30?)$' />
                                             <label htmlFor={"pw1Pw1"}>{"pw1Pw1"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"hw1Hw1"} value={state.hw1Hw1} onChange={handleInputChange} placeholder={'hw1hw1'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"hw1Hw1"} value={state.hw1Hw1} onChange={handleInputChange} placeholder={'hw1hw1'} pattern='^([0-2]?[0-9]?|30?)$' />
                                             <label htmlFor={"hw1Hw1"}>{"hw1Hw1"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('pw2Pw2').concat(validation('hw2Hw2'))}>
                                             <input className="title" value="5" tabIndex={-1} />
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"pw2Pw2"} value={state.pw2Pw2} onChange={handleInputChange} placeholder={'pw2Pw2'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"pw2Pw2"} value={state.pw2Pw2} onChange={handleInputChange} placeholder={'pw2Pw2'} pattern='^([0-2]?[0-9]?|30?)$' />
                                             <label htmlFor={"pw2Pw2"}>{"pw2Pw2"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"hw2Hw2"} value={state.hw2Hw2} onChange={handleInputChange} placeholder={'hw2Hw2'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"hw2Hw2"} value={state.hw2Hw2} onChange={handleInputChange} placeholder={'hw2Hw2'} pattern='^([0-2]?[0-9]?|30?)$' />
                                             <label htmlFor={"hw2Hw2"}>{"hw2Hw2"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('ic_ice').concat(validation('eses')).concat(validation('rs'))}>
                                             <input className="title" value="6" tabIndex={-1} />
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"is_ice"} value={state.is_ice} onChange={handleInputChange} placeholder={'is'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"is_ice"} value={state.is_ice} onChange={handleInputChange} placeholder={'is'} pattern='^([1-5]?)$' />
                                             <label htmlFor={"is_ice"}>{"is"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"eses"} value={state.eses} onChange={handleInputChange} placeholder={'eses'} maxLength={2} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"eses"} value={state.eses} onChange={handleInputChange} placeholder={'eses'} pattern='^([0-2]?[0-9]?|30?)$' />
                                             <label htmlFor={"eses"}>{"eses"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"rs"} value={state.rs} onChange={handleInputChange} placeholder={'rs'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"rs"} value={state.rs} onChange={handleInputChange} placeholder={'rs'} pattern='^([0-4]?)$' />
                                             <label htmlFor={"rs"}>{"rs"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('hwaHwaHwa')}>
                                             <input className="title" value="70" tabIndex={-1} />
-                                            <input type="text" name={"hwaHwaHwa"} value={state.hwaHwaHwa} onChange={handleInputChange} placeholder={'hwaHwaHwa'} maxLength={3} />
+                                            <input type="text" name={"hwaHwaHwa"} value={state.hwaHwaHwa} onChange={handleInputChange} placeholder={'hwaHwaHwa'} pattern='^([0-1]?[0-9]?[0-9]?|200?)$' />
                                             <label htmlFor={"hwaHwaHwa"}>{"hwaHwaHwa"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('tbTbTb').concat(validation('sw'))}>
                                             <input className="title" value="8" tabIndex={-1} />
-                                            <input type="text" name={"sw"} value={state.sw} onChange={handleInputChange} placeholder={'sw'} maxLength={1} />
+                                            <input type="text" name={"sw"} value={state.sw} onChange={handleInputChange} placeholder={'sw'} pattern='^([0-7]?)$' />
                                             <label htmlFor={"sw"}>{"sw"}</label>
-                                            <input type="text" name={"tbTbTb"} value={state.tbTbTb} onChange={handleInputChange} placeholder={'tbTbTbTb'} maxLength={4} />
+                                            <input type="text" name={"tbTbTb"} value={state.tbTbTb} onChange={handleInputChange} placeholder={'tbTbTbTb'} pattern='^([0-3]?[0-9]?[0-9]?|400?)$' />
                                             <label htmlFor={"tbTbTb"}>{"tbTbTb"}</label>
                                         </span>
 
@@ -624,15 +618,15 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('ci').concat(validation('si')).concat(validation('bi')).concat(validation('di')).concat(validation('zi'))}>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ci"} value={state.ci} onChange={handleInputChange} placeholder={'ci'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"ci"} value={state.ci} onChange={handleInputChange} placeholder={'ci'} pattern='^([0-9]?|/?)$' />
                                             <label htmlFor={"ci"}>{"ci"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"si"} value={state.si} onChange={handleInputChange} placeholder={'si'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"si"} value={state.si} onChange={handleInputChange} placeholder={'si'} pattern='^([0-9]?|/?)$' />
                                             <label htmlFor={"si"}>{"si"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"bi"} value={state.bi} onChange={handleInputChange} placeholder={'bi'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"bi"} value={state.bi} onChange={handleInputChange} placeholder={'bi'} pattern='^([0-9]?|/?)$' />
                                             <label htmlFor={"bi"}>{"bi"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"di"} value={state.di} onChange={handleInputChange} placeholder={'di'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"di"} value={state.di} onChange={handleInputChange} placeholder={'di'} pattern='^([0-9]?|/?)$' />
                                             <label htmlFor={"di"}>{"di"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"zi"} value={state.zi} onChange={handleInputChange} placeholder={'zi'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"zi"} value={state.zi} onChange={handleInputChange} placeholder={'zi'} pattern='^([0-9]?|/?)$' />
                                             <label htmlFor={"zi"}>{"zi"}</label>
                                         </span>
 
@@ -645,25 +639,25 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('sn1_3').concat(validation('txTxTx'))}>
                                             <input className="title" value="1" tabIndex={-1} />
-                                            <input type="text" name={"sn1_3"} value={state.sn1_3} onChange={handleInputChange} placeholder={'sn'} maxLength={1} />
+                                            <input type="text" name={"sn1_3"} value={state.sn1_3} onChange={handleInputChange} placeholder={'sn'} pattern='^([0-1]?)$' />
                                             <label htmlFor={"sn1_3"}>{"sn"}</label>
-                                            <input type="text" name={"txTxTx"} value={state.txTxTx} onChange={handleInputChange} placeholder={'txTxTx'} maxLength={3} />
+                                            <input type="text" name={"txTxTx"} value={state.txTxTx} onChange={handleInputChange} placeholder={'txTxTx'} pattern='^([0-3]?[0-9]?[0-9]?|4[0-4]?[0-9]?|450?)$' />
                                             <label htmlFor={"txTxTx"}>{"txTxTx"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('sn2_3').concat(validation('tnTnTn'))}>
                                             <input className="title" value="2" tabIndex={-1} />
-                                            <input type="text" name={"sn2_3"} value={state.sn2_3} onChange={handleInputChange} placeholder={'sn'} maxLength={1} />
+                                            <input type="text" name={"sn2_3"} value={state.sn2_3} onChange={handleInputChange} placeholder={'sn'} pattern='^([0-1]?)$' />
                                             <label htmlFor={"sn2_3"}>{"sn"}</label>
-                                            <input type="text" name={"tnTnTn"} value={state.tnTnTn} onChange={handleInputChange} placeholder={'tnTnTn'} maxLength={3} />
+                                            <input type="text" name={"tnTnTn"} value={state.tnTnTn} onChange={handleInputChange} placeholder={'tnTnTn'} pattern='^([0-2]?[0-9]?[0-9]?|3[0-4]?[0-9]?|350)$' />
                                             <label htmlFor={"tnTnTn"}>{"tnTnTn"}</label>
                                         </span>
 
                                         <span className={'inputgroup tooltip'} data-tip={validation('ind89').concat(validation('p24P24P24'))}>
                                             <input className="title" value="5" tabIndex={-1} />
-                                            <input type="text" name={"ind89"} value={state.ind89} onChange={handleInputChange} placeholder={'ind89'} maxLength={1} />
+                                            <input type="text" name={"ind89"} value={state.ind89} onChange={handleInputChange} placeholder={'ind89'} pattern='^([8-9]?)$' />
                                             <label htmlFor={"ind89"}>{"ind89"}</label>
-                                            <input type="text" name={"p24P24P24"} value={state.p24P24P24} onChange={handleInputChange} placeholder={'p24P24P24'} maxLength={3} />
+                                            <input type="text" name={"p24P24P24"} value={state.p24P24P24} onChange={handleInputChange} placeholder={'p24P24P24'} pattern='^([0-1]?[0-9]?[0-9]?|200?)$' />
                                             <label htmlFor={"p24P24P24"}>{"p24P24P24"}</label>
                                         </span>
                                     </div>
@@ -671,17 +665,17 @@ export const WeatherForm = <T extends { id: string, name: string }>(object: any)
                                     <div className={tab === 4 ? 'tab' : 'hide'}>
                                         <span className={'inputgroup tooltip'} data-tip={validation('iChw').concat(validation('iCm')).concat(validation('cs')).concat(validation('iCf')).concat(validation('iCp')).concat(validation('iCq'))}>
                                             <input className="title" value="555" tabIndex={-1} />
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iChw"} value={state.iChw} onChange={handleInputChange} placeholder={'iChw'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iChw"} value={state.iChw} onChange={handleInputChange} placeholder={'iChw'} pattern='^([0-3]?)$' />
                                             <label htmlFor={"iChw"}>{"iChw"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCm"} value={state.iCm} onChange={handleInputChange} placeholder={'iCm'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCm"} value={state.iCm} onChange={handleInputChange} placeholder={'iCm'} pattern='^([0-7]?)$' />
                                             <label htmlFor={"iCm"}>{"iCm"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"cs"} value={state.cs} onChange={handleInputChange} placeholder={'cs'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"cs"} value={state.cs} onChange={handleInputChange} placeholder={'cs'} pattern='^([0-9]?)$' />
                                             <label htmlFor={"cs"}>{"cs"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCf"} value={state.iCf} onChange={handleInputChange} placeholder={'iCf'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCf"} value={state.iCf} onChange={handleInputChange} placeholder={'iCf'} pattern='^([0-6]?)$' />
                                             <label htmlFor={"iCf"}>{"iCf"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCp"} value={state.iCp} onChange={handleInputChange} placeholder={'iCp'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCp"} value={state.iCp} onChange={handleInputChange} placeholder={'iCp'} pattern='^([0-9]?)$' />
                                             <label htmlFor={"iCp"}>{"iCp"}</label>
-                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCq"} value={state.iCq} onChange={handleInputChange} placeholder={'iCq'} maxLength={1} />
+                                            <input disabled={state.miMi === 'AA' ? true : false} type="text" name={"iCq"} value={state.iCq} onChange={handleInputChange} placeholder={'iCq'} pattern='^([0-9]?)$' />
                                             <label htmlFor={"iCq"}>{"iCq"}</label>
                                         </span>
                                     </div>
