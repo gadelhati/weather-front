@@ -5,7 +5,8 @@ const token = getAccessToken();
 
 export const api = axios.create({
   // baseURL: "http://localhost:3120/shipsynop",
-  baseURL: "https://10.5.193.20/weather",
+  baseURL: "https://sistemas-api-desenv.chm.mb/shipsynop"
+  // baseURL: "https://10.5.193.20/weather"
 });
 
 api.interceptors.request.use(async config => {
