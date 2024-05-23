@@ -73,7 +73,7 @@ export const Login = () => {
         if(event.key === 'Enter') {
             loginUser()
         }
-    } 
+    }; 
 
     return (
         <>
